@@ -1,0 +1,17 @@
+.wrapper_sign {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-left: 750px;
+  bottom: 90px;
+    width: 440px;
+    height: 550px;
+    margin-top: 0px;
+    margin-bottom: 00px;
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  }
