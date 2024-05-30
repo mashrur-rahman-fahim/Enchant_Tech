@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+  }
+
+.image{
+    object-fit: fill;
+    width: 100%;
+    height: 100vh;
+    
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    
+    
+}
+.row img{
+    
+    width: 930px;
+    height: 600px;
+    
+}
+.cl1{
+    transition: transform 0.6s;
+   
+}
+.cl1:hover{
+    transform: scale(1.02);
+}
+.cl2{
+    transition: transform 0.6s;
+}
+.cl2:hover{
+    transform: scale(1.02);
+}
+.cl1 img{
+    
+    margin-left: 10px;
+    
+}
+.cl2 img{
+   margin-right: 10px;
+  
+}
+
+.cl1 button{
+    position: relative;
+    bottom: 140px;
+    left: 700px;
+    width: 140px;
+    height: 60px;
+    border-radius: 20px;
+    background: transparent;
+    border-color: #2997ff;
+    color: #2997ff;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+.cl2 button{
+    position: relative;
+    bottom: 140px;
+    left: 700px;
+    width: 140px;
+    height: 60px;
+    border-radius: 20px;
+    background: transparent;
+    border-color: #2997ff;
+    color: #2997ff;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+.cl1 button:hover {
+    
+    background: #0071e3;
+    color: white;
+
+}
+.cl2 button:hover {
+    
+    background: #0071e3;
+    color: white;
+
+}
+.shop-by-catagory{
+    margin-top: 30px;
+    
+}
+.line{
+    border-bottom: 2px solid #081621;
+   
+
+}
+.title{
+
+    margin-left: 760px;
+    font-size: 38px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-weight:bold;
+    color: #081621;
+    cursor: default;
+}
+.shop-row{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+   
+}
+.shop-row img{
+    width: 540px;
+    height: 620px;
+    
+}
+
+.desktop{
+    margin-left: 120px;
+    transition: transform 0.6s;
+   
+}
+.desktop:hover{
+    transform: scale(1.02);
+}
+.components{
+    margin-right: 90px;
+    transition: transform 0.6s;
+
+}
+.components:hover{
+    transform: scale(1.02);
+}
+.laptop{
+    margin-right: 10px;
+    transition: transform 0.6s;
+
+}
+.laptop:hover{
+    transform: scale(1.02);
+}
+.shop-row button{
+    position: relative;
+    background: transparent;
+    border-color: #2997ff;
+    color: #2997ff;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+.desktop button{
+    width: 540px;
+    bottom:120px;
+    height: 85px;
+    font-size: 18px;
+    border-width: 3px;
+    font-size: 26px;
+    border-color: transparent;
+   
+}
+.desktop button:hover{
+    
+    background: #0071e3;
+    color: white;
+}
+.laptop button{
+    width: 540px;
+    bottom:120px;
+    height: 85px;
+    font-size: 18px;
+    border-width: 3px;
+    font-size: 26px;
+    border-color: transparent;
+
+   
+}
+.laptop button:hover{
+    
+    background: #0071e3;
+    color: white;
+}
+.components button{
+    width: 540px;
+    bottom:120px;
+    height: 85px;
+    font-size: 18px;
+    border-width: 3px;
+    font-size: 26px;
+    border-color: transparent;
+
+   
+}
+.components button:hover{
+    
+    background: #0071e3;
+    color: white;
+}
+img{
+    margin-bottom: 30px;
+}
+.featured-shop{
+   margin-top: 30px;
+}

@@ -1,0 +1,110 @@
+
+
+/* --------------------login---------------- */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: 750px;
+
+  width: 440px;
+  height: 460px;
+  margin-top: 0px;
+  margin-bottom: 100px;
+  background: transparent;
+  border: 2px solid rgb(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+.input1 {
+  position: relative;
+  width: 350px;
+  height: 35px;
+  border-bottom: 3px solid ;
+  margin: 30px 0;
+}
+.input1 input {
+  position: relative;
+
+  right: 12px;
+}
+.remember {
+  position: relative;
+  bottom: 8px;
+  left: 4px;
+}
+.wrapper input {
+  border: none;
+  outline: none;
+
+  background: transparent;
+  font-size: 18px;
+  
+}
+.icon {
+  position: relative;
+  left: 330px;
+  font-size: 20px;
+  color: black;
+  pointer-events: none;
+}
+.rmmbr {
+  margin-left: 5px;
+
+  font-weight: 500px;
+  font-size: 18px;
+  
+  pointer-events: none;
+}
+.btn button {
+  position: relative;
+  width: 100%;
+  right: 120px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.remember a {
+  position: relative;
+  left: 75px;
+  bottom: 10px;
+  font-size: 17px;
+  color: #fe5a5a;
+  text-decoration: none;
+}
+.signup {
+  font-size: 13px;
+  margin-top: 20px;
+  margin-left: 13px;
+}
+.signup h2 {
+  color: rgb(183, 183, 183);
+}
+.signup h2 a {
+  color: rgb(73, 155, 255);
+  text-decoration: none;
+}
+
+.btn {
+  position: relative;
+  margin-top: 30px;
+  left: 120px;
+  color: rgb(212, 212, 212);
+}
+.login h1 {
+  position: relative;
+  bottom: 30px;
+  left: 130px;
+  font-weight: bold;
+  
+}
+
+.input1 input {
+  width: 260px;
+}
+.gap{
+  margin-bottom: 200px;
+}

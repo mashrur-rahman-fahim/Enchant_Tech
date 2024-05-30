@@ -1,0 +1,19 @@
+footer{
+    
+    border: 340px;
+    background-color: #081621;
+    text-align: center;
+    padding-bottom: 300px;
+    border-radius: 5px;
+}
+footer h1{
+    position: relative;
+    top: 100px;
+    color:white;
+}
+footer p{
+    color: white;
+    position: relative;
+    top: 150px;
+    
+}
