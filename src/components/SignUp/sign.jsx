@@ -8,7 +8,7 @@ export const Sign = () => {
     <div class="wrapper">
       <form action="#">
         <div class="login">
-          <h1>Login</h1>
+          <h1>SignUp</h1>
         </div>
         <div class="input1">
           <div>
