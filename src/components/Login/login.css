@@ -28,7 +28,7 @@
 }
 .input1 input {
   position: relative;
-
+  width: 260px;
   right: 12px;
 }
 .remember {
@@ -102,9 +102,7 @@
   
 }
 
-.input1 input {
-  width: 260px;
-}
+
 .gap{
   margin-bottom: 200px;
 }

@@ -8,12 +8,12 @@ export const Navbar = () => {
       {" "}
       <header>
         <a href="/"><h1>Logo</h1></a>
-        <div class="shop">
-          <ul class="hList">
+        <div className="shop">
+          <ul className="hList">
             <li>
-              <div  class="menu">
-               <Link to='/Desktop'><h2 class="menu-title">Desktop</h2></Link> 
-                <ul class="menu-dropdown">
+              <div  className="menu">
+               <Link to='/Desktop'><h2 className="menu-title">Desktop</h2></Link> 
+                <ul className="menu-dropdown">
                 <li> <Link to='/Gaming' className="list" >Gaming PC</Link></li>
                   <li>All-in-One PC</li>
                   <li>Apple iMac</li>
@@ -23,9 +23,9 @@ export const Navbar = () => {
               </div>
             </li>
             <li>
-              <a href="#click" class="menu">
-                <h2 class="menu-title menu-title_2nd">Laptop</h2>
-                <ul class="menu-dropdown">
+              <a href="#click" className="menu">
+                <h2 className="menu-title menu-title_2nd">Laptop</h2>
+                <ul className="menu-dropdown">
                   <li>Gaming Laptop</li>
                   <li>Premium Ultrabook</li>
                   <li>Show All Laptop</li>
@@ -33,9 +33,9 @@ export const Navbar = () => {
               </a>
             </li>
             <li>
-              <a href="#click" class="menu">
-                <h2 class="menu-title menu-title_3rd">Components</h2>
-                <ul class="menu-dropdown">
+              <a href="#click" className="menu">
+                <h2 className="menu-title menu-title_3rd">Components</h2>
+                <ul className="menu-dropdown">
                   <li>Processor</li>
                   <li>CPU Cooler</li>
                   <li>Motherboard</li>
@@ -51,7 +51,7 @@ export const Navbar = () => {
            
           </ul>
         </div>
-        <div class="component">
+        <div className="component">
           <a href="/">HOME</a>
 
           <a href="#">CONTACT</a>

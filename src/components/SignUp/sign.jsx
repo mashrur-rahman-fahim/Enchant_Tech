@@ -4,60 +4,60 @@ export const Sign = () => {
   return (
     <div>
       <div className="gap"></div>
-      <div class="wrapper_sign">
+      <div className="wrapper_sign">
         <form action="#">
-          <div class="login">
+          <div className="login">
             <h1>SignUp</h1>
           </div>
-          <div class="input1">
+          <div className="input1">
             <div>
-              <ion-icon class="icon" name="mail"></ion-icon>
+              <ion-icon className="icon" name="mail"></ion-icon>
               <input
                 type="Email"
                 placeholder="Name"
-                class="email"
+                className="email"
                 id="lbl4"
                 required
               />
             </div>
           </div>
-          <div class="input1">
+          <div className="input1">
           <div>
-            <ion-icon class="icon" name="mail"></ion-icon>
+            <ion-icon className="icon" name="mail"></ion-icon>
             <input
               type="Email"
               placeholder="Phone"
-              class="email"
+              className="email"
               id="lbl4"
               required
             />
           </div>
         </div>
-          <div class="input1">
+          <div className="input1">
             <div>
-              <ion-icon class="icon" name="mail"></ion-icon>
+              <ion-icon className="icon" name="mail"></ion-icon>
               <input
                 type="Email"
                 placeholder="Email"
-                class="email"
+                className="email"
                 id="lbl4"
                 required
               />
             </div>
           </div>
-          <div class="input1">
+          <div className="input1">
             <div>
-              <ion-icon class="icon" name="lock-closed"></ion-icon>
+              <ion-icon className="icon" name="lock-closed"></ion-icon>
               <input
                 type="password"
                 placeholder="Password"
-                class="pass"
+                className="pass"
                 id="lbl2"
               />
             </div>
           </div>
          
-          <div class="btn">
+          <div className="btn">
             <button type="submit">SignUp</button>
           </div>
           <div className="signup">
