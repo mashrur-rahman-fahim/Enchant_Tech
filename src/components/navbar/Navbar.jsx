@@ -7,18 +7,26 @@ export const Navbar = () => {
     <div>
       {" "}
       <header>
-        <a href="/"><h1>Logo</h1></a>
+        <a href="/">
+          <h1>Logo</h1>
+        </a>
         <div className="shop">
           <ul className="hList">
             <li>
-              <div  className="menu">
-               <Link to='/Desktop'><h2 className="menu-title">Desktop</h2></Link> 
+              <div className="menu">
+                <Link to="/Desktop">
+                  <h2 className="menu-title">Desktop</h2>
+                </Link>
                 <ul className="menu-dropdown">
-                <li> <Link to='/Gaming' className="list" >Gaming PC</Link></li>
+                  <li>
+                    {" "}
+                    <Link to="/Gaming" className="list">
+                      Gaming PC
+                    </Link>
+                  </li>
                   <li>All-in-One PC</li>
                   <li>Apple iMac</li>
                   <li>Show All Desktop</li>
-                 
                 </ul>
               </div>
             </li>
@@ -48,7 +56,6 @@ export const Navbar = () => {
                 </ul>
               </a>
             </li>
-           
           </ul>
         </div>
         <div className="component">

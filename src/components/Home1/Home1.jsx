@@ -1,10 +1,10 @@
 import "./Home.css";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import a from "../assets/PC/a.jpg";
 import b from "../assets/PC/b.avif";
 import c from "../assets/PC/c.webp";
 import d from "../assets/PC/d.jpg";
-import { Link } from "react-router-dom";
+
 export const Home1 = () => {
   const [src, setsrc] = useState(a);
   let photo = [a, b, c, d];
@@ -12,7 +12,7 @@ export const Home1 = () => {
 
   function Change() {
     i++;
-    if (i == 4) i = 0;
+    if (i === 4) i = 0;
 
     setsrc(photo[i]);
   }
@@ -26,10 +26,10 @@ export const Home1 = () => {
     <div>
       <img className="image" src={src} alt="" />
       <div className="title-line">
-          <div className="line"></div>
-          <div className="title">FEATURE PRODUCT</div>
-          <div className="line"></div>
-        </div>
+        <div className="line"></div>
+        <div className="title">FEATURE PRODUCT</div>
+        <div className="line"></div>
+      </div>
       <div className="featured-shop">
         <div className="row">
           <div className="cl1">
@@ -84,7 +84,6 @@ export const Home1 = () => {
           </div>
         </div>
       </div>
-      
     </div>
   );
 };

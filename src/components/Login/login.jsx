@@ -4,7 +4,6 @@ import "./login.css";
 export const Login1 = () => {
   return (
     <div>
-     
       <div className="gap"></div>
       <div className="wrapper">
         <form action="#">
@@ -52,5 +51,3 @@ export const Login1 = () => {
     </div>
   );
 };
-
-
