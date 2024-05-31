@@ -6,40 +6,40 @@ export const Login1 = () => {
     <div>
      
       <div className="gap"></div>
-      <div class="wrapper">
+      <div className="wrapper">
         <form action="#">
-          <div class="login">
+          <div className="login">
             <h1>Login</h1>
           </div>
-          <div class="input1">
+          <div className="input1">
             <div>
               <ion-icon class="icon" name="mail"></ion-icon>
               <input
                 type="Email"
                 placeholder="Username"
-                class="email"
+                className="email"
                 id="lbl4"
                 required
               />
             </div>
           </div>
-          <div class="input1">
+          <div className="input1">
             <div>
               <ion-icon class="icon" name="lock-closed"></ion-icon>
               <input
                 type="password"
                 placeholder="Password"
-                class="pass"
+                className="pass"
                 id="lbl2"
               />
             </div>
           </div>
-          <div class="remember">
+          <div className="remember">
             <input type="checkbox" />
-            <label class="rmmbr">Remember me</label>
+            <label className="rmmbr">Remember me</label>
             <a href="#">Forgot Password?</a>
           </div>
-          <div class="btn">
+          <div className="btn">
             <button type="submit">Login</button>
           </div>
           <div className="signup">

@@ -24,7 +24,7 @@ export const Home1 = () => {
 
   return (
     <div>
-      <img class="image" src={src} alt="" />
+      <img className="image" src={src} alt="" />
       <div className="title-line">
           <div className="line"></div>
           <div className="title">FEATURE PRODUCT</div>
