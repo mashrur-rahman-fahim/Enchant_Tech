@@ -11,6 +11,9 @@ import { Components } from "./pages/Components";
 import { Gaming1 } from "./pages/Gaming1";
 import { Login2 } from "./pages/Login2";
 import { Signup } from "./pages/signup";
+import { Product } from "./pages/Product";
+
+
 
 
 
@@ -30,7 +33,10 @@ function App() {
    <Route path="/Laptop" element={<Laptop/>}/>
    <Route path="/Components" element={<Components/>}/>
    <Route path="/Gaming" element={<Gaming1/>}/>
-  <Route path="SignUp" element={<Signup/>}/>
+  <Route path="/SignUp" element={<Signup/>}/>
+  <Route path="/:id" element={<Product/>}/>
+ 
+
 
    </Routes>
 

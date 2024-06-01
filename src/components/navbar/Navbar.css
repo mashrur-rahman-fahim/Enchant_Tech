@@ -14,7 +14,7 @@ header {
   background: #081621;
   display: flex;
   justify-content: space-between;
-  padding: 2% 5% 0 5%;
+  padding: 54px 5% 0 5%;
   align-items: center;
 }
 header h1 {
@@ -291,4 +291,29 @@ header .component a:hover::after {
 
 .search-button:hover {
   background-color: #f2f4f8;
+}
+.data_list{
+  
+  position:absolute;
+ 
+  top:80px;
+
+  color:black;
+  font-size: 22px;
+  left: 350px;
+ 
+  
+}
+.border_data{
+  width: 240px;
+ 
+ text-align: center;
+ padding-top: 20px;
+ border-radius: 6px;
+ background: white;
+ 
+}
+.text_nav{
+  text-decoration: none;
+ color: black;
 }

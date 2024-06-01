@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import ProductData from "../../Product/ProductData";
 import "./show-all.css";
+import { Link } from "react-router-dom";
+import { AllProduct } from "../../Product/All_product";
+
+
 
 export const Show = () => {
   const [items, setItems] = useState(ProductData);
@@ -24,7 +28,21 @@ export const Show = () => {
     });
     setItems(filter_items);
   };
-
+  const id=1;
+ 
+  // const test=(val)=>
+  // {
+  //   const val2=1;
+    
+  //   return(
+  //     <AllProduct val2={val2}/>
+  //   )
+   
+    
+  // }
+  
+  
+  
   return (
     <div>
       <div className="all_nav">
@@ -57,9 +75,11 @@ export const Show = () => {
               <div className="wrapper1">
                 <div className="contant">
                   <img className="img" key={idx} src={curElm.img} alt="" />
-                  <div key={idx + 1} className="title1">
+                 
+                 
+                <Link className="Link_home" to={`/${curElm.id}`}> <div   key={idx + 1} className="title1" id="tit">
                     {curElm.title}
-                  </div>
+                  </div></Link>
 
                   <div key={idx + 2} className="des">
                     {curElm.description}
@@ -86,3 +106,5 @@ export const Show = () => {
     </div>
   );
 };
+
+
