@@ -17,7 +17,7 @@ const ProductData = [
 
     },
     {
-        id: 1,
+        id: 2,
         img: a,
         title: 'Eker Vitor shob',
         description: 'age kinun...tarpor bisshash korun',
@@ -28,7 +28,7 @@ const ProductData = [
 
     },
     {
-        id: 1,
+        id: 3,
         img: a,
         title: 'Eker Vitor shob',
         description: 'age kinun...tarpor bisshash korun',
@@ -39,7 +39,7 @@ const ProductData = [
 
     },
     {
-        id: 1,
+        id: 4,
         img: a,
         title: 'Eker Vitor shob',
         description: 'age kinun...tarpor bisshash korun',
@@ -50,7 +50,7 @@ const ProductData = [
 
     },
     {
-        id: 1,
+        id: 5,
         img: a,
         title: 'Eker Vitor shob',
         description: 'age kinun...tarpor bisshash korun',
@@ -61,7 +61,7 @@ const ProductData = [
 
     },
     {
-        id: 1,
+        id: 6,
         img: a,
         title: 'Eker Vitor shob',
         description: 'age kinun...tarpor bisshash korun',
@@ -72,7 +72,7 @@ const ProductData = [
 
     },
     {
-        id: 1,
+        id: 7,
         img: a,
         title: 'Eker Vitor shob',
         description: 'age kinun...tarpor bisshash korun',
@@ -83,7 +83,7 @@ const ProductData = [
 
     },
     {
-        id: 1,
+        id: 8,
         img: a,
         title: 'Eker Vitor shob',
         description: 'age kinun...tarpor bisshash korun',
@@ -94,7 +94,7 @@ const ProductData = [
 
     },
     {
-        id: 1,
+        id: 9,
         img: a,
         title: 'Eker Vitor shob',
         description: 'age kinun...tarpor bisshash korun',
@@ -105,7 +105,7 @@ const ProductData = [
 
     },
     {
-        id: 1,
+        id: 10,
         img: a,
         title: 'Eker Vitor shob',
         description: 'age kinun...tarpor bisshash korun',

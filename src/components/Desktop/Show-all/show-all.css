@@ -36,6 +36,7 @@
 .contant .title1 {
   font-weight: bold;
   font-size: 19px;
+  cursor: pointer;
 }
 .contant .des {
   font-size: 18px;
@@ -91,4 +92,8 @@
   font-size: 18px;
   background: transparent;
   cursor: pointer;
+}
+.Link_home{
+  text-decoration: none;
+  color: black;
 }

@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import ProductData from "../Product/ProductData";
 
 export const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,16 +24,39 @@ export const Navbar = () => {
         <a href="/">
           <h1>Logo</h1>
         </a>
-        <form className="search-form" onSubmit={handleSearchSubmit}>
+        <form className="search-form" >
             <input
+             
               type="text"
               className="search-input"
               placeholder="Search products..."
               value={searchQuery}
               onChange={handleSearchChange}
             />
-            <button type="submit" className="search-button">Search</button>
+           
           </form>
+        
+            <div className="data_list">
+          {
+            
+            ProductData.filter(curr=>{
+              const searchTerm=searchQuery.toLowerCase();
+              const FullName=curr.title.toLowerCase();
+              return searchTerm && FullName.includes(searchTerm)
+
+
+            })
+            
+            
+            .map((curr,idx)=>{
+              return(
+              <div className="border_data" key={idx}>
+                
+               <Link className="text_nav" onClick={()=>{setSearchQuery("")}} to={`/${curr.id}`}>{curr.title}</Link> 
+              </div>)
+
+            })
+          }</div>
         <div className="shop">
           <ul className="hList">
             <li>
