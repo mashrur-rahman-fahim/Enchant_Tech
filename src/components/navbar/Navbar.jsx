@@ -1,15 +1,38 @@
-import React from "react";
+import React,{useState} from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    // Implement search functionality here
+    console.log("Searching for:", searchQuery);
+  };
+
   return (
+    <nav className="nav">
     <div>
       {" "}
       <header>
         <a href="/">
           <h1>Logo</h1>
         </a>
+        <form className="search-form" onSubmit={handleSearchSubmit}>
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            <button type="submit" className="search-button">Search</button>
+          </form>
         <div className="shop">
           <ul className="hList">
             <li>
@@ -67,5 +90,6 @@ export const Navbar = () => {
         </div>
       </header>
     </div>
+   </nav>
   );
 };
