@@ -5,6 +5,7 @@ import { Footer } from "./components/footer/footer";
 import { Navbar } from "./components/navbar/Navbar";
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import { Home } from "./pages/Home";
+import { About } from "./pages/About";
 import { Desktop } from "./pages/Desktop";
 import { Laptop } from "./pages/Laptop";
 import { Components } from "./pages/Components";
@@ -28,7 +29,9 @@ function App() {
    
    
    <Route path="/" element={<Home/>}/>
+  
    <Route path="/Login" element={<Login2/>}/>
+   <Route path="/About" element={<About/>}/>
    <Route path="/Desktop" element={<Desktop/>}/>
    <Route path="/Laptop" element={<Laptop/>}/>
    <Route path="/Components" element={<Components/>}/>
