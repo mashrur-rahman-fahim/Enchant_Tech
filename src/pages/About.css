@@ -1,0 +1,18 @@
+body {
+    font-family: "Open Sans", sans-serif; /* Sets the font for the body */
+    background-color: lightcyan; /* Light grey background */
+   
+}
+h1,h2,h3,h4 {
+    color: #333; /* Dark grey color for the heading */
+    font-size: 24px;
+    text-align: center;
+    font-size: 36px; /* Sets the font size for the heading */
+}
+p {
+    color: black; /* Lighter grey color for the paragraph text */
+    font-size: 18px; /* Sets the font size for the paragraph */
+    max-width: 800px; /* Limits the width of paragraphs */
+    margin: auto; /* Centers the paragraphs */
+    text-align: justify; /* Justifies the text */
+}
