@@ -2,13 +2,12 @@ import React from 'react'
 import './footer.css'
 export const Footer = () => {
   return (
-    <div>
+   
         <footer>
-            <h1>Footer</h1>
-            <p>ja mone chay likh...nijer jibon er shb
-                dukkher kahini
+            <h1>Subscribe</h1>
+            <p>Thanks for being a part of Enchant
             </p>
         </footer>
-    </div>
+ 
   )
 }
