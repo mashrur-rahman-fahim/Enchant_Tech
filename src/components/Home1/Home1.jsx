@@ -27,7 +27,7 @@ export const Home1 = () => {
       <img className="image" src={src} alt="" />
       <div className="title-line">
         <div className="line"></div>
-        <div className="title">FEATURE PRODUCT</div>
+        <div className="title">FEATURE PRODUCTS</div>
         <div className="line"></div>
       </div>
       <div className="featured-shop">
@@ -66,7 +66,7 @@ export const Home1 = () => {
       <div className="shop-by-catagory">
         <div className="title-line">
           <div className="line"></div>
-          <div className="title">SHOP BY CATAGORY</div>
+          <div className="title">SHOP BY CATAGORIES</div>
           <div className="line"></div>
         </div>
         <div className="shop-row">

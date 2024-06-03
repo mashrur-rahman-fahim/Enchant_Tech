@@ -22,7 +22,7 @@ export const Navbar = () => {
       {" "}
       <header>
         <a href="/">
-          <h1>Logo</h1>
+          <h1>Enchant  </h1>
         </a>
         <form className="search-form" >
             <input
@@ -89,7 +89,7 @@ export const Navbar = () => {
             </li>
             <li>
               <a href="#click" className="menu">
-                <h2 className="menu-title menu-title_3rd">Components</h2>
+                <h2 className="menu-title menu-title_3rd">Component</h2>
                 <ul className="menu-dropdown">
                   <li>Processor</li>
                   <li>CPU Cooler</li>
@@ -106,8 +106,6 @@ export const Navbar = () => {
           </ul>
         </div>
         <div className="component">
-          <a href="/">HOME</a>
-
           <a href="#">CONTACT</a>
           <a href="/About">ABOUT</a>
           <a href="/Login"> LOGIN</a>

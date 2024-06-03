@@ -1,7 +1,7 @@
 footer{
     
     border: 340px;
-    background-color: #081621;
+    background-color: #090a0a;
     text-align: center;
     padding-bottom: 300px;
     border-radius: 5px;
@@ -9,10 +9,10 @@ footer{
 footer h1{
     position: relative;
     top: 100px;
-    color:white;
+    color: rgb(30, 132, 216);
 }
 footer p{
-    color: white;
+    color: rgb(30, 132, 216);
     position: relative;
     top: 150px;
     
