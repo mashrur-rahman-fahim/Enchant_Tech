@@ -13,6 +13,7 @@ import { Login2 } from "./pages/Login2";
 import { Signup } from "./pages/signup";
 import { Product } from "./pages/Product";
 import { About } from "./pages/About";
+import { Contact1 } from "./pages/Contact1";
 
 
 
@@ -37,6 +38,7 @@ function App() {
   <Route path="/SignUp" element={<Signup/>}/>
   <Route path="/:id" element={<Product/>}/>
   <Route path="/About" element={<About/>}/>
+  <Route path="/Contact" element={<Contact1/>}/>
  
 
 
