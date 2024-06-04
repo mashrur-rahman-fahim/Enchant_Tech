@@ -108,7 +108,7 @@ export const Navbar = () => {
         <div className="component">
           <a href="/">HOME</a>
 
-          <a href="#">CONTACT</a>
+          <a href="/Contact">CONTACT</a>
           <a href="/About">ABOUT</a>
           <a href="/Login"> LOGIN</a>
         </div>
