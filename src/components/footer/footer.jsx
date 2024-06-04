@@ -5,8 +5,8 @@ export const Footer = () => {
     <div>
         <footer>
             <h1>Footer</h1>
-            <p>ja mone chay likh...nijer jibon er shb
-                dukkher kahini
+            <p>Stay Connected<br></br>
+            
             </p>
         </footer>
     </div>
