@@ -1,5 +1,6 @@
 import React from "react";
 import "./sign.css";
+import { Link } from "react-router-dom";
 export const Sign = () => {
   return (
     <div>
@@ -50,7 +51,7 @@ export const Sign = () => {
           </div>
           <div className="signup">
             <h2>
-              Already hava an account? <a href="/Login">Login</a>
+              Already hava an account? <Link to="/Login">Login</Link>
             </h2>
           </div>
         </form>
