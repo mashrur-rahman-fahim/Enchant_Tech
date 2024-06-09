@@ -4,6 +4,7 @@ import "./About.css";
 export const About1 = () => {
   return (
     <div>
+      <div className="fullAbout">
       <h1 className="firsthead"><br></br>About Enchant Tech</h1>
       <p className="p1"><br></br>Since its inception on 1st September 2015, Enchant Tech has rapidly 
         evolved into one of the most trusted names in technology retail throughout our nation. From humble beginnings, 
@@ -26,7 +27,7 @@ export const About1 = () => {
            <p className="p4"><br></br>Our approach revolves entirely around you - our valued customers.
             We listen attentively to your feedback, preferences, and suggestions, and we 
             strive tirelessly to bring your visions to life. 
-           Your satisfaction fuels our passion for excellence.<br></br></p>
+           Your satisfaction fuels our passion for excellence.<br></br></p></div>
     </div>
   )
 }

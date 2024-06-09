@@ -108,9 +108,9 @@ export const Navbar = () => {
         <div className="component">
           <a href="/">HOME</a>
 
-          <a href="/Contact">CONTACT</a>
-          <a href="/About">ABOUT</a>
-          <a href="/Login"> LOGIN</a>
+          <Link to="/Contact">CONTACT</Link>
+          <Link to="/About">ABOUT</Link>
+          <Link to="/Login"> LOGIN</Link>
         </div>
       </header>
     </div>
