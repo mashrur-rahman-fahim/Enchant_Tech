@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProductData from "../../Product/ProductData";
 import "./show-all.css";
 import { Link } from "react-router-dom";
-import { AllProduct } from "../../Product/All_product";
+
 
 
 
@@ -94,8 +94,9 @@ export const Show = () => {
                   <div key={idx + 4} className="price">
                     {curElm.price}
                   </div>
-                  <div className="buy">
-                    <button>Buy Now</button>
+                  <div className="buy_and_cart">
+                    <button className="buy">Buy Now</button>
+                    <button className="cart">Cart</button>
                   </div>
                 </div>
               </div>
