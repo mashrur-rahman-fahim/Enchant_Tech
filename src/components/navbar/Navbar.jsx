@@ -106,7 +106,7 @@ export const Navbar = () => {
           </ul>
         </div>
         <div className="component">
-          <a href="/">HOME</a>
+          <Link to="/">HOME</Link>
 
           <Link to="/Contact">CONTACT</Link>
           <Link to="/About">ABOUT</Link>
