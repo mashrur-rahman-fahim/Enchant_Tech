@@ -6,7 +6,7 @@ export const Footer = () => {
         <footer>
             <h1>Stay Connected</h1>
             <p>Enchant</p><p><br></br>
-            12D,Banani,dhaka-1203<br></br>
+            1204D,Banani,dhaka-1203<br></br>
             Email:webteam@enchant.com
             </p>
         </footer>
