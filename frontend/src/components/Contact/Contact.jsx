@@ -5,9 +5,9 @@ export const Contact = () => {
   return (
     <div class="contact" id="contact">
         <div class="contact_left">
-            <h1>CONTACT ME</h1>
-            <p><i class="fa-solid fa-paper-plane"></i>mashrur950@gmail.com</p>
-            <p><i class="fa-solid fa-phone"></i>+880-140-214-8869</p>
+            <h1>CONTACT US</h1>
+            <p><i class="fa-solid fa-paper-plane"></i>example@gmail.com</p>
+            <p><i class="fa-solid fa-phone"></i>+880-999-9999-999</p>
             <div class="social_icons">
                 <a href="https://www.facebook.com/hypertextPhoenix"><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://www.instagram.com/hypertextphoenix/"><i class="fa-brands fa-instagram"></i></a>
@@ -18,7 +18,7 @@ export const Contact = () => {
         </div>
         <div class="contact-right">
             
-                <form name="submit-to-google-sheet">
+                <form name="submit-to-google-sheet" >
                 <input type="text" name="Name" placeholder="Your Name" required></input>
                 <input type="email" name="Email" placeholder="Your Email" required></input>
                 <textarea name="message" rows="6" placeholder="Message"></textarea>
@@ -27,6 +27,10 @@ export const Contact = () => {
                 
             <span id="msg"></span>
         </div>
+        <script>
+          
+
+        </script>
     </div>
   );
 };
