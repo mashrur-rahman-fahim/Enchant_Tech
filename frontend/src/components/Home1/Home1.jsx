@@ -1,6 +1,6 @@
 import "./Home.css";
 import React, {  useEffect, useState } from "react";
-
+import ProductData from "../Product/ProductData";
 import a from "../assets/PC/a.jpg";
 import b from "../assets/PC/b.avif";
 import c from "../assets/PC/c.webp";
@@ -19,6 +19,9 @@ export const Home1 = () => {
 
     return () => clearInterval(interval);
   }, [index, photo]);
+  const currentDate = new Date();
+  const tenDaysAgo = new Date(currentDate.getTime() - (10 * 24 * 60 * 60 * 1000));
+
 
   
   return (
@@ -34,36 +37,30 @@ export const Home1 = () => {
       </div>
       <div className="featured-shop">
         <div className="row">
-          <div className="cl1">
-            <img src={a} alt="" />
+          {
+            ProductData.map((items,idx)=>{
+              const productDate=new Date(items.date);
+              if(productDate>=tenDaysAgo){
+              
+              return (
+                <>
+                {
+                  
+                <div className="cl1" >
+                  <img src={items.img} alt="Loading"/>
+                  <div className="home_price">Price {items.price}</div>
+                  <button>Order Now</button>
+                  
 
-            <button>Order Now</button>
-          </div>
-          <div className="cl2">
-            <img src={b} alt="" />
-            <button>Order Now</button>
-          </div>
+                </div>}
+                
+                </>
+              )
+
+            }})
+          }
         </div>
-        <div className="row">
-          <div className="cl1" id="r2">
-            <img src={c} alt="" />
-            <button>Order Now</button>
-          </div>
-          <div className="cl2">
-            <img src={d} alt="" />
-            <button>Order Now</button>
-          </div>
-        </div>
-        <div className="row">
-          <div className="cl1">
-            <img src={a} alt="" />
-            <button>Order Now</button>
-          </div>
-          <div className="cl2">
-            <img src={b} alt="" />
-            <button>Order Now</button>
-          </div>
-        </div>
+        
       </div>
       <div className="shop-by-catagory">
         <div className="title-line">

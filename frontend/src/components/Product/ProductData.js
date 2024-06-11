@@ -12,7 +12,8 @@ const ProductData = [
         </ul>,
         price: 12,
         cat: 'Gaming',
-        brand: 'HP'
+        brand: 'HP',
+        date: '2024-12-07',
 
 
     },
@@ -23,7 +24,8 @@ const ProductData = [
         description: 'age kinun...tarpor bisshash korun',
         price: 100,
         cat: 'Gaming',
-        brand: 'AMD'
+        brand: 'AMD',
+        date: '2024-12-06',
 
 
     },
@@ -34,8 +36,8 @@ const ProductData = [
         description: 'age kinun...tarpor bisshash korun',
         price: 105,
         cat: 'Gaming',
-        brand: 'AMD'
-
+        brand: 'AMD',
+        date: '2024-12-07',
 
     },
     {
@@ -45,7 +47,8 @@ const ProductData = [
         description: 'age kinun...tarpor bisshash korun',
         price: 10,
         cat: 'Gaming',
-        brand: 'AMD'
+        brand: 'AMD',
+        date: '2024-12-07',
 
 
     },
@@ -56,7 +59,8 @@ const ProductData = [
         description: 'age kinun...tarpor bisshash korun',
         price: 10,
         cat: 'Gaming',
-        brand: 'AMD'
+        brand: 'AMD',
+        date: '2024-12-07',
 
 
     },
@@ -67,7 +71,8 @@ const ProductData = [
         description: 'age kinun...tarpor bisshash korun',
         price: 10,
         cat: 'Gaming',
-        brand: 'AMD'
+        brand: 'AMD',
+        date: '2024-12-07',
 
 
     },
@@ -78,7 +83,8 @@ const ProductData = [
         description: 'age kinun...tarpor bisshash korun',
         price: 10,
         cat: 'Gaming',
-        brand: 'AMD'
+        brand: 'AMD',
+        date: '2024-12-07',
 
 
     },
@@ -89,7 +95,8 @@ const ProductData = [
         description: 'age kinun...tarpor bisshash korun',
         price: 10,
         cat: 'Gaming',
-        brand: 'AMD'
+        brand: 'AMD',
+        date: '2024-12-07',
 
 
     },
@@ -100,7 +107,8 @@ const ProductData = [
         description: 'age kinun...tarpor bisshash korun',
         price: 10,
         cat: 'Gaming',
-        brand: 'AMD'
+        brand: 'AMD',
+        date: '2024-12-07',
 
 
     },
@@ -111,7 +119,8 @@ const ProductData = [
         description: 'age kinun...tarpor bisshash korun',
         price: 10,
         cat: 'All-in-one',
-        brand: 'AMD'
+        brand: 'AMD',
+        date: '2024-05-07',
 
 
     },

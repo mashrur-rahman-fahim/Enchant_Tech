@@ -75,7 +75,7 @@
 /* Featured Shop */
 .featured-shop {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: 20px;
   padding: 10px;
   animation: fade-in 1s ease-in-out;
@@ -83,12 +83,12 @@
 
 .featured-shop .row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 4fr);
   grid-gap: 20px;
 }
 
-.featured-shop .cl1,
-.featured-shop .cl2 {
+.featured-shop .cl1
+ {
   position: relative;
   overflow: hidden;
   border-radius: 8px;
