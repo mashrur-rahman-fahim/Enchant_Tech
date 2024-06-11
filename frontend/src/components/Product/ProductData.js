@@ -10,7 +10,7 @@ const ProductData = [
             <li>sdfsdf</li>
             <li>sdfsdf</li>
         </ul>,
-        price: 10,
+        price: 12,
         cat: 'Gaming',
         brand: 'HP'
 
@@ -21,7 +21,7 @@ const ProductData = [
         img: a,
         title: 'Eker Vitor shob',
         description: 'age kinun...tarpor bisshash korun',
-        price: 10,
+        price: 100,
         cat: 'Gaming',
         brand: 'AMD'
 
@@ -32,7 +32,7 @@ const ProductData = [
         img: a,
         title: 'Eker Vitor shob',
         description: 'age kinun...tarpor bisshash korun',
-        price: 10,
+        price: 105,
         cat: 'Gaming',
         brand: 'AMD'
 
