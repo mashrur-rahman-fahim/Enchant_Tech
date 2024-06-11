@@ -16,6 +16,7 @@ header {
   justify-content: space-between;
   padding: 54px 5% 0 5%;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 header h1 {
@@ -74,10 +75,8 @@ header .component a:hover::after {
   background: transparent;
   text-align: center;
   color: #ffffff;
-  font-weight: normal;
   text-transform: uppercase;
   font-size: 16px;
-  font-weight: normal;
   transition: 0.3s background-color;
 }
 
@@ -86,8 +85,8 @@ header .component a:hover::after {
   display: block;
   height: 0;
   border-top: 5px solid transparent;
-  border-left: (150px / 2) solid transparent;
-  border-right: (150px / 2) solid transparent;
+  border-left: calc(150px / 2) solid transparent;
+  border-right: calc(150px / 2) solid transparent;
   border-bottom: 0 solid;
   position: absolute;
   top: 100%;
@@ -114,8 +113,8 @@ header .component a:hover::after {
   content: "";
   display: block;
   height: 0;
-  border-left: (150px / 2) solid transparent;
-  border-right: (150px / 2) solid transparent;
+  border-left: calc(150px / 2) solid transparent;
+  border-right: calc(150px / 2) solid transparent;
   border-bottom: 0 solid;
   position: absolute;
   bottom: 0;
@@ -176,8 +175,8 @@ header .component a:hover::after {
   display: block;
   height: 0;
   border-top: 5px solid;
-  border-left: (150px / 2) solid transparent;
-  border-right: (150px / 2) solid transparent;
+  border-left: calc(150px / 2) solid transparent;
+  border-right: calc(150px / 2) solid transparent;
   position: absolute;
   top: 100%;
   left: 0;
@@ -211,7 +210,12 @@ header .component a:hover::after {
 }
 
 .menu-dropdown > *:hover {
-  background: linear-gradient(to right, rgba(8, 22, 33, 0.5), rgba(12, 28, 39, 0.5), rgba(13, 35, 48, 0.5));
+  background: linear-gradient(
+    to right,
+    rgba(8, 22, 33, 0.5),
+    rgba(12, 28, 39, 0.5),
+    rgba(13, 35, 48, 0.5)
+  );
 }
 
 .menu:not(:hover) > .menu-dropdown > * {
@@ -252,8 +256,6 @@ header .component a:hover::after {
   left: 40px;
 }
 
-
-
 .nav {
   position: fixed;
   top: 0;
@@ -286,13 +288,11 @@ header .component a:hover::after {
   box-shadow: 0 2px 8px rgba(108, 99, 255, 0.3);
 }
 
-
 .data-list-container {
   position: absolute;
   top: 94px;
   left: 0;
   width: 40%;
-  
   background-color: #f0f0f0; /* Change the background color */
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -323,3 +323,58 @@ header .component a:hover::after {
   color: #000;
 }
 
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  header {
+    padding: 54px 3% 0 3%;
+  }
+  .data-list-container {
+    width: 50%;
+  }
+}
+
+@media (max-width: 992px) {
+  header {
+    padding: 54px 2% 0 2%;
+  }
+  .data-list-container {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  header h1 {
+    margin-bottom: 20px;
+  }
+  header .component a {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+  .menu-title {
+    width: 100%;
+    text-align: left;
+  }
+  .data-list-container {
+    width: 80%;
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 576px) {
+  .search-form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .search-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .data-list-container {
+    width: 90%;
+    margin-left: 5%;
+  }
+}
