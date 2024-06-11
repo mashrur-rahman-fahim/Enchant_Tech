@@ -1,5 +1,5 @@
 import "./Home.css";
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductData from "../Product/ProductData";
 import a from "../assets/PC/a.jpg";
 import b from "../assets/PC/b.avif";
@@ -7,9 +7,15 @@ import c from "../assets/PC/c.webp";
 import d from "../assets/PC/d.jpg";
 
 export const Home1 = () => {
- const [src, setSrc] = useState(a);
+  const [src, setSrc] = useState(a);
   const [index, setIndex] = useState(0);
-  const photo = [a, b, c, d];
+  let photo=[] ;
+  for(let i=0;i<ProductData.length;i++)
+    {
+      photo[i]=ProductData[i].img;
+    }
+    console.log(photo)
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,48 +25,36 @@ export const Home1 = () => {
 
     return () => clearInterval(interval);
   }, [index, photo]);
+
   const currentDate = new Date();
   const tenDaysAgo = new Date(currentDate.getTime() - (10 * 24 * 60 * 60 * 1000));
 
-
-  
   return (
     <div>
-<div className="image-carousel">
-        
+      <div className="image-carousel">
         <img className="image" src={src} alt="" />
       </div>
-          <div className="title-line">
+      <div className="title-line">
         <div className="line"></div>
         <div className="title">FEATURE PRODUCT</div>
         <div className="line"></div>
       </div>
       <div className="featured-shop">
         <div className="row">
-          {
-            ProductData.map((items,idx)=>{
-              const productDate=new Date(items.date);
-              if(productDate>=tenDaysAgo){
-              
+          {ProductData.map((items, idx) => {
+            const productDate = new Date(items.date);
+            if (productDate >= tenDaysAgo) {
               return (
-                <>
-                {
-                  
-                <div className="cl1" >
-                  <img src={items.img} alt="Loading"/>
+                <div className="cl1" key={idx}>
+                  <img src={items.img} alt="Loading" />
                   <div className="home_price">Price {items.price}</div>
                   <button>Order Now</button>
-                  
-
-                </div>}
-                
-                </>
-              )
-
-            }})
-          }
+                </div>
+              );
+            }
+            return null;
+          })}
         </div>
-        
       </div>
       <div className="shop-by-catagory">
         <div className="title-line">

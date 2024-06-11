@@ -1,9 +1,11 @@
 import a from '../assets/PC/a.jpg'
+import b from '../assets/PC/b.avif'
+import c from '../assets/PC/c.webp'
 const ProductData = [
     {
 
         id: 1,
-        img: a,
+        img: b,
         title: 'Eker1 Vitor shob',
         description: <ul>
             <li>sdfsdf</li>
@@ -31,7 +33,7 @@ const ProductData = [
     },
     {
         id: 3,
-        img: a,
+        img: c,
         title: 'Eker Vitor shob',
         description: 'age kinun...tarpor bisshash korun',
         price: 105,
@@ -108,7 +110,7 @@ const ProductData = [
         price: 10,
         cat: 'Gaming',
         brand: 'AMD',
-        date: '2024-12-07',
+        date: '2023-12-07',
 
 
     },
