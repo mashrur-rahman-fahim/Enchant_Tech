@@ -5,10 +5,12 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-left: 750px;
-  width: 440px;
+  margin:0 auto;
+ 
+  width:90%;
+  max-width:440px;
   height: 460px;
-  margin-top: 0px;
+  margin-top: 50px;
   margin-bottom: 100px;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.1);
@@ -17,6 +19,13 @@
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
   animation: fadeIn 1s ease-in-out;
   background-color: #1a2a40;
+}
+
+/* Add a media query for smaller screens */
+@media (max-width: 768px) {
+  .wrapper {
+    margin-top: 20px; /* Adjusted margin for smaller screens */
+  }
 }
 
 @keyframes fadeIn {
@@ -31,13 +40,17 @@
 }
 
 .input1 {
-  position: relative;
-  width: 350px;
+   width: 90%; /* Adjusted width to be 90% of the parent container */
+  max-width: 350px; /* Set a maximum width to maintain readability on larger screens */
   height: 35px;
   border-bottom: 3px solid #4285f4;
-  margin: 30px 0;
+  margin: 30px auto; /* Center the input horizontally */
 }
-
+@media (max-width: 768px) {
+  .input1 {
+    margin: 20px auto; /* Adjusted margin for smaller screens */
+  }
+}
 .input1 input {
   position: relative;
   width: 260px;
@@ -76,6 +89,7 @@
   pointer-events: none;
   transition: color 0.3s ease-in-out;
 }
+
 
 .icon:hover {
   color: #4285f4;
@@ -121,7 +135,27 @@
 .remember a:hover {
   color: #3367d6;
 }
-
+@media (max-width: 768px) {
+  .remember {
+    text-align: center; 
+    margin-top: 10px;
+  }
+  
+  .remember a {
+    display: block; 
+    margin-top: 5px; 
+  }
+}@media (max-width: 768px) {
+  .remember {
+    text-align: center; /* Center the "Forget Password" link */
+    margin-top: 10px; 
+  }
+  
+  .remember a {
+    display: block; /* Display the link as a block element */
+    margin-top: 5px; /* Adjusted margin for better spacing */
+  }
+}
 .signup {
   font-size: 13px;
   margin-top: 20px;
