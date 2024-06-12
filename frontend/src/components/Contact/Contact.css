@@ -1,14 +1,18 @@
+/* General styles for the contact section */
 .contact {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin-bottom: 30px;
+  padding: 20px; /* Add padding for better spacing */
 }
 
 .contact_left {
-  margin-left: 200px;
   font-size: 24px;
   animation: fadeInContact 1s ease-in-out;
+  text-align: center; /* Center align text for better appearance */
+  margin: 20px 0; /* Add margin for better spacing */
 }
 
 /* Animation for contact section fade in effect */
@@ -23,20 +27,18 @@
 
 .contact_left p {
   font-size: 22px;
-  margin-left: 15px;
-  margin-bottom: 10px;
+  margin: 10px 0; /* Adjust margins for better spacing */
 }
 
 .contact_left p i {
-  margin-right: 20px;
+  margin-right: 10px;
   color: #04bade;
 }
 
 .contact_left .social_icons i {
   color: #1e3050;
   font-size: 34px;
-  margin-left: 20px;
-  margin-top: 10px;
+  margin: 10px; /* Adjust margins for better spacing */
   transition: 0.3s;
 }
 
@@ -45,16 +47,17 @@
 }
 
 .contact-right {
-  margin-right: 200px;
-  margin-top: 100px;
+  margin-top: 50px; /* Adjust top margin for better spacing */
+  width: 100%;
+  max-width: 600px; /* Set max width for better responsiveness */
 }
 
 .contact-right form {
   width: 100%;
 }
 
-.contact-right  input,
-form textarea {
+.contact-right input,
+.contact-right textarea {
   width: 100%;
   background: linear-gradient(to right, #1e3050, #04bade);
   color: white;
@@ -63,6 +66,7 @@ form textarea {
   font-size: 19px;
   border-radius: 10px;
   transition: background 0.3s ease;
+  border: none; /* Remove border for cleaner look */
 }
 
 form input:focus,
@@ -87,4 +91,39 @@ form textarea:focus {
 .contact button:hover {
   background: linear-gradient(to right, #1e3050, #b2363f);
   transform: scale(1.1);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .contact_left,
+  .contact-right {
+    margin: 10px 0; /* Adjust margins for better spacing on smaller screens */
+    text-align: center; /* Center align text for better appearance */
+  }
+
+  .contact_left {
+    margin-left: 0; /* Remove left margin on smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .contact_left {
+    font-size: 20px; /* Reduce font size for better readability on smaller screens */
+  }
+
+  .contact_left p i,
+  .contact_left .social_icons i {
+    font-size: 28px; /* Reduce icon size for better appearance on smaller screens */
+  }
+
+  .contact-right input,
+  .contact-right textarea {
+    padding: 15px; /* Adjust padding for better input field size on smaller screens */
+    font-size: 16px; /* Reduce font size for better readability on smaller screens */
+  }
+
+  .contact button {
+    font-size: 18px; /* Reduce font size for better appearance on smaller screens */
+    height: 45px; /* Adjust button height for better appearance on smaller screens */
+  }
 }
