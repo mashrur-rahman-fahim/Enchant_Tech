@@ -7,14 +7,14 @@ import c from "../assets/PC/c.webp";
 import d from "../assets/PC/d.jpg";
 
 export const Home1 = () => {
-  const [src, setSrc] = useState(a);
+  const [src, setSrc] = useState(ProductData[0].img);
   const [index, setIndex] = useState(0);
   let photo=[] ;
   for(let i=0;i<ProductData.length;i++)
     {
       photo[i]=ProductData[i].img;
     }
-    console.log(photo)
+    
   
 
   useEffect(() => {

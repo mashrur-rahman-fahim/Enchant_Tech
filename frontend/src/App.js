@@ -14,6 +14,7 @@ import { Signup } from "./pages/signup";
 import { Product } from "./pages/Product";
 import { About } from "./pages/About";
 import { Contact1 } from "./pages/Contact1";
+import { Cart_button } from "./components/cart/Cart_button";
 
 
 
@@ -24,7 +25,7 @@ function App() {
    <div>
     <BrowserRouter>
     <Navbar/>
-    
+    <Cart_button/>
     <Routes>
 
    
@@ -43,6 +44,7 @@ function App() {
 
 
    </Routes>
+   
 
    <Footer/>
    </BrowserRouter>
