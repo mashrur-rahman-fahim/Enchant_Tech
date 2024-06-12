@@ -1,14 +1,51 @@
-import React from 'react'
-import './footer.css'
+import React from 'react';
+import './footer.css';
+
 export const Footer = () => {
   return (
     <div>
-        <footer>
-            <h1>Stay Connected</h1>
-            <p>Enchant</p><p><br></br>
-            1204D,Banani,dhaka-1203<br></br>
-            Email:webteam@enchant.com
-            </p>
+        <footer className="footer">
+            <div className="container">
+              <div className="row">
+                <div className="footer-col">
+                  <h4>company</h4>
+                  <ul>
+                    <li><a href="#">about us</a></li>
+                    <li><a href="#">our services</a></li>
+                    <li><a href="#">privacy policy</a></li>
+                    <li><a href="#">affiliate program</a></li>
+                  </ul>
+                </div>
+                <div className="footer-col">
+                  <h4>get help</h4>
+                  <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">shipping</a></li>
+                    <li><a href="#">returns</a></li>
+                    <li><a href="#">order status</a></li>
+                    <li><a href="#">payment options</a></li>
+                  </ul>
+                </div>
+                <div className="footer-col">
+                  <h4>online shop</h4>
+                  <ul>
+                    <li><a href="#">laptop</a></li>
+                    <li><a href="#">desktop</a></li>
+                    <li><a href="#">component</a></li>
+                    <li><a href="#">all devices</a></li>
+                  </ul>
+                </div>
+                <div className="footer-col">
+                  <h4>follow us</h4>
+                  <div className="social-links">
+                    <a href="#"><i className="fab fa-facebook-f"></i></a>
+                    <a href="#"><i className="fab fa-twitter"></i></a>
+                    <a href="#"><i className="fab fa-instagram"></i></a>
+                    <a href="#"><i className="fab fa-linkedin-in"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
         </footer>
     </div>
   )
