@@ -16,6 +16,7 @@ import { About } from "./pages/About";
 import { Contact1 } from "./pages/Contact1";
 import { Cart_button } from "./components/cart/Cart_button";
 import { Cart_page } from "./pages/Cart_page";
+import { CartProvider } from "./components/cart/CartContext";
 
 
 
@@ -24,6 +25,7 @@ import { Cart_page } from "./pages/Cart_page";
 function App() {
   return (
    <div>
+    <CartProvider>
     <BrowserRouter>
     <Navbar/>
     <Cart_button/>
@@ -49,6 +51,7 @@ function App() {
 
    <Footer/>
    </BrowserRouter>
+   </CartProvider>
    </div>
   );
 }
