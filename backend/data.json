@@ -1,19 +1,7 @@
-
-
 [
     {
         "id": 2,
         "img": "../assets/PC/a.jpg",
-        "title": "Eker Vitor shob",
-        "description": "age kinun...tarpor bisshash korun",
-        "price": "100",
-        "cat": "Gaming",
-        "brand": "AMD",
-        "date": "2024-12-06"
-    },
-    {
-        "id": 4,
-        "img": "a",
         "title": "Eker Vitor shob",
         "description": "age kinun...tarpor bisshash korun",
         "price": "100",

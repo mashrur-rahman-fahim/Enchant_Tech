@@ -23,7 +23,13 @@
   }
   /* Cart.css */
 
-
+.cart_b span{
+  position: absolute;
+  color: red;
+  bottom: 60px;
+  left: 90px;
+  font-size: 30px;
+}
 
 .Cart_headers {
   display: flex;
