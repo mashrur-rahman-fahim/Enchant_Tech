@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import ProductData from "../../Product/ProductData";
 import "./show-all.css";
 
 import { Link, useNavigate } from "react-router-dom";
-import { Cart_button } from "../../cart/Cart_button";
+import { CartContext } from "../../cart/CartContext";
+
 
 export const Show = () => {
-  const navigate=useNavigate();
+  const { fetchCartCount } = useContext(CartContext);
   const [items, setItems] = useState(ProductData);
   const [sortOption, setSortOption] = useState("");
 
@@ -49,7 +50,8 @@ export const Show = () => {
       body:JSON.stringify(test),
     })
     .then(response=>response.text())
-    .then(msg=>console.log(msg));
+    .then(()=>fetchCartCount());
+  
     
 
    
