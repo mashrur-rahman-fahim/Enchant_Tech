@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 
 export const Cart = () => {
+  
+  
+  
   return (
+    
     <div>
-        cart
+        {
+          cartData.map((item)=>{
+         return(
+          <>
+          <button >add</button>
+          {item.name}
+          </>
+         )
+
+
+          })
+
+        }
     </div>
   )
 }

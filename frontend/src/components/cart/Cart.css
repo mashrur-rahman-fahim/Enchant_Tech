@@ -2,7 +2,7 @@
 .cart_b {
    position: fixed;
    z-index: 1000;
-    top: 600px;
+    top: 700px;
     right: 100px;
     background-color: #4CAF50; /* Green background */
     border: none; /* Remove borders */
