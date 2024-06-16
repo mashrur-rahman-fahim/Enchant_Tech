@@ -14,6 +14,8 @@ import { Signup } from "./pages/signup";
 import { Product } from "./pages/Product";
 import { About } from "./pages/About";
 import { Contact1 } from "./pages/Contact1";
+import { Cart_button } from "./components/cart/Cart_button";
+import { Cart_page } from "./pages/Cart_page";
 
 
 
@@ -24,7 +26,7 @@ function App() {
    <div>
     <BrowserRouter>
     <Navbar/>
-    
+    <Cart_button/>
     <Routes>
 
    
@@ -39,10 +41,11 @@ function App() {
   <Route path="/:id" element={<Product/>}/>
   <Route path="/About" element={<About/>}/>
   <Route path="/Contact" element={<Contact1/>}/>
- 
+   <Route path="/Cart" element={<Cart_page/>}/>
 
 
    </Routes>
+   
 
    <Footer/>
    </BrowserRouter>

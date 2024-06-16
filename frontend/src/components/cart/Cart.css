@@ -1,0 +1,25 @@
+/* Cart.css */
+.cart_b {
+   position: fixed;
+   z-index: 1000;
+    top: 700px;
+    right: 100px;
+    background-color: #4CAF50; /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 15px 20px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* Remove underline */
+    /* Get elements to line up horizontally */
+    font-size: 16px; /* Increase font size */
+    margin: 4px 2px; /* Some margin */
+    cursor: pointer; /* Pointer/hand icon */
+    border-radius: 8px; /* Rounded corners */
+    height: 76px;
+  }
+  
+  .cart_b i {
+    margin-right: 8px; /* Space between icon and text */
+  }
+ 
+  
