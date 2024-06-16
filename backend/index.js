@@ -26,7 +26,7 @@ app.get('/api/cart', (req, res) => {
 
 app.post('/api/cart', (req, res) => {
     const { id, img, title, description, price, cat, brand, date } = req.body;
-
+  const newProduct = { id, img, title, description, price, cat, brand,date};
     fs.readFile('./data.json', 'utf-8', (err, data) => {
         if (err) {
             res.status(500).json({ message: "Error reading file" });
@@ -34,7 +34,8 @@ app.post('/api/cart', (req, res) => {
         }
 
         const users = JSON.parse(data);
-        const newData = JSON.stringify([...users, { id, img, title, description, price, cat, brand, date }]);
+       
+       const newData = JSON.stringify([...users,newProduct]);
 
         fs.writeFile('./data.json', newData, (err) => {
             if (err) {

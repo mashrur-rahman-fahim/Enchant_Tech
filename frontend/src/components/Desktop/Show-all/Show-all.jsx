@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import ProductData from "../../Product/ProductData";
 import "./show-all.css";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
+import { Cart_button } from "../../cart/Cart_button";
 
 export const Show = () => {
+  const navigate=useNavigate();
   const [items, setItems] = useState(ProductData);
   const [sortOption, setSortOption] = useState("");
 
@@ -37,6 +40,21 @@ export const Show = () => {
     }
     setItems(sortedItems);
   };
+  const add_to_cart=(test)=>{
+    fetch('http://localhost:4000/api/cart',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(test),
+    })
+    .then(response=>response.text())
+    .then(msg=>console.log(msg));
+    
+
+   
+
+  }
 
   return (
     <div className="show-container">
@@ -74,7 +92,7 @@ export const Show = () => {
               <div className="product-price">Price: {item.price}</div>
               <div className="product-actions">
                 <button className="buy-button">Buy Now</button>
-                <button className="cart-button">Add to Cart</button>
+                <button className="cart-button" onClick={()=>add_to_cart(item)}>Add to Cart</button>
               </div>
             </div>
           </div>
