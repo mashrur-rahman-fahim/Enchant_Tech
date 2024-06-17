@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+
 import "./Cart.css"
+import { CartContext } from "./CartContext";
 
 export const Cart = () => {
     const [cartData, setCartData] = useState([]);
-
+    const { fetchCartCount } = useContext(CartContext);
     useEffect(()=>{
         fetch('http://localhost:4000/api/cart')
         .then(response=>response.json())
@@ -12,6 +13,20 @@ export const Cart = () => {
        
 
     },[])
+    const rmv_frm_crt=(id)=>{
+        fetch(`http://localhost:4000/api/cart/${id}`,{
+            method:'DELETE',
+            headers:{
+                'Content-Type':'application/json'
+            }
+
+        })
+        .then(response=>response.json())
+        .then(()=>{
+            setCartData(cartData.filter((usr)=>usr.id!=(id-'0')))
+            
+            fetchCartCount()});
+    }
 
     return (
         <div>
@@ -29,7 +44,7 @@ export const Cart = () => {
                         <li>{item.title}</li>
                         <li>{item.count || 1}</li> {/* Assuming there's a count field or defaulting to 1 */}
                         <li>{item.price}</li>
-                        <button className="remove">Remove</button>
+                        <button onClick={()=>rmv_frm_crt(item.id)} className="remove">Remove</button>
                     </ul>
                 </div>
             ))}

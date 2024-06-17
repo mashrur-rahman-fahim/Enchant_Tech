@@ -46,6 +46,37 @@ app.post('/api/cart', (req, res) => {
         });
     });
 });
+app.delete('/api/cart/:id',(req,res)=>{
+    const {id}=req.params;
+    fs.readFile('./data.json','utf-8',(err,data)=>{
+        if(err)
+            {
+                res.status(500).json({message:"error reading file"})
+                return ;
+            }
+            const user=JSON.parse(data);
+            console.log(user);
+            const user_find=user.find((usr)=>usr.id===(id-'0'));
+            if(!user_find){
+                res.status(404).json({message:"user not found"})
+                return;}
+                res.status(201).json({message:"found"});
+                const newUser=user.filter((usr)=>usr.id!=(id-'0'))
+                const newData=JSON.stringify(newUser);
+                fs.writeFile('./data.json',newData,(err)=>{
+                    if(err){
+                        res.status(500).json({message:"error writing file"})
+                        return;}
+                        res.status(201).json({message:"deleted successfully"});
+                })
+           
+            
+            
+
+
+    })
+    
+})
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

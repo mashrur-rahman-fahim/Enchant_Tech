@@ -57,6 +57,7 @@ export const Show = () => {
    
 
   }
+ 
 
   return (
     <div className="show-container">
