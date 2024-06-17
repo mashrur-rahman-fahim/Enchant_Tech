@@ -16,14 +16,30 @@ export const Sign = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form data submitted:", formdata);
-    fetch('http://localhost:4000/login',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body:JSON.stringify(formdata)
+    
+    fetch('http://localhost:4000/login')
+    .then(response=>response.json())
+    .then((data)=>{
+       
+        const findEmail=data.find((usr)=>usr.email===formdata.email)
+        if(findEmail)
+          {
+            alert("User already exist, please login");
+            return;
+
+          }
+          fetch('http://localhost:4000/login',{
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body:JSON.stringify(formdata)
+          })
+          .then(()=>alert("User created!"));
+
+
     })
+   
   };
 
   return (
