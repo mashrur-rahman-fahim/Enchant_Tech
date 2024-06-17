@@ -135,3 +135,27 @@
 .cart-button:hover {
   background-color: #ffb600;
 }
+/* star-rating.css */
+.rating {
+  display: flex;
+}
+
+.star {
+  font-size: 1.5em;
+  color: #ddd;
+  position: relative;
+  display: inline-block;
+}
+
+.star.filled {
+  color: gold;
+}
+
+.star.half-filled::before {
+  content: "★";
+  color: gold;
+  position: absolute;
+  overflow: hidden;
+  width: 50%;
+  display: inline-block;
+}
