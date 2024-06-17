@@ -1,14 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import "./login.css";
 import { Link } from "react-router-dom";
 
 export const Login1 = () => {
+  const [formData,setFormdata]=useState({
+    email:"",
+    password:""
+  })
+  const handlechange=(e)=>{
+
+      const {name,value}=e.target;
+      setFormdata({...formData,[name]:value});
+
+  }
+  const submission=(e)=>{
+    e.preventDefault();
+    fetch('http://localhost:4000/login')
+    .then(response=>response.json())
+    .then((data)=>{
+       
+        const findEmail=data.find((usr)=>usr.email===formData.email)
+        if(!findEmail)
+          {
+            alert("Account doesn't exist! Please sign up");
+            return ;
+          }
+
+
+
+
+    })
+
+
+  }
   
   return (
     <div>
       <div className="gap"></div>
       <div className="wrapper">
-        <form action="#">
+        <form onSubmit={submission}>
           <div className="login">
             <h1>Login</h1>
           </div>
@@ -17,7 +47,10 @@ export const Login1 = () => {
               <ion-icon class="icon" name="mail"></ion-icon>
               <input
                 type="Email"
-                placeholder="Username"
+                placeholder="Email"
+                name="email"
+                value={formData.email}
+                onChange={handlechange}
                 className="email"
                 id="lbl4"
                 required
@@ -30,6 +63,9 @@ export const Login1 = () => {
               <input
                 type="password"
                 placeholder="Password"
+                name="password"
+                value={formData.password}
+                onChange={handlechange}
                 className="pass"
                 id="lbl2"
               />
