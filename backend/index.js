@@ -77,6 +77,29 @@ app.delete('/api/cart/:id',(req,res)=>{
     })
     
 })
+app.get('/login',(req,res)=>{
+    fs.readFile('./login_data.json','utf-8',(err,data)=>{
+        if(err){
+            return;}
+            res.status(201).send(JSON.parse(data));
+    })
+})
+app.post('/login',(req,res)=>{
+    const{name,email,password}=req.body;
+    fs.readFile('./login_data.json','utf-8',(err,data)=>{
+        if(err){
+            return;}
+            const User=JSON.parse(data);
+            const newUser=JSON.stringify([...User,{name,email,password}])
+            fs.writeFile('./login_data.json',newUser,(err)=>{
+                if(err){
+                    return ;}
+                    res.status(201).json({message:"user created successfully"});
+            })
+
+
+    })
+})
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
