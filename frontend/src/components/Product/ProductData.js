@@ -7,15 +7,12 @@ const ProductData = [
         id: 1,
         img: b,
         title: 'Eker1 Vitor shob',
-        description: <ul>
-            <li>sdfsdf</li>
-            <li>sdfsdf</li>
-            <li>sdfsdf</li>
-        </ul>,
+        description:"age kin beta",
         price: 12,
         cat: 'Gaming',
         brand: 'HP',
         date: '2024-12-07',
+        rating: 4.5,
 
 
     },
@@ -28,6 +25,7 @@ const ProductData = [
         cat: 'Gaming',
         brand: 'AMD',
         date: '2024-12-06',
+        rating: 5,
 
 
     },
@@ -40,6 +38,7 @@ const ProductData = [
         cat: 'Gaming',
         brand: 'AMD',
         date: '2024-12-07',
+        rating: 4,
 
     },
     {
@@ -51,6 +50,7 @@ const ProductData = [
         cat: 'Gaming',
         brand: 'AMD',
         date: '2024-12-07',
+        rating: 3,
 
 
     },
@@ -63,6 +63,7 @@ const ProductData = [
         cat: 'Gaming',
         brand: 'AMD',
         date: '2024-12-07',
+        rating: 2,
 
 
     },
@@ -75,6 +76,7 @@ const ProductData = [
         cat: 'Gaming',
         brand: 'AMD',
         date: '2024-12-07',
+        rating: 1.5,
 
 
     },
@@ -87,6 +89,7 @@ const ProductData = [
         cat: 'Gaming',
         brand: 'AMD',
         date: '2024-12-07',
+        rating: 3.4,
 
 
     },
@@ -99,6 +102,7 @@ const ProductData = [
         cat: 'Gaming',
         brand: 'AMD',
         date: '2024-12-07',
+        rating: 4,
 
 
     },
@@ -111,6 +115,7 @@ const ProductData = [
         cat: 'Gaming',
         brand: 'AMD',
         date: '2023-12-07',
+        rating: 2,
 
 
     },
@@ -123,6 +128,7 @@ const ProductData = [
         cat: 'All-in-one',
         brand: 'AMD',
         date: '2024-05-07',
+        rating: 3,
 
 
     },
