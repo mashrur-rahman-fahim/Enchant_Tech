@@ -190,8 +190,7 @@ header .component a:hover::after {
 }
 
 .menu:not(:hover) > .menu-dropdown:after {
-  border-top-color: white;
-}
+  border-top-color: white;}
 
 .menu:not(:hover) > .menu-title:after {
   border-bottom-color: #dddddd;
@@ -262,7 +261,7 @@ header .component a:hover::after {
   width: 100%;
   background-color: #fff;
   padding: 2px;
-  border-bottom: 1px solid #ddd;
+ border-bottom: 1px solid #ddd;
   z-index: 1000;
 }
 
@@ -322,5 +321,109 @@ header .component a:hover::after {
 .data-link:hover {
   color: #000;
 }
+.menu-icon {
+  background: linear-gradient(to right, #081621, #0c1c27, #0d2330);
+  display: flex;
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  margin: 0px;
+}
 
+.menu-icon span {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  margin: 05px 8px;
+}
 /* Responsive Styles */
+@media (max-width: 1238px) {
+  .menu-icon {
+    display: flex;
+  }
+
+  header {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+
+  header.open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  header.open .logo {
+    display: none; /* Hide the logo when drawer is open */
+  }
+ 
+  .hList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center align items horizontally */
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .hList li {
+    margin: 10px; /* Adjust spacing between menu items */
+  }
+  
+  /* Adjust menu display and positioning when drawer is open */
+  header.open .shop {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    text-align: center; /* Center align text inside .menu-title */
+  }
+  
+  header.open .component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0; /* Adjust margin for center alignment */
+  }
+  
+
+  .data-list-container {
+    width: 90%;
+    margin-left: 0;
+    left: 5%;
+  }
+
+  .shop {
+    bottom: 0;
+    left: 17%;
+   
+  }
+  .component {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the options */
+    
+  }
+
+  .component a {
+    margin: 18px 0; 
+    text-decoration: none; /* Remove underline */
+    color: #fff; /* Ensure color is white */
+    font-weight: 600; /* Ensure consistent font weight */
+    font-size: 17px;/* Space the options */
+  }
+  
+  .component a::after {
+    content: none; /* Remove the underline effect */
+  }
+  .search-form {
+    display: flex;
+    align-items: center;
+    margin-top: -50px; /* Adjust the margin-top to move the search bar higher */
+  }
+
+  
+
+}
