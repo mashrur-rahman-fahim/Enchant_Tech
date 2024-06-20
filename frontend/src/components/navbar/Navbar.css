@@ -322,6 +322,7 @@ header .component a:hover::after {
   color: #000;
 }
 .menu-icon {
+  padding: 18px;
   background: linear-gradient(to right, #081621, #0c1c27, #0d2330);
   display: flex;
   display: none;
@@ -332,7 +333,7 @@ header .component a:hover::after {
 
 .menu-icon span {
   height: 3px;
-  width: 25px;
+  width: 30px;
   background-color: white;
   margin: 05px 8px;
 }
@@ -421,7 +422,8 @@ header .component a:hover::after {
   .search-form {
     display: flex;
     align-items: center;
-    margin-top: -50px; /* Adjust the margin-top to move the search bar higher */
+    margin-top: -13px; 
+    padding: 0 px;/* Adjust the margin-top to move the search bar higher */
   }
 
   
