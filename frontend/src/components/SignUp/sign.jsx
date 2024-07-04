@@ -35,6 +35,7 @@ export const Sign = () => {
             },
             body:JSON.stringify(formdata)
           })
+          .then(response=>response.json())
           .then(()=>alert("User created!"));
 
 

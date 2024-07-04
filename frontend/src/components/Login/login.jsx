@@ -19,11 +19,18 @@ export const Login1 = () => {
     .then(response=>response.json())
     .then((data)=>{
        
-        const findEmail=data.find((usr)=>usr.email===formData.email)
-        if(!findEmail)
+        const findEmail=data.find((usr)=>usr.email===formData.email )
+       const matchPass=data.find((usr)=> usr.password===formData.password)
+         if(findEmail && matchPass)
           {
-            alert("Account doesn't exist! Please sign up");
+            alert("Account  exist! ");
             return ;
+          }
+
+          else
+          {
+            alert("Wrong credential")
+            return;
           }
 
 
