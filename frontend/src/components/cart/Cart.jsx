@@ -50,7 +50,7 @@ export const Cart = () => {
             {cartData.map((item, index) => (
                 <div className="cart_list" key={index}>
                     <ul className="data_list">
-                        <li><img src={`../assets/PC/a.jpg`} alt={item.title} /></li>
+                        <li><img src={item.img} alt={item.title} /></li>
                         <li>{item.title}</li>
                         <li>{item.count || 1}</li> {/* Assuming there's a count field or defaulting to 1 */}
                         <li>{item.price}</li>

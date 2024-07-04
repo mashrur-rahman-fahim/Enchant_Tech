@@ -65,9 +65,9 @@ app.delete('/api/cart/:id',async (req, res) => {
 
 // --------------login-------------
 app.get('/login', async (req, res) => {
-    let email="mas1"
+   
     const allUse=await User.find({})
-        console.log(allUse[0].password)
+       console.log(allUse)
     return res.status(201).send(allUse)
 })
 app.post('/login', async (req, res) => {

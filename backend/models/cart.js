@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema({
   count:{
     type:Number,
     required:true,
-    unique:true,
+  
   },
   img: {
     type: String,
