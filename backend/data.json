@@ -1,1 +1,13 @@
-[]
+[
+    
+    {
+        "id": 3,
+        "img": "/static/media/c.c9fe4702aaf892a5a288.webp",
+        "title": "Eker Vitor shob",
+        "description": "age kinun...tarpor bisshash korun",
+        "price": 105,
+        "cat": "Gaming",
+        "brand": "AMD",
+        "date": "2024-12-07"
+    }
+]
