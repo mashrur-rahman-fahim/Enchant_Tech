@@ -17,7 +17,7 @@ export const Sign = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    fetch('http://localhost:4000/login')
+    fetch('http://localhost:4000/signUp')
     .then(response=>response.json())
     .then((data)=>{
        
@@ -28,7 +28,7 @@ export const Sign = () => {
             return;
 
           }
-          fetch('http://localhost:4000/login',{
+          fetch('http://localhost:4000/signUp',{
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

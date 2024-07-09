@@ -15,28 +15,34 @@ export const Login1 = () => {
   }
   const submission=(e)=>{
     e.preventDefault();
-    fetch('http://localhost:4000/login')
-    .then(response=>response.json())
-    .then((data)=>{
+    fetch('http://localhost:4000/login',{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(formData)
+
+    }).then((response)=>response.json())
+    // fetch('http://localhost:4000/login')
+    // .then(response=>response.json())
+    // .then((data)=>{
        
-        const findEmail=data.find((usr)=>usr.email===formData.email )
-       const matchPass=data.find((usr)=> usr.password===formData.password)
-         if(findEmail && matchPass)
-          {
-            alert("Account  exist! ");
-            return ;
-          }
+    //     const findEmail=data.find((usr)=>usr.email===formData.email )
+    //    const matchPass=data.find((usr)=> usr.password===formData.password)
+    //      if(findEmail && matchPass)
+    //       {
+    //         alert("Account  exist! ");
+    //         return ;
+    //       }
 
-          else
-          {
-            alert("Wrong credential")
-            return;
-          }
-
-
+    //       else
+    //       {
+    //         alert("Wrong credential")
+    //         return;
+    //       }
 
 
-    })
+
+
+    // })
 
 
   }
