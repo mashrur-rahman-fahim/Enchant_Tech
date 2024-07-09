@@ -1,52 +1,38 @@
 import React, { useState } from "react";
 import "./login.css";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export const Login1 = () => {
-  const [formData,setFormdata]=useState({
-    email:"",
-    password:""
-  })
-  const handlechange=(e)=>{
+  const [formData, setFormdata] = useState({
+    email: "",
+    password: ""
+  });
 
-      const {name,value}=e.target;
-      setFormdata({...formData,[name]:value});
+  axios.defaults.withCredentials = true;
 
-  }
-  const submission=(e)=>{
+  const handlechange = (e) => {
+    const { name, value } = e.target;
+    setFormdata({ ...formData, [name]: value });
+  };
+
+  const submission = (e) => {
     e.preventDefault();
-    fetch('http://localhost:4000/login',{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify(formData)
+    fetch('http://localhost:4000/login', {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+      credentials: 'include' // Ensure cookies are included
+    }).then((response) => response.json())
+      .then((data) => {
+        if (data.Login) {
+          alert("Login successful!");
+        } else {
+          alert("Login failed!");
+        }
+      });
+  };
 
-    }).then((response)=>response.json())
-    // fetch('http://localhost:4000/login')
-    // .then(response=>response.json())
-    // .then((data)=>{
-       
-    //     const findEmail=data.find((usr)=>usr.email===formData.email )
-    //    const matchPass=data.find((usr)=> usr.password===formData.password)
-    //      if(findEmail && matchPass)
-    //       {
-    //         alert("Account  exist! ");
-    //         return ;
-    //       }
-
-    //       else
-    //       {
-    //         alert("Wrong credential")
-    //         return;
-    //       }
-
-
-
-
-    // })
-
-
-  }
-  
   return (
     <div>
       <div className="gap"></div>
