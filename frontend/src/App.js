@@ -17,6 +17,8 @@ import { Contact1 } from "./pages/Contact1";
 import { Cart_button } from "./components/cart/Cart_button";
 import { Cart_page } from "./pages/Cart_page";
 import { CartProvider } from "./components/cart/CartContext";
+import { Profile1 } from "./pages/Profile1";
+import { Auth1 } from "./pages/Auth1";
 
 
 
@@ -44,6 +46,8 @@ function App() {
   <Route path="/About" element={<About/>}/>
   <Route path="/Contact" element={<Contact1/>}/>
    <Route path="/Cart" element={<Cart_page/>}/>
+   <Route path="/Profile" element={<Profile1/>}/>
+   <Route path="/Auth" element={<Auth1/>}/>
 
 
    </Routes>
