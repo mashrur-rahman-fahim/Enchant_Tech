@@ -1,6 +1,8 @@
+// file: D:/web_app/Enchant_Tech/frontend/src/Login1.js
+
 import React, { useState } from "react";
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 export const Login1 = () => {
@@ -8,28 +10,30 @@ export const Login1 = () => {
     email: "",
     password: ""
   });
+  const navigate = useNavigate();
 
   axios.defaults.withCredentials = true;
 
-  const handlechange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormdata({ ...formData, [name]: value });
   };
 
-  const submission = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:4000/login', {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-      credentials: 'include' // Ensure cookies are included
-    }).then((response) => response.json())
-      .then((data) => {
+    axios.post('http://localhost:4000/login', formData)
+      .then((response) => {
+        const data = response.data;
         if (data.Login) {
+          navigate('/Auth');
           alert("Login successful!");
         } else {
           alert("Login failed!");
         }
+      })
+      .catch(err => {
+        console.error(err);
+        alert("An error occurred during login.");
       });
   };
 
@@ -37,7 +41,7 @@ export const Login1 = () => {
     <div>
       <div className="gap"></div>
       <div className="wrapper">
-        <form onSubmit={submission}>
+        <form onSubmit={handleSubmit}>
           <div className="login">
             <h1>Login</h1>
           </div>
@@ -45,11 +49,11 @@ export const Login1 = () => {
             <div>
               <ion-icon class="icon" name="mail"></ion-icon>
               <input
-                type="Email"
+                type="email"
                 placeholder="Email"
                 name="email"
                 value={formData.email}
-                onChange={handlechange}
+                onChange={handleChange}
                 className="email"
                 id="lbl4"
                 required
@@ -64,9 +68,10 @@ export const Login1 = () => {
                 placeholder="Password"
                 name="password"
                 value={formData.password}
-                onChange={handlechange}
+                onChange={handleChange}
                 className="pass"
                 id="lbl2"
+                required
               />
             </div>
           </div>
@@ -80,7 +85,7 @@ export const Login1 = () => {
           </div>
           <div className="signup">
             <h2>
-              Do you hava an account? <Link to="/SignUp">Sign up</Link>
+              Do you have an account? <Link to="/SignUp">Sign up</Link>
             </h2>
           </div>
         </form>
