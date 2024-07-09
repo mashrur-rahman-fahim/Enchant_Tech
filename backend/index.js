@@ -1,11 +1,15 @@
 import express from 'express';
-import fs from 'fs';
+
 import cors from "cors"
 import { log } from './middlewares/logger.js';
 import mongoose from 'mongoose';
 import 'dotenv/config';
 import User from './models/model.js';
 import Product from './models/cart.js';
+
+import cookieParser from 'cookie-parser';
+import jwt from 'jsonwebtoken';
+
 
 
 
@@ -64,13 +68,13 @@ app.delete('/api/cart/:id',async (req, res) => {
 
 
 // --------------login-------------
-app.get('/login', async (req, res) => {
+app.get('/signUp', async (req, res) => {
    
     const allUse=await User.find({})
        console.log(allUse)
     return res.status(201).send(allUse)
 })
-app.post('/login', async (req, res) => {
+app.post('/signUp', async (req, res) => {
     const { name, email, password } = req.body;
     const anoUser=await User.exists({email});
     if(anoUser){
