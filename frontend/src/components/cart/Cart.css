@@ -1,69 +1,76 @@
 /* Cart.css */
-.cart_b {
-   position: fixed;
-   z-index: 1000;
-    top: 700px;
-    right: 100px;
-    background-color: #4CAF50; /* Green background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 15px 20px; /* Some padding */
-    text-align: center; /* Centered text */
-    text-decoration: none; /* Remove underline */
-    /* Get elements to line up horizontally */
-    font-size: 16px; /* Increase font size */
-    margin: 4px 2px; /* Some margin */
-    cursor: pointer; /* Pointer/hand icon */
-    border-radius: 8px; /* Rounded corners */
-    height: 76px;
-  }
-  
-  .cart_b i {
-    margin-right: 8px; /* Space between icon and text */
-  }
-  /* Cart.css */
 
-.cart_b span{
+.cart_b {
+  position: fixed;
+  z-index: 1000;
+  bottom: 20px; /* Moved to bottom for better visibility */
+  right: 20px; /* Adjusted positioning */
+  background-color: #4CAF50; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 15px 20px; /* Some padding */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* Remove underline */
+  font-size: 16px; /* Increase font size */
+  margin: 4px 2px; /* Some margin */
+  cursor: pointer; /* Pointer/hand icon */
+  border-radius: 8px; /* Rounded corners */
+  display: flex; /* Flexbox for better alignment */
+  align-items: center; /* Center items vertically */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.cart_b i {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.cart_b span {
   position: absolute;
   color: red;
-  bottom: 60px;
-  left: 90px;
-  font-size: 30px;
+  top: -10px; /* Adjusted position for better visibility */
+  right: -10px; /* Adjusted position for better visibility */
+  background: white; /* White background for better contrast */
+  padding: 2px 6px; /* Padding for better readability */
+  border-radius: 50%; /* Rounded badge */
+  font-size: 14px; /* Adjusted font size */
+  font-weight: bold; /* Bold text */
 }
 
 .Cart_headers {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around; /* Adjusted spacing */
   padding: 10px 0;
   background: linear-gradient(45deg, #1e3b70, #29539b);
   border-bottom: 2px solid #41729f;
   color: #e0e1dd;
   margin: 0;
   list-style: none;
+  font-weight: bold; /* Bold headers */
 }
 
 .cart_list {
-  background: linear-gradient(45deg, #1e3b70, #29539b);
+  background: #fff; /* White background for items */
   margin: 10px 0;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cart_list:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
 }
 
 .data_list {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between; /* Adjusted spacing */
   align-items: center;
   padding: 10px;
   margin: 0;
   list-style: none;
-  color: #e0e1dd;
+  color: #333; /* Darker text color */
 }
 
 .data_list li {
@@ -99,33 +106,30 @@
 /* Mobile responsive adjustments */
 @media (max-width: 600px) {
   .Cart_headers, .data_list {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .data_list li {
-      padding: 8px 0;
+    padding: 8px 0;
   }
 
   .data_list img {
-      max-width: 70px;
+    max-width: 70px;
   }
 }
 
 /* Adding smooth fade-in animation */
 @keyframes fadeIn {
   from {
-      opacity: 0;
-      transform: translateY(10px);
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 .cart_list {
   animation: fadeIn 0.5s ease-in-out;
 }
-
- 
-  
