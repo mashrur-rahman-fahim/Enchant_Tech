@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import ProductData from "../../Product/ProductData";
 import "./show-all.css";
-
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../cart/CartContext";
 
@@ -67,17 +66,24 @@ export const Show = () => {
     setItems(sortedItems);
   };
 
-  const add_to_cart = (test) => {
+  const add_to_cart = (product) => {
+    const { id, img, title, description, price, cat, brand, date } = product;
+    const productToAdd = { id, img, title, description, price, cat, brand, date: new Date() };
+
     fetch("http://localhost:4000/api/cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(test),
+      body: JSON.stringify(productToAdd),
     })
-      .then((response) => response.text())
-      .then(() => fetchCartCount());
-  };
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Added to cart:", data);
+        fetchCartCount();
+      })
+      .catch((error) => console.error("Error adding item to cart:", error));
+};
 
   return (
     <div className="show-container">

@@ -1,18 +1,16 @@
-import mongoose from "mongoose";
+// file: D:/web_app/Enchant_Tech/backend/models/cart.js
 
-
-
+import mongoose from 'mongoose';
 
 const productSchema = new mongoose.Schema({
   id: {
     type: Number,
     required: true,
-  
+    unique: true // Ensure product IDs are unique
   },
-  count:{
-    type:Number,
-    required:true,
-  
+  count: {
+    type: Number,
+    required: true,
   },
   img: {
     type: String,
@@ -40,7 +38,7 @@ const productSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    default:Date.now,
+    default: Date.now,
   }
 });
 
