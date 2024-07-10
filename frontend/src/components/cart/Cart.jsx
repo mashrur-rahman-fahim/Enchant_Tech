@@ -27,6 +27,7 @@ export const Cart = () => {
         .then(() => {
             // Fetch and update the cart count from context
             fetchCartCount();
+            
         })
         .catch(error => {
             // Handle any errors and revert the state update if necessary
