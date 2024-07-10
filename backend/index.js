@@ -32,45 +32,56 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/cart', async (req, res) => {
-  const products = await Product.find({});
-  return res.status(200).send(products);
+    try {
+        const products = await Product.find({});
+        return res.status(200).send(products);
+    } catch (error) {
+        return res.status(500).send({ error: error.message });
+    }
 });
 
 app.post('/api/cart', async (req, res) => {
-  const { id, img, title, description, price, cat, brand, date } = req.body;
-  let count = 1;
-  const newProduct = { id, count, img, title, description, price, cat, brand, date };
-  const exist = await Product.exists({ id });
+    const { id, img, title, description, price, cat, brand, date } = req.body;
+    let count = 1;
+    const newProduct = { id, count, img, title, description, price, cat, brand, date };
 
-  if (exist) {
-    const an = await Product.findOne({ id });
-    an.count += 1;
-    await an.save();
-    return res.status(200).send(an);
-  }
+    try {
+        const exist = await Product.findOne({ id });
 
-  const another = await Product.create(newProduct);
-  return res.status(201).send(another);
+        if (exist) {
+            exist.count += 1;
+            await exist.save();
+            return res.status(201).send(exist);
+        } else {
+            const another = await Product.create(newProduct);
+            return res.status(201).send(another);
+        }
+    } catch (error) {
+        return res.status(500).send({ error: error.message });
+    }
 });
 
 app.delete('/api/cart/:id', async (req, res) => {
-  const { id } = req.params;
-  const exist = await Product.exists({ id });
+    const { id } = req.params;
 
-  if (!exist) {
-    return res.status(404).send('not found');
-  }
+    try {
+        const exist = await Product.findOne({ id });
 
-  const an = await Product.findOne({ id });
+        if (!exist) {
+            return res.status(404).send("Product not found");
+        }
 
-  if (an.count > 1) {
-    an.count -= 1;
-    await an.save();
-    return res.status(200).send(an);
-  }
-
-  await Product.deleteOne({ id });
-  return res.status(200).send({ message: 'Product deleted' });
+        if (exist.count > 1) {
+            exist.count -= 1;
+            await exist.save();
+            return res.status(200).send(exist);
+        } else {
+            await Product.deleteOne({ id });
+            return res.status(200).send("Product deleted");
+        }
+    } catch (error) {
+        return res.status(500).send({ error: error.message });
+    }
 });
 
 app.post('/login', async (req, res) => {
