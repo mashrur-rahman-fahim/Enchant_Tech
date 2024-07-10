@@ -13,7 +13,7 @@ export const Cart = () => {
     }, []);
 
     const rmv_frm_crt = (id) => {
-        // Update the cart data state immediately
+        // Optimistically update the cart data state
         setCartData(prevCartData => prevCartData.filter(item => item.id !== id));
         
         // Make the DELETE request to the server
@@ -25,8 +25,10 @@ export const Cart = () => {
         })
         .then(response => response.json())
         .then(() => {
+           
             // Fetch and update the cart count from context
             fetchCartCount();
+             window.location.reload();
             
         })
         .catch(error => {
