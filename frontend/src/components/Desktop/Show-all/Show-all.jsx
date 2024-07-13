@@ -1,30 +1,19 @@
-import React, { useState, useContext } from "react";
-import ProductData from "../../Product/ProductData";
-import "./show-all.css";
-import { Link, useNavigate } from "react-router-dom";
+// src/components/show-all/Show.js
+
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../cart/CartContext";
+import "./show-all.css";
 
 const StarRating = ({ rating }) => {
   const stars = [];
   for (let i = 1; i <= 5; i++) {
     if (i <= rating) {
-      stars.push(
-        <span key={i} className="star filled">
-          ★
-        </span>
-      );
+      stars.push(<span key={i} className="star filled">★</span>);
     } else if (i - rating < 1) {
-      stars.push(
-        <span key={i} className="star half-filled">
-          ★
-        </span>
-      );
+      stars.push(<span key={i} className="star half-filled">★</span>);
     } else {
-      stars.push(
-        <span key={i} className="star">
-          ★
-        </span>
-      );
+      stars.push(<span key={i} className="star">★</span>);
     }
   }
   return <div className="rating">{stars}</div>;
@@ -32,49 +21,71 @@ const StarRating = ({ rating }) => {
 
 export const Show = () => {
   const { fetchCartCount } = useContext(CartContext);
-  const [items, setItems] = useState(ProductData);
+  const [items, setItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
   const [sortOption, setSortOption] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+
+  useEffect(() => {
+    fetch('http://localhost:4000/products')
+      .then(res => res.json())
+      .then(data => {
+        let filterData=[]
+        for(let i=0;i<data.length;i++)
+        {
+          if(data[i].catagory==="desktop")
+            filterData.push(data[i]);
+        }
+        
+       
+        setItems(filterData);
+        setFilteredItems(filterData);
+        
+
+      })
+      .catch(error => console.error('Error fetching products:', error));
+  }, []);
+
+  useEffect(() => {
+    let result = [...items];
+    if (searchValue) {
+      result = result.filter(product =>
+        product.title.toLowerCase().includes(searchValue.toLowerCase())
+      );
+    }
+    if (sortOption) {
+      if (sortOption === "price") {
+        result.sort((a, b) => a.price - b.price);
+      } else if (sortOption === "popularity") {
+        result.sort((a, b) => b.rating - a.rating);
+      }
+    }
+    setFilteredItems(result);
+  }, [items, searchValue, sortOption]);
 
   const search = (value) => {
-    if (!value) {
-      setItems(ProductData);
-    } else {
-      const filter_it = ProductData.filter((product) =>
-        product.title.toLowerCase().includes(value.toLowerCase())
-      );
-      setItems(filter_it);
-    }
+    setSearchValue(value);
   };
 
   const filterByBrand = (brand) => {
     if (brand === "All") {
-      setItems(ProductData);
+      setFilteredItems(items);
     } else {
-      const filteredItems = ProductData.filter((item) => item.brand === brand);
-      setItems(filteredItems);
+      const filtered = items.filter((item) => item.brand === brand);
+      setFilteredItems(filtered);
     }
   };
 
   const handleSort = (option) => {
     setSortOption(option);
-    let sortedItems;
-    if (option === "price") {
-      sortedItems = [...items].sort((a, b) => a.price - b.price);
-    } else if (option === "popularity") {
-      sortedItems = [...items].sort((a, b) => b.rating - a.rating);
-    }
-    setItems(sortedItems);
   };
 
-  const add_to_cart = (product) => {
-    const { id, img, title, description, price, cat, brand, date } = product;
-    const productToAdd = { id, img, title, description, price, cat, brand, date: new Date() };
+  const addToCart = (product) => {
+    const productToAdd = { ...product, date: new Date() };
 
     fetch("http://localhost:4000/api/cart", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(productToAdd),
     })
       .then((response) => response.json())
@@ -83,7 +94,7 @@ export const Show = () => {
         fetchCartCount();
       })
       .catch((error) => console.error("Error adding item to cart:", error));
-};
+  };
 
   return (
     <div className="show-container">
@@ -107,7 +118,7 @@ export const Show = () => {
         </div>
       </div>
       <div className="all-product">
-        {items.map((item, idx) => (
+        {filteredItems.map((item, idx) => (
           <div className="product-card" key={idx}>
             <div className="product-image">
               <img src={item.img} alt={item.title} />
@@ -122,7 +133,7 @@ export const Show = () => {
               <StarRating rating={item.rating} />
               <div className="product-actions">
                 <button className="buy-button">Buy Now</button>
-                <button className="cart-button" onClick={() => add_to_cart(item)}>
+                <button className="cart-button" onClick={() => addToCart(item)}>
                   Add to Cart
                 </button>
               </div>

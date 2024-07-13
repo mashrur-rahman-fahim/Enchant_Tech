@@ -190,6 +190,7 @@ if(id_exist){
   break;
 
 }
+
   const products=({id,img,title,description,price,cat,catagory,brand,rating})
  const newProduct=await  All_Product.create(products)
  res.status(200).json({message:'product added successfully',newProduct})
