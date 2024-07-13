@@ -4,8 +4,8 @@ const { Schema } = mongoose;
 
 const ReviewSchema = new Schema(
   {
-    gigId: {
-      type: String,
+    gigid: {
+      type: Number,
       required: true,
     },
     userId: {
@@ -21,10 +21,11 @@ const ReviewSchema = new Schema(
       type: String,
       required: true,
     },
-  },
-  {
-    timestamps: true,
-  }
+  
+  date:{
+    type: Date,
+    default: Date.now
+  }}
 );
 
 //export default mongoose.model("Review", ReviewSchema);
