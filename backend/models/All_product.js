@@ -1,76 +1,52 @@
 import mongoose from "mongoose";
 
-const { Schema } = mongoose;
 
-const All_productSchema = new Schema(
-  {
-    userId: {
-      type: String,
-      required: true,
+
+const itemSchema = new mongoose.Schema({
+    id: {
+        type: Number,
+        required: true,
+        unique: true
+    },
+    img: {
+        type: String,
+        required: true
     },
     title: {
-      type: String,
-      required: true,
+        type: String,
+        required: true
     },
-    desc: {
-      type: String,
-      required: true,
-    },
-    totalStars: {
-      type: Number,
-      default: 0,
-    },
-    starNumber: {
-      type: Number,
-      default: 0,
-    },
-    cat: {
-      type: String,
-      required: true,
+    description: {
+        type: String,
+        required: true
     },
     price: {
-      type: Number,
-      required: true,
+        type: Number,
+        required: true
     },
-    cover: {
+    cat: {
+        type: String,
+        required: true
+    },
+    catagory:{
       type: String,
-      required: true,
+      required: true
     },
-    images: {
-      type: [String],
-      required: false,
+    brand: {
+        type: String,
+        required: true
     },
-    shortTitle: {
-      type: String,
-      required: true,
+    date: {
+        type: Date,
+       default:Date.now,
     },
-    shortDesc: {
-      type: String,
-      required: true,
-    },
-    deliveryTime: {
-      type: Number,
-      required: true,
-    },
-    revisionNumber: {
-      type: Number,
-      required: true,
-    },
-    features: {
-      type: [String],
-      required: false,
-    },
-    sales: {
-      type: Number,
-      default: 0,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+    rating:{
+      type:Number,
+      required:true
+    }
 
-//export default mongoose.model("All_product", All_productSchema);
-const All_product = mongoose.model('All_product', All_productSchema);
+});
 
-export default All_productSchema;
+const All_Product = mongoose.model('All_Products', itemSchema);
+
+export default All_Product; 

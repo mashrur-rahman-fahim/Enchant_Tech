@@ -5,10 +5,14 @@ import cors from 'cors';
 import { log } from './middlewares/logger.js';
 import mongoose from 'mongoose';
 import 'dotenv/config';
+
 import User from './models/model.js';
 import Product from './models/cart.js';
 import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
+import All_Product from './models/All_product.js';
+import Review from './models/review.js';
+import { configDotenv } from 'dotenv';
 
 const SECRET_KEY_REFRESH = process.env.SECRET_KEY_REFRESH;
 const SECRET_KEY_ACCESS = process.env.SECRET_KEY_ACCESS;
@@ -167,3 +171,47 @@ app.get('/auth', verifyUser, (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+// -----------------------------all product----------------
+
+app.get('/products',async(req,res)=>{
+  const products=await All_Product.find({});
+  res.send(products);
+
+})
+app.post('/products',async(req,res)=>{
+  const rating=0;
+const {img,title,description,price,cat,catagory,brand}=req.body;
+let id=1;
+while(1){
+const id_exist=await All_Product.findOne({id});
+if(id_exist){
+  id++;}
+  else
+  break;
+
+}
+
+  const products=({id,img,title,description,price,cat,catagory,brand,rating})
+ const newProduct=await  All_Product.create(products)
+ res.status(200).json({message:'product added successfully',newProduct})
+
+})
+
+// ----------------------revw-----------------
+
+app.get('/review',async(req,res)=>{
+  const review=await Review.find({});
+ return res.send(review);
+
+})
+
+app.post('/review',async(req,res)=>{
+  const {gigid,userId,star,desc}=req.body;
+  const review=({gigid,userId,star,desc});
+  const newReview=await  Review.create(review)
+  return res.send(newReview)
+  
+
+})
