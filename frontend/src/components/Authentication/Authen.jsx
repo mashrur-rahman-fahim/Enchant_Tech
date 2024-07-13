@@ -3,12 +3,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
 export const Authen = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
-
+const {setIsLogIn}=useAuth();
   useEffect(() => {
     fetch("http://localhost:4000/auth", {
       credentials: 'include'
@@ -17,6 +18,10 @@ export const Authen = () => {
       .then(data => {
         if (data.valid) {
           setMessage(data.message);
+          
+            navigate('/Admin')
+          
+          
         } else {
           setMessage(data.message);
           navigate('/Login');

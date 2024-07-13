@@ -1,9 +1,7 @@
-
-
+import React from 'react';
 import { Footer } from "./components/footer/footer";
-
 import { Navbar } from "./components/navbar/Navbar";
-import { BrowserRouter,Routes,Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Desktop } from "./pages/Desktop";
 import { Laptop } from "./pages/Laptop";
@@ -19,45 +17,51 @@ import { Cart_page } from "./pages/Cart_page";
 import { CartProvider } from "./components/cart/CartContext";
 import { Profile1 } from "./pages/Profile1";
 import { Auth1 } from "./pages/Auth1";
-
-
-
-
+import { AuthProvider, useAuth } from './components/Authentication/AuthContext';
+import { Login1 } from './components/Login/login';
+import { Admin1 } from './pages/Admin1';
 
 function App() {
   return (
-   <div>
-    <CartProvider>
-    <BrowserRouter>
-    <Navbar/>
-    <Cart_button/>
-    <Routes>
-
-   
-   
-   <Route path="/" element={<Home/>}/>
-   <Route path="/Login" element={<Login2/>}/>
-   <Route path="/Desktop" element={<Desktop/>}/>
-   <Route path="/Laptop" element={<Laptop/>}/>
-   <Route path="/Components" element={<Components/>}/>
-   <Route path="/Gaming" element={<Gaming1/>}/>
-  <Route path="/SignUp" element={<Signup/>}/>
-  <Route path="/:id" element={<Product/>}/>
-  <Route path="/About" element={<About/>}/>
-  <Route path="/Contact" element={<Contact1/>}/>
-   <Route path="/Cart" element={<Cart_page/>}/>
-   <Route path="/Profile" element={<Profile1/>}/>
-   <Route path="/Auth" element={<Auth1/>}/>
-
-
-   </Routes>
-   
-
-   <Footer/>
-   </BrowserRouter>
-   </CartProvider>
-   </div>
+    <AuthProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Login" element={<Login2 />} />
+              <Route path="/Login1" element={<Login1 />} />
+              <Route path="/Desktop" element={<Desktop />} />
+              <Route path="/Laptop" element={<Laptop />} />
+              <Route path="/Components" element={<Components />} />
+              <Route path="/Gaming" element={<Gaming1 />} />
+              <Route path="/SignUp" element={<Signup />} />
+              <Route path="/:id" element={<Product />} />
+              <Route path="/About" element={<About />} />
+              <Route path="/Contact" element={<Contact1 />} />
+              <Route path="/Cart" element={<Cart_page />} />
+              <Route path="/Profile" element={<Profile1 />} />
+              <Route path="/Auth" element={<Auth1 />} />
+              <Route path='/Admin' element={<Admin1 />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </CartProvider>
+    </AuthProvider>
   );
 }
+
+const Layout = ({ children }) => {
+  const { isLoggedIn } = useAuth();
+
+  return (
+    <>
+      {!isLoggedIn && <Navbar />}
+      {!isLoggedIn && <Cart_button />}
+      {children}
+      {!isLoggedIn && <Footer />}
+    </>
+  );
+};
 
 export default App;

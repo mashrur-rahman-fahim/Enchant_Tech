@@ -5,12 +5,14 @@ import cors from 'cors';
 import { log } from './middlewares/logger.js';
 import mongoose from 'mongoose';
 import 'dotenv/config';
+
 import User from './models/model.js';
 import Product from './models/cart.js';
 import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 import All_Product from './models/All_product.js';
 import Review from './models/review.js';
+import { configDotenv } from 'dotenv';
 
 const SECRET_KEY_REFRESH = process.env.SECRET_KEY_REFRESH;
 const SECRET_KEY_ACCESS = process.env.SECRET_KEY_ACCESS;

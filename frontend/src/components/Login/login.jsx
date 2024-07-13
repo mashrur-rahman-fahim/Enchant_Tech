@@ -1,9 +1,9 @@
-// file: D:/web_app/Enchant_Tech/frontend/src/Login1.js
-
 import React, { useState } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
+
+import { useAuth } from "../Authentication/AuthContext";
 
 export const Login1 = () => {
   const [formData, setFormdata] = useState({
@@ -11,8 +11,10 @@ export const Login1 = () => {
     password: ""
   });
   const navigate = useNavigate();
-
+  const { setIsLoggedIn } = useAuth();
   axios.defaults.withCredentials = true;
+  const email_admin = process.env.email_admin;
+  const password_admin = process.env.password_admin;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,6 +27,11 @@ export const Login1 = () => {
       .then((response) => {
         const data = response.data;
         if (data.Login) {
+          console.log(data.email)
+          if (formData.email ==="admin@gmail.com" && formData.password === "admin") {
+          
+            setIsLoggedIn(true);
+          }
           navigate('/Auth');
           alert("Login successful!");
         } else {
