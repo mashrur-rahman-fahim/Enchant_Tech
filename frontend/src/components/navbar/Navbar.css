@@ -1,4 +1,4 @@
-* {
+ * {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
@@ -8,7 +8,7 @@
 body {
   background: linear-gradient(to bottom, #f2f4f8, #e6e9ef, #d9dde6);
   margin-top: 100px;
-}
+} 
 
 header {
   background: linear-gradient(to right, #081621, #0c1c27, #0d2330);
