@@ -108,9 +108,9 @@ export const Show = () => {
         </div>
         <div className="brand-filters">
           <button onClick={() => filterByBrand("All")}>Show All</button>
-          <button onClick={() => filterByBrand("HP")}>HP</button>
-          <button onClick={() => filterByBrand("ASUS")}>ASUS</button>
-          <button onClick={() => filterByBrand("LENOVO")}>LENOVO</button>
+          <button onClick={() => filterByBrand("hp")}>HP</button>
+          <button onClick={() => filterByBrand("asus")}>ASUS</button>
+          <button onClick={() => filterByBrand("lenovo")}>LENOVO</button>
         </div>
         <div className="sort-options">
           <button onClick={() => handleSort("price")}>Sort by Price</button>
