@@ -10,13 +10,16 @@ export const Admin = () => {
   const { setIsLoggedIn } = useAuth();
 
   const [product, setProduct] = useState({
-    name: "",
-    description: "",
-    price: "",
-    imageUrl: "",
-    category: "laptop",
-    brand: "",
-    date: new Date().toISOString().split('T')[0]
+    img: "",
+          title: "",
+          description: "",
+          price: "",
+          cat: "gaming",
+          catagory:"laptop",
+          brand: "asus",
+
+
+  
   });
 
   const [productCounts, setProductCounts] = useState({
@@ -61,7 +64,7 @@ export const Admin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/products", {
+      const response = await fetch("http://localhost:4000/products", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -71,60 +74,33 @@ export const Admin = () => {
       if (response.ok) {
         alert("Product uploaded successfully!");
         setProduct({
-          name: "",
+          img: "",
+          title: "",
           description: "",
           price: "",
-          imageUrl: "",
-          category: "laptop",
-          brand: "",
-          date: new Date().toISOString().split('T')[0]
+          cat: "gaming",
+          catagory:"laptop",
+          brand: "asus",
+          
         });
+        document.getElementById("admin_form").reset();
         fetchProductCounts();
       } else {
         alert("Failed to upload product.");
       }
     } catch (error) {
+      console.log(product)
       console.error("Error:", error);
       alert("An error occurred while uploading the product.");
     }
   };
 
-  const fetchProductCounts = async () => {
-    try {
-      const response = await fetch("/api/products/counts");
-      if (response.ok) {
-        const data = await response.json();
-        setProductCounts(data);
-      } else {
-        console.error("Error fetching product counts");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
+  const fetchProductCounts = () => {
+    console.log("count");
   };
 
-  const fetchSalesData = async () => {
-    try {
-      const response = await fetch("/api/sales");
-      if (response.ok) {
-        const data = await response.json();
-        setChartData({
-          labels: ["January", "February", "March", "April", "May"],
-          datasets: [
-            {
-              label: "Sales",
-              data: data,
-              borderColor: "rgba(75,192,192,1)",
-              backgroundColor: "rgba(75,192,192,0.2)"
-            }
-          ]
-        });
-      } else {
-        console.error("Error fetching sales data");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
+  const fetchSalesData =  () => {
+   console.log("sales")
   };
 
   return (
@@ -145,10 +121,10 @@ export const Admin = () => {
       <main className="admin-main">
         <section className="form-section">
           <h2>Upload Product</h2>
-          <form className="admin-form" onSubmit={handleSubmit}>
+          <form id="admin_form" className="admin-form" onSubmit={handleSubmit}>
             <label>
               Name:
-              <input type="text" name="name" value={product.name} onChange={handleChange} required />
+              <input type="text" name="title" value={product.name} onChange={handleChange} required />
             </label>
             <label>
               Description:
@@ -160,11 +136,11 @@ export const Admin = () => {
             </label>
             <label>
               Image URL:
-              <input type="url" name="imageUrl" value={product.imageUrl} onChange={handleChange} required />
+              <input type="url" name="img" value={product.imageUrl} onChange={handleChange} required />
             </label>
             <label>
               Category:
-              <select name="category" value={product.category} onChange={handleChange}>
+              <select name="catagory" value={product.category} onChange={handleChange}>
                 <option value="laptop">Laptop</option>
                 <option value="desktop">Desktop</option>
                 <option value="processors">Processors</option>
