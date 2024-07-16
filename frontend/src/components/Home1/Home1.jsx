@@ -5,6 +5,7 @@ import a from "../assets/PC/a.jpg";
 import b from "../assets/PC/b.avif";
 import c from "../assets/PC/c.webp";
 import d from "../assets/PC/d.jpg";
+import { Colors } from "chart.js";
 
 export const Home1 = () => {
   const [src, setSrc] = useState(ProductData[0].img);
