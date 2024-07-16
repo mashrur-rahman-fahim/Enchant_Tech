@@ -12,6 +12,7 @@
     "dotenv": "^16.4.5",
     "dotenv-webpack": "^8.1.0",
     "fs": "^0.0.1-security",
+    "mongoose": "^8.5.1",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "react": "^18.3.1",
