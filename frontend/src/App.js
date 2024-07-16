@@ -20,6 +20,7 @@ import { Auth1 } from "./pages/Auth1";
 import { AuthProvider, useAuth } from './components/Authentication/AuthContext';
 import { Login1 } from './components/Login/login';
 import { Admin1 } from './pages/Admin1';
+import { PCBuild } from './pages/PCBuild';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
               <Route path="/Profile" element={<Profile1 />} />
               <Route path="/Auth" element={<Auth1 />} />
               <Route path='/Admin' element={<Admin1 />} />
+              <Route path='/PCBuilder' element={<PCBuild/>}/>
             </Routes>
           </Layout>
         </BrowserRouter>
