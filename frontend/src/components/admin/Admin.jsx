@@ -167,11 +167,26 @@ export const Admin = () => {
               <select name="category" value={product.category} onChange={handleChange}>
                 <option value="laptop">Laptop</option>
                 <option value="desktop">Desktop</option>
+                <option value="processors">Processors</option>
+                <option value="cpucoolers">CPU Coolers</option>
+                <option value="motherboard">Motherboard</option>
+                <option value="graphics">Graphics Card</option>
+                <option value="ram">Ram</option>
+                <option value="hdds">HDDs</option>
+                <option value="ssds">SSDs</option>
+                <option value="monitor">Monitors</option>
+                <option value="casing">Casings</option>
+
               </select>
             </label>
             <label>
               Brand:
-              <input type="text" name="brand" value={product.brand} onChange={handleChange} required />
+              <select name="brand" value={product.brand} onChange={handleChange}>
+              <option value="asus">Asus</option>
+              <option value="hp">HP</option>
+
+
+              </select>
             </label>
             <button type="submit">Upload Product</button>
           </form>
