@@ -9,12 +9,22 @@
   background: linear-gradient(to bottom, #f2f4f8, #e6e9ef, #d9dde6);
   margin-top: 100px;
 } 
+.pcBuild{
+  background: linear-gradient(45deg, #00237e, #3749bb, #0bc1e9, #3749bb, #00237e);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    border: none;
+    line-height: 42px;
+    padding: 15px 30px;
+    
+  
+}
 
 header {
   background: linear-gradient(to right, #081621, #0c1c27, #0d2330);
   display: flex;
   justify-content: space-between;
-  padding: 54px 5% 0 5%;
+  padding: 54px 3% 0 5%;
   align-items: center;
   flex-wrap: wrap;
 }

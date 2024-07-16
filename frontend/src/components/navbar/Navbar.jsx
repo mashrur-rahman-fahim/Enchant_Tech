@@ -191,6 +191,9 @@ export const Navbar = () => {
           <Link to="/Login" className="nav-link" onClick={handleMenuItemClick}>
             LOGIN
           </Link>
+          <Link to="/PCBuilder" className="pcBuild" onClick={handleMenuItemClick}>
+            PC Builder
+          </Link>
         </div>
       </header>
     </nav>
