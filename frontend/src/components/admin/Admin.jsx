@@ -1,9 +1,12 @@
+// file: D:/web_app/Enchant_Tech/frontend/src/pages/Admin1.js
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../Authentication/AuthContext";
+
 import { Line } from "react-chartjs-2";
 import 'chart.js/auto';
 import './Admin.css';
+import { useAuth } from "../Authentication/AuthContext";
 
 export const Admin = () => {
   const navigate = useNavigate();
@@ -11,15 +14,12 @@ export const Admin = () => {
 
   const [product, setProduct] = useState({
     img: "",
-          title: "",
-          description: "",
-          price: "",
-          cat: "gaming",
-          catagory:"laptop",
-          brand: "asus",
-
-
-  
+    title: "",
+    description: "",
+    price: "",
+    cat: "gaming",
+    catagory: "laptop",
+    brand: "asus",
   });
 
   const [productCounts, setProductCounts] = useState({
@@ -48,6 +48,9 @@ export const Admin = () => {
     ]
   });
 
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
   useEffect(() => {
     fetchProductCounts();
     fetchSalesData();
@@ -63,6 +66,8 @@ export const Admin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setSuccess("");
     try {
       const response = await fetch("http://localhost:4000/products", {
         method: "POST",
@@ -72,35 +77,98 @@ export const Admin = () => {
         body: JSON.stringify(product)
       });
       if (response.ok) {
-        alert("Product uploaded successfully!");
+        setSuccess("Product uploaded successfully!");
         setProduct({
           img: "",
           title: "",
           description: "",
           price: "",
           cat: "gaming",
-          catagory:"laptop",
+          catagory: "laptop",
           brand: "asus",
-          
         });
         document.getElementById("admin_form").reset();
         fetchProductCounts();
       } else {
-        alert("Failed to upload product.");
+        const result = await response.json();
+        setError(result.message || "Failed to upload product.");
       }
     } catch (error) {
-      console.log(product)
       console.error("Error:", error);
-      alert("An error occurred while uploading the product.");
+      setError("An error occurred while uploading the product.");
     }
   };
 
-  const fetchProductCounts = () => {
-    console.log("count");
+  const fetchProductCounts = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/products");
+      const data = await response.json();
+
+      const initialCounts = {
+        laptop: 0,
+        desktop: 0,
+        processor: 0,
+        cpuCooler: 0,
+        motherboard: 0,
+        graphicsCard: 0,
+        ram: 0,
+        hdd: 0,
+        ssd: 0,
+        monitor: 0,
+        casing: 0,
+      };
+
+      const productCounts = data.reduce((counts, product) => {
+        switch (product.catagory) {
+          case "laptop":
+            counts.laptop++;
+            break;
+          case "desktop":
+            counts.desktop++;
+            break;
+          case "processors":
+            counts.processor++;
+            break;
+          case "cpucoolers":
+            counts.cpuCooler++;
+            break;
+          case "motherboard":
+            counts.motherboard++;
+            break;
+          case "graphics":
+            counts.graphicsCard++;
+            break;
+          case "ram":
+            counts.ram++;
+            break;
+          case "hdds":
+            counts.hdd++;
+            break;
+          case "ssds":
+            counts.ssd++;
+            break;
+          case "monitor":
+            counts.monitor++;
+            break;
+          case "casing":
+            counts.casing++;
+            break;
+          default:
+            break;
+        }
+        return counts;
+      }, initialCounts);
+
+      setProductCounts(productCounts);
+
+    } catch (error) {
+      console.error("Error fetching product counts:", error);
+      setError("Failed to fetch product counts.");
+    }
   };
 
-  const fetchSalesData =  () => {
-   console.log("sales")
+  const fetchSalesData = () => {
+    console.log("sales");
   };
 
   return (
@@ -109,7 +177,6 @@ export const Admin = () => {
         <button
           onClick={() => {
             setIsLoggedIn(false);
-            
             navigate("/login");
           }}
           className="logout-button"
@@ -121,10 +188,12 @@ export const Admin = () => {
       <main className="admin-main">
         <section className="form-section">
           <h2>Upload Product</h2>
+          {error && <p className="error">{error}</p>}
+          {success && <p className="success">{success}</p>}
           <form id="admin_form" className="admin-form" onSubmit={handleSubmit}>
             <label>
               Name:
-              <input type="text" name="title" value={product.name} onChange={handleChange} required />
+              <input type="text" name="title" value={product.title} onChange={handleChange} required />
             </label>
             <label>
               Description:
@@ -136,11 +205,11 @@ export const Admin = () => {
             </label>
             <label>
               Image URL:
-              <input type="url" name="img" value={product.imageUrl} onChange={handleChange} required />
+              <input type="url" name="img" value={product.img} onChange={handleChange} required />
             </label>
             <label>
               Category:
-              <select name="catagory" value={product.category} onChange={handleChange}>
+              <select name="catagory" value={product.catagory} onChange={handleChange}>
                 <option value="laptop">Laptop</option>
                 <option value="desktop">Desktop</option>
                 <option value="processors">Processors</option>
@@ -152,16 +221,13 @@ export const Admin = () => {
                 <option value="ssds">SSDs</option>
                 <option value="monitor">Monitors</option>
                 <option value="casing">Casings</option>
-
               </select>
             </label>
             <label>
               Brand:
               <select name="brand" value={product.brand} onChange={handleChange}>
-              <option value="asus">Asus</option>
-              <option value="hp">HP</option>
-
-
+                <option value="asus">Asus</option>
+                <option value="hp">HP</option>
               </select>
             </label>
             <button type="submit">Upload Product</button>
