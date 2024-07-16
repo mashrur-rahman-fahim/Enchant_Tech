@@ -133,6 +133,7 @@ export const Admin = () => {
         <button
           onClick={() => {
             setIsLoggedIn(false);
+            
             navigate("/login");
           }}
           className="logout-button"
