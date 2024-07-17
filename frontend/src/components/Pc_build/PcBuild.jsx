@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './PcBuild.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMicrochip, faThermometerHalf, faMemory, faHdd, faVideo, faKeyboard, faPrint, faPlug, faDesktop, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faMicrochip, faThermometerHalf, faMemory, faHdd, faVideo, faKeyboard, 
+  faPrint, faPlug, faDesktop, faShoppingCart, faMouse, faVolumeUp, faBatteryFull, faCamera, faSave
+} from '@fortawesome/free-solid-svg-icons';
 
 const components = {
   cpu: [
@@ -73,6 +76,27 @@ const components = {
     { name: 'Fractal Meshify', cost: 110 },
     { name: 'Phanteks Eclipse', cost: 95 },
     { name: 'Lian Li PC-O11', cost: 120 }
+  ],
+  mouse: [
+    { name: 'Logitech', cost: 40 },
+    { name: 'Corsair', cost: 50 },
+    { name: 'Razer', cost: 60 },
+    { name: 'SteelSeries', cost: 70 },
+    { name: 'Microsoft', cost: 45 }
+  ],
+  speaker: [
+    { name: 'Logitech', cost: 80 },
+    { name: 'Bose', cost: 150 },
+    { name: 'Sony', cost: 120 },
+    { name: 'JBL', cost: 100 },
+    { name: 'Harman Kardon', cost: 130 }
+  ],
+  ups: [
+    { name: 'APC', cost: 200 },
+    { name: 'CyberPower', cost: 180 },
+    { name: 'Eaton', cost: 220 },
+    { name: 'Tripp Lite', cost: 190 },
+    { name: 'Vertiv', cost: 210 }
   ]
 };
 
@@ -87,7 +111,10 @@ export const PcBuild = () => {
     keyboard: null,
     printer: null,
     powerSupply: null,
-    casing: null
+    casing: null,
+    mouse: null,
+    speaker: null,
+    ups: null
   });
 
   const handleSelection = (category, event) => {
@@ -105,8 +132,27 @@ export const PcBuild = () => {
 
   const itemCount = Object.values(selectedComponents).filter(component => component !== null).length;
 
+  const handleScreenshot = () => {
+    // Logic for taking a screenshot
+    alert('Screenshot taken!');
+  };
+
+  const handleSave = () => {
+    // Logic for saving components
+    alert('Components saved!');
+  };
+
   return (
     <div className="pc-builder">
+      <div className="screenshot-save">
+        <button className="screenshot-btn" onClick={handleScreenshot}>
+          <FontAwesomeIcon icon={faCamera} /> Screenshot
+        </button>
+        <button className="save-btn" onClick={handleSave}>
+          <FontAwesomeIcon icon={faSave} /> Save
+        </button>
+      </div>
+      
       <h2>PC Builder - Build Your Own Computer - Enchant Tech</h2>
       
       <div className="build-info">
@@ -157,7 +203,10 @@ export const PcBuild = () => {
             <FontAwesomeIcon icon={
               category === 'keyboard' ? faKeyboard :
               category === 'printer' ? faPrint :
-              category === 'powerSupply' ? faPlug : faDesktop
+              category === 'powerSupply' ? faPlug :
+              category === 'mouse' ? faMouse :
+              category === 'speaker' ? faVolumeUp :
+              category === 'ups' ? faBatteryFull : faDesktop
             } />
           </div>
           <div className="component-details">
