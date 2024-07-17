@@ -2,16 +2,34 @@
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { Line } from "react-chartjs-2";
 import 'chart.js/auto';
 import './Admin.css';
 import { useAuth } from "../Authentication/AuthContext";
+import axios from "axios";
 
 export const Admin = () => {
   const navigate = useNavigate();
-  const { setIsLoggedIn } = useAuth();
+  axios.defaults.withCredentials = true;
 
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
+  useEffect(() => {
+    fetch("http://localhost:4000/auth", {
+      credentials: 'include'
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.valid) {
+        
+          if (isLoggedIn) navigate('/Admin');
+        } else {
+        
+          setIsLoggedIn(false);
+          navigate('/Login');
+        }
+      })
+      .catch(err => console.error(err));
+  }, [navigate, isLoggedIn, setIsLoggedIn]);
   const [product, setProduct] = useState({
     img: "",
     title: "",
@@ -177,7 +195,7 @@ export const Admin = () => {
         <button
           onClick={() => {
             setIsLoggedIn(false);
-            navigate("/login");
+            navigate("/Login");
           }}
           className="logout-button"
         >
@@ -228,6 +246,15 @@ export const Admin = () => {
               <select name="brand" value={product.brand} onChange={handleChange}>
                 <option value="asus">Asus</option>
                 <option value="hp">HP</option>
+                <option value="apple">Apple</option>
+
+              </select>
+            </label>
+            <label>
+              Type:
+              <select name="cat" value={product.cat} onChange={handleChange}>
+                <option value="gaming">Gaming</option>
+                <option value="all">ALL-IN-ONE</option>
               </select>
             </label>
             <button type="submit">Upload Product</button>
