@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./Cart.css";
 import { CartContext } from "./CartContext";
+import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
     const [cartData, setCartData] = useState([]);
@@ -9,6 +10,7 @@ export const Cart = () => {
     const [subtotal, setSubtotal] = useState(0);
     const [total, setTotal] = useState(0);
     const { fetchCartCount } = useContext(CartContext);
+    const navigate=useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:4000/api/cart')
@@ -58,6 +60,7 @@ export const Cart = () => {
 
     const handlePayment = () => {
         alert("Proceeding to payment...");
+        navigate('/Payment-option')
     };
 
     return (
