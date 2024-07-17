@@ -23,6 +23,7 @@ import { AuthProvider, useAuth } from './components/Authentication/AuthContext';
 import { Login1 } from './components/Login/login';
 import { Admin1 } from './pages/Admin1';
 import { PCBuild } from './pages/PCBuild';
+import { Payment1 } from './pages/Payment1';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
               <Route path="/Auth" element={<Auth1 />} />
               <Route path='/Admin' element={<PrivateRoute component={Admin1} />} />
               <Route path='/PCBuilder' element={<PCBuild />} />
+              <Route path='/Payment-option' element={<Payment1/>}/>
             </Routes>
           </Layout>
         </BrowserRouter>
