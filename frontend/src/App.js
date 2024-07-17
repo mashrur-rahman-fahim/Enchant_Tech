@@ -24,6 +24,8 @@ import { Login1 } from './components/Login/login';
 import { Admin1 } from './pages/Admin1';
 import { PCBuild } from './pages/PCBuild';
 import { Payment1 } from './pages/Payment1';
+import { Apple1 } from './pages/Apple1';
+import { Admin_pDelete } from './pages/Admin_pDelete';
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
               <Route path='/Admin' element={<PrivateRoute component={Admin1} />} />
               <Route path='/PCBuilder' element={<PCBuild />} />
               <Route path='/Payment-option' element={<Payment1/>}/>
+              <Route path='/Apple-iMac' element={<Apple1/>}/>
+              <Route path='/catagory/:catagory' element={<Admin_pDelete/>}/>
             </Routes>
           </Layout>
         </BrowserRouter>

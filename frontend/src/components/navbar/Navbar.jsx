@@ -85,12 +85,12 @@ export const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/AppleIMac" className="list" onClick={handleMenuItemClick}>
+                    <Link to="/Apple-iMac" className="list" onClick={handleMenuItemClick}>
                       Apple iMac
                     </Link>
                   </li>
                   <li>
-                    <Link to="/ShowAllDesktop" className="list" onClick={handleMenuItemClick}>
+                    <Link to="/Desktop" className="list" onClick={handleMenuItemClick}>
                       Show All Desktop
                     </Link>
                   </li>

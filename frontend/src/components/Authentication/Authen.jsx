@@ -9,7 +9,8 @@ export const Authen = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
-const {setIsLogIn}=useAuth();
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
+
   useEffect(() => {
     fetch("http://localhost:4000/auth", {
       credentials: 'include'
@@ -18,17 +19,15 @@ const {setIsLogIn}=useAuth();
       .then(data => {
         if (data.valid) {
           setMessage(data.message);
-          
-            navigate('/Admin')
-          
-          
+          if (isLoggedIn) navigate('/Admin');
         } else {
           setMessage(data.message);
+          setIsLoggedIn(false);
           navigate('/Login');
         }
       })
       .catch(err => console.error(err));
-  }, [navigate]);
+  }, [navigate, isLoggedIn, setIsLoggedIn]);
 
   return (
     <div>

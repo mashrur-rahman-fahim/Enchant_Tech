@@ -18,7 +18,7 @@ const StarRating = ({ rating }) => {
   return <div className="rating">{stars}</div>;
 };
 
-export const Gaming = () => {
+export const Apple = () => {
   const { fetchCartCount } = useContext(CartContext);
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
@@ -32,7 +32,7 @@ export const Gaming = () => {
         let filterData=[]
         for(let i=0;i<data.length;i++)
         {
-          if(data[i].catagory==="desktop" && data[i].cat==="gaming")
+          if(data[i].catagory==="desktop" && data[i].brand==="apple")
             filterData.push(data[i]);
         }
         
@@ -70,7 +70,7 @@ export const Gaming = () => {
     if (brand === "All") {
       setFilteredItems(items);
     } else {
-      const filtered = items.filter((item) => item.brand === brand);
+      const filtered = items.filter((item) => item.cat === brand);
       setFilteredItems(filtered);
     }
   };
@@ -107,9 +107,9 @@ export const Gaming = () => {
         </div>
         <div className="brand-filters">
           <button onClick={() => filterByBrand("All")}>Show All</button>
-          <button onClick={() => filterByBrand("hp")}>HP</button>
-          <button onClick={() => filterByBrand("asus")}>ASUS</button>
-          <button onClick={() => filterByBrand("lenovo")}>LENOVO</button>
+          <button onClick={() => filterByBrand("gaming")}>Gaming</button>
+          <button onClick={() => filterByBrand("all")}>ALL-IN-ONE</button>
+        
         </div>
         <div className="sort-options">
           <button onClick={() => handleSort("price")}>Sort by Price</button>

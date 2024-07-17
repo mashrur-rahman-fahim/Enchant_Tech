@@ -1,7 +1,9 @@
+// src/components/show-all/Show.js
 
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import { CartContext } from "../../cart/CartContext";
+import { Link, useParams } from "react-router-dom";
+import { CartContext } from "../cart/CartContext";
+
 
 
 const StarRating = ({ rating }) => {
@@ -18,12 +20,26 @@ const StarRating = ({ rating }) => {
   return <div className="rating">{stars}</div>;
 };
 
-export const Gaming = () => {
+export const Product_delete = () => {
   const { fetchCartCount } = useContext(CartContext);
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [sortOption, setSortOption] = useState("");
   const [searchValue, setSearchValue] = useState("");
+  const {catagory}=useParams();
+   const catagory1=catagory.toString();
+   const remove_product=(id)=>{
+    fetch(`http://localhost:4000/products/${id}`, {
+      method: "DELETE",
+      headers:{
+        "Content-Type": "application/json",
+      }
+    })
+    .then((res)=>res.json())
+    .then((data)=>{
+      window.location.reload();
+    })
+   }
 
   useEffect(() => {
     fetch('http://localhost:4000/products')
@@ -32,7 +48,7 @@ export const Gaming = () => {
         let filterData=[]
         for(let i=0;i<data.length;i++)
         {
-          if(data[i].catagory==="desktop" && data[i].cat==="gaming")
+          if(data[i].catagory===catagory1)
             filterData.push(data[i]);
         }
         
@@ -131,10 +147,7 @@ export const Gaming = () => {
               <div className="product-price">Price: {item.price}</div>
               <StarRating rating={item.rating} />
               <div className="product-actions">
-                <button className="buy-button">Buy Now</button>
-                <button className="cart-button" onClick={() => addToCart(item)}>
-                  Add to Cart
-                </button>
+              <button className="remove_product" onClick={()=>remove_product(item.id)}>Delete</button>
               </div>
             </div>
           </div>
