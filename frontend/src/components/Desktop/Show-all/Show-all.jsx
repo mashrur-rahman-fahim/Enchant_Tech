@@ -26,22 +26,15 @@ export const Show = () => {
   const [sortOption, setSortOption] = useState("");
   const [searchValue, setSearchValue] = useState("");
 
+  const brandOptions = ["All", "HP", "Asus", "Lenovo", "Dell", "Acer", "MSI"];
+
   useEffect(() => {
     fetch('http://localhost:4000/products')
       .then(res => res.json())
       .then(data => {
-        let filterData=[]
-        for(let i=0;i<data.length;i++)
-        {
-          if(data[i].catagory==="desktop")
-            filterData.push(data[i]);
-        }
-        
-       
+        let filterData = data.filter(product => product.catagory === "desktop");
         setItems(filterData);
         setFilteredItems(filterData);
-        
-
       })
       .catch(error => console.error('Error fetching products:', error));
   }, []);
@@ -71,7 +64,7 @@ export const Show = () => {
     if (brand === "All") {
       setFilteredItems(items);
     } else {
-      const filtered = items.filter((item) => item.brand === brand);
+      const filtered = items.filter((item) => item.brand.toLowerCase() === brand.toLowerCase());
       setFilteredItems(filtered);
     }
   };
@@ -107,10 +100,11 @@ export const Show = () => {
           />
         </div>
         <div className="brand-filters">
-          <button onClick={() => filterByBrand("All")}>Show All</button>
-          <button onClick={() => filterByBrand("hp")}>HP</button>
-          <button onClick={() => filterByBrand("asus")}>ASUS</button>
-          <button onClick={() => filterByBrand("lenovo")}>LENOVO</button>
+          {brandOptions.map((brand, index) => (
+            <button key={index} onClick={() => filterByBrand(brand)}>
+              {brand}
+            </button>
+          ))}
         </div>
         <div className="sort-options">
           <button onClick={() => handleSort("price")}>Sort by Price</button>

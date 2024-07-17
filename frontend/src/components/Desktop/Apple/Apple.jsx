@@ -1,3 +1,4 @@
+// src/components/show-all/Show.js
 
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
@@ -25,22 +26,15 @@ export const Apple = () => {
   const [sortOption, setSortOption] = useState("");
   const [searchValue, setSearchValue] = useState("");
 
+  const brandOptions = ["All", "GAMING"];
+
   useEffect(() => {
     fetch('http://localhost:4000/products')
       .then(res => res.json())
       .then(data => {
-        let filterData=[]
-        for(let i=0;i<data.length;i++)
-        {
-          if(data[i].catagory==="desktop" && data[i].brand==="apple")
-            filterData.push(data[i]);
-        }
-        
-       
+        let filterData = data.filter(product => product.catagory === "desktop" && product.brand.toLowerCase()==="apple");
         setItems(filterData);
         setFilteredItems(filterData);
-        
-
       })
       .catch(error => console.error('Error fetching products:', error));
   }, []);
@@ -70,7 +64,7 @@ export const Apple = () => {
     if (brand === "All") {
       setFilteredItems(items);
     } else {
-      const filtered = items.filter((item) => item.cat === brand);
+      const filtered = items.filter((item) => item.brand.toLowerCase() === brand.toLowerCase());
       setFilteredItems(filtered);
     }
   };
@@ -106,10 +100,11 @@ export const Apple = () => {
           />
         </div>
         <div className="brand-filters">
-          <button onClick={() => filterByBrand("All")}>Show All</button>
-          <button onClick={() => filterByBrand("gaming")}>Gaming</button>
-          <button onClick={() => filterByBrand("all")}>ALL-IN-ONE</button>
-        
+          {brandOptions.map((brand, index) => (
+            <button key={index} onClick={() => filterByBrand(brand)}>
+              {brand}
+            </button>
+          ))}
         </div>
         <div className="sort-options">
           <button onClick={() => handleSort("price")}>Sort by Price</button>

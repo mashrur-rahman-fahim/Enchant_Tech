@@ -19,20 +19,20 @@ const StarRating = ({ rating }) => {
   return <div className="rating">{stars}</div>;
 };
 
-export const Gaming = () => {
+export const AllinOne = () => {
   const { fetchCartCount } = useContext(CartContext);
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [sortOption, setSortOption] = useState("");
   const [searchValue, setSearchValue] = useState("");
 
-  const brandOptions = ["All", "HP", "Asus", "Lenovo", "Dell", "Acer", "MSI"];
+  const brandOptions = ["All", "HP", "Asus", "Lenovo", "Dell", "Apple", "Acer", "MSI"];
 
   useEffect(() => {
     fetch('http://localhost:4000/products')
       .then(res => res.json())
       .then(data => {
-        let filterData = data.filter(product => product.catagory === "desktop" && product.cat==="gaming");
+        let filterData = data.filter(product => product.catagory === "laptop" && product.cat=="all");
         setItems(filterData);
         setFilteredItems(filterData);
       })

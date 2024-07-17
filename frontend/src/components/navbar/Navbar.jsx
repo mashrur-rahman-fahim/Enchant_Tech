@@ -80,7 +80,7 @@ export const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/AllInOne" className="list" onClick={handleMenuItemClick}>
+                    <Link to="/Desktop/AllInOne" className="list" onClick={handleMenuItemClick}>
                       All-in-One PC
                     </Link>
                   </li>
@@ -109,12 +109,17 @@ export const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/PremiumUltrabook" className="list" onClick={handleMenuItemClick}>
+                    <Link to="/Laptop/Ultrabook" className="list" onClick={handleMenuItemClick}>
                       Premium Ultrabook
                     </Link>
                   </li>
                   <li>
-                    <Link to="/ShowAllLaptop" className="list" onClick={handleMenuItemClick}>
+                    <Link to="/Laptop/AllInOne" className="list" onClick={handleMenuItemClick}>
+                    All-in-One Laptop
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/Laptop" className="list" onClick={handleMenuItemClick}>
                       Show All Laptop
                     </Link>
                   </li>
