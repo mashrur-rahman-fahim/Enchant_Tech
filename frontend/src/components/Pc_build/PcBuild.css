@@ -1,0 +1,168 @@
+.pc-builder {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* eikhane classnane add krbi...direct h2 likhbi na */
+  
+  /* h2 {
+    text-align: center;
+    color: #333;
+  } */
+  
+  .build-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .content {
+    display: flex;
+  }
+  
+  .total-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+  
+  .item-count,
+  .total-cost {
+    font-size: 18px;
+    color: #333;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .item-label,
+  .cost-label {
+    margin-left: 5px;
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .cart-icon {
+    font-size: 24px;
+    color: #3937b5;
+  }
+
+  /* eikhane classnane add krbi...direct h2 likhbi na */
+  
+  /* h3 {
+    margin-bottom: 20px;
+    color: #555;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+  } */
+  
+  .component-row {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .component-icon {
+    flex: 0 0 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #3e3ed3;
+  }
+  
+  .component-details {
+    flex: 1;
+    margin-left: 15px;
+  }
+  
+  .component-name {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .component-selection {
+    display: flex;
+    align-items: center;
+  }
+  
+  .component-selection select {
+    padding: 8px;
+    border: 1px solid #4027d1;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #0c0474;
+    font-size: 14px;
+    width: 150px;
+  }
+  
+  .component-selection select:hover {
+    border-color: #999;
+  }
+  
+  .component-selection select:focus {
+    outline: none;
+    border-color: #666;
+  }
+  
+  .summary-box {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    width: 200px;
+    position: sticky;
+    top: 20px;
+  }
+  
+  .summary-box h4 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .summary-item .value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .summary-item .label {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .build-info {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .total-info {
+      justify-content: center;
+      margin-top: 20px;
+    }
+  
+    .item-count,
+    .total-cost {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }

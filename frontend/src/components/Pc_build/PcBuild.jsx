@@ -1,11 +1,178 @@
-import React from 'react'
-import './PcBuild.css'
+import React, { useState } from 'react';
+import './PcBuild.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMicrochip, faThermometerHalf, faMemory, faHdd, faVideo, faKeyboard, faPrint, faPlug, faDesktop, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+const components = {
+  cpu: [
+    { name: 'Intel Core i9', cost: 500 },
+    { name: 'Intel Core i7', cost: 300 },
+    { name: 'AMD Ryzen 9', cost: 450 },
+    { name: 'AMD Ryzen 7', cost: 350 },
+    { name: 'Intel Core i5', cost: 200 }
+  ],
+  cooler: [
+    { name: 'Cooler Master', cost: 50 },
+    { name: 'Corsair', cost: 60 },
+    { name: 'Noctua', cost: 70 },
+    { name: 'NZXT', cost: 80 },
+    { name: 'be quiet!', cost: 90 }
+  ],
+  motherboard: [
+    { name: 'ASUS ROG', cost: 250 },
+    { name: 'MSI', cost: 200 },
+    { name: 'Gigabyte', cost: 220 },
+    { name: 'ASRock', cost: 180 },
+    { name: 'Biostar', cost: 160 }
+  ],
+  ram: [
+    { name: 'Corsair 16GB', cost: 80 },
+    { name: 'G.Skill 16GB', cost: 75 },
+    { name: 'Kingston 16GB', cost: 70 },
+    { name: 'Crucial 16GB', cost: 65 },
+    { name: 'HyperX 16GB', cost: 60 }
+  ],
+  storage: [
+    { name: 'Samsung 1TB SSD', cost: 150 },
+    { name: 'WD 1TB SSD', cost: 140 },
+    { name: 'Seagate 1TB HDD', cost: 100 },
+    { name: 'Kingston 1TB SSD', cost: 130 },
+    { name: 'Crucial 1TB SSD', cost: 120 }
+  ],
+  gpu: [
+    { name: 'NVIDIA RTX 3080', cost: 700 },
+    { name: 'NVIDIA RTX 3070', cost: 600 },
+    { name: 'AMD RX 6800', cost: 550 },
+    { name: 'AMD RX 6700', cost: 450 },
+    { name: 'NVIDIA RTX 3060', cost: 400 }
+  ],
+  keyboard: [
+    { name: 'Logitech', cost: 50 },
+    { name: 'Corsair', cost: 60 },
+    { name: 'Razer', cost: 70 },
+    { name: 'SteelSeries', cost: 80 },
+    { name: 'HyperX', cost: 90 }
+  ],
+  printer: [
+    { name: 'HP', cost: 150 },
+    { name: 'Canon', cost: 130 },
+    { name: 'Epson', cost: 120 },
+    { name: 'Brother', cost: 140 },
+    { name: 'Samsung', cost: 110 }
+  ],
+  powerSupply: [
+    { name: 'Corsair 750W', cost: 100 },
+    { name: 'EVGA 750W', cost: 90 },
+    { name: 'Seasonic 750W', cost: 110 },
+    { name: 'Thermaltake 750W', cost: 95 },
+    { name: 'Antec 750W', cost: 85 }
+  ],
+  casing: [
+    { name: 'NZXT H510', cost: 100 },
+    { name: 'Corsair 4000D', cost: 90 },
+    { name: 'Fractal Meshify', cost: 110 },
+    { name: 'Phanteks Eclipse', cost: 95 },
+    { name: 'Lian Li PC-O11', cost: 120 }
+  ]
+};
+
 export const PcBuild = () => {
+  const [selectedComponents, setSelectedComponents] = useState({
+    cpu: null,
+    cooler: null,
+    motherboard: null,
+    ram: null,
+    storage: null,
+    gpu: null,
+    keyboard: null,
+    printer: null,
+    powerSupply: null,
+    casing: null
+  });
+
+  const handleSelection = (category, event) => {
+    const selectedOption = event.target.value;
+    const component = components[category].find(item => item.name === selectedOption);
+    setSelectedComponents(prevState => ({
+      ...prevState,
+      [category]: component
+    }));
+  };
+
+  const totalCost = Object.values(selectedComponents).reduce((total, component) => {
+    return total + (component ? component.cost : 0);
+  }, 0);
+
+  const itemCount = Object.values(selectedComponents).filter(component => component !== null).length;
+
   return (
-    <div>
-        eikhan e kaj krbi
+    <div className="pc-builder">
+      <h2>PC Builder - Build Your Own Computer - Enchant Tech</h2>
+      
+      <div className="build-info">
+        <div className="total-info">
+          <div className="item-count">
+            {itemCount}
+            <span className="item-label"> Items</span>
+          </div>
+          <div className="total-cost">
+            ${totalCost}
+            <span className="cost-label"> Total Cost</span>
+          </div>
+          <FontAwesomeIcon icon={faShoppingCart} className="cart-icon" />
+        </div>
+      </div>
 
+      <h3>Core Components</h3>
+      {Object.keys(components).slice(0, 6).map(category => (
+        <div key={category} className="component-row">
+          <div className="component-icon">
+            <FontAwesomeIcon icon={
+              category === 'cpu' ? faMicrochip :
+              category === 'cooler' ? faThermometerHalf :
+              category === 'motherboard' ? faDesktop :
+              category === 'ram' ? faMemory :
+              category === 'storage' ? faHdd :
+              category === 'gpu' ? faVideo : faKeyboard
+            } />
+          </div>
+          <div className="component-details">
+            <span className="component-name">{category.charAt(0).toUpperCase() + category.slice(1)}</span>
+          </div>
+          <div className="component-selection">
+            <select onChange={e => handleSelection(category, e)}>
+              <option value="">Choose</option>
+              {components[category].map((item, index) => (
+                <option key={index} value={item.name}>{item.name} - ${item.cost}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      ))}
 
+      <h3>Additional Components</h3>
+      {Object.keys(components).slice(6).map(category => (
+        <div key={category} className="component-row">
+          <div className="component-icon">
+            <FontAwesomeIcon icon={
+              category === 'keyboard' ? faKeyboard :
+              category === 'printer' ? faPrint :
+              category === 'powerSupply' ? faPlug : faDesktop
+            } />
+          </div>
+          <div className="component-details">
+            <span className="component-name">{category.charAt(0).toUpperCase() + category.slice(1)}</span>
+          </div>
+          <div className="component-selection">
+            <select onChange={e => handleSelection(category, e)}>
+              <option value="">Choose</option>
+              {components[category].map((item, index) => (
+                <option key={index} value={item.name}>{item.name} - ${item.cost}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};

@@ -1,7 +1,9 @@
+// file: D:/web_app/Enchant_Tech/frontend/src/App.js
+
 import React from 'react';
 import { Footer } from "./components/footer/footer";
 import { Navbar } from "./components/navbar/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Desktop } from "./pages/Desktop";
 import { Laptop } from "./pages/Laptop";
@@ -21,6 +23,7 @@ import { AuthProvider, useAuth } from './components/Authentication/AuthContext';
 import { Login1 } from './components/Login/login';
 import { Admin1 } from './pages/Admin1';
 import { PCBuild } from './pages/PCBuild';
+import { Payment1 } from './pages/Payment1';
 
 function App() {
   return (
@@ -43,8 +46,9 @@ function App() {
               <Route path="/Cart" element={<Cart_page />} />
               <Route path="/Profile" element={<Profile1 />} />
               <Route path="/Auth" element={<Auth1 />} />
-              <Route path='/Admin' element={<Admin1 />} />
-              <Route path='/PCBuilder' element={<PCBuild/>}/>
+              <Route path='/Admin' element={<PrivateRoute component={Admin1} />} />
+              <Route path='/PCBuilder' element={<PCBuild />} />
+              <Route path='/Payment-option' element={<Payment1/>}/>
             </Routes>
           </Layout>
         </BrowserRouter>
@@ -64,6 +68,11 @@ const Layout = ({ children }) => {
       {!isLoggedIn && <Footer />}
     </>
   );
+};
+
+const PrivateRoute = ({ component: Component }) => {
+  const { isLoggedIn } = useAuth();
+  return isLoggedIn ? <Component /> : <Navigate to="/Login" />;
 };
 
 export default App;
