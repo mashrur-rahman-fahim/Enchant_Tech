@@ -13,6 +13,7 @@
     height: 200%;
     top: 0;
   }
+ 
   
   /* Header Styles */
   .admin-header {
@@ -103,6 +104,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1.5rem;
+   
   }
   
   .product-count {
@@ -111,7 +113,9 @@
     border-radius: 5px;
     text-align: center;
     transition: transform 0.3s ease;
+    
   }
+ 
   
   .product-count:hover {
     transform: translateY(-5px);
@@ -120,7 +124,14 @@
   .product-count h3 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
+    color: white;
+    
+    
   }
+  .product-count a{
+    text-decoration: none;
+  }
+
   
   .product-count p {
     font-size: 1.5rem;

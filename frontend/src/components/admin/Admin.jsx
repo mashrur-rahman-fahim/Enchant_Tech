@@ -1,7 +1,7 @@
 // file: D:/web_app/Enchant_Tech/frontend/src/pages/Admin1.js
 
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 import 'chart.js/auto';
 import './Admin.css';
@@ -264,47 +264,47 @@ export const Admin = () => {
           <h2>Product Counts</h2>
           <div className="product-counts">
             <div className="product-count">
-              <h3>Laptops</h3>
+            <Link to={`/catagory/${"laptop"}`}><h3>Laptops</h3></Link>
               <p>{productCounts.laptop}</p>
             </div>
             <div className="product-count">
-              <h3>Desktops</h3>
+              <Link to={`/catagory/${"desktop"}`}><h3>Desktops</h3></Link>
               <p>{productCounts.desktop}</p>
             </div>
             <div className="product-count">
-              <h3>Processors</h3>
+            <Link to={`/catagory/${"processors"}`}> <h3>Processors</h3></Link>
               <p>{productCounts.processor}</p>
             </div>
             <div className="product-count">
-              <h3>CPU Coolers</h3>
+            <Link to={`/catagory/${"cpucoolers"}`}><h3>CPU Coolers</h3></Link>
               <p>{productCounts.cpuCooler}</p>
             </div>
             <div className="product-count">
-              <h3>Motherboards</h3>
+            <Link to={`/catagory/${"motherboard"}`}> <h3>Motherboards</h3></Link>
               <p>{productCounts.motherboard}</p>
             </div>
             <div className="product-count">
-              <h3>Graphics Cards</h3>
+            <Link to={`/catagory/${"graphics"}`}><h3>Graphics Cards</h3></Link>
               <p>{productCounts.graphicsCard}</p>
             </div>
             <div className="product-count">
-              <h3>RAM</h3>
+            <Link to={`/catagory/${"ram"}`}><h3>RAM</h3></Link>
               <p>{productCounts.ram}</p>
             </div>
             <div className="product-count">
-              <h3>HDDs</h3>
+            <Link to={`/catagory/${"hdds"}`}><h3>HDDs</h3></Link>
               <p>{productCounts.hdd}</p>
             </div>
             <div className="product-count">
-              <h3>SSDs</h3>
+            <Link to={`/catagory/${"ssds"}`}><h3>SSDs</h3></Link>
               <p>{productCounts.ssd}</p>
             </div>
             <div className="product-count">
-              <h3>Monitors</h3>
+            <Link to={`/catagory/${"monitor"}`}><h3>Monitors</h3></Link>
               <p>{productCounts.monitor}</p>
             </div>
             <div className="product-count">
-              <h3>Casings</h3>
+            <Link to={`/catagory/${"casing"}`}> <h3>Casings</h3></Link>
               <p>{productCounts.casing}</p>
             </div>
           </div>
