@@ -26,6 +26,10 @@ import { PCBuild } from './pages/PCBuild';
 import { Payment1 } from './pages/Payment1';
 import { Apple1 } from './pages/Apple1';
 import { Admin_pDelete } from './pages/Admin_pDelete';
+import { GamingLaptop } from './pages/GamingLaptop';
+import { AllDesktop } from './pages/AllDesktop';
+import { LaptopUltra } from './pages/LaptopUltra';
+import { LaptopAll } from './pages/LaptopAll';
 
 function App() {
   return (
@@ -53,6 +57,10 @@ function App() {
               <Route path='/Payment-option' element={<Payment1/>}/>
               <Route path='/Apple-iMac' element={<Apple1/>}/>
               <Route path='/catagory/:catagory' element={<Admin_pDelete/>}/>
+              <Route path='/GamingLaptop' element={<GamingLaptop/>}/>
+              <Route path='/Desktop/AllInOne' element={<AllDesktop/>}/>
+              <Route path='/Laptop/Ultrabook' element={<LaptopUltra/>}/>
+              <Route path='/Laptop/AllInOne' element={<LaptopAll/>}/>
             </Routes>
           </Layout>
         </BrowserRouter>

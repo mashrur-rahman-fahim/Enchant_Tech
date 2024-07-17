@@ -30,6 +30,7 @@ export const Admin = () => {
       })
       .catch(err => console.error(err));
   }, [navigate, isLoggedIn, setIsLoggedIn]);
+
   const [product, setProduct] = useState({
     img: "",
     title: "",
@@ -37,7 +38,7 @@ export const Admin = () => {
     price: "",
     cat: "gaming",
     catagory: "laptop",
-    brand: "asus",
+    brand: "",
   });
 
   const [productCounts, setProductCounts] = useState({
@@ -69,6 +70,20 @@ export const Admin = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  const brandOptions = {
+    laptop: ["HP", "Asus", "Lenovo", "Dell", "Apple", "Acer", "MSI","ULTRABOOK"],
+    desktop: ["HP", "Asus", "Lenovo", "Dell", "Acer", "MSI","iMac"],
+    processors: ["Intel", "AMD"],
+    cpucoolers: ["Cooler Master", "Corsair", "Noctua", "NZXT"],
+    motherboard: ["Asus", "Gigabyte", "MSI", "ASRock"],
+    graphics: ["NVIDIA", "AMD", "Asus", "Gigabyte", "MSI"],
+    ram: ["Corsair", "G.Skill", "Kingston", "Crucial"],
+    hdds: ["Seagate", "Western Digital", "Toshiba"],
+    ssds: ["Samsung", "Crucial", "Western Digital", "Kingston"],
+    monitor: ["Dell", "LG", "Samsung", "Asus"],
+    casing: ["Cooler Master", "Corsair", "NZXT", "Fractal Design"],
+  };
+
   useEffect(() => {
     fetchProductCounts();
     fetchSalesData();
@@ -80,6 +95,13 @@ export const Admin = () => {
       ...prevState,
       [name]: value
     }));
+
+    if (name === 'catagory') {
+      setProduct(prevState => ({
+        ...prevState,
+        brand: brandOptions[value][0].toLowerCase()
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -103,7 +125,7 @@ export const Admin = () => {
           price: "",
           cat: "gaming",
           catagory: "laptop",
-          brand: "asus",
+          brand: brandOptions["laptop"][0].toLowerCase(),
         });
         document.getElementById("admin_form").reset();
         fetchProductCounts();
@@ -244,10 +266,9 @@ export const Admin = () => {
             <label>
               Brand:
               <select name="brand" value={product.brand} onChange={handleChange}>
-                <option value="asus">Asus</option>
-                <option value="hp">HP</option>
-                <option value="apple">Apple</option>
-
+                {brandOptions[product.catagory].map((brand, index) => (
+                  <option key={index} value={brand}>{brand}</option>
+                ))}
               </select>
             </label>
             <label>
