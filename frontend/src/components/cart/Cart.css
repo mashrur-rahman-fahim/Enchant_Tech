@@ -1,5 +1,3 @@
-/* Cart.css */
-
 .cart_b {
   position: fixed;
   z-index: 1000;
@@ -101,6 +99,103 @@
 
 .remove:hover {
   background-color: #ff4b4b;
+}
+
+#cartAdd {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.coupon,
+.totals {
+  width: 48%;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.coupon:hover,
+.totals:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
+}
+
+.coupon h3,
+.totals h3 {
+  padding-bottom: 15px;
+  border-bottom: 2px solid #088178;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.coupon input {
+  padding: 10px 20px;
+  outline: none;
+  width: 60%;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.coupon button,
+.totals .checkout-button {
+  background-color: #088178;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.coupon button:hover,
+.totals .checkout-button:hover {
+  background-color: #066b5c;
+}
+
+.totals {
+  width: 48%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.totals table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.totals table td {
+  width: 50%;
+  padding: 10px;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.totals table tr:last-child td {
+  border-bottom: none;
+}
+
+.totals table td:first-child {
+  font-weight: bold;
+}
+
+.totals .checkout-button {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 16px;
 }
 
 /* Mobile responsive adjustments */
