@@ -2,18 +2,15 @@ import React from 'react';
 import './Payment.css';
 
 export const Payment = () => {
-  
   return (
     <div>
       <div className="py-3"></div>
       <div className="py-4">
         <div className="container">
           <div className="row">
-            <div className="col-md-7">
+            <div className="col-md-12">
               <div className="card">
-                <div className="card-header">
-                  Basic Information
-                </div>
+                <div className="card-header">Basic Information</div>
                 <div className="card-body">
                   <div className="row">
                     {/* Form Fields */}
@@ -22,7 +19,7 @@ export const Payment = () => {
                         <label>First Name</label>
                         <input type="text" name="firstname" className="form-control" />
                       </div>
-                    </div>  
+                    </div>
                     <div className="col-md-6">
                       <div className="form-group mb-3">
                         <label>Last Name</label>
@@ -65,13 +62,55 @@ export const Payment = () => {
                         <input type="text" name="zipcode" className="form-control" />
                       </div>
                     </div>
+
+                    {/* Delivery Options */}
+                    <div className="col-md-12">
+                      <div className="form-group mb-3">
+                        <label>Delivery Method</label>
+                        <div className="delivery-options">
+                          <div>
+                            <input type="radio" id="regularDelivery" name="delivery" value="regular" />
+                            <label htmlFor="regularDelivery">Regular Delivery (City)</label>
+                          </div>
+                          <div>
+                            <input type="radio" id="outsideDelivery" name="delivery" value="outside" />
+                            <label htmlFor="outsideDelivery">Outside City Delivery</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Payment Methods */}
+                    <div className="col-md-12">
+                      <div className="form-group mb-3">
+                        <label>Payment Method</label>
+                        <div className="payment-options">
+                          <div>
+                            <input type="radio" id="bkash" name="payment" value="bkash" />
+                            <label htmlFor="bkash">bKash</label>
+                          </div>
+                          <div>
+                            <input type="radio" id="nagad" name="payment" value="nagad" />
+                            <label htmlFor="nagad">Nagad</label>
+                          </div>
+                          <div>
+                            <input type="radio" id="emipay" name="payment" value="emipay" />
+                            <label htmlFor="emipay">EMI/Card Payment</label>
+                          </div>
+                          <div>
+                            <input type="radio" id="cod" name="payment" value="cod" />
+                            <label htmlFor="cod">Cash on Delivery</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                     {/* Terms and Conditions and Place Order Button */}
                     <div className="col-md-12">
                       <div className="form-group d-flex align-items-center justify-content-between">
                         <div>
-                        <label htmlFor="terms" className="terms-label">
-                          <input type="checkbox" name="terms" id="terms" style={{ marginRight: '10px' }} />
-                          
+                          <label htmlFor="terms" className="terms-label">
+                            <input type="checkbox" name="terms" id="terms" style={{ marginRight: '10px' }} />
                             I have read and agree to the
                             <a href="#" className="terms-link"> Terms and Conditions</a>,
                             <a href="#" className="terms-link"> Privacy Policy</a>,
@@ -79,18 +118,19 @@ export const Payment = () => {
                             <a href="#" className="terms-link"> Refund and Return Policy</a>.
                           </label>
                         </div>
-                        <div class="button-container">
+                        <div className="button-container">
                           <button type="button" className="btn btn-primary mx-1">Place Order</button>
                         </div>
                       </div>
                     </div>
-                  </div> 
+
+                  </div>
                 </div>
               </div>
             </div>
-          </div> 
-        </div>  
-      </div> 
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

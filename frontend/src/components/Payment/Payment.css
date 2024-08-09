@@ -1,12 +1,15 @@
 /* General Card Styles */
+
 .card {
     border: none;
     border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: none; /* Removed the shadow to eliminate the border effect */
     margin-bottom: 20px;
     background-color: #ffffff; /* Soft white background */
     overflow: hidden;
 }
+
+
 
 .card-header {
     background: linear-gradient(135deg, #1e3050, #04bade); /* Gradient background similar to contact page */
@@ -24,8 +27,6 @@
 }
 
 /* Typography */
-
-
 label {
     font-size: 0.9rem;
     color: #666;
@@ -64,6 +65,24 @@ textarea.form-control {
     min-height: 100px;
 }
 
+/* Delivery and Payment Options Styles */
+.delivery-options, .payment-options {
+    display: flex;
+    flex-direction: column;
+}
+
+.delivery-options div, .payment-options div {
+    margin-bottom: 10px;
+}
+
+.delivery-options label, .payment-options label {
+    display: inline;
+    margin-left: 10px;
+    font-size: 1rem;
+    color: #666;
+    text-transform: none;
+}
+
 /* Button Styles */
 .button-container {
     display: flex;
@@ -96,7 +115,7 @@ textarea.form-control {
     gap: 20px; /* Spacing between rows */
 }
 
-.col-md-6, .col-md-12, .col-md-4 {
+.col-md-6, .col-md-12, .col-md-4, .col-md-7, .col-md-5 {
     padding: 0 15px;
     box-sizing: border-box;
 }
@@ -111,6 +130,14 @@ textarea.form-control {
 
 .col-md-4 {
     width: 33.33%;
+}
+
+.col-md-7 {
+    width: 58.33%;
+}
+
+.col-md-5 {
+    width: 41.67%;
 }
 
 .text-end {
@@ -161,4 +188,14 @@ textarea.form-control {
 /* Button should align with the checkbox line */
 .btn-primary {
     margin-top: 0; /* Remove any top margin */
+}
+
+/* Order Summary Styles */
+.order-summary .card-header {
+    background: #04bade; /* Order summary header color */
+    color: white;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
 }
