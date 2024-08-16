@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import ProductData from "../Product/ProductData";
+import { useAuth1 } from "../Authentication/LoginContest";
 
 export const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
-
+const {isLoggedIn1,setIsLoggedIn1}=useAuth1();
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
-
+  console.log(isLoggedIn1)
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     console.log("Searching for:", searchQuery);
@@ -133,50 +134,37 @@ export const Navbar = () => {
                 </Link>
                 <ul className="menu-dropdown">
                   <li>
-                    <Link to="/Processor" className="list" onClick={handleMenuItemClick}>
+                    <Link to="/category/cpu" className="list" onClick={handleMenuItemClick}>
                       Processor
                     </Link>
                   </li>
                   <li>
-                    <Link to="/CPUCooler" className="list" onClick={handleMenuItemClick}>
+                    <Link to="/category/cpucooler" className="list" onClick={handleMenuItemClick}>
                       CPU Cooler
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Motherboard" className="list" onClick={handleMenuItemClick}>
+                    <Link to="/category/motherboard" className="list" onClick={handleMenuItemClick}>
                       Motherboard
                     </Link>
                   </li>
                   <li>
-                    <Link to="/GraphicsCard" className="list" onClick={handleMenuItemClick}>
+                    <Link to="/category/gpu" className="list" onClick={handleMenuItemClick}>
                       Graphics Card
                     </Link>
                   </li>
                   <li>
-                    <Link to="/RandomAccessMemory" className="list" onClick={handleMenuItemClick}>
+                    <Link to="/category/ram" className="list" onClick={handleMenuItemClick}>
                       Random Access Memory
                     </Link>
                   </li>
+                  
                   <li>
-                    <Link to="/HardDiskDrive" className="list" onClick={handleMenuItemClick}>
-                      Hard Disk Drive
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/SolidDiskDrive" className="list" onClick={handleMenuItemClick}>
+                    <Link to="/category/ssd" className="list" onClick={handleMenuItemClick}>
                       Solid Disk Drive
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/Monitor" className="list" onClick={handleMenuItemClick}>
-                      Monitor
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/Casing" className="list" onClick={handleMenuItemClick}>
-                      Casing
-                    </Link>
-                  </li>
+                  
                 </ul>
               </div>
             </li>

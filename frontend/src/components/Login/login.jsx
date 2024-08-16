@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 import { useAuth } from "../Authentication/AuthContext";
+import { useAuth1 } from "../Authentication/LoginContest";
 
 export const Login1 = () => {
   const [formData, setFormdata] = useState({
@@ -15,6 +16,7 @@ export const Login1 = () => {
   axios.defaults.withCredentials = true;
   const email_admin = process.env.email_admin;
   const password_admin = process.env.password_admin;
+  const { setIsLoggedIn1 } = useAuth1();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,9 +34,11 @@ export const Login1 = () => {
           
             setIsLoggedIn(true);
           }
+          else {
+            setIsLoggedIn1(true);
           navigate('/Auth');
           alert("Login successful!");
-        } else {
+        } 
           alert("Login failed!");
         }
       })

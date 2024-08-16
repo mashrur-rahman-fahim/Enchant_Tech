@@ -127,9 +127,8 @@ export const Ultrabook = () => {
               <div className="product-price">Price: {item.price}</div>
               <StarRating rating={item.rating} />
               <div className="product-actions">
-                <button className="buy-button">Buy Now</button>
                 <button className="cart-button" onClick={() => addToCart(item)}>
-                  Add to Cart
+                Buy Now
                 </button>
               </div>
             </div>

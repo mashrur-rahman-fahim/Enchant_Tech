@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Desktop } from "./pages/Desktop";
 import { Laptop } from "./pages/Laptop";
-import { Components } from "./pages/Components";
+
 import { Gaming1 } from "./pages/Gaming1";
 import { Login2 } from "./pages/Login2";
 import { Signup } from "./pages/signup";
@@ -30,9 +30,12 @@ import { GamingLaptop } from './pages/GamingLaptop';
 import { AllDesktop } from './pages/AllDesktop';
 import { LaptopUltra } from './pages/LaptopUltra';
 import { LaptopAll } from './pages/LaptopAll';
+import { Components2 } from './pages/Components2';
+import { LoginProvider } from './components/Authentication/LoginContest';
 
 function App() {
   return (
+    <LoginProvider>
     <AuthProvider>
       <CartProvider>
         <BrowserRouter>
@@ -43,7 +46,7 @@ function App() {
               <Route path="/Login1" element={<Login1 />} />
               <Route path="/Desktop" element={<Desktop />} />
               <Route path="/Laptop" element={<Laptop />} />
-              <Route path="/Components" element={<Components />} />
+              
               <Route path="/Gaming" element={<Gaming1 />} />
               <Route path="/SignUp" element={<Signup />} />
               <Route path="/:id" element={<Product />} />
@@ -61,11 +64,13 @@ function App() {
               <Route path='/Desktop/AllInOne' element={<AllDesktop/>}/>
               <Route path='/Laptop/Ultrabook' element={<LaptopUltra/>}/>
               <Route path='/Laptop/AllInOne' element={<LaptopAll/>}/>
+              <Route path="/category/:category" element={<Components2/>} />
             </Routes>
           </Layout>
         </BrowserRouter>
       </CartProvider>
     </AuthProvider>
+    </LoginProvider>
   );
 }
 
