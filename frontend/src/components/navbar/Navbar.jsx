@@ -9,8 +9,8 @@ export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { isLoggedIn1, setIsLoggedIn1 } = useAuth1();
   const [validLog, setValidLog] = useState(false);
-  const [logoutCheck, setLogoutCheck] = useState(false);
-  const [ProductData,setProductData]=useState([]);
+  const [ProductData, setProductData] = useState([]);
+
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -30,11 +30,12 @@ export const Navbar = () => {
       .catch((error) => console.error("Error fetching auth status:", error));
   };
 
-useEffect(()=>{
-  fetch('http://localhost:4000/products')
-  .then(response => response.json())
-  .then(data => setProductData(data))
-},[])
+  useEffect(() => {
+    fetch('http://localhost:4000/products')
+      .then(response => response.json())
+      .then(data => setProductData(data));
+  }, []);
+
   useEffect(() => {
     // Check auth status initially
     checkAuthStatus();
@@ -51,30 +52,29 @@ useEffect(()=>{
     console.log("Searching for:", searchQuery);
   };
 
-  const handleMenuItemClick = async () => {
-    setMenuOpen(false);
-    if (isLoggedIn1 && logoutCheck) {
-      try {
-        const response = await fetch("http://localhost:4000/logout", {
-          method: "POST",
-          credentials: "include",
-        });
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/logout", {
+        method: "POST",
+        credentials: "include",
+      });
 
-        if (response.ok) {
-          console.log("Logged out successfully");
-          setIsLoggedIn1(false);
-          setValidLog(false);
-          navigate("/login");
-        } else {
-          console.error("Failed to log out");
-        }
-      } catch (error) {
-        console.error("Error during logout:", error);
+      if (response.ok) {
+        console.log("Logged out successfully");
+        setIsLoggedIn1(false);
+        setValidLog(false);
+        navigate("/login");
+      } else {
+        console.error("Failed to log out");
       }
+    } catch (error) {
+      console.error("Error during logout:", error);
     }
   };
 
-  console.log(isLoggedIn1 + "  " + validLog);
+  const handleMenuItemClick = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <nav className="nav">
@@ -278,7 +278,7 @@ useEffect(()=>{
           <Link to="/About" className="nav-link" onClick={handleMenuItemClick}>
             ABOUT
           </Link>
-          {!isLoggedIn1 && !validLog ? (
+          {!isLoggedIn1 || !validLog ? (
             <Link
               to="/Login"
               className="nav-link"
@@ -286,25 +286,22 @@ useEffect(()=>{
             >
               LOGIN
             </Link>
-          
           ) : (
-            <Link
-              to="/Login"
+            <Link 
               className="nav-link"
               onClick={() => {
-                setLogoutCheck(true);
+                handleLogout();
                 handleMenuItemClick();
               }}
             >
               LOGOUT
             </Link>
-            
           )}
-          {isLoggedIn1 && validLog ?
-          <Link to="/profile" className="nav-link" onClick={handleMenuItemClick}>
-          PROFILE
-        </Link>:<></>
-        }
+          {isLoggedIn1 && validLog ? (
+            <Link to="/profile" className="nav-link" onClick={handleMenuItemClick}>
+              PROFILE
+            </Link>
+          ) : null}
           <Link
             to="/PCBuilder"
             className="pcBuild"
