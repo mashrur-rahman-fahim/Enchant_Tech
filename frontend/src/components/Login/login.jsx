@@ -29,16 +29,17 @@ export const Login1 = () => {
       .then((response) => {
         const data = response.data;
         if (data.Login) {
-          console.log(data.email)
           if (formData.email ==="admin@gmail.com" && formData.password === "admin") {
           
             setIsLoggedIn(true);
+            navigate(`/Auth/${formData.email}`)
           }
-          else {
+          else if(setIsLoggedIn1) {
             setIsLoggedIn1(true);
-          navigate('/Auth');
+          navigate(`/Auth/${formData.email}`);
           alert("Login successful!");
         } 
+        else
           alert("Login failed!");
         }
       })

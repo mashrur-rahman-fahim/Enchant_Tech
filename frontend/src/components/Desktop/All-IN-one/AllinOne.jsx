@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../cart/CartContext";
+import { useAuth } from "../../Authentication/AuthContext";
 
 
 const StarRating = ({ rating }) => {
@@ -20,6 +21,7 @@ const StarRating = ({ rating }) => {
 };
 
 export const AllinOne = () => {
+ 
   const { fetchCartCount } = useContext(CartContext);
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
@@ -126,9 +128,11 @@ export const AllinOne = () => {
               <div className="product-price">Price: {item.price}</div>
               <StarRating rating={item.rating} />
               <div className="product-actions">
+                
                 <button className="cart-button" onClick={() => addToCart(item)}>
                 Buy Now
                 </button>
+               
               </div>
             </div>
           </div>

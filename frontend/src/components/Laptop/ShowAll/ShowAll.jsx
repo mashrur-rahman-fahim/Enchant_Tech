@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../cart/CartContext";
+import { useAuth } from "../../Authentication/AuthContext";
 
 
 const StarRating = ({ rating }) => {
@@ -20,6 +21,8 @@ const StarRating = ({ rating }) => {
 };
 
 export const ShowAll = () => {
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
+
   const { fetchCartCount } = useContext(CartContext);
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
@@ -27,7 +30,18 @@ export const ShowAll = () => {
   const [searchValue, setSearchValue] = useState("");
 
   const brandOptions = ["All", "HP", "Asus", "Lenovo", "Dell", "Apple", "Acer", "MSI"];
+  const handleRemv=(id)=>{
+    fetch(`http://localhost:4000/products/${id}`,{
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      }
 
+      
+    })
+    .then(response => response.json())
+    .then(data =>{ window.location.reload()})
+}
   useEffect(() => {
     fetch('http://localhost:4000/products')
       .then(res => res.json())
@@ -126,9 +140,13 @@ export const ShowAll = () => {
               <div className="product-price">Price: {item.price}</div>
               <StarRating rating={item.rating} />
               <div className="product-actions">
+              {isLoggedIn===false?
                 <button className="cart-button" onClick={() => addToCart(item)}>
                 Buy Now
-                </button>
+                </button>:
+                <button className="cart-button" onClick={() =>handleRemv(item.id)}>
+                REMOVE
+                </button>}
               </div>
             </div>
           </div>

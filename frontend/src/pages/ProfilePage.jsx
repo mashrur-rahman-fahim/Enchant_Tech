@@ -1,12 +1,8 @@
 import React from 'react'
 import { Profile } from '../components/Profile/Profile'
 
-
-export const Profile1 = () => {
+export const ProfilePage = () => {
   return (
-    <div>
-        <Profile/>
-
-    </div>
+    <div><Profile/></div>
   )
 }

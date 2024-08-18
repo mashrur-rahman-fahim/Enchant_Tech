@@ -1,7 +1,7 @@
 // file: D:/web_app/Enchant_Tech/frontend/src/pages/Admin1.js
 
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Admin.css';
 import { useAuth } from "../Authentication/AuthContext";
 import axios from "axios";
@@ -169,9 +169,24 @@ export const Admin = () => {
     <div className="admin-container">
       <header className="admin-header">
         <button
-          onClick={() => {
-            setIsLoggedIn(false);
-            navigate("/Login");
+          onClick={async() => {
+            try {
+              const response = await fetch('http://localhost:4000/logout', {
+                method: 'POST',
+                credentials: 'include', // This is necessary to send cookies with the request
+              });
+          
+              if (response.ok) {
+                console.log('Logged out successfully');
+                setIsLoggedIn(false);
+            navigate('/login');
+                // Perform additional logout actions (e.g., redirect to login page)
+              } else {
+                console.error('Failed to log out');
+              }
+            } catch (error) {
+              console.error('Error during logout:', error);
+            }
           }}
           className="logout-button"
         >
@@ -235,7 +250,12 @@ export const Admin = () => {
           <div className="product-counts">
             {Object.entries(productCounts).map(([key, count]) => (
               <div key={key} className="product-count">
-                <h3>{key.charAt(0).toUpperCase() + key.slice(1)}</h3>
+               <h3 onClick={()=>{
+                const route_path=key.charAt(0)+key.slice(1)
+                if(route_path==="desktop" || route_path==="laptop")
+                {navigate(`/${route_path}`)}
+                else
+                navigate(`/category/${key.charAt(0)+key.slice(1)}`)}}>{key.charAt(0).toUpperCase() + key.slice(1)}</h3>
                 <p>{count}</p>
               </div>
             ))}

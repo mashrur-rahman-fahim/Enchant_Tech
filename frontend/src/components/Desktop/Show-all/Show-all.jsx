@@ -4,6 +4,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../cart/CartContext";
 import "./show-all.css";
+import { useAuth } from "../../Authentication/AuthContext";
 
 const StarRating = ({ rating }) => {
   const stars = [];
@@ -20,6 +21,8 @@ const StarRating = ({ rating }) => {
 };
 
 export const Show = () => {
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
+  
   const { fetchCartCount } = useContext(CartContext);
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
@@ -72,7 +75,18 @@ export const Show = () => {
   const handleSort = (option) => {
     setSortOption(option);
   };
+  const handleRemv=(id)=>{
+        fetch(`http://localhost:4000/products/${id}`,{
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          }
 
+          
+        })
+        .then(response => response.json())
+        .then(data =>{ window.location.reload()})
+  }
   const addToCart = (product) => {
     const productToAdd = { ...product, date: new Date() };
 
@@ -126,9 +140,13 @@ export const Show = () => {
               <div className="product-price">Price: {item.price}</div>
               <StarRating rating={item.rating} />
               <div className="product-actions">
+                {isLoggedIn===false?
                 <button className="cart-button" onClick={() => addToCart(item)}>
                 Buy Now
-                </button>
+                </button>:
+                <button className="cart-button" onClick={() =>handleRemv(item.id)}>
+                REMOVE
+                </button>}
               </div>
             </div>
           </div>

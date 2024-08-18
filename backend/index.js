@@ -164,8 +164,14 @@ app.get('/auth', verifyUser, (req, res) => {
   return res.status(200).json({ valid: true, message: 'Authorized' });
 });
 
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+});
+app.post('/logout', (req, res) => {
+  res.clearCookie('access_token', { httpOnly: true, secure: true, sameSite: 'Strict' });
+  res.clearCookie('refresh_token', { httpOnly: true, secure: true, sameSite: 'Strict' });
+  return res.status(200).json({ message: 'Logged out successfully' });
 });
 
 // All Product Routes

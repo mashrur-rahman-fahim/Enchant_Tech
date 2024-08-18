@@ -2,11 +2,13 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { useAuth1 } from './LoginContest';
 
 export const Authen = () => {
+  const {email}=useParams()
+  
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
@@ -22,7 +24,7 @@ export const Authen = () => {
         if (data.valid) {
           setMessage(data.message);
           if (isLoggedIn) navigate('/Admin');
-          if (isLoggedIn1) console.log("profile");
+          if (isLoggedIn1) navigate(`/save/${email}`);
         } else {
           setMessage(data.message);
           setIsLoggedIn(false);

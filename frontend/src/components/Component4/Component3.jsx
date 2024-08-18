@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { CartContext } from "../cart/CartContext";
+import { useAuth } from "../Authentication/AuthContext";
 
 
 const StarRating = ({ rating }) => {
@@ -18,6 +19,8 @@ const StarRating = ({ rating }) => {
 };
 
 export const Component3 = () => {
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
+
   const { fetchCartCount } = useContext(CartContext);
   const { category } = useParams();
   const [products, setProducts] = useState([]);
@@ -47,7 +50,18 @@ export const Component3 = () => {
       })
       .catch(error => console.error("Error fetching products:", error));
   }, [category]);
+  const handleRemv=(id)=>{
+    fetch(`http://localhost:4000/products/${id}`,{
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      }
 
+      
+    })
+    .then(response => response.json())
+    .then(data =>{ window.location.reload()})
+}
   useEffect(() => {
     let result = [...products];
     if (searchValue) {
@@ -117,9 +131,13 @@ export const Component3 = () => {
               <div className="product-price">Price: {product.price}</div>
               <StarRating rating={product.rating} />
               <div className="product-actions">
+              {isLoggedIn===false?
                 <button className="cart-button" onClick={() => handleAddToCart(product)}>
-                  Buy Now
-                </button>
+                Buy Now
+                </button>:
+                <button className="cart-button" onClick={() =>handleRemv(product.id)}>
+                REMOVE
+                </button>}
               </div>
             </div>
           </div>
