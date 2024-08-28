@@ -1,24 +1,79 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
-import ProductData from "../Product/ProductData";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth1 } from "../Authentication/LoginContest";
 
 export const Navbar = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const { isLoggedIn1, setIsLoggedIn1 } = useAuth1();
+  const [validLog, setValidLog] = useState(false);
+  const [ProductData, setProductData] = useState([]);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
+  const checkAuthStatus = () => {
+    fetch("http://localhost:4000/auth", { credentials: "include" })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.valid) {
+          setIsLoggedIn1(true);
+          setValidLog(true);
+        } else {
+          setIsLoggedIn1(false);
+          setValidLog(false);
+        }
+      })
+      .catch((error) => console.error("Error fetching auth status:", error));
+  };
+
+  useEffect(() => {
+    fetch('http://localhost:4000/products')
+      .then(response => response.json())
+      .then(data => setProductData(data));
+  }, []);
+
+  useEffect(() => {
+    // Check auth status initially
+    checkAuthStatus();
+
+    // Set up interval to check auth status every 5 minutes
+    const intervalId = setInterval(checkAuthStatus, 5 * 1000);
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId);
+  }, [setIsLoggedIn1, setValidLog]);
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     console.log("Searching for:", searchQuery);
-    // Implement search functionality here
+  };
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (response.ok) {
+        console.log("Logged out successfully");
+        setIsLoggedIn1(false);
+        setValidLog(false);
+        navigate("/login");
+      } else {
+        console.error("Failed to log out");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
   };
 
   const handleMenuItemClick = () => {
-    setMenuOpen(false); // Close the menu when a menu item is clicked
+    setMenuOpen(false);
   };
 
   return (
@@ -68,6 +123,7 @@ export const Navbar = () => {
 
         <div className="shop">
           <ul className="hList">
+            {/* Desktop Section */}
             <li>
               <div className="menu">
                 <Link to="/Desktop" onClick={handleMenuItemClick}>
@@ -75,28 +131,36 @@ export const Navbar = () => {
                 </Link>
                 <ul className="menu-dropdown">
                   <li>
-                    <Link to="/Gaming" className="list" onClick={handleMenuItemClick}>
+                    <Link
+                      to="/Gaming"
+                      className="list"
+                      onClick={handleMenuItemClick}
+                    >
                       Gaming PC
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Desktop/AllInOne" className="list" onClick={handleMenuItemClick}>
+                    <Link
+                      to="/Desktop/AllInOne"
+                      className="list"
+                      onClick={handleMenuItemClick}
+                    >
                       All-in-One PC
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Apple-iMac" className="list" onClick={handleMenuItemClick}>
-                      Apple iMac
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/Desktop" className="list" onClick={handleMenuItemClick}>
+                    <Link
+                      to="/Desktop"
+                      className="list"
+                      onClick={handleMenuItemClick}
+                    >
                       Show All Desktop
                     </Link>
                   </li>
                 </ul>
               </div>
             </li>
+            {/* Laptop Section */}
             <li>
               <div className="menu">
                 <Link to="/Laptop" onClick={handleMenuItemClick}>
@@ -104,28 +168,36 @@ export const Navbar = () => {
                 </Link>
                 <ul className="menu-dropdown">
                   <li>
-                    <Link to="/GamingLaptop" className="list" onClick={handleMenuItemClick}>
+                    <Link
+                      to="/GamingLaptop"
+                      className="list"
+                      onClick={handleMenuItemClick}
+                    >
                       Gaming Laptop
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Laptop/Ultrabook" className="list" onClick={handleMenuItemClick}>
-                      Premium Ultrabook
+                    <Link
+                      to="/Laptop/AllInOne"
+                      className="list"
+                      onClick={handleMenuItemClick}
+                    >
+                      All-in-One Laptop
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Laptop/AllInOne" className="list" onClick={handleMenuItemClick}>
-                    All-in-One Laptop
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/Laptop" className="list" onClick={handleMenuItemClick}>
+                    <Link
+                      to="/Laptop"
+                      className="list"
+                      onClick={handleMenuItemClick}
+                    >
                       Show All Laptop
                     </Link>
                   </li>
                 </ul>
               </div>
             </li>
+            {/* Components Section */}
             <li>
               <div className="menu">
                 <Link to="/Components" onClick={handleMenuItemClick}>
@@ -133,48 +205,57 @@ export const Navbar = () => {
                 </Link>
                 <ul className="menu-dropdown">
                   <li>
-                    <Link to="/Processor" className="list" onClick={handleMenuItemClick}>
+                    <Link
+                      to="/category/cpu"
+                      className="list"
+                      onClick={handleMenuItemClick}
+                    >
                       Processor
                     </Link>
                   </li>
                   <li>
-                    <Link to="/CPUCooler" className="list" onClick={handleMenuItemClick}>
+                    <Link
+                      to="/category/cpucooler"
+                      className="list"
+                      onClick={handleMenuItemClick}
+                    >
                       CPU Cooler
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Motherboard" className="list" onClick={handleMenuItemClick}>
+                    <Link
+                      to="/category/motherboard"
+                      className="list"
+                      onClick={handleMenuItemClick}
+                    >
                       Motherboard
                     </Link>
                   </li>
                   <li>
-                    <Link to="/GraphicsCard" className="list" onClick={handleMenuItemClick}>
+                    <Link
+                      to="/category/gpu"
+                      className="list"
+                      onClick={handleMenuItemClick}
+                    >
                       Graphics Card
                     </Link>
                   </li>
                   <li>
-                    <Link to="/RandomAccessMemory" className="list" onClick={handleMenuItemClick}>
+                    <Link
+                      to="/category/ram"
+                      className="list"
+                      onClick={handleMenuItemClick}
+                    >
                       Random Access Memory
                     </Link>
                   </li>
                   <li>
-                    <Link to="/HardDiskDrive" className="list" onClick={handleMenuItemClick}>
-                      Hard Disk Drive
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/SolidDiskDrive" className="list" onClick={handleMenuItemClick}>
+                    <Link
+                      to="/category/ssd"
+                      className="list"
+                      onClick={handleMenuItemClick}
+                    >
                       Solid Disk Drive
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/Monitor" className="list" onClick={handleMenuItemClick}>
-                      Monitor
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/Casing" className="list" onClick={handleMenuItemClick}>
-                      Casing
                     </Link>
                   </li>
                 </ul>
@@ -187,16 +268,45 @@ export const Navbar = () => {
           <Link to="/" className="nav-link" onClick={handleMenuItemClick}>
             HOME
           </Link>
-          <Link to="/Contact" className="nav-link" onClick={handleMenuItemClick}>
+          <Link
+            to="/Contact"
+            className="nav-link"
+            onClick={handleMenuItemClick}
+          >
             CONTACT
           </Link>
           <Link to="/About" className="nav-link" onClick={handleMenuItemClick}>
             ABOUT
           </Link>
-          <Link to="/Login" className="nav-link" onClick={handleMenuItemClick}>
-            LOGIN
-          </Link>
-          <Link to="/PCBuilder" className="pcBuild" onClick={handleMenuItemClick}>
+          {!isLoggedIn1 || !validLog ? (
+            <Link
+              to="/Login"
+              className="nav-link"
+              onClick={handleMenuItemClick}
+            >
+              LOGIN
+            </Link>
+          ) : (
+            <Link 
+              className="nav-link"
+              onClick={() => {
+                handleLogout();
+                handleMenuItemClick();
+              }}
+            >
+              LOGOUT
+            </Link>
+          )}
+          {isLoggedIn1 && validLog ? (
+            <Link to="/profile" className="nav-link" onClick={handleMenuItemClick}>
+              PROFILE
+            </Link>
+          ) : null}
+          <Link
+            to="/PCBuilder"
+            className="pcBuild"
+            onClick={handleMenuItemClick}
+          >
             PC Builder
           </Link>
         </div>
