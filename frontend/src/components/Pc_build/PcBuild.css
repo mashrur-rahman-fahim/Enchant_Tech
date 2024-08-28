@@ -6,98 +6,97 @@
     background-color: #f4f4f4;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  /* eikhane classnane add krbi...direct h2 likhbi na */
-  
-  /* h2 {
+/* Styles for PC Builder title */
+.pcbuild-title {
     text-align: center;
     color: #333;
-  } */
-  
-  .build-info {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Styles for build information */
+.build-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-  }
-  
-  .content {
-    display: flex;
-  }
-  
-  .total-info {
+}
+
+.total-info {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     margin-left: auto;
-  }
-  
-  .item-count,
-  .total-cost {
+}
+
+.item-count,
+.total-cost {
     font-size: 18px;
     color: #333;
     margin-right: 20px;
     display: flex;
     align-items: center;
-  }
-  
-  .item-label,
-  .cost-label {
+}
+
+.item-label,
+.cost-label {
     margin-left: 5px;
     color: #666;
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-  }
-  
-  .cart-icon {
+}
+
+.cart-icon {
     font-size: 24px;
     color: #3937b5;
-  }
+}
 
-  /* eikhane classnane add krbi...direct h2 likhbi na */
-  
-  /* h3 {
+/* Styles for subtitle */
+.pcbuild-subtitle {
     margin-bottom: 20px;
     color: #555;
     border-bottom: 2px solid #ddd;
     padding-bottom: 10px;
-  } */
-  
-  .component-row {
+}
+
+/* Styles for component rows */
+.component-row {
     display: flex;
     align-items: center;
     padding: 15px 0;
     border-bottom: 1px solid #ddd;
-  }
-  
-  .component-icon {
+}
+
+.component-icon {
     flex: 0 0 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
     color: #3e3ed3;
-  }
-  
-  .component-details {
+}
+
+.component-details {
     flex: 1;
     margin-left: 15px;
-  }
-  
-  .component-name {
+}
+
+.component-name {
     font-weight: bold;
     color: #333;
-  }
-  
-  .component-selection {
+}
+
+.component-selection {
     display: flex;
     align-items: center;
-  }
-  
-  .component-selection select {
+}
+
+/* Styles for select boxes */
+.component-selection select {
     padding: 8px;
     border: 1px solid #4027d1;
     border-radius: 5px;
@@ -105,18 +104,19 @@
     color: #0c0474;
     font-size: 14px;
     width: 150px;
-  }
-  
-  .component-selection select:hover {
+}
+
+.component-selection select:hover {
     border-color: #999;
-  }
-  
-  .component-selection select:focus {
+}
+
+.component-selection select:focus {
     outline: none;
     border-color: #666;
-  }
-  
-  .summary-box {
+}
+
+/* Styles for summary box */
+.summary-box {
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -124,45 +124,215 @@
     width: 200px;
     position: sticky;
     top: 20px;
-  }
-  
-  .summary-box h4 {
+}
+
+.summary-box-title {
     text-align: center;
     margin-bottom: 10px;
     color: #555;
-  }
-  
-  .summary-item {
+}
+
+.summary-item {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-  }
-  
-  .summary-item .value {
+}
+
+.summary-item .value {
     font-size: 18px;
     font-weight: bold;
     color: #333;
-  }
-  
-  .summary-item .label {
+}
+
+.summary-item .label {
     font-size: 14px;
     color: #666;
-  }
-  
-  @media screen and (max-width: 600px) {
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
     .build-info {
-      flex-direction: column;
-      text-align: center;
+        flex-direction: column;
+        text-align: center;
     }
-  
+
     .total-info {
-      justify-content: center;
-      margin-top: 20px;
+        justify-content: center;
+        margin-top: 20px;
     }
-  
+
     .item-count,
     .total-cost {
-      margin-right: 0;
-      margin-bottom: 10px;
+        margin-right: 0;
+        margin-bottom: 10px;
     }
-  }
+}
+.pc-builder {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for PC Builder title */
+.pcbuild-title {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Styles for build information */
+.build-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.total-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.item-count,
+.total-cost {
+    font-size: 18px;
+    color: #333;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.item-label,
+.cost-label {
+    margin-left: 5px;
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cart-icon {
+    font-size: 24px;
+    color: #3937b5;
+}
+
+/* Styles for subtitle */
+.pcbuild-subtitle {
+    margin-bottom: 20px;
+    color: #555;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Styles for component rows */
+.component-row {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.component-icon {
+    flex: 0 0 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #3e3ed3;
+}
+
+.component-details {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.component-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.component-selection {
+    display: flex;
+    align-items: center;
+}
+
+/* Styles for select boxes */
+.component-selection select {
+    padding: 8px;
+    border: 1px solid #4027d1;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #0c0474;
+    font-size: 14px;
+    width: 150px;
+}
+
+.component-selection select:hover {
+    border-color: #999;
+}
+
+.component-selection select:focus {
+    outline: none;
+    border-color: #666;
+}
+
+/* Styles for summary box */
+.summary-box {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    width: 200px;
+    position: sticky;
+    top: 20px;
+}
+
+.summary-box-title {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.summary-item .value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.summary-item .label {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+    .build-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .total-info {
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .item-count,
+    .total-cost {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
