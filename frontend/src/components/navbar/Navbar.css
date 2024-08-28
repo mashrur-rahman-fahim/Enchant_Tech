@@ -348,7 +348,7 @@ header .component a:hover::after {
   margin: 05px 8px;
 }
 /* Responsive Styles */
-@media (max-width: 1238px) {
+@media (max-width: 1538px) {
   .menu-icon {
     display: flex;
   }

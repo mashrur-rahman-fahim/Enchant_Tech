@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Line } from "react-chartjs-2";
-import 'chart.js/auto';
 import './Admin.css';
 import { useAuth } from "../Authentication/AuthContext";
 import axios from "axios";
@@ -13,22 +11,26 @@ export const Admin = () => {
   axios.defaults.withCredentials = true;
 
   const { isLoggedIn, setIsLoggedIn } = useAuth();
+
   useEffect(() => {
-    fetch("http://localhost:4000/auth", {
-      credentials: 'include'
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.valid) {
-        
-          if (isLoggedIn) navigate('/Admin');
+    // Authenticate the user on page load
+    axios.get("http://localhost:4000/auth", { withCredentials: true })
+      .then(response => {
+        if (response.data.valid) {
+          if (!isLoggedIn) {
+            setIsLoggedIn(true);
+            navigate('/Admin');
+          }
         } else {
-        
           setIsLoggedIn(false);
           navigate('/Login');
         }
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error("Authentication error:", err);
+        setIsLoggedIn(false);
+        navigate('/Login');
+      });
   }, [navigate, isLoggedIn, setIsLoggedIn]);
 
   const [product, setProduct] = useState({
@@ -37,56 +39,34 @@ export const Admin = () => {
     description: "",
     price: "",
     cat: "gaming",
-    catagory: "laptop",
+    catagory: "laptop", // Backend uses "catagory" field
     brand: "",
   });
 
   const [productCounts, setProductCounts] = useState({
     laptop: 0,
     desktop: 0,
-    processor: 0,
-    cpuCooler: 0,
+    gpu: 0,
+    cpu: 0,
+    cpucooler: 0,
     motherboard: 0,
-    graphicsCard: 0,
     ram: 0,
-    hdd: 0,
     ssd: 0,
-    monitor: 0,
-    casing: 0
   });
-
-  const [chartData, setChartData] = useState({
-    labels: ["January", "February", "March", "April", "May"],
-    datasets: [
-      {
-        label: "Sales",
-        data: [12, 19, 3, 5, 2, 3],
-        borderColor: "rgba(75,192,192,1)",
-        backgroundColor: "rgba(75,192,192,0.2)"
-      }
-    ]
-  });
-
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
 
   const brandOptions = {
-    laptop: ["HP", "Asus", "Lenovo", "Dell", "Apple", "Acer", "MSI","ULTRABOOK"],
-    desktop: ["HP", "Asus", "Lenovo", "Dell", "Acer", "MSI","iMac"],
-    processors: ["Intel", "AMD"],
-    cpucoolers: ["Cooler Master", "Corsair", "Noctua", "NZXT"],
+    laptop: ["HP", "Asus", "Lenovo", "Dell", "Apple", "Acer", "MSI"],
+    desktop: ["HP", "Asus", "Lenovo", "Dell", "Acer", "MSI"],
+    gpu: ["NVIDIA", "AMD", "Asus", "MSI", "Gigabyte"],
+    cpu: ["Intel", "AMD"],
+    cpucooler: ["Cooler Master", "Corsair", "Noctua", "NZXT"],
     motherboard: ["Asus", "Gigabyte", "MSI", "ASRock"],
-    graphics: ["NVIDIA", "AMD", "Asus", "Gigabyte", "MSI"],
     ram: ["Corsair", "G.Skill", "Kingston", "Crucial"],
-    hdds: ["Seagate", "Western Digital", "Toshiba"],
-    ssds: ["Samsung", "Crucial", "Western Digital", "Kingston"],
-    monitor: ["Dell", "LG", "Samsung", "Asus"],
-    casing: ["Cooler Master", "Corsair", "NZXT", "Fractal Design"],
+    ssd: ["Samsung", "Crucial", "Western Digital", "Kingston"],
   };
 
   useEffect(() => {
     fetchProductCounts();
-    fetchSalesData();
   }, []);
 
   const handleChange = (e) => {
@@ -106,18 +86,13 @@ export const Admin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    setSuccess("");
     try {
-      const response = await fetch("http://localhost:4000/products", {
-        method: "POST",
+      const response = await axios.post("http://localhost:4000/products", product, {
         headers: {
           "Content-Type": "application/json"
-        },
-        body: JSON.stringify(product)
+        }
       });
-      if (response.ok) {
-        setSuccess("Product uploaded successfully!");
+      if (response.status === 200) {
         setProduct({
           img: "",
           title: "",
@@ -127,71 +102,56 @@ export const Admin = () => {
           catagory: "laptop",
           brand: brandOptions["laptop"][0].toLowerCase(),
         });
-        document.getElementById("admin_form").reset();
         fetchProductCounts();
       } else {
-        const result = await response.json();
-        setError(result.message || "Failed to upload product.");
+        console.error("Failed to upload product.");
       }
     } catch (error) {
       console.error("Error:", error);
-      setError("An error occurred while uploading the product.");
     }
   };
 
   const fetchProductCounts = async () => {
     try {
-      const response = await fetch("http://localhost:4000/products");
-      const data = await response.json();
+      const response = await axios.get("http://localhost:4000/products");
+      const data = response.data;
 
       const initialCounts = {
         laptop: 0,
         desktop: 0,
-        processor: 0,
-        cpuCooler: 0,
+        gpu: 0,
+        cpu: 0,
+        cpucooler: 0,
         motherboard: 0,
-        graphicsCard: 0,
         ram: 0,
-        hdd: 0,
         ssd: 0,
-        monitor: 0,
-        casing: 0,
       };
 
       const productCounts = data.reduce((counts, product) => {
-        switch (product.catagory) {
+        switch (product.catagory) { // Backend uses "catagory" field
           case "laptop":
             counts.laptop++;
             break;
           case "desktop":
             counts.desktop++;
             break;
-          case "processors":
-            counts.processor++;
+          case "gpu":
+            counts.gpu++;
             break;
-          case "cpucoolers":
-            counts.cpuCooler++;
+          case "cpu":
+            counts.cpu++;
+            break;
+          case "cpucooler":
+            counts.cpucooler++;
             break;
           case "motherboard":
             counts.motherboard++;
             break;
-          case "graphics":
-            counts.graphicsCard++;
-            break;
           case "ram":
             counts.ram++;
             break;
-          case "hdds":
-            counts.hdd++;
-            break;
-          case "ssds":
+          case "ssd":
             counts.ssd++;
-            break;
-          case "monitor":
-            counts.monitor++;
-            break;
-          case "casing":
-            counts.casing++;
             break;
           default:
             break;
@@ -200,24 +160,33 @@ export const Admin = () => {
       }, initialCounts);
 
       setProductCounts(productCounts);
-
     } catch (error) {
       console.error("Error fetching product counts:", error);
-      setError("Failed to fetch product counts.");
     }
-  };
-
-  const fetchSalesData = () => {
-    console.log("sales");
   };
 
   return (
     <div className="admin-container">
       <header className="admin-header">
         <button
-          onClick={() => {
-            setIsLoggedIn(false);
-            navigate("/Login");
+          onClick={async() => {
+            try {
+              const response = await fetch('http://localhost:4000/logout', {
+                method: 'POST',
+                credentials: 'include', // This is necessary to send cookies with the request
+              });
+          
+              if (response.ok) {
+                console.log('Logged out successfully');
+                setIsLoggedIn(false);
+            navigate('/login');
+                // Perform additional logout actions (e.g., redirect to login page)
+              } else {
+                console.error('Failed to log out');
+              }
+            } catch (error) {
+              console.error('Error during logout:', error);
+            }
           }}
           className="logout-button"
         >
@@ -228,8 +197,6 @@ export const Admin = () => {
       <main className="admin-main">
         <section className="form-section">
           <h2>Upload Product</h2>
-          {error && <p className="error">{error}</p>}
-          {success && <p className="success">{success}</p>}
           <form id="admin_form" className="admin-form" onSubmit={handleSubmit}>
             <label>
               Name:
@@ -252,22 +219,19 @@ export const Admin = () => {
               <select name="catagory" value={product.catagory} onChange={handleChange}>
                 <option value="laptop">Laptop</option>
                 <option value="desktop">Desktop</option>
-                <option value="processors">Processors</option>
-                <option value="cpucoolers">CPU Coolers</option>
+                <option value="gpu">GPU</option>
+                <option value="cpu">CPU</option>
+                <option value="cpucooler">CPU Cooler</option>
                 <option value="motherboard">Motherboard</option>
-                <option value="graphics">Graphics Card</option>
-                <option value="ram">Ram</option>
-                <option value="hdds">HDDs</option>
-                <option value="ssds">SSDs</option>
-                <option value="monitor">Monitors</option>
-                <option value="casing">Casings</option>
+                <option value="ram">RAM</option>
+                <option value="ssd">SSD</option>
               </select>
             </label>
             <label>
               Brand:
               <select name="brand" value={product.brand} onChange={handleChange}>
                 {brandOptions[product.catagory].map((brand, index) => (
-                  <option key={index} value={brand}>{brand}</option>
+                  <option key={index} value={brand.toLowerCase()}>{brand}</option>
                 ))}
               </select>
             </label>
@@ -284,56 +248,17 @@ export const Admin = () => {
         <section className="product-counts-section">
           <h2>Product Counts</h2>
           <div className="product-counts">
-            <div className="product-count">
-            <Link to={`/catagory/${"laptop"}`}><h3>Laptops</h3></Link>
-              <p>{productCounts.laptop}</p>
-            </div>
-            <div className="product-count">
-              <Link to={`/catagory/${"desktop"}`}><h3>Desktops</h3></Link>
-              <p>{productCounts.desktop}</p>
-            </div>
-            <div className="product-count">
-            <Link to={`/catagory/${"processors"}`}> <h3>Processors</h3></Link>
-              <p>{productCounts.processor}</p>
-            </div>
-            <div className="product-count">
-            <Link to={`/catagory/${"cpucoolers"}`}><h3>CPU Coolers</h3></Link>
-              <p>{productCounts.cpuCooler}</p>
-            </div>
-            <div className="product-count">
-            <Link to={`/catagory/${"motherboard"}`}> <h3>Motherboards</h3></Link>
-              <p>{productCounts.motherboard}</p>
-            </div>
-            <div className="product-count">
-            <Link to={`/catagory/${"graphics"}`}><h3>Graphics Cards</h3></Link>
-              <p>{productCounts.graphicsCard}</p>
-            </div>
-            <div className="product-count">
-            <Link to={`/catagory/${"ram"}`}><h3>RAM</h3></Link>
-              <p>{productCounts.ram}</p>
-            </div>
-            <div className="product-count">
-            <Link to={`/catagory/${"hdds"}`}><h3>HDDs</h3></Link>
-              <p>{productCounts.hdd}</p>
-            </div>
-            <div className="product-count">
-            <Link to={`/catagory/${"ssds"}`}><h3>SSDs</h3></Link>
-              <p>{productCounts.ssd}</p>
-            </div>
-            <div className="product-count">
-            <Link to={`/catagory/${"monitor"}`}><h3>Monitors</h3></Link>
-              <p>{productCounts.monitor}</p>
-            </div>
-            <div className="product-count">
-            <Link to={`/catagory/${"casing"}`}> <h3>Casings</h3></Link>
-              <p>{productCounts.casing}</p>
-            </div>
-          </div>
-        </section>
-        <section className="chart-section">
-          <h2>Sales Data</h2>
-          <div className="chart-container">
-            <Line data={chartData} />
+            {Object.entries(productCounts).map(([key, count]) => (
+              <div key={key} className="product-count">
+               <h3 onClick={()=>{
+                const route_path=key.charAt(0)+key.slice(1)
+                if(route_path==="desktop" || route_path==="laptop")
+                {navigate(`/${route_path}`)}
+                else
+                navigate(`/category/${key.charAt(0)+key.slice(1)}`)}}>{key.charAt(0).toUpperCase() + key.slice(1)}</h3>
+                <p>{count}</p>
+              </div>
+            ))}
           </div>
         </section>
       </main>

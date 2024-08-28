@@ -1,13 +1,12 @@
+import axios from 'axios';
 import React, { useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useAuth1 } from '../Authentication/LoginContest'
-import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+import { useAuth1 } from '../Authentication/LoginContest';
 
-export const Profile = () => {
-  const { email } = useParams();
-  
-  const { isLoggedIn1, setIsLoggedIn1 } = useAuth1();
+export const Main_profile = () => {
+    const { isLoggedIn1, setIsLoggedIn1 } = useAuth1();
   axios.defaults.withCredentials = true;
+  
   const navigate = useNavigate();
   console.log(isLoggedIn1)
 useEffect(()=>{
@@ -22,14 +21,7 @@ useEffect(()=>{
     }
   })
 },[navigate,setIsLoggedIn1])
-
-  
-
-
-
   return (
-    <div>
-      <h1>Welcome, {email}</h1>
-    </div>
-  );
-};
+    <div>Main_profile</div>
+  )
+}
