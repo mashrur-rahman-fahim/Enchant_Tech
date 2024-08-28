@@ -1,5 +1,4 @@
 /* --------------------login---------------- */
-
 .wrapper {
   display: flex;
   align-items: center;
@@ -258,3 +257,4 @@
 .signup h2 a:hover {
   transform: translateY(-3px);
 }
+
