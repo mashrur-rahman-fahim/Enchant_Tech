@@ -2,46 +2,36 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Cart.css";
 import { CartContext } from "./CartContext";
 import { useNavigate } from "react-router-dom";
+import { useAuth1 } from "../Authentication/LoginContest";
 
 export const Cart = () => {
-    const [cartData, setCartData] = useState([]);
     const [couponCode, setCouponCode] = useState("");
     const [discount, setDiscount] = useState(0);
     const [subtotal, setSubtotal] = useState(0);
     const [total, setTotal] = useState(0);
-    const { fetchCartCount } = useContext(CartContext);
-    const navigate=useNavigate();
+    const { cartData, updateCart, cartCount } = useContext(CartContext);
+    const { isLoggedIn1, setIsLoggedIn1 } = useAuth1();
 
-    useEffect(() => {
-        fetch('http://localhost:4000/api/cart')
-            .then(response => response.json())
-            .then(data => setCartData(data));
-    }, []);
+    const navigate = useNavigate();
 
     useEffect(() => {
         calculateTotals();
     }, [cartData, discount]);
 
     const rmv_frm_crt = (id) => {
-        setCartData(prevCartData => prevCartData.filter(item => item.id !== id));
-
-        fetch(`http://localhost:4000/api/cart/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
+        const updatedCartData = cartData.map(item => {
+            if (item.id === id) {
+                // Decrement the count or remove the item if the count is 1
+                if (item.count > 1) {
+                    return { ...item, count: item.count - 1 };
+                } else {
+                    return null; // Mark for removal
+                }
             }
-        })
-        .then(response => response.json())
-        .then(() => {
-            fetchCartCount();
-            window.location.reload();
-        })
-        .catch(error => {
-            console.error('Error removing item from cart:', error);
-            fetch('http://localhost:4000/api/cart')
-                .then(response => response.json())
-                .then(data => setCartData(data));
-        });
+            return item;
+        }).filter(item => item !== null); // Remove the marked items
+    
+        updateCart(updatedCartData);
     };
 
     const applyCoupon = () => {
@@ -59,8 +49,10 @@ export const Cart = () => {
     };
 
     const handlePayment = () => {
-        alert("Proceeding to payment...");
-        navigate('/Payment-option')
+       if(isLoggedIn1){
+        navigate('/Payment-option');}
+    else
+    navigate('/Login');
     };
 
     return (
@@ -102,7 +94,6 @@ export const Cart = () => {
                                 <td>Cart Total</td>
                                 <td>${subtotal.toFixed(2)}</td>
                             </tr>
-                           
                             <tr>
                                 <td><strong>Total</strong></td>
                                 <td>${total.toFixed(2)}</td>

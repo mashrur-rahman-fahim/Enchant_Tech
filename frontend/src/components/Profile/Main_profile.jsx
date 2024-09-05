@@ -1,27 +1,40 @@
 import axios from 'axios';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth1 } from '../Authentication/LoginContest';
 
 export const Main_profile = () => {
-    const { isLoggedIn1, setIsLoggedIn1 } = useAuth1();
-  axios.defaults.withCredentials = true;
-  
+  const { isLoggedIn1, setIsLoggedIn1 } = useAuth1();
+  const [email, setEmail] = useState(null);
   const navigate = useNavigate();
-  console.log(isLoggedIn1)
-useEffect(()=>{
-  fetch("http://localhost:4000/auth",{credentials:'include'})
-  .then((res)=>res.json())
-  .then((data)=>{
-    if(!data.valid)
-    {
-      setIsLoggedIn1(false);
-      navigate('/Login')
 
+  useEffect(() => {
+    if (!isLoggedIn1) {
+      navigate('/Login');
+      return;
     }
-  })
-},[navigate,setIsLoggedIn1])
+
+    axios.get('http://localhost:4000/auth', { withCredentials: true })
+      .then((response) => {
+        const data = response.data;
+        if (data.valid) {
+          console.log(data.email)
+          setEmail(data.email); // Set the email from response
+        } else {
+          setIsLoggedIn1(false);
+          navigate('/Login');
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        navigate('/Login');
+      });
+  }, [isLoggedIn1, navigate, setIsLoggedIn1]);
+
   return (
-    <div>Main_profile</div>
-  )
-}
+    <div>
+      <h1>Main Profile</h1>
+      {email ? <p>Logged in as: {email}</p> : <p>Loading...</p>}
+    </div>
+  );
+};

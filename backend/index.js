@@ -161,7 +161,7 @@ const renewToken = (req, res, next) => {
 };
 
 app.get('/auth', verifyUser, (req, res) => {
-  return res.status(200).json({ valid: true, message: 'Authorized' });
+  return res.status(200).json({ valid: true, message: 'Authorized',email:req.email });
 });
 
 
@@ -224,3 +224,5 @@ app.post('/review', async (req, res) => {
   const newReview = await Review.create(review);
   return res.send(newReview);
 });
+
+

@@ -3,20 +3,22 @@ import React, { createContext, useState, useEffect } from 'react';
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cartCount, setCartCount] = useState(0);
-
-  const fetchCartCount = () => {
-    fetch('http://localhost:4000/api/cart')
-      .then(response => response.json())
-      .then(data => setCartCount(data.length));
-  };
+  const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
-    fetchCartCount();
+    const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    setCartData(savedCart);
   }, []);
 
+  const updateCart = (newCartData) => {
+    setCartData(newCartData);
+    localStorage.setItem('cart', JSON.stringify(newCartData));
+  };
+
+  const cartCount = cartData.reduce((acc, item) => acc + item.count, 0);
+
   return (
-    <CartContext.Provider value={{ cartCount, setCartCount, fetchCartCount }}>
+    <CartContext.Provider value={{ cartData, updateCart, cartCount }}>
       {children}
     </CartContext.Provider>
   );
