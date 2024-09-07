@@ -1,4 +1,4 @@
-//payment.css
+
 /* General Card Styles */
 
 .card {
@@ -28,14 +28,14 @@
 }
 
 /* Typography */
-label {
+/* label {
     font-size: 0.9rem;
     color: #666;
     margin-bottom: 8px;
     display: block;
-    text-transform: uppercase; /* Uppercase labels */
-    letter-spacing: 0.5px; /* Slight letter spacing */
-}
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+} */
 
 /* Form Styles */
 .form-control {
