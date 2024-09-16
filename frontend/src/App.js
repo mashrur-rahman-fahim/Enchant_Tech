@@ -8,6 +8,7 @@ import { Home } from "./pages/Home";
 import { Desktop } from "./pages/Desktop";
 import { Laptop } from "./pages/Laptop";
 
+
 import { Gaming1 } from "./pages/Gaming1";
 import { Login2 } from "./pages/Login2";
 import { Signup } from "./pages/signup";
@@ -32,6 +33,8 @@ import { LoginProvider } from './components/Authentication/LoginContest';
 import { ProfilePage } from './pages/ProfilePage';
 import { Main__profile } from './pages/Main__profile';
 import { Main_profile } from './components/Profile/Main_profile';
+import { Cpu2 } from './pages/Cpu2';
+
 
 function App() {
   return (
@@ -41,12 +44,15 @@ function App() {
         <BrowserRouter>
           <Layout>
             <Routes>
+      
+
               <Route path="/" element={<Home />} />
               <Route path="/Login" element={<Login2 />} />
               <Route path="/Login1" element={<Login1 />} />
               <Route path="/Desktop" element={<Desktop />} />
               <Route path="/Laptop" element={<Laptop />} />
-              
+            
+              <Route path="/Cpubuild" element={<Cpu2 />} />
               <Route path="/Gaming" element={<Gaming1 />} />
               <Route path="/SignUp" element={<Signup />} />
               <Route path="/:id" element={<Product />} />

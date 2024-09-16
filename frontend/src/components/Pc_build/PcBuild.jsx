@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './PcBuild.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faMicrochip, faThermometerHalf, faMemory, faHdd, faVideo, faKeyboard, 
+import {
+  faMicrochip, faThermometerHalf, faMemory, faHdd, faVideo, faKeyboard,
   faPrint, faPlug, faDesktop, faShoppingCart, faMouse, faVolumeUp, faBatteryFull, faCamera, faSave
 } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const components = {
   cpu: [
@@ -117,13 +118,61 @@ export const PcBuild = () => {
     ups: null
   });
 
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const handleSelection = (category, event) => {
     const selectedOption = event.target.value;
     const component = components[category].find(item => item.name === selectedOption);
+
     setSelectedComponents(prevState => ({
       ...prevState,
       [category]: component
     }));
+
+    // Navigate to a specific page based on the category
+    switch (category) {
+      case 'cpu':
+        navigate('/cpubuild');
+        break;
+      case 'cooler':
+        navigate('/coolerbuild');
+        break;
+      case 'motherboard':
+        navigate('/motherboardbuild');
+        break;
+      case 'ram':
+        navigate('/rambuild');
+        break;
+      case 'storage':
+        navigate('/storagebuild');
+        break;
+      case 'gpu':
+        navigate('/gpbuild');
+        break;
+      case 'keyboard':
+        navigate('/keyboardbuild');
+        break;
+      case 'printer':
+        navigate('/printerbuild');
+        break;
+      case 'powerSupply':
+        navigate('/powersupplybuild');
+        break;
+      case 'casing':
+        navigate('/casingbuild');
+        break;
+      case 'mouse':
+        navigate('/mousebuild');
+        break;
+      case 'speaker':
+        navigate('/speakerbuild');
+        break;
+      case 'ups':
+        navigate('/upsbuild');
+        break;
+      default:
+        break;
+    }
   };
 
   const totalCost = Object.values(selectedComponents).reduce((total, component) => {
@@ -133,12 +182,10 @@ export const PcBuild = () => {
   const itemCount = Object.values(selectedComponents).filter(component => component !== null).length;
 
   const handleScreenshot = () => {
-    // Logic for taking a screenshot
     alert('Screenshot taken!');
   };
 
   const handleSave = () => {
-    // Logic for saving components
     alert('Components saved!');
   };
 
@@ -152,9 +199,9 @@ export const PcBuild = () => {
           <FontAwesomeIcon icon={faSave} /> Save
         </button>
       </div>
-      
+
       <h2>PC Builder - Build Your Own Computer - Enchant Tech</h2>
-      
+
       <div className="build-info">
         <div className="total-info">
           <div className="item-count">
@@ -170,7 +217,7 @@ export const PcBuild = () => {
       </div>
 
       <h3>Core Components</h3>
-      {Object.keys(components).slice(0, 6).map(category => (
+      {['cpu', 'cooler', 'motherboard', 'ram', 'storage', 'gpu'].map(category => (
         <div key={category} className="component-row">
           <div className="component-icon">
             <FontAwesomeIcon icon={
@@ -179,8 +226,7 @@ export const PcBuild = () => {
               category === 'motherboard' ? faDesktop :
               category === 'ram' ? faMemory :
               category === 'storage' ? faHdd :
-              category === 'gpu' ? faVideo : faKeyboard
-            } />
+              category === 'gpu' ? faVideo : faDesktop} />
           </div>
           <div className="component-details">
             <span className="component-name">{category.charAt(0).toUpperCase() + category.slice(1)}</span>
@@ -206,8 +252,7 @@ export const PcBuild = () => {
               category === 'powerSupply' ? faPlug :
               category === 'mouse' ? faMouse :
               category === 'speaker' ? faVolumeUp :
-              category === 'ups' ? faBatteryFull : faDesktop
-            } />
+              category === 'ups' ? faBatteryFull : faDesktop} />
           </div>
           <div className="component-details">
             <span className="component-name">{category.charAt(0).toUpperCase() + category.slice(1)}</span>
