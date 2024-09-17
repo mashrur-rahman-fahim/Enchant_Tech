@@ -9,27 +9,32 @@ export const Home1 = () => {
   const [products, setProducts] = useState([]);
   const [src, setSrc] = useState("");
   const [index, setIndex] = useState(0);
+  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:4000/products");
+        const response = await fetch(`http://localhost:4000/products?_limit=3&_page=${page}`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
+        setProducts((prevIndex)=>[...prevIndex,...data]);
+        if (data.length === 0) setHasMore(false);
         setProducts(data);
         setSrc(data[0]?.img);
         setLoading(false);
+        
       } catch (error) {
         setError(error.message);
         setLoading(false);
       }
     };
     fetchProducts();
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -39,13 +44,34 @@ export const Home1 = () => {
 
     return () => clearInterval(interval);
   }, [index, products]);
+  const handelInfiniteScroll = async () => {
+    // console.log("scrollHeight" + document.documentElement.scrollHeight);
+    // console.log("innerHeight" + window.innerHeight);
+    // console.log("scrollTop" + document.documentElement.scrollTop);
+    try {
+      if (
+        window.innerHeight + document.documentElement.scrollTop + 1 >=
+        document.documentElement.scrollHeight
+      ) {
+        setLoading(true);
+        setPage((prev) => prev + 1);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handelInfiniteScroll);
+    return () => window.removeEventListener("scroll", handelInfiniteScroll);
+  }, []);
 
   const currentDate = new Date();
   const tenDaysAgo = new Date(currentDate.getTime() - 10 * 24 * 60 * 60 * 1000);
 
-  if (loading) {
-    return <div className="loading">Loading...</div>;
-  }
+  //if (loading) {
+    //return <div className="loading">Loading...</div>;
+  //}
 
   if (error) {
     return <div className="error">Error: {error}</div>;
@@ -100,5 +126,6 @@ export const Home1 = () => {
         </div>
       </div>
     </div>
+     //{loading && <Loading />}
   );
 };
