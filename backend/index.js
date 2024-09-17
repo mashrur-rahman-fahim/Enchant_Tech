@@ -12,6 +12,7 @@ import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 import All_Product from './models/All_product.js';
 import Review from './models/review.js';
+import Payment from './models/payment.js';
 
 const SECRET_KEY_REFRESH = process.env.SECRET_KEY_REFRESH;
 const SECRET_KEY_ACCESS = process.env.SECRET_KEY_ACCESS;
@@ -224,5 +225,19 @@ app.post('/review', async (req, res) => {
   const newReview = await Review.create(review);
   return res.send(newReview);
 });
+
+app.post('/payment-option',async(req,res)=>{
+  const {firstName,lastName,phone,email,address,city,state,zipCode,deliveryMethod,paymentMethod,agreedToTerms}=req.body
+  const paymentProfile=await Payment.create({
+    firstName,lastName,phone,email,address,city,state,zipCode,deliveryMethod,paymentMethod,agreedToTerms
+  })
+  res.send(paymentProfile)
+})
+
+app.get('/payment-option',verifyUser,async(req,res)=>{
+  const email=req.email
+  const userProfile=await Payment.find({email:email})
+  res.send(userProfile)
+})
 
 
