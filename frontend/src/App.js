@@ -34,6 +34,7 @@ import { ProfilePage } from './pages/ProfilePage';
 import { Main__profile } from './pages/Main__profile';
 import { Main_profile } from './components/Profile/Main_profile';
 import { Cpu2 } from './pages/Cpu2';
+import { Cooler1 } from './pages/Cooler1';
 
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
               <Route path="/Login1" element={<Login1 />} />
               <Route path="/Desktop" element={<Desktop />} />
               <Route path="/Laptop" element={<Laptop />} />
-            
+              <Route path="/Coolerbuild" element={<Cooler1 />} />
               <Route path="/Cpubuild" element={<Cpu2 />} />
               <Route path="/Gaming" element={<Gaming1 />} />
               <Route path="/SignUp" element={<Signup />} />
