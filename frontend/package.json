@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
     "chart.js": "^4.4.3",
+    "css-loader": "^7.1.2",
     "dotenv": "^16.4.5",
     "dotenv-webpack": "^8.1.0",
     "fs": "^0.0.1-security",
@@ -21,8 +22,11 @@
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2",
     "react-scripts": "5.0.1",
     "react-slick": "^0.30.2",
+    "redux": "^5.0.1",
+    "style-loader": "^4.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -50,6 +54,9 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^8.57.1",
+    "husky": "^9.1.6",
+    "prettier": "^3.3.3",
     "react-router-dom": "^6.26.2"
   }
 }
