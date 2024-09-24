@@ -33,7 +33,7 @@ export const Testcpu = () => {
   });
 
   const handleAdd = (processor) => {
-    navigate('/PCBuilder', { state: { selectedProcessorCost: processor.price } });
+    navigate('/PCBuilder', { state: { selectedProcessor: { name: processor.name, cost: processor.price } } });
   };
 
   return (
@@ -76,7 +76,9 @@ export const Testcpu = () => {
               <p>Memory Speed: {processor.memorySpeed}</p>
             </div>
             <p className="price">₹{processor.price}</p>
-            <button className="add-button" onClick={() => handleAdd(processor)}>Add</button>
+            <button className="add-btn" onClick={() => handleAdd(processor)}>
+              Add
+            </button>
           </div>
         ))}
       </div>
