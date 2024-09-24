@@ -5,7 +5,7 @@ import {
   faMicrochip, faThermometerHalf, faMemory, faHdd, faVideo, faKeyboard,
   faPrint, faPlug, faDesktop, faShoppingCart, faMouse, faVolumeUp, faBatteryFull, faCamera, faSave
 } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate, useLocation } from 'react-router-dom'; // Import useNavigate and useLocation
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export const PcBuild = () => {
   const [selectedComponents, setSelectedComponents] = useState({
@@ -24,14 +24,15 @@ export const PcBuild = () => {
     ups: null
   });
 
-  const location = useLocation(); // Use useLocation to get the state
-  const navigate = useNavigate(); // Initialize useNavigate
+  const location = useLocation();
+  const navigate = useNavigate();
 
+  // Update the selected processor from Testcpu.jsx state
   useEffect(() => {
-    if (location.state && location.state.selectedProcessorCost) {
+    if (location.state && location.state.selectedProcessor) {
       setSelectedComponents(prevState => ({
         ...prevState,
-        cpu: { name: 'Selected Processor', cost: location.state.selectedProcessorCost }
+        cpu: location.state.selectedProcessor // Set the selected processor object
       }));
     }
   }, [location.state]);
@@ -101,7 +102,12 @@ export const PcBuild = () => {
               category === 'gpu' ? faVideo : faDesktop} />
           </div>
           <div className="component-details">
-            <span className="component-name">{category.charAt(0).toUpperCase() + category.slice(1)}</span>
+            <span className="component-name">
+              {selectedComponents[category]?.name || category.charAt(0).toUpperCase() + category.slice(1)}
+            </span>
+            <span className="component-cost">
+              {selectedComponents[category]?.cost ? `₹${selectedComponents[category].cost}` : ''}
+            </span>
           </div>
           <div className="component-selection">
             <button onClick={() => handleSelection(category)} className="choose-btn">
@@ -111,6 +117,7 @@ export const PcBuild = () => {
         </div>
       ))}
 
+      {/* Additional Components */}
       <h3>Additional Components</h3>
       {['keyboard', 'printer', 'powerSupply', 'casing', 'mouse', 'speaker', 'ups'].map(category => (
         <div key={category} className="component-row">
