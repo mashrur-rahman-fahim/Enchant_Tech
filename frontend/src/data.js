@@ -120,3 +120,117 @@ export const processorsData = [
       price: 60000,
     },
 ];
+
+// data.js
+export const coolersData = [
+  {
+    id: 1,
+    name: "Cooler Master Hyper 212",
+    type: "Air Cooler",
+    compatibility: "Intel & AMD",
+    fanSpeed: "2000 RPM",
+    noiseLevel: "19 dBA",
+    price: 3500,
+    img: "assets/images/coolers/cooler_master_hyper_212.jpg",
+    performance: 85
+  },
+  {
+    id: 2,
+    name: "Noctua NH-D15",
+    type: "Air Cooler",
+    compatibility: "Intel & AMD",
+    fanSpeed: "1500 RPM",
+    noiseLevel: "24.6 dBA",
+    price: 8000,
+    img: "assets/images/coolers/noctua_nh_d15.jpg",
+    performance: 95
+  },
+  {
+    id: 3,
+    name: "Corsair H100i",
+    type: "Liquid Cooler",
+    compatibility: "Intel & AMD",
+    fanSpeed: "2400 RPM",
+    noiseLevel: "30 dBA",
+    price: 7000,
+    img: "assets/images/coolers/corsair_h100i.jpg",
+    performance: 90
+  },
+  {
+    id: 4,
+    name: "Be Quiet! Dark Rock Pro 4",
+    type: "Air Cooler",
+    compatibility: "Intel & AMD",
+    fanSpeed: "1500 RPM",
+    noiseLevel: "24.3 dBA",
+    price: 6500,
+    img: "assets/images/coolers/be_quiet_dark_rock_pro_4.jpg",
+    performance: 88
+  },
+  {
+    id: 5,
+    name: "Arctic Liquid Freezer II 240",
+    type: "Liquid Cooler",
+    compatibility: "Intel & AMD",
+    fanSpeed: "2000 RPM",
+    noiseLevel: "23.5 dBA",
+    price: 6000,
+    img: "assets/images/coolers/arctic_liquid_freezer_ii_240.jpg",
+    performance: 92
+  },
+  {
+    id: 6,
+    name: "NZXT Kraken X63",
+    type: "Liquid Cooler",
+    compatibility: "Intel & AMD",
+    fanSpeed: "2800 RPM",
+    noiseLevel: "29 dBA",
+    price: 7500,
+    img: "assets/images/coolers/nzxt_kraken_x63.jpg",
+    performance: 89
+  },
+  {
+    id: 7,
+    name: "DeepCool Assassin III",
+    type: "Air Cooler",
+    compatibility: "Intel & AMD",
+    fanSpeed: "1400 RPM",
+    noiseLevel: "26 dBA",
+    price: 7000,
+    img: "assets/images/coolers/deepcool_assassin_iii.jpg",
+    performance: 87
+  },
+  {
+    id: 8,
+    name: "Thermaltake Water 3.0 ARGB",
+    type: "Liquid Cooler",
+    compatibility: "Intel & AMD",
+    fanSpeed: "2000 RPM",
+    noiseLevel: "27 dBA",
+    price: 6500,
+    img: "assets/images/coolers/thermaltake_water_3_0_argb.jpg",
+    performance: 86
+  },
+  {
+    id: 9,
+    name: "Cooler Master MasterLiquid ML240L",
+    type: "Liquid Cooler",
+    compatibility: "Intel & AMD",
+    fanSpeed: "2000 RPM",
+    noiseLevel: "24 dBA",
+    price: 5500,
+    img: "assets/images/coolers/cooler_master_masterliquid_ml240l.jpg",
+    performance: 85
+  },
+  {
+    id: 10,
+    name: "Scythe Mugen 5 Rev.B",
+    type: "Air Cooler",
+    compatibility: "Intel & AMD",
+    fanSpeed: "1200 RPM",
+    noiseLevel: "19.5 dBA",
+    price: 4000,
+    img: "assets/images/coolers/scythe_mugen_5_rev_b.jpg",
+    performance: 83
+  },
+];

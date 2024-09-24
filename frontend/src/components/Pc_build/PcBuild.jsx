@@ -27,20 +27,31 @@ export const PcBuild = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Update the selected processor from Testcpu.jsx state
+  // Update the selected processor and cooler from state
   useEffect(() => {
-    if (location.state && location.state.selectedProcessor) {
-      setSelectedComponents(prevState => ({
-        ...prevState,
-        cpu: location.state.selectedProcessor // Set the selected processor object
-      }));
+    if (location.state) {
+      if (location.state.selectedProcessor) {
+        setSelectedComponents(prevState => ({
+          ...prevState,
+          cpu: location.state.selectedProcessor
+        }));
+      }
+      if (location.state.selectedCooler) {
+        setSelectedComponents(prevState => ({
+          ...prevState,
+          cooler: location.state.selectedCooler
+        }));
+      }
     }
   }, [location.state]);
 
   const handleSelection = (category) => {
     switch (category) {
       case 'cpu':
-        navigate('/cpubuild');
+        navigate('/Cpubuild');
+        break;
+      case 'cooler':
+        navigate('/Coolerbuild');
         break;
       // other cases...
       default:
@@ -93,8 +104,7 @@ export const PcBuild = () => {
       {['cpu', 'cooler', 'motherboard', 'ram', 'storage', 'gpu'].map(category => (
         <div key={category} className="component-row">
           <div className="component-icon">
-            <FontAwesomeIcon icon={
-              category === 'cpu' ? faMicrochip :
+            <FontAwesomeIcon icon={category === 'cpu' ? faMicrochip :
               category === 'cooler' ? faThermometerHalf :
               category === 'motherboard' ? faDesktop :
               category === 'ram' ? faMemory :
@@ -117,13 +127,47 @@ export const PcBuild = () => {
         </div>
       ))}
 
+      {/* Selected CPU and Cooler */}
+      <h3>Selected Components</h3>
+      <div className="selected-components">
+        {selectedComponents.cpu && (
+          <div className="component-row">
+            <div className="component-icon">
+              <FontAwesomeIcon icon={faMicrochip} />
+            </div>
+            <div className="component-details">
+              <span className="component-name">
+                CPU: {selectedComponents.cpu.name}
+              </span>
+              <span className="component-cost">
+                ₹{selectedComponents.cpu.cost}
+              </span>
+            </div>
+          </div>
+        )}
+        {selectedComponents.cooler && (
+          <div className="component-row">
+            <div className="component-icon">
+              <FontAwesomeIcon icon={faThermometerHalf} />
+            </div>
+            <div className="component-details">
+              <span className="component-name">
+                Cooler: {selectedComponents.cooler.name}
+              </span>
+              <span className="component-cost">
+                ₹{selectedComponents.cooler.cost}
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* Additional Components */}
       <h3>Additional Components</h3>
       {['keyboard', 'printer', 'powerSupply', 'casing', 'mouse', 'speaker', 'ups'].map(category => (
         <div key={category} className="component-row">
           <div className="component-icon">
-            <FontAwesomeIcon icon={
-              category === 'keyboard' ? faKeyboard :
+            <FontAwesomeIcon icon={category === 'keyboard' ? faKeyboard :
               category === 'printer' ? faPrint :
               category === 'powerSupply' ? faPlug :
               category === 'casing' ? faDesktop :
