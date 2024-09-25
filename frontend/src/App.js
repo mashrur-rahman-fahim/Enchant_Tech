@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Desktop } from "./pages/Desktop";
 import { Laptop } from "./pages/Laptop";
+import { Motherboardnew } from './pages/Motherboardnew';  // Assuming Motherboard is in the pages folder
 
 
 import { Gaming1 } from "./pages/Gaming1";
@@ -34,7 +35,9 @@ import { ProfilePage } from './pages/ProfilePage';
 import { Main__profile } from './pages/Main__profile';
 import { Main_profile } from './components/Profile/Main_profile';
 import { Cpu2 } from './pages/Cpu2';
+import { Rambuy} from './pages/Rambuy';
 import { Cooler1 } from './pages/Cooler1';
+
 
 
 function App() {
@@ -52,6 +55,9 @@ function App() {
               <Route path="/Login1" element={<Login1 />} />
               <Route path="/Desktop" element={<Desktop />} />
               <Route path="/Laptop" element={<Laptop />} />
+              <Route path="/Ramdbuild" element={<Rambuy />} />
+           
+              <Route path="/Motherboardbuild" element={<Motherboardnew />} />
               <Route path="/Coolerbuild" element={<Cooler1 />} />
               <Route path="/Cpubuild" element={<Cpu2 />} />
               <Route path="/Gaming" element={<Gaming1 />} />

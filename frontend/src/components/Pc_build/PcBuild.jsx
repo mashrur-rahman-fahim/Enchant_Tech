@@ -53,6 +53,16 @@ export const PcBuild = () => {
       case 'cooler':
         navigate('/Coolerbuild');
         break;
+        case 'motherboard':
+          navigate('/Motherboardbuild');
+          break;
+          case 'ram':
+            navigate('/Rambuild');
+            break;
+            case 'storage':
+              navigate('/Storagebuild');
+              break;
+        // other cases...
       // other cases...
       default:
         break;
