@@ -87,11 +87,11 @@ export const Login1 = () => {
               />
             </div>
           </div>
-          <div className="remember">
+          {/* <div className="remember">
             <input type="checkbox" />
             <label className="rmmbr">Remember me</label>
             <a href="#">Forgot Password?</a>
-          </div>
+          </div> */}
           <div className="btn">
             <button type="submit">Login</button>
           </div>

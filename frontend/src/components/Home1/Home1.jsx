@@ -4,6 +4,7 @@ import a from "../assets/PC/a.jpg";
 import b from "../assets/PC/b.avif";
 import c from "../assets/PC/c.webp";
 import d from "../assets/PC/d.jpg";
+import { Link } from "react-router-dom";
 
 export const Home1 = () => {
   const [products, setProducts] = useState([]);
@@ -111,17 +112,17 @@ export const Home1 = () => {
           <div className="line"></div>
         </div>
         <div className="shop-row">
-          <div className="desktop">
+         <div className="desktop">
             <img src={a} alt="Desktop" />
-            <button>Desktop</button>
+            <Link to='/Desktop'><button>Desktop</button></Link>
           </div>
           <div className="laptop">
             <img src={b} alt="Laptop" />
-            <button>Laptop</button>
+            <Link to='Laptop'><button>Laptop</button></Link>
           </div>
           <div className="components">
             <img src={c} alt="Components" />
-            <button>Components</button>
+            <Link to='category/cpu'><button>Components</button></Link>
           </div>
         </div>
       </div>

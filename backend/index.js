@@ -180,6 +180,18 @@ app.get('/products', async (req, res) => {
   const products = await All_Product.find({});
   res.send(products);
 });
+app.get('/products/:id', async (req, res) => {
+  try {
+    const product = await All_Product.findById(req.params.id);
+    if (!product) {
+      return res.status(404).send({ message: 'Product not found' });
+    }
+    res.send(product);
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    res.status(500).send({ message: 'Server error' });
+  }
+});
 
 app.post('/products', async (req, res) => {
   const rating = 0;
@@ -226,18 +238,61 @@ app.post('/review', async (req, res) => {
   return res.send(newReview);
 });
 
-app.post('/payment-option',async(req,res)=>{
-  const {firstName,lastName,phone,email,address,city,state,zipCode,deliveryMethod,paymentMethod,agreedToTerms}=req.body
-  const paymentProfile=await Payment.create({
-    firstName,lastName,phone,email,address,city,state,zipCode,deliveryMethod,paymentMethod,agreedToTerms
-  })
-  res.send(paymentProfile)
-})
+app.post('/payment-option', async (req, res) => {
+  const { firstName, lastName, phone, email, address, city, state, zipCode, deliveryMethod, paymentMethod, agreedToTerms, products } = req.body;
 
-app.get('/payment-option',verifyUser,async(req,res)=>{
-  const email=req.email
-  const userProfile=await Payment.find({email:email})
-  res.send(userProfile)
-})
+  // Create a payment profile with the provided data
+  try {
+    const paymentProfile = await Payment.create({
+      firstName,
+      lastName,
+      phone,
+      email,
+      address,
+      city,
+      state,
+      zipCode,
+      deliveryMethod,
+      paymentMethod,
+      agreedToTerms,
+      products // Include the products array in the payment profile
+    });
+    res.status(201).json(paymentProfile); // Respond with the created payment profile
+  } catch (error) {
+    res.status(400).json({ error: error.message }); // Handle errors
+  }
+});
+
+app.get('/payment-option', async (req, res) => {
+  const email = req.email; // Assuming req.email is set somewhere in your authentication middleware
+
+  // Retrieve payment profiles based on email
+  try {
+    const userProfile = await Payment.find({ });
+    if (userProfile.length === 0) {
+      return res.status(404).json({ message: 'No payment profile found' });
+    }
+    res.status(200).json(userProfile); // Respond with the found user profiles
+  } catch (error) {
+    res.status(500).json({ error: error.message }); // Handle errors
+  }
+});
+app.delete('/payment-option/:id', async (req, res) => {
+  const { id } = req.params; // Get the payment ID from the route parameters
+
+  try {
+    // Find the payment by ID and delete it
+    const deletedPayment = await Payment.findByIdAndDelete(id);
+
+    if (!deletedPayment) {
+      return res.status(404).json({ message: 'Payment profile not found' });
+    }
+
+    res.status(200).json({ message: 'Payment profile deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 
 

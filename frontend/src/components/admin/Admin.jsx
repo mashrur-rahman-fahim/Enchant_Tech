@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import './Admin.css';
+import "./Admin.css";
 import { useAuth } from "../Authentication/AuthContext";
 import axios from "axios";
 
@@ -14,22 +14,23 @@ export const Admin = () => {
 
   useEffect(() => {
     // Authenticate the user on page load
-    axios.get("http://localhost:4000/auth", { withCredentials: true })
-      .then(response => {
+    axios
+      .get("http://localhost:4000/auth", { withCredentials: true })
+      .then((response) => {
         if (response.data.valid) {
           if (!isLoggedIn) {
             setIsLoggedIn(true);
-            navigate('/Admin');
+            navigate("/Admin");
           }
         } else {
           setIsLoggedIn(false);
-          navigate('/Login');
+          navigate("/Login");
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("Authentication error:", err);
         setIsLoggedIn(false);
-        navigate('/Login');
+        navigate("/Login");
       });
   }, [navigate, isLoggedIn, setIsLoggedIn]);
 
@@ -54,6 +55,9 @@ export const Admin = () => {
     ssd: 0,
   });
 
+  const [payments, setPayments] = useState([]); // State for payments
+  const [productDetailsMap, setProductDetailsMap] = useState({}); // Store product details
+
   const brandOptions = {
     laptop: ["HP", "Asus", "Lenovo", "Dell", "Apple", "Acer", "MSI"],
     desktop: ["HP", "Asus", "Lenovo", "Dell", "Acer", "MSI"],
@@ -67,19 +71,20 @@ export const Admin = () => {
 
   useEffect(() => {
     fetchProductCounts();
+    fetchPayments(); // Fetch payments on component mount
   }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProduct(prevState => ({
+    setProduct((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
 
-    if (name === 'catagory') {
-      setProduct(prevState => ({
+    if (name === "catagory") {
+      setProduct((prevState) => ({
         ...prevState,
-        brand: brandOptions[value][0].toLowerCase()
+        brand: brandOptions[value][0].toLowerCase(),
       }));
     }
   };
@@ -87,11 +92,15 @@ export const Admin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/products", product, {
-        headers: {
-          "Content-Type": "application/json"
+      const response = await axios.post(
+        "http://localhost:4000/products",
+        product,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
+      );
       if (response.status === 200) {
         setProduct({
           img: "",
@@ -128,7 +137,9 @@ export const Admin = () => {
       };
 
       const productCounts = data.reduce((counts, product) => {
-        switch (product.catagory) { // Backend uses "catagory" field
+        switch (
+          product.catagory // Backend uses "catagory" field
+        ) {
           case "laptop":
             counts.laptop++;
             break;
@@ -165,103 +176,216 @@ export const Admin = () => {
     }
   };
 
+  const fetchPayments = async () => {
+    try {
+      const response = await axios.get("http://localhost:4000/payment-option");
+      if (Array.isArray(response.data)) {
+        setPayments(response.data);
+        fetchProductDetails(response.data); // Fetch product details based on payment data
+      } else {
+        console.warn("Unexpected response format:", response.data);
+        setPayments([]); // Set to empty array if not an array
+      }
+    } catch (error) {
+      console.error("Error fetching payments:", error);
+    }
+  };
+
+  const fetchProductDetails = async (payments) => {
+    try {
+      const productIds = payments.flatMap((payment) => payment.products); // Get all product IDs
+      const uniqueProductIds = [...new Set(productIds)]; // Remove duplicates
+      const productDetailsPromises = uniqueProductIds.map((id) =>
+        axios.get(`http://localhost:4000/products/${id}`)
+      );
+      const responses = await Promise.all(productDetailsPromises);
+
+      const detailsMap = {};
+      responses.forEach((response) => {
+        if (response.status === 200) {
+          const product = response.data;
+          detailsMap[product._id] = product; // Store product details in a map
+        }
+      });
+      setProductDetailsMap(detailsMap); // Update the state with product details map
+    } catch (error) {
+      console.error("Error fetching product details:", error);
+    }
+  };
+
+  const handleDeletePayment = async (id) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:4000/payment-option/${id}`
+      );
+      if (response.status === 200) {
+        console.log("Payment profile deleted successfully");
+        fetchPayments(); // Refresh payments after deletion
+      } else {
+        console.error("Failed to delete payment profile");
+      }
+    } catch (error) {
+      console.error("Error deleting payment profile:", error);
+    }
+  };
+
   return (
-    <div className="admin-container">
-      <header className="admin-header">
-        <button
-          onClick={async() => {
-            try {
-              const response = await fetch('http://localhost:4000/logout', {
-                method: 'POST',
-                credentials: 'include', // This is necessary to send cookies with the request
-              });
-          
-              if (response.ok) {
-                console.log('Logged out successfully');
-                setIsLoggedIn(false);
-            navigate('/login');
-                // Perform additional logout actions (e.g., redirect to login page)
-              } else {
-                console.error('Failed to log out');
+    <div className="admin-wrapper">
+      <div className="admin-container">
+        <header className="admin-header">
+          <button
+            onClick={async () => {
+              try {
+                const response = await fetch("http://localhost:4000/logout", {
+                  method: "POST",
+                  credentials: "include", // This is necessary to send cookies with the request
+                });
+
+                if (response.ok) {
+                  console.log("Logged out successfully");
+                  setIsLoggedIn(false);
+                  navigate("/login");
+                } else {
+                  console.error("Failed to log out");
+                }
+              } catch (error) {
+                console.error("Error during logout:", error);
               }
-            } catch (error) {
-              console.error('Error during logout:', error);
-            }
-          }}
-          className="logout-button"
-        >
-          Logout
-        </button>
-        <h1>Admin Panel</h1>
-      </header>
-      <main className="admin-main">
-        <section className="form-section">
-          <h2>Upload Product</h2>
-          <form id="admin_form" className="admin-form" onSubmit={handleSubmit}>
-            <label>
-              Name:
-              <input type="text" name="title" value={product.title} onChange={handleChange} required />
-            </label>
-            <label>
-              Description:
-              <input type="text" name="description" value={product.description} onChange={handleChange} required />
-            </label>
-            <label>
-              Price:
-              <input type="number" name="price" value={product.price} onChange={handleChange} required />
-            </label>
-            <label>
-              Image URL:
-              <input type="url" name="img" value={product.img} onChange={handleChange} required />
-            </label>
-            <label>
-              Category:
-              <select name="catagory" value={product.catagory} onChange={handleChange}>
-                <option value="laptop">Laptop</option>
-                <option value="desktop">Desktop</option>
-                <option value="gpu">GPU</option>
-                <option value="cpu">CPU</option>
-                <option value="cpucooler">CPU Cooler</option>
-                <option value="motherboard">Motherboard</option>
-                <option value="ram">RAM</option>
-                <option value="ssd">SSD</option>
-              </select>
-            </label>
-            <label>
-              Brand:
-              <select name="brand" value={product.brand} onChange={handleChange}>
-                {brandOptions[product.catagory].map((brand, index) => (
-                  <option key={index} value={brand.toLowerCase()}>{brand}</option>
-                ))}
-              </select>
-            </label>
-            <label>
-              Type:
-              <select name="cat" value={product.cat} onChange={handleChange}>
-                <option value="gaming">Gaming</option>
-                <option value="all">ALL-IN-ONE</option>
-              </select>
-            </label>
-            <button type="submit">Upload Product</button>
-          </form>
-        </section>
-        <section className="product-counts-section">
-          <h2>Product Counts</h2>
-          <div className="product-counts">
-            {Object.entries(productCounts).map(([key, count]) => (
-              <div key={key} className="product-count">
-               <h3 onClick={()=>{
-                const route_path=key.charAt(0)+key.slice(1)
-                if(route_path==="desktop" || route_path==="laptop")
-                {navigate(`/${route_path}`)}
-                else
-                navigate(`/category/${key.charAt(0)+key.slice(1)}`)}}>{key.charAt(0).toUpperCase() + key.slice(1)}</h3>
-                <p>{count}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      </main>
+            }}
+            className="logout-button"
+          >
+            Logout
+          </button>
+          <h1 className="admin-title">Admin Panel</h1>
+        </header>
+        <main className="admin-main">
+          <section className="form-section">
+            <h2>Upload Product</h2>
+            <form
+              id="admin_form"
+              className="admin-form"
+              onSubmit={handleSubmit}
+            >
+              <label className="form-label">
+                Name:
+                <input
+                  type="text"
+                  name="title"
+                  value={product.title}
+                  onChange={handleChange}
+                  required
+                  className="form-input"
+                />
+              </label>
+              <label className="form-label">
+                Description:
+                <input
+                  type="text"
+                  name="description"
+                  value={product.description}
+                  onChange={handleChange}
+                  required
+                  className="form-input"
+                />
+              </label>
+              <label className="form-label">
+                Price:
+                <input
+                  type="number"
+                  name="price"
+                  value={product.price}
+                  onChange={handleChange}
+                  required
+                  className="form-input"
+                />
+              </label>
+              <label className="form-label">
+                Image URL:
+                <input
+                  type="url"
+                  name="img"
+                  value={product.img}
+                  onChange={handleChange}
+                  required
+                  className="form-input"
+                />
+              </label>
+              <label className="form-label">
+                Category:
+                <select
+                  name="catagory"
+                  value={product.catagory}
+                  onChange={handleChange}
+                  className="form-select"
+                >
+                  <option value="laptop">Laptop</option>
+                  <option value="desktop">Desktop</option>
+                  <option value="gpu">GPU</option>
+                  <option value="cpu">CPU</option>
+                  <option value="cpucooler">CPU Cooler</option>
+                  <option value="motherboard">Motherboard</option>
+                  <option value="ram">RAM</option>
+                  <option value="ssd">SSD</option>
+                </select>
+              </label>
+              <label className="form-label">
+                Brand:
+                <select
+                  name="brand"
+                  value={product.brand}
+                  onChange={handleChange}
+                  className="form-select"
+                >
+                  {brandOptions[product.catagory]?.map((brand, index) => (
+                    <option key={index} value={brand.toLowerCase()}>
+                      {brand}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <button type="submit" className="submit-button">
+                Add Product
+              </button>
+            </form>
+          </section>
+          <section className="product-count-section">
+            <h2>Product Counts</h2>
+            <ul className="product-count-list">
+              {Object.entries(productCounts).map(([category, count]) => (
+                <li key={category} className="product-count-item">
+                  {category.charAt(0).toUpperCase() + category.slice(1)}:{" "}
+                  {count}
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section className="payment-section">
+            <h2>Payments</h2>
+            <ul className="payment-list">
+              {payments.map((payment) => (
+                <li key={payment._id} className="payment-item">
+                  <div>
+                    <h3>{payment.name}</h3>
+                    <p>
+                      Profile:{" "}
+                      {productDetailsMap[payment.products[0]]?.title ||
+                        "Loading..."}
+                    </p>
+                    <button
+                      onClick={() => handleDeletePayment(payment._id)}
+                      className="delete-button"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </main>
+      </div>
     </div>
   );
 };
+
+export default Admin;

@@ -1,198 +1,146 @@
 /* Admin.css */
-/* body{
-    margin-top: 0px;
-} */
-/* General Styles */
+
 .admin-container {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #1c1c1c;
-    color: #f1f1f1;
-    padding: 2rem;
-    position: absolute;
-    width: 100%;
-    height: 200%;
-    top: 0;
-  }
- 
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  bottom: 100px;
+}
+
+.admin-header {
+  width: 100%;
+  background-color: #0275d8;
+  color: white;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   
-  /* Header Styles */
-  .admin-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  
-  .logout-button {
-    background-color: #ff6b6b;
-    color: #fff;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .logout-button:hover {
-    background-color: #e05050;
-  }
-  
-  /* Form Section Styles */
-  .form-section {
-    background-color: #2c2c2c;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease;
-  }
-  
-  .admin-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1.5rem;
-  }
-  
-  .admin-form label {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.9rem;
-  }
-  
-  .admin-form input,
-  .admin-form select {
-    background-color: #3c3c3c;
-    color: #f1f1f1;
-    border: none;
-    padding: 0.8rem 1rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .admin-form input:hover,
-  .admin-form select:hover {
-    background-color: #4c4c4c;
-  }
-  
-  .admin-form button {
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .admin-form button:hover {
-    background-color: #3e8e41;
-  }
-  
-  /* Product Counts Section Styles */
-  .product-counts-section {
-    margin-top: 2rem;
-    background-color: #2c2c2c;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease;
-  }
-  
-  .product-counts {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1.5rem;
-   
-  }
-  
-  .product-count {
-    background-color: #3c3c3c;
-    padding: 1.5rem;
-    border-radius: 5px;
-    text-align: center;
-    transition: transform 0.3s ease;
-    
-  }
- 
-  
-  .product-count:hover {
-    transform: translateY(-5px);
-  }
-  
-  .product-count h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: white;
-    
-    
-  }
-  .product-count a{
-    text-decoration: none;
+}
+
+.admin-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.logout-button {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #c9302c;
+}
+
+.admin-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.form-section,
+.product-count-section,
+.payment-section {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.submit-button {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.submit-button:hover {
+  background-color: #4cae4c;
+}
+
+.product-count-section ul,
+.payment-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.product-count-item,
+.payment-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-item:last-child,
+.product-count-item:last-child {
+  border-bottom: none;
+}
+
+.payment-item h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.delete-button {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #c9302c;
+}
+
+@media (min-width: 768px) {
+  .admin-main {
+    flex-direction: row;
+    gap: 20px;
   }
 
-  
-  .product-count p {
-    font-size: 1.5rem;
-    font-weight: bold;
+  .form-section,
+  .product-count-section,
+  .payment-section {
+    flex: 1;
+    margin: 10px;
   }
-  
- /* Chart Section Styles */
-.chart-section {
-    margin-top: 2rem;
-    background-color: #2c2c2c;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease;
-  }
-  
-  .chart-container {
-    height: 400px;
-    width: 100%;
-    position: relative;
-  }
-  
-  .chart-container canvas {
-    animation: chartFadeIn 0.5s ease;
-  }
-  
-  @keyframes chartFadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .admin-form {
-      grid-template-columns: 1fr;
-    }
-  
-    .product-counts {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .product-counts {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+}
