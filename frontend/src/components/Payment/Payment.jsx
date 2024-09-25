@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './Payment.css';
 import { useAuth1 } from '../Authentication/LoginContest';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { CartContext } from '../cart/CartContext';
+
 
 export const Payment = () => {
   const { isLoggedIn1, setIsLoggedIn1 } = useAuth1();
+  const { cartData } = useContext(CartContext); // Access cartData from context
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -55,7 +58,12 @@ export const Payment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/payment-option', formData);
+      // Combine cartData with formData
+      const paymentData = {
+        ...formData,
+        products: cartData // Adding cartData to the payload
+      };
+      const response = await axios.post('http://localhost:4000/payment-option', paymentData);
       console.log('Payment profile created:', response.data);
       alert('Order placed successfully!');
     } catch (error) {
@@ -269,30 +277,25 @@ export const Payment = () => {
                       <div className="col-md-12">
                         <div className="form-group d-flex align-items-center justify-content-between">
                           <div>
-                            <label htmlFor="terms" className="terms-label">
+                            <label htmlFor="terms" className="form-check-label">
                               <input
                                 type="checkbox"
-                                name="agreedToTerms"
                                 id="terms"
+                                name="agreedToTerms"
                                 checked={formData.agreedToTerms}
                                 onChange={handleChange}
-                                style={{ marginRight: '10px' }}
-                                required
                               />
-                              I have read and agree to the
-                              <a href="#" className="terms-link"> Terms and Conditions</a>,
-                              <a href="#" className="terms-link"> Privacy Policy</a>, and
-                              <a href="#" className="terms-link"> Refund and Return Policy</a>.
+                              I agree to the terms and conditions
                             </label>
-                          </div>
-                          <div className="button-container">
-                            <button type="submit" className="btn btn-primary mx-1">
-                              Place Order
-                            </button>
                           </div>
                         </div>
                       </div>
 
+                      <div className="col-md-12">
+                        <button type="submit" className="btn btn-success">
+                          Place Order
+                        </button>
+                      </div>
                     </div>
                   </form>
                 </div>

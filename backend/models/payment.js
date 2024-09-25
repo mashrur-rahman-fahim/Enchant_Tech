@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const paymentSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -56,13 +57,12 @@ const paymentSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
     default: false,
-  }
- 
-},{
-    timestamps:true
+  },
+  products: [{ type: mongoose.Schema.Types.ObjectId, ref: 'All_Products' }] // Array of product references
+}, {
+  timestamps: true
 });
 
 // Creating the model
- const Payment = mongoose.model('Payment', paymentSchema);
-export default Payment
-
+const Payment = mongoose.model('Payment', paymentSchema);
+export default Payment;
