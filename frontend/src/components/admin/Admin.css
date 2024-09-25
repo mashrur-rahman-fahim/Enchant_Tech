@@ -1,146 +1,199 @@
 /* Admin.css */
 
-.admin-container {
-  position: relative;
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #50e3c2;
+  --background-color: #f5f5f5;
+  --text-color: #333;
+  --button-color: #ef5350;
+  --button-text-color: #fff;
+  --card-background-color: #fff;
+  --card-border-color: #ddd;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.admin-wrapper {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding: 40px 0;
+}
+
+.admin-container {
+  background-color: var(--card-background-color);
+  border: 1px solid var(--card-border-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90%;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  bottom: 100px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .admin-header {
-  width: 100%;
-  background-color: #0275d8;
-  color: white;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: relative;
 }
 
 .admin-title {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .logout-button {
-  background-color: #d9534f;
-  color: white;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--secondary-color);
+  color: var(--button-text-color);
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 10px 15px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .logout-button:hover {
-  background-color: #c9302c;
+  background-color: var(--button-color);
 }
 
 .admin-main {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.form-section,
-.product-count-section,
-.payment-section {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
   padding: 20px;
 }
 
+.form-section,
+.payment-section,
+.product-counts-section {
+  flex: 1 1 100%;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.admin-form {
+  background-color: var(--card-background-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .form-label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
 }
 
 .form-input,
 .form-select {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
+  padding: 10px;
+  border: 1px solid var(--card-border-color);
+  border-radius: 5px;
+  font-size: 14px;
 }
 
 .submit-button {
-  background-color: #5cb85c;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--button-text-color);
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 12px 20px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  width: 100%;
-  font-size: 18px;
-  margin-top: 15px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .submit-button:hover {
-  background-color: #4cae4c;
+  background-color: var(--secondary-color);
 }
 
-.product-count-section ul,
-.payment-list {
+.product-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.product-count {
+  flex: 1 1 25%;
+  text-align: center;
+  background-color: var(--card-background-color);
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.product-count:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-5px);
+}
+
+.product-count h3 {
+  margin-bottom: 8px;
+}
+
+.payment-section ul {
   list-style-type: none;
   padding: 0;
 }
 
-.product-count-item,
 .payment-item {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+  background-color: var(--card-background-color);
+  margin-bottom: 10px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.payment-item:last-child,
-.product-count-item:last-child {
-  border-bottom: none;
-}
-
-.payment-item h3 {
-  margin: 0;
-  font-size: 18px;
-}
-
 .delete-button {
-  background-color: #d9534f;
-  color: white;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
   border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 6px 12  
+  px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .delete-button:hover {
-  background-color: #c9302c;
+  background-color: darken(var(--button-color), 10%);
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .admin-main {
-    flex-direction: row;
-    gap: 20px;
+    flex-direction: column;
   }
 
   .form-section,
-  .product-count-section,
-  .payment-section {
-    flex: 1;
-    margin: 10px;
+  .payment-section,
+  .product-counts-section {
+    flex: 1 1 auto;
+  }
+
+  .product-count {
+    flex: 1 1 100%;
   }
 }

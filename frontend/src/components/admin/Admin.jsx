@@ -348,17 +348,22 @@ export const Admin = () => {
               </button>
             </form>
           </section>
-          <section className="product-count-section">
-            <h2>Product Counts</h2>
-            <ul className="product-count-list">
-              {Object.entries(productCounts).map(([category, count]) => (
-                <li key={category} className="product-count-item">
-                  {category.charAt(0).toUpperCase() + category.slice(1)}:{" "}
-                  {count}
-                </li>
-              ))}
-            </ul>
-          </section>
+          <section className="product-counts-section">
+          <h2>Product Counts</h2>
+          <div className="product-counts">
+            {Object.entries(productCounts).map(([key, count]) => (
+              <div key={key} className="product-count">
+               <h3 onClick={()=>{
+                const route_path=key.charAt(0)+key.slice(1)
+                if(route_path==="desktop" || route_path==="laptop")
+                {navigate(`/${route_path}`)}
+                else
+                navigate(`/category/${key.charAt(0)+key.slice(1)}`)}}>{key.charAt(0).toUpperCase() + key.slice(1)}</h3>
+                <p>{count}</p>
+              </div>
+            ))}
+          </div>
+        </section>
           <section className="payment-section">
             <h2>Payments</h2>
             <ul className="payment-list">
