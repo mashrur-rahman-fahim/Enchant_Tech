@@ -7,16 +7,18 @@ import { useAuth } from './AuthContext';
 import { useAuth1 } from './LoginContest';
 
 export const Authen = () => {
-  const {email}=useParams()
-  
+  const { email } = useParams()
+
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
   const { isLoggedIn, setIsLoggedIn } = useAuth();
-  const {isLoggedIn1,setIsLoggedIn1}=useAuth1();
+  const { isLoggedIn1, setIsLoggedIn1 } = useAuth1();
 
   useEffect(() => {
     fetch("http://localhost:4000/auth", {
+
+
       credentials: 'include'
     })
       .then(res => res.json())
