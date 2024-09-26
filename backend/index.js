@@ -1,41 +1,47 @@
 // file: D:/web_app/Enchant_Tech/backend/index.js
 
-import express from 'express';
-import cors from 'cors';
-import { log } from './middlewares/logger.js';
-import mongoose from 'mongoose';
-import 'dotenv/config';
+import express from "express";
+import cors from "cors";
+import { log } from "./middlewares/logger.js";
+import mongoose from "mongoose";
+import "dotenv/config";
 
-import User from './models/model.js';
-import Product from './models/cart.js';
-import cookieParser from 'cookie-parser';
-import jwt from 'jsonwebtoken';
-import All_Product from './models/All_product.js';
-import Review from './models/review.js';
-import Payment from './models/payment.js';
+import User from "./models/model.js";
+import Product from "./models/cart.js";
+import cookieParser from "cookie-parser";
+import jwt from "jsonwebtoken";
+import All_Product from "./models/All_product.js";
+import Review from "./models/review.js";
+import Payment from "./models/payment.js";
 
 const SECRET_KEY_REFRESH = process.env.SECRET_KEY_REFRESH;
 const SECRET_KEY_ACCESS = process.env.SECRET_KEY_ACCESS;
 const PORT = process.env.PORT || 4000;
 const app = express();
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Could not connect to MongoDB', err));
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("Could not connect to MongoDB", err));
 
 app.use(express.json());
-app.use(cors({
-  origin: ['http://localhost:3000'],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(log);
 
-app.get('/', (req, res) => {
-  res.status(200).json({ message: 'API is working' });
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "API is working" });
 });
 
-app.get('/api/cart', async (req, res) => {
+app.get("/api/cart", async (req, res) => {
   try {
     const products = await Product.find({});
     return res.status(200).send(products);
@@ -44,10 +50,20 @@ app.get('/api/cart', async (req, res) => {
   }
 });
 
-app.post('/api/cart', async (req, res) => {
+app.post("/api/cart", async (req, res) => {
   const { id, img, title, description, price, cat, brand, date } = req.body;
   let count = 1;
-  const newProduct = { id, count, img, title, description, price, cat, brand, date };
+  const newProduct = {
+    id,
+    count,
+    img,
+    title,
+    description,
+    price,
+    cat,
+    brand,
+    date,
+  };
 
   try {
     const exist = await Product.findOne({ id });
@@ -65,7 +81,7 @@ app.post('/api/cart', async (req, res) => {
   }
 });
 
-app.delete('/api/cart/:id', async (req, res) => {
+app.delete("/api/cart/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -88,39 +104,55 @@ app.delete('/api/cart/:id', async (req, res) => {
   }
 });
 
-app.post('/login', async (req, res) => {
+app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const userExists = await User.exists({ email });
 
   if (userExists) {
     const user = await User.findOne({ email });
     if (user.password === password) {
-      const accessToken = jwt.sign({ email }, SECRET_KEY_ACCESS, { expiresIn: '1m' });
-      const refreshToken = jwt.sign({ email }, SECRET_KEY_REFRESH, { expiresIn: '5m' });
+      const accessToken = jwt.sign({ email }, SECRET_KEY_ACCESS, {
+        expiresIn: "1m",
+      });
+      const refreshToken = jwt.sign({ email }, SECRET_KEY_REFRESH, {
+        expiresIn: "5m",
+      });
 
-      res.cookie('access_token', accessToken, { maxAge: 60000, httpOnly: true, secure: true, sameSite: 'Strict' });
-      res.cookie('refresh_token', refreshToken, { maxAge: 300000, httpOnly: true, secure: true, sameSite: 'Strict' });
+      res.cookie("access_token", accessToken, {
+        maxAge: 60000,
+        httpOnly: true,
+        secure: true,
+        sameSite: "Strict",
+      });
+      res.cookie("refresh_token", refreshToken, {
+        maxAge: 300000,
+        httpOnly: true,
+        secure: true,
+        sameSite: "Strict",
+      });
 
       return res.status(200).json({ Login: true });
     } else {
-      return res.status(401).json({ Login: false, message: 'Invalid credentials' });
+      return res
+        .status(401)
+        .json({ Login: false, message: "Invalid credentials" });
     }
   } else {
-    return res.status(404).json({ Login: false, message: 'User not found' });
+    return res.status(404).json({ Login: false, message: "User not found" });
   }
 });
 
-app.get('/signUp', async (req, res) => {
+app.get("/signUp", async (req, res) => {
   const allUsers = await User.find({});
   return res.status(200).send(allUsers);
 });
 
-app.post('/signUp', async (req, res) => {
+app.post("/signUp", async (req, res) => {
   const { name, email, password } = req.body;
   const userExists = await User.exists({ email });
 
   if (userExists) {
-    return res.status(202).json({ message: 'User exists' });
+    return res.status(202).json({ message: "User exists" });
   } else {
     const newUser = await User.create({ name, email, password });
     return res.status(201).json(newUser);
@@ -146,54 +178,65 @@ const verifyUser = (req, res, next) => {
 const renewToken = (req, res, next) => {
   const refreshToken = req.cookies.refresh_token;
   if (!refreshToken) {
-    return res.status(401).json({ valid: false, message: 'No refresh token' });
+    return res.status(401).json({ valid: false, message: "No refresh token" });
   }
 
   jwt.verify(refreshToken, SECRET_KEY_REFRESH, (err, decoded) => {
     if (err) {
-      return res.status(401).json({ valid: false, message: 'Invalid refresh token' });
+      return res
+        .status(401)
+        .json({ valid: false, message: "Invalid refresh token" });
     }
 
-    const accessToken = jwt.sign({ email: decoded.email }, SECRET_KEY_ACCESS, { expiresIn: '1m' });
-    res.cookie('access_token', accessToken, { maxAge: 60000, httpOnly: true, secure: true, sameSite: 'Strict' });
+    const accessToken = jwt.sign({ email: decoded.email }, SECRET_KEY_ACCESS, {
+      expiresIn: "1m",
+    });
+    res.cookie("access_token", accessToken, {
+      maxAge: 60000,
+      httpOnly: true,
+      secure: true,
+      sameSite: "Strict",
+    });
     req.email = decoded.email;
     return next();
   });
 };
 
-app.get('/auth', verifyUser, (req, res) => {
-  return res.status(200).json({ valid: true, message: 'Authorized',email:req.email });
+app.get("/auth", verifyUser, (req, res) => {
+  return res
+    .status(200)
+    .json({ valid: true, message: "Authorized", email: req.email });
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-app.post('/logout', (req, res) => {
-  res.clearCookie('access_token', { httpOnly: true, secure: true, sameSite: 'Strict' });
-  res.clearCookie('refresh_token', { httpOnly: true, secure: true, sameSite: 'Strict' });
-  return res.status(200).json({ message: 'Logged out successfully' });
+app.post("/logout", (req, res) => {
+  res.clearCookie("access_token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "Strict",
+  });
+  res.clearCookie("refresh_token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "Strict",
+  });
+  return res.status(200).json({ message: "Logged out successfully" });
 });
 
 // All Product Routes
-app.get('/products', async (req, res) => {
+app.get("/products", async (req, res) => {
   const products = await All_Product.find({});
   res.send(products);
 });
-app.get('/products/:id', async (req, res) => {
-  try {
-    const product = await All_Product.findById(req.params.id);
-    if (!product) {
-      return res.status(404).send({ message: 'Product not found' });
-    }
-    res.send(product);
-  } catch (error) {
-    console.error('Error fetching product:', error);
-    res.status(500).send({ message: 'Server error' });
-  }
+app.get("/products/:id", async (req, res) => {
+  const { id } = req.params;
+  const products = await All_Product.findById(id);
+  res.send(products);
 });
 
-app.post('/products', async (req, res) => {
+app.post("/products", async (req, res) => {
   const rating = 0;
   const { img, title, description, price, cat, catagory, brand } = req.body;
   let id = 1;
@@ -206,12 +249,22 @@ app.post('/products', async (req, res) => {
     }
   }
 
-  const products = { id, img, title, description, price, cat, catagory, brand, rating };
+  const products = {
+    id,
+    img,
+    title,
+    description,
+    price,
+    cat,
+    catagory,
+    brand,
+    rating,
+  };
   const newProduct = await All_Product.create(products);
-  res.status(200).json({ message: 'Product added successfully', newProduct });
+  res.status(200).json({ message: "Product added successfully", newProduct });
 });
 
-app.delete('/products/:id', async (req, res) => {
+app.delete("/products/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const exist = await All_Product.findOne({ id });
@@ -226,73 +279,56 @@ app.delete('/products/:id', async (req, res) => {
 });
 
 // Review Routes
-app.get('/review', async (req, res) => {
+app.get("/review", async (req, res) => {
   const review = await Review.find({});
   return res.send(review);
 });
 
-app.post('/review', async (req, res) => {
+app.post("/review", async (req, res) => {
   const { gigid, userId, star, desc } = req.body;
   const review = { gigid, userId, star, desc };
   const newReview = await Review.create(review);
   return res.send(newReview);
 });
 
-app.post('/payment-option', async (req, res) => {
-  const { firstName, lastName, phone, email, address, city, state, zipCode, deliveryMethod, paymentMethod, agreedToTerms, products } = req.body;
-
-  // Create a payment profile with the provided data
-  try {
-    const paymentProfile = await Payment.create({
-      firstName,
-      lastName,
-      phone,
-      email,
-      address,
-      city,
-      state,
-      zipCode,
-      deliveryMethod,
-      paymentMethod,
-      agreedToTerms,
-      products // Include the products array in the payment profile
-    });
-    res.status(201).json(paymentProfile); // Respond with the created payment profile
-  } catch (error) {
-    res.status(400).json({ error: error.message }); // Handle errors
-  }
+app.post("/payment-option", async (req, res) => {
+  const {
+    firstName,
+    lastName,
+    phone,
+    email,
+    address,
+    city,
+    products,
+    state,
+    zipCode,
+    deliveryMethod,
+    paymentMethod,
+    agreedToTerms,
+  } = req.body;
+  const paymentProfile = await Payment.create({
+    firstName,
+    lastName,
+    phone,
+    email,
+    address,
+    city,
+    products,
+    state,
+    zipCode,
+    deliveryMethod,
+    paymentMethod,
+    agreedToTerms,
+  });
+  res.send(paymentProfile);
 });
 
-app.get('/payment-option', async (req, res) => {
-  const email = req.email; // Assuming req.email is set somewhere in your authentication middleware
-
-  // Retrieve payment profiles based on email
-  try {
-    const userProfile = await Payment.find({ });
-    if (userProfile.length === 0) {
-      return res.status(404).json({ message: 'No payment profile found' });
-    }
-    res.status(200).json(userProfile); // Respond with the found user profiles
-  } catch (error) {
-    res.status(500).json({ error: error.message }); // Handle errors
-  }
+app.get("/payment-option", async (req, res) => {
+  const userProfile = await Payment.find({});
+  res.send(userProfile);
 });
-app.delete('/payment-option/:id', async (req, res) => {
-  const { id } = req.params; // Get the payment ID from the route parameters
-
-  try {
-    // Find the payment by ID and delete it
-    const deletedPayment = await Payment.findByIdAndDelete(id);
-
-    if (!deletedPayment) {
-      return res.status(404).json({ message: 'Payment profile not found' });
-    }
-
-    res.status(200).json({ message: 'Payment profile deleted successfully' });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+app.delete("/payment-option/:id", async (req, res) => {
+  const { id } = req.params;
+  const deletedProfile = await Payment.findByIdAndDelete(id);
+  res.send(deletedProfile)
 });
-
-
-

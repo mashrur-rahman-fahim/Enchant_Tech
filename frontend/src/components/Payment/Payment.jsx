@@ -9,6 +9,7 @@ import { CartContext } from '../cart/CartContext';
 export const Payment = () => {
   const { isLoggedIn1, setIsLoggedIn1 } = useAuth1();
   const { cartData } = useContext(CartContext); // Access cartData from context
+  console.log(cartData)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

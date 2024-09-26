@@ -24,7 +24,7 @@ export const Authen = () => {
         if (data.valid) {
           setMessage(data.message);
           if (isLoggedIn) navigate('/Admin');
-          if (isLoggedIn1) navigate(`/save/${email}`);
+          if (isLoggedIn1) navigate(`/`);
         } else {
           setMessage(data.message);
           setIsLoggedIn(false);
