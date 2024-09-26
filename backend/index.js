@@ -13,6 +13,7 @@ import jwt from "jsonwebtoken";
 import All_Product from "./models/All_product.js";
 import Review from "./models/review.js";
 import Payment from "./models/payment.js";
+import UserProfile from "./models/UserProfile.js";
 
 const SECRET_KEY_REFRESH = process.env.SECRET_KEY_REFRESH;
 const SECRET_KEY_ACCESS = process.env.SECRET_KEY_ACCESS;
@@ -332,3 +333,60 @@ app.delete("/payment-option/:id", async (req, res) => {
   const deletedProfile = await Payment.findByIdAndDelete(id);
   res.send(deletedProfile)
 });
+
+
+// Add this route below your existing routes in index.js
+
+app.post("/api/profile", async (req, res) => {
+  const { email, name, phone, address, gender, birthday, profilePicture } = req.body;
+
+  try {
+    
+    // Check if a user profile already exists for the provided email
+    let userProfile = await UserProfile.findOne({ email });
+
+    if (userProfile) {
+      // If it exists, update the profile
+      userProfile.name = name || userProfile.name; // Only update if a new value is provided
+      userProfile.phone = phone || userProfile.phone;
+      userProfile.address = address || userProfile.address;
+      userProfile.gender = gender || userProfile.gender;
+      userProfile.birthday = birthday || userProfile.birthday;
+      userProfile.profilePicture = profilePicture || userProfile.profilePicture;
+
+      await userProfile.save();
+      return res.status(200).json({ message: "Profile updated successfully", userProfile });
+    } else {
+      // If it doesn't exist, create a new profile
+      userProfile = await UserProfile.create({
+        email,
+        name,
+        phone,
+        address,
+        gender,
+        birthday,
+        profilePicture,
+      });
+
+      return res.status(201).json({ message: "Profile created successfully", userProfile });
+    }
+  } catch (error) {
+    console.error("Error saving user profile:", error);
+    return res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+});
+app.get("/api/profile/:email", async (req, res) => {
+  const { email } = req.params;
+
+  try {
+    const userProfile = await UserProfile.findOne({ email });
+    if (!userProfile) {
+      return res.status(404).json({ message: "Profile not found" });
+    }
+    return res.status(200).json(userProfile);
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+});
+
+
