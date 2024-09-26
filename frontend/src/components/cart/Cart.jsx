@@ -14,7 +14,7 @@ export const Cart = () => {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
+    useEffect(() => {       
         calculateTotals();
     }, [cartData, discount]);
 

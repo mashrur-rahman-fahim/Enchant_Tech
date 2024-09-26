@@ -1,77 +1,86 @@
-.product_details {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 40px 0;
-  }
-  
-  .product-image {
-    flex: 1;
-    text-align: center;
-    animation: fadeIn 1s ease-in-out;
-  }
-  
-  .product-image img {
-    max-width: 400px;
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .product-image img:hover {
-    transform: scale(1.05);
-  }
-  
-  .product-info {
-    flex: 1;
-    padding-left: 40px;
-    animation: slideInRight 1s ease-in-out;
-  }
-  
-  .product-info h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .product-info p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    color: #666;
-  }
-  
-  .price {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #4CAF50;
-  }
-  
-  .price h4 {
-    margin-right: 10px;
-  }
-  
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideInRight {
-    0% {
-      transform: translateX(50px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
+/* All_product.css */
+
+.product-details-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #ffffff, #f8f8f8);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.product-details-container:hover {
+  transform: scale(1.02);
+}
+
+.product-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-image img {
+  max-width: 80%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+  flex: 2;
+  padding: 20px;
+  color: #2c3e50;
+}
+
+.product-title {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.product-description {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.product-meta {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.meta-item {
+  flex-basis: 50%;
+  font-size: 1em;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.meta-item strong {
+  color: #34495e;
+}
+
+.price {
+  background-color: #ca324c;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.5em;
+  color: white;
+  border: 2px solid #e67e22;
+}
+
+.product-price {
+  font-weight: bold;
+}
+
+.responsive {
+  width: 100%;
+  height: auto;
+}

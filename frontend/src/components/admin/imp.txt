@@ -1,0 +1,26 @@
+ <section className="payment-section">
+            <h2>Payments</h2>
+            <ul className="payment-list">
+              {payments.map((payment) => (
+                <li key={payment._id} className="payment-item">
+                  <div>
+                    <h3>{payment.name}</h3>
+                    <p>
+                      Profile:{" "}
+                      {productDetailsMap[payment.products[0]]?.title ||
+                        "Loading..."}
+                    </p>
+                    <button
+                      onClick={() => handleDeletePayment(payment._id)}
+                      className="delete-button"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+
+          
