@@ -8,8 +8,13 @@ import { Home } from "./pages/Home";
 import { Desktop } from "./pages/Desktop";
 import { Laptop } from "./pages/Laptop";
 import { Motherboardnew } from './pages/Motherboardnew';  // Assuming Motherboard is in the pages folder
-
-
+import { Keyboard2 } from './pages/Keyboard2';
+import { Printer2 } from './pages/Printer2';
+import { Casing2 } from './pages/Casing2';
+import { Mouse2 } from './pages/Mouse2';
+import { Ups2 } from './pages/Ups2';
+import { Powersupply2 } from './pages/Powersupply2';
+import { Speaker2 } from './pages/Speaker2';
 import { Gaming1 } from "./pages/Gaming1";
 import { Login2 } from "./pages/Login2";
 import { Signup } from "./pages/signup";
@@ -35,8 +40,10 @@ import { ProfilePage } from './pages/ProfilePage';
 import { Main__profile } from './pages/Main__profile';
 import { Main_profile } from './components/Profile/Main_profile';
 import { Cpu2 } from './pages/Cpu2';
-import { Rambuy} from './pages/Rambuy';
+import { Storage2 } from './pages/Storage2'; 
 import { Cooler1 } from './pages/Cooler1';
+import { Gpu2 } from './pages/Gpu2'; 
+import { Ram2 } from './pages/Ram2';  
 
 
 
@@ -55,9 +62,18 @@ function App() {
               <Route path="/Login1" element={<Login1 />} />
               <Route path="/Desktop" element={<Desktop />} />
               <Route path="/Laptop" element={<Laptop />} />
-              <Route path="/Ramdbuild" element={<Rambuy />} />
-           
+              <Route path="/Rambuild" element={<Ram2 />} />
+              <Route path="/Storagebuild" element={<Storage2 />} />
+              <Route path="/Gpubuild" element={<Gpu2 />} />
               <Route path="/Motherboardbuild" element={<Motherboardnew />} />
+              <Route path="/Keyboardbuild" element={<Keyboard2 />} />
+          <Route path="/Printerbuild" element={<Printer2 />} />
+          <Route path="/Casingbuild" element={<Casing2 />} />
+          <Route path="/Powersupplybuild" element={<Powersupply2 />} />
+          <Route path="/Speakerbuild" element={<Speaker2 />} />
+          <Route path="/Mousebuild" element={<Mouse2 />} />
+          <Route path="/Upsbuild" element={<Ups2 />} />
+
               <Route path="/Coolerbuild" element={<Cooler1 />} />
               <Route path="/Cpubuild" element={<Cpu2 />} />
               <Route path="/Gaming" element={<Gaming1 />} />

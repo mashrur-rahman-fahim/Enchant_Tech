@@ -1,4 +1,6 @@
-.ram-container {
+/* Testpowersupply.css */
+
+.powersupply-container {
     padding: 20px;
     font-family: Arial, sans-serif;
 }
@@ -41,14 +43,14 @@
     border-radius: 4px;
 }
 
-.ram-list {
+.powersupply-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.ram-card {
-    width: calc(33.333% - 20px);
+.powersupply-card {
+    width: calc(33.333% - 20px); /* Three cards per row with spacing */
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -57,24 +59,24 @@
     background-color: #fff;
 }
 
-.ram-card:hover {
+.powersupply-card:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     transform: translateY(-4px);
 }
 
-.ram-image {
+.powersupply-image {
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;
 }
 
-.ram-card h4 {
+.powersupply-card h4 {
     margin: 10px 0;
     font-size: 18px;
     color: #333;
 }
 
-.ram-details p {
+.powersupply-details p {
     margin: 5px 0;
     font-size: 14px;
     color: #666;
