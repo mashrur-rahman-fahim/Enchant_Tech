@@ -24,6 +24,7 @@ export const PcBuild = () => {
     ups: null
   });
 
+  const [totalCost, setTotalCost] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -31,7 +32,6 @@ export const PcBuild = () => {
     if (location.state) {
       const { state } = location;
       setSelectedComponents(prevComponents => ({
-        ...prevComponents,
         cpu: state.selectedProcessor || prevComponents.cpu,
         cooler: state.selectedCooler || prevComponents.cooler,
         motherboard: state.selectedMotherboard || prevComponents.motherboard,
@@ -66,13 +66,19 @@ export const PcBuild = () => {
       powerSupply: '/Powersupplybuild',
     };
 
+    // Get the current component
+    const currentComponent = selectedComponents[category];
+
+    // Navigate to the selection page
     navigate(routes[category]);
   };
 
-  // Calculate total cost and item count
-  const totalCost = Object.values(selectedComponents).reduce((total, component) => {
-    return total + (component ? component.cost : 0);
-  }, 0);
+  useEffect(() => {
+    const total = Object.values(selectedComponents).reduce((acc, component) => {
+      return acc + (component ? component.cost : 0);
+    }, 0);
+    setTotalCost(total);
+  }, [selectedComponents]);
 
   const itemCount = Object.values(selectedComponents).filter(component => component !== null).length;
 
@@ -84,6 +90,25 @@ export const PcBuild = () => {
     alert('Components saved!');
   };
 
+  const handleClear = () => {
+    setSelectedComponents({
+      cpu: null,
+      cooler: null,
+      motherboard: null,
+      ram: null,
+      storage: null,
+      gpu: null,
+      keyboard: null,
+      printer: null,
+      powerSupply: null,
+      casing: null,
+      mouse: null,
+      speaker: null,
+      ups: null
+    });
+    setTotalCost(0);
+  };
+
   return (
     <div className="pc-builder">
       <div className="screenshot-save">
@@ -92,6 +117,9 @@ export const PcBuild = () => {
         </button>
         <button className="save-btn" onClick={handleSave}>
           <FontAwesomeIcon icon={faSave} /> Save
+        </button>
+        <button className="clear-btn" onClick={handleClear}>
+          Clear All
         </button>
       </div>
 
@@ -104,7 +132,7 @@ export const PcBuild = () => {
             <span className="item-label"> Items</span>
           </div>
           <div className="total-cost">
-            ₹{totalCost}
+            {'\u20B9'}{totalCost} {/* Updated total cost */}
             <span className="cost-label"> Total Cost</span>
           </div>
           <FontAwesomeIcon icon={faShoppingCart} className="cart-icon" />
@@ -127,7 +155,7 @@ export const PcBuild = () => {
               {selectedComponents[category]?.name || category.charAt(0).toUpperCase() + category.slice(1)}
             </span>
             <span className="component-cost">
-              {selectedComponents[category]?.cost ? `₹${selectedComponents[category].cost}` : '' }
+              {selectedComponents[category]?.cost ? `\u20B9${selectedComponents[category].cost}` : ''}
             </span>
           </div>
           <div className="component-selection">
@@ -138,32 +166,7 @@ export const PcBuild = () => {
         </div>
       ))}
 
-      <h3>Selected Components</h3>
-      <div className="selected-components">
-        {Object.keys(selectedComponents).map((key) => (
-          selectedComponents[key] && (
-            <div className="component-row" key={key}>
-              <div className="component-icon">
-                <FontAwesomeIcon icon={key === 'cpu' ? faMicrochip :
-                  key === 'cooler' ? faThermometerHalf :
-                  key === 'motherboard' ? faDesktop :
-                  key === 'ram' ? faMemory :
-                  key === 'storage' ? faHdd :
-                  key === 'gpu' ? faVideo :
-                  key === 'ups' ? faBatteryFull : faDesktop} />
-              </div>
-              <div className="component-details">
-                <span className="component-name">
-                  {key.charAt(0).toUpperCase() + key.slice(1)}: {selectedComponents[key].name}
-                </span>
-                <span className="component-cost">
-                  ₹{selectedComponents[key].cost}
-                </span>
-              </div>
-            </div>
-          )
-        ))}
-      </div>
+    
 
       <h3>Additional Components</h3>
       {['keyboard', 'printer', 'powerSupply', 'casing', 'mouse', 'speaker', 'ups'].map(category => (
@@ -182,7 +185,7 @@ export const PcBuild = () => {
               {selectedComponents[category]?.name || category.charAt(0).toUpperCase() + category.slice(1)}
             </span>
             <span className="component-cost">
-              {selectedComponents[category]?.cost ? `₹${selectedComponents[category].cost}` : ''}
+              {selectedComponents[category]?.cost ? `\u20B9${selectedComponents[category].cost}` : ''}
             </span>
           </div>
           <div className="component-selection">
@@ -193,7 +196,7 @@ export const PcBuild = () => {
         </div>
       ))}
 
-      <h3>Selected Additional Components</h3>
+      <h3></h3>
       <div className="selected-components">
         {['keyboard', 'printer', 'powerSupply', 'casing', 'mouse', 'speaker', 'ups'].map(key => (
           selectedComponents[key] && (
@@ -212,7 +215,34 @@ export const PcBuild = () => {
                   {key.charAt(0).toUpperCase() + key.slice(1)}: {selectedComponents[key].name}
                 </span>
                 <span className="component-cost">
-                  ₹{selectedComponents[key].cost}
+                  {'\u20B9'}{selectedComponents[key].cost}
+                </span>
+              </div>
+            </div>
+          )
+        ))}
+      </div>
+
+      <h3></h3>
+      <div className="selected-components">
+        {['keyboard', 'printer', 'powerSupply', 'casing', 'mouse', 'speaker', 'ups'].map(key => (
+          selectedComponents[key] && (
+            <div className="component-row" key={key}>
+              <div className="component-icon">
+                <FontAwesomeIcon icon={key === 'keyboard' ? faKeyboard :
+                  key === 'printer' ? faPrint :
+                  key === 'powerSupply' ? faPlug :
+                  key === 'casing' ? faDesktop :
+                  key === 'mouse' ? faMouse :
+                  key === 'speaker' ? faVolumeUp :
+                  key === 'ups' ? faBatteryFull : faDesktop} />
+              </div>
+              <div className="component-details">
+                <span className="component-name">
+                  {key.charAt(0).toUpperCase() + key.slice(1)}: {selectedComponents[key].name}
+                </span>
+                <span className="component-cost">
+                  {'\u20B9'}{selectedComponents[key].cost}
                 </span>
               </div>
             </div>
