@@ -30,23 +30,22 @@ export const PcBuild = () => {
   useEffect(() => {
     if (location.state) {
       const { state } = location;
-      const newComponents = {
-        cpu: state.selectedProcessor || selectedComponents.cpu,
-        cooler: state.selectedCooler || selectedComponents.cooler,
-        motherboard: state.selectedMotherboard || selectedComponents.motherboard,
-        ram: state.selectedRam || selectedComponents.ram,
-        storage: state.selectedStorage || selectedComponents.storage,
-        gpu: state.selectedGpu || selectedComponents.gpu,
-        keyboard: state.selectedKeyboard || selectedComponents.keyboard,
-        printer: state.selectedPrinter || selectedComponents.printer,
-        powerSupply: state.selectedPowerSupply || selectedComponents.powerSupply,
-        casing: state.selectedCasing || selectedComponents.casing,
-        mouse: state.selectedMouse || selectedComponents.mouse,
-        speaker: state.selectedSpeaker || selectedComponents.speaker,
-        ups: state.selectedUPS || selectedComponents.ups, // Updated to capture the selected UPS
-      };
-
-      setSelectedComponents(newComponents);
+      setSelectedComponents(prevComponents => ({
+        ...prevComponents,
+        cpu: state.selectedProcessor || prevComponents.cpu,
+        cooler: state.selectedCooler || prevComponents.cooler,
+        motherboard: state.selectedMotherboard || prevComponents.motherboard,
+        ram: state.selectedRam || prevComponents.ram,
+        storage: state.selectedStorage || prevComponents.storage,
+        gpu: state.selectedGpu || prevComponents.gpu,
+        keyboard: state.selectedKeyboard || prevComponents.keyboard,
+        printer: state.selectedPrinter || prevComponents.printer,
+        powerSupply: state.selectedPowerSupply || prevComponents.powerSupply,
+        casing: state.selectedCasing || prevComponents.casing,
+        mouse: state.selectedMouse || prevComponents.mouse,
+        speaker: state.selectedSpeaker || prevComponents.speaker,
+        ups: state.selectedUPS || prevComponents.ups,
+      }));
     }
   }, [location.state]);
 
@@ -70,6 +69,7 @@ export const PcBuild = () => {
     navigate(routes[category]);
   };
 
+  // Calculate total cost and item count
   const totalCost = Object.values(selectedComponents).reduce((total, component) => {
     return total + (component ? component.cost : 0);
   }, 0);
@@ -127,7 +127,7 @@ export const PcBuild = () => {
               {selectedComponents[category]?.name || category.charAt(0).toUpperCase() + category.slice(1)}
             </span>
             <span className="component-cost">
-              {selectedComponents[category]?.cost ? `₹${selectedComponents[category].cost}` : ''}
+              {selectedComponents[category]?.cost ? `₹${selectedComponents[category].cost}` : '' }
             </span>
           </div>
           <div className="component-selection">
@@ -138,8 +138,7 @@ export const PcBuild = () => {
         </div>
       ))}
 
-      {/* Selected Core Components */}
-      <h3>Selected Core Components</h3>
+      <h3>Selected Components</h3>
       <div className="selected-components">
         {Object.keys(selectedComponents).map((key) => (
           selectedComponents[key] && (
@@ -166,7 +165,6 @@ export const PcBuild = () => {
         ))}
       </div>
 
-      {/* Additional Components */}
       <h3>Additional Components</h3>
       {['keyboard', 'printer', 'powerSupply', 'casing', 'mouse', 'speaker', 'ups'].map(category => (
         <div key={category} className="component-row">
@@ -194,6 +192,33 @@ export const PcBuild = () => {
           </div>
         </div>
       ))}
+
+      <h3>Selected Additional Components</h3>
+      <div className="selected-components">
+        {['keyboard', 'printer', 'powerSupply', 'casing', 'mouse', 'speaker', 'ups'].map(key => (
+          selectedComponents[key] && (
+            <div className="component-row" key={key}>
+              <div className="component-icon">
+                <FontAwesomeIcon icon={key === 'keyboard' ? faKeyboard :
+                  key === 'printer' ? faPrint :
+                  key === 'powerSupply' ? faPlug :
+                  key === 'casing' ? faDesktop :
+                  key === 'mouse' ? faMouse :
+                  key === 'speaker' ? faVolumeUp :
+                  key === 'ups' ? faBatteryFull : faDesktop} />
+              </div>
+              <div className="component-details">
+                <span className="component-name">
+                  {key.charAt(0).toUpperCase() + key.slice(1)}: {selectedComponents[key].name}
+                </span>
+                <span className="component-cost">
+                  ₹{selectedComponents[key].cost}
+                </span>
+              </div>
+            </div>
+          )
+        ))}
+      </div>
     </div>
   );
 };
