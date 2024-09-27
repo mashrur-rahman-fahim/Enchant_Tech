@@ -73,20 +73,27 @@ export const Gaming = () => {
     setSortOption(option);
   };
 
+  const { updateCart } = useContext(CartContext);
   const addToCart = (product) => {
-    const productToAdd = { ...product, date: new Date() };
-
-    fetch("http://localhost:4000/api/cart", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(productToAdd),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Added to cart:", data);
-        fetchCartCount();
-      })
-      .catch((error) => console.error("Error adding item to cart:", error));
+    // Fetch existing cart data from local storage
+    const existingCartData = JSON.parse(localStorage.getItem('cart')) || [];
+  
+    // Find if the product is already in the cart
+    const existingProductIndex = existingCartData.findIndex(item => item.id === product.id);
+  
+    if (existingProductIndex !== -1) {
+      // Product exists in the cart, update its count
+      existingCartData[existingProductIndex].count += 1;
+    } else {
+      // Product does not exist in the cart, add it
+      existingCartData.push({ ...product, count: 1, date: new Date() });
+    }
+  
+    // Save the updated cart data back to localStorage
+    localStorage.setItem('cart', JSON.stringify(existingCartData));
+  
+    // Update the cart data in the context
+    updateCart(existingCartData);
   };
 
   return (
