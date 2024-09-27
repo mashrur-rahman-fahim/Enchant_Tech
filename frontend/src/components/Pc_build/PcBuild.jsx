@@ -27,72 +27,47 @@ export const PcBuild = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Update the selected components from state
   useEffect(() => {
     if (location.state) {
-      if (location.state.selectedProcessor) {
-        setSelectedComponents(prevState => ({
-          ...prevState,
-          cpu: location.state.selectedProcessor
-        }));
-      }
-      if (location.state.selectedCooler) {
-        setSelectedComponents(prevState => ({
-          ...prevState,
-          cooler: location.state.selectedCooler
-        }));
-      }
-      if (location.state.selectedMotherboard) {
-        setSelectedComponents(prevState => ({
-          ...prevState,
-          motherboard: location.state.selectedMotherboard
-        }));
-      }
-      if (location.state.selectedStorage) {
-        setSelectedComponents(prevState => ({
-          ...prevState,
-          storage: location.state.selectedStorage
-        }));
-      }
-      if (location.state.selectedRam) {
-        setSelectedComponents(prevState => ({
-          ...prevState,
-          ram: location.state.selectedRam
-        }));
-      }
-      if (location.state.selectedGpu) {
-        setSelectedComponents(prevState => ({
-          ...prevState,
-          gpu: location.state.selectedGpu
-        }));
-      }
+      const { state } = location;
+      const newComponents = {
+        cpu: state.selectedProcessor || selectedComponents.cpu,
+        cooler: state.selectedCooler || selectedComponents.cooler,
+        motherboard: state.selectedMotherboard || selectedComponents.motherboard,
+        ram: state.selectedRam || selectedComponents.ram,
+        storage: state.selectedStorage || selectedComponents.storage,
+        gpu: state.selectedGpu || selectedComponents.gpu,
+        keyboard: state.selectedKeyboard || selectedComponents.keyboard,
+        printer: state.selectedPrinter || selectedComponents.printer,
+        powerSupply: state.selectedPowerSupply || selectedComponents.powerSupply,
+        casing: state.selectedCasing || selectedComponents.casing,
+        mouse: state.selectedMouse || selectedComponents.mouse,
+        speaker: state.selectedSpeaker || selectedComponents.speaker,
+        ups: state.selectedUPS || selectedComponents.ups, // Updated to capture the selected UPS
+      };
+
+      setSelectedComponents(newComponents);
     }
   }, [location.state]);
 
   const handleSelection = (category) => {
-    switch (category) {
-      case 'cpu':
-        navigate('/Cpubuild');
-        break;
-      case 'cooler':
-        navigate('/Coolerbuild');
-        break;
-      case 'motherboard':
-        navigate('/Motherboardbuild');
-        break;
-      case 'ram':
-        navigate('/Rambuild');
-        break;
-      case 'storage':
-        navigate('/Storagebuild');
-        break;
-      case 'gpu':
-        navigate('/Gpubuild');
-        break;
-      // other cases...
-      default:
-        break;
-    }
+    const routes = {
+      cpu: '/Cpubuild',
+      cooler: '/Coolerbuild',
+      motherboard: '/Motherboardbuild',
+      gpu: '/Gpubuild',
+      ram: '/Rambuild',
+      storage: '/Storagebuild',
+      ups: '/Upsbuild',
+      mouse: '/Mousebuild',
+      casing: '/Casingbuild',
+      keyboard: '/Keyboardbuild',
+      printer: '/Printerbuild',
+      speaker: '/Speakerbuild',
+      powerSupply: '/Powersupplybuild',
+    };
+
+    navigate(routes[category]);
   };
 
   const totalCost = Object.values(selectedComponents).reduce((total, component) => {
@@ -163,99 +138,32 @@ export const PcBuild = () => {
         </div>
       ))}
 
-      {/* Selected Components */}
-      <h3>Selected Components</h3>
+      {/* Selected Core Components */}
+      <h3>Selected Core Components</h3>
       <div className="selected-components">
-        {selectedComponents.cpu && (
-          <div className="component-row">
-            <div className="component-icon">
-              <FontAwesomeIcon icon={faMicrochip} />
+        {Object.keys(selectedComponents).map((key) => (
+          selectedComponents[key] && (
+            <div className="component-row" key={key}>
+              <div className="component-icon">
+                <FontAwesomeIcon icon={key === 'cpu' ? faMicrochip :
+                  key === 'cooler' ? faThermometerHalf :
+                  key === 'motherboard' ? faDesktop :
+                  key === 'ram' ? faMemory :
+                  key === 'storage' ? faHdd :
+                  key === 'gpu' ? faVideo :
+                  key === 'ups' ? faBatteryFull : faDesktop} />
+              </div>
+              <div className="component-details">
+                <span className="component-name">
+                  {key.charAt(0).toUpperCase() + key.slice(1)}: {selectedComponents[key].name}
+                </span>
+                <span className="component-cost">
+                  ₹{selectedComponents[key].cost}
+                </span>
+              </div>
             </div>
-            <div className="component-details">
-              <span className="component-name">
-                CPU: {selectedComponents.cpu.name}
-              </span>
-              <span className="component-cost">
-                ₹{selectedComponents.cpu.cost}
-              </span>
-            </div>
-          </div>
-        )}
-        {selectedComponents.cooler && (
-          <div className="component-row">
-            <div className="component-icon">
-              <FontAwesomeIcon icon={faThermometerHalf} />
-            </div>
-            <div className="component-details">
-              <span className="component-name">
-                Cooler: {selectedComponents.cooler.name}
-              </span>
-              <span className="component-cost">
-                ₹{selectedComponents.cooler.cost}
-              </span>
-            </div>
-          </div>
-        )}
-        {selectedComponents.motherboard && (
-          <div className="component-row">
-            <div className="component-icon">
-              <FontAwesomeIcon icon={faDesktop} />
-            </div>
-            <div className="component-details">
-              <span className="component-name">
-                Motherboard: {selectedComponents.motherboard.name}
-              </span>
-              <span className="component-cost">
-                ₹{selectedComponents.motherboard.cost}
-              </span>
-            </div>
-          </div>
-        )}
-        {selectedComponents.ram && (
-          <div className="component-row">
-            <div className="component-icon">
-              <FontAwesomeIcon icon={faMemory} />
-            </div>
-            <div className="component-details">
-              <span className="component-name">
-                RAM: {selectedComponents.ram.name}
-              </span>
-              <span className="component-cost">
-                ₹{selectedComponents.ram.cost}
-              </span>
-            </div>
-          </div>
-        )}
-        {selectedComponents.storage && (
-          <div className="component-row">
-            <div className="component-icon">
-              <FontAwesomeIcon icon={faHdd} />
-            </div>
-            <div className="component-details">
-              <span className="component-name">
-                Storage: {selectedComponents.storage.name}
-              </span>
-              <span className="component-cost">
-                ₹{selectedComponents.storage.cost}
-              </span>
-            </div>
-          </div>
-        )}
-        {selectedComponents.gpu && (
-          <div className="component-row">
-            <div className="component-icon">
-              <FontAwesomeIcon icon={faVideo} />
-            </div>
-            <div className="component-details">
-              <span className="component-name">
-                GPU: {selectedComponents.gpu.name}
-              </span>
-              <span className="component-cost">
-                ₹{selectedComponents.gpu.cost}
-              </span>
-            </div>
-          </div>
-        )}
+          )
+        ))}
       </div>
 
       {/* Additional Components */}
@@ -272,7 +180,12 @@ export const PcBuild = () => {
               category === 'ups' ? faBatteryFull : faDesktop} />
           </div>
           <div className="component-details">
-            <span className="component-name">{category.charAt(0).toUpperCase() + category.slice(1)}</span>
+            <span className="component-name">
+              {selectedComponents[category]?.name || category.charAt(0).toUpperCase() + category.slice(1)}
+            </span>
+            <span className="component-cost">
+              {selectedComponents[category]?.cost ? `₹${selectedComponents[category].cost}` : ''}
+            </span>
           </div>
           <div className="component-selection">
             <button onClick={() => handleSelection(category)} className="choose-btn">
