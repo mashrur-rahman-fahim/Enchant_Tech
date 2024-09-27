@@ -27,7 +27,7 @@ export const PcBuild = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Update the selected processor and cooler from state
+  // Update the selected components from state
   useEffect(() => {
     if (location.state) {
       if (location.state.selectedProcessor) {
@@ -42,6 +42,30 @@ export const PcBuild = () => {
           cooler: location.state.selectedCooler
         }));
       }
+      if (location.state.selectedMotherboard) {
+        setSelectedComponents(prevState => ({
+          ...prevState,
+          motherboard: location.state.selectedMotherboard
+        }));
+      }
+      if (location.state.selectedStorage) {
+        setSelectedComponents(prevState => ({
+          ...prevState,
+          storage: location.state.selectedStorage
+        }));
+      }
+      if (location.state.selectedRam) {
+        setSelectedComponents(prevState => ({
+          ...prevState,
+          ram: location.state.selectedRam
+        }));
+      }
+      if (location.state.selectedGpu) {
+        setSelectedComponents(prevState => ({
+          ...prevState,
+          gpu: location.state.selectedGpu
+        }));
+      }
     }
   }, [location.state]);
 
@@ -53,16 +77,18 @@ export const PcBuild = () => {
       case 'cooler':
         navigate('/Coolerbuild');
         break;
-        case 'motherboard':
-          navigate('/Motherboardbuild');
-          break;
-          case 'ram':
-            navigate('/Rambuild');
-            break;
-            case 'storage':
-              navigate('/Storagebuild');
-              break;
-        // other cases...
+      case 'motherboard':
+        navigate('/Motherboardbuild');
+        break;
+      case 'ram':
+        navigate('/Rambuild');
+        break;
+      case 'storage':
+        navigate('/Storagebuild');
+        break;
+      case 'gpu':
+        navigate('/Gpubuild');
+        break;
       // other cases...
       default:
         break;
@@ -137,7 +163,7 @@ export const PcBuild = () => {
         </div>
       ))}
 
-      {/* Selected CPU and Cooler */}
+      {/* Selected Components */}
       <h3>Selected Components</h3>
       <div className="selected-components">
         {selectedComponents.cpu && (
@@ -166,6 +192,66 @@ export const PcBuild = () => {
               </span>
               <span className="component-cost">
                 ₹{selectedComponents.cooler.cost}
+              </span>
+            </div>
+          </div>
+        )}
+        {selectedComponents.motherboard && (
+          <div className="component-row">
+            <div className="component-icon">
+              <FontAwesomeIcon icon={faDesktop} />
+            </div>
+            <div className="component-details">
+              <span className="component-name">
+                Motherboard: {selectedComponents.motherboard.name}
+              </span>
+              <span className="component-cost">
+                ₹{selectedComponents.motherboard.cost}
+              </span>
+            </div>
+          </div>
+        )}
+        {selectedComponents.ram && (
+          <div className="component-row">
+            <div className="component-icon">
+              <FontAwesomeIcon icon={faMemory} />
+            </div>
+            <div className="component-details">
+              <span className="component-name">
+                RAM: {selectedComponents.ram.name}
+              </span>
+              <span className="component-cost">
+                ₹{selectedComponents.ram.cost}
+              </span>
+            </div>
+          </div>
+        )}
+        {selectedComponents.storage && (
+          <div className="component-row">
+            <div className="component-icon">
+              <FontAwesomeIcon icon={faHdd} />
+            </div>
+            <div className="component-details">
+              <span className="component-name">
+                Storage: {selectedComponents.storage.name}
+              </span>
+              <span className="component-cost">
+                ₹{selectedComponents.storage.cost}
+              </span>
+            </div>
+          </div>
+        )}
+        {selectedComponents.gpu && (
+          <div className="component-row">
+            <div className="component-icon">
+              <FontAwesomeIcon icon={faVideo} />
+            </div>
+            <div className="component-details">
+              <span className="component-name">
+                GPU: {selectedComponents.gpu.name}
+              </span>
+              <span className="component-cost">
+                ₹{selectedComponents.gpu.cost}
               </span>
             </div>
           </div>

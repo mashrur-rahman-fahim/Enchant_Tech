@@ -35,8 +35,10 @@ import { ProfilePage } from './pages/ProfilePage';
 import { Main__profile } from './pages/Main__profile';
 import { Main_profile } from './components/Profile/Main_profile';
 import { Cpu2 } from './pages/Cpu2';
-import { Rambuy} from './pages/Rambuy';
+import { Storage2 } from './pages/Storage2'; 
 import { Cooler1 } from './pages/Cooler1';
+import { Gpu2 } from './pages/Gpu2'; 
+import { Ram2 } from './pages/Ram2';  
 
 
 
@@ -55,8 +57,9 @@ function App() {
               <Route path="/Login1" element={<Login1 />} />
               <Route path="/Desktop" element={<Desktop />} />
               <Route path="/Laptop" element={<Laptop />} />
-              <Route path="/Ramdbuild" element={<Rambuy />} />
-           
+              <Route path="/Rambuild" element={<Ram2 />} />
+              <Route path="/Storagebuild" element={<Storage2 />} />
+              <Route path="/Gpubuild" element={<Gpu2 />} />
               <Route path="/Motherboardbuild" element={<Motherboardnew />} />
               <Route path="/Coolerbuild" element={<Cooler1 />} />
               <Route path="/Cpubuild" element={<Cpu2 />} />
