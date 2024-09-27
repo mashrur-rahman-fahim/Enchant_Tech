@@ -231,11 +231,16 @@ app.get("/products", async (req, res) => {
   const products = await All_Product.find({});
   res.send(products);
 });
-app.get("/products/:id", async (req, res) => {
+app.get("/productObject/:id", async (req, res) => {
   const { id } = req.params;
   const products = await All_Product.findById(id);
   res.send(products);
 });
+app.get('/product/:id',async(req,res)=>{
+  const {id}=req.params;
+  const products = await All_Product.findOne(Number(id));
+  req.send(products)
+})
 
 app.post("/products", async (req, res) => {
   const rating = 0;
@@ -331,17 +336,16 @@ app.get("/payment-option", async (req, res) => {
 app.delete("/payment-option/:id", async (req, res) => {
   const { id } = req.params;
   const deletedProfile = await Payment.findByIdAndDelete(id);
-  res.send(deletedProfile)
+  res.send(deletedProfile);
 });
-
 
 // Add this route below your existing routes in index.js
 
 app.post("/api/profile", async (req, res) => {
-  const { email, name, phone, address, gender, birthday, profilePicture } = req.body;
+  const { email, name, phone, address, gender, birthday, profilePicture } =
+    req.body;
 
   try {
-    
     // Check if a user profile already exists for the provided email
     let userProfile = await UserProfile.findOne({ email });
 
@@ -355,7 +359,9 @@ app.post("/api/profile", async (req, res) => {
       userProfile.profilePicture = profilePicture || userProfile.profilePicture;
 
       await userProfile.save();
-      return res.status(200).json({ message: "Profile updated successfully", userProfile });
+      return res
+        .status(200)
+        .json({ message: "Profile updated successfully", userProfile });
     } else {
       // If it doesn't exist, create a new profile
       userProfile = await UserProfile.create({
@@ -368,11 +374,15 @@ app.post("/api/profile", async (req, res) => {
         profilePicture,
       });
 
-      return res.status(201).json({ message: "Profile created successfully", userProfile });
+      return res
+        .status(201)
+        .json({ message: "Profile created successfully", userProfile });
     }
   } catch (error) {
     console.error("Error saving user profile:", error);
-    return res.status(500).json({ message: "Internal server error", error: error.message });
+    return res
+      .status(500)
+      .json({ message: "Internal server error", error: error.message });
   }
 });
 app.get("/api/profile/:email", async (req, res) => {
@@ -385,8 +395,8 @@ app.get("/api/profile/:email", async (req, res) => {
     }
     return res.status(200).json(userProfile);
   } catch (error) {
-    return res.status(500).json({ message: "Internal server error", error: error.message });
+    return res
+      .status(500)
+      .json({ message: "Internal server error", error: error.message });
   }
 });
-
-

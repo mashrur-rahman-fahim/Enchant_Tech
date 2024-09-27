@@ -93,7 +93,7 @@ export const Admin = () => {
       const productIds = payments.flatMap((payment) => payment.products); // Get all product IDs
       const uniqueProductIds = [...new Set(productIds)]; // Remove duplicates
       const productDetailsPromises = uniqueProductIds.map((id) =>
-        axios.get(`http://localhost:4000/products/${id}`)
+        axios.get(`http://localhost:4000/productObject/${id}`)
       );
       const responses = await Promise.all(productDetailsPromises);
 
@@ -353,37 +353,39 @@ export const Admin = () => {
           </p>
 
           <h4 className="product-list-title">Products:</h4>
-          {payment.products.map((productId) => (
-            <div key={productId} className="product-item">
-              <img
-                src={productDetailsMap[productId]?.img || "placeholder.jpg"}
-                alt={productDetailsMap[productId]?.title || "Loading..."}
-                className="product-image"
-              />
-              <p className="product-title">
-                <strong>Title:</strong> {productDetailsMap[productId]?.title || "Loading..."}
-              </p>
-              <p className="product-description">
-                <strong>Description:</strong> {productDetailsMap[productId]?.description || "Loading..."}
-              </p>
-              <p className="product-price">
-                <strong>Price:</strong> ${productDetailsMap[productId]?.price || "Loading..."}
-              </p>
-              <p className="product-category">
-                <strong>Category:</strong> {productDetailsMap[productId]?.catagory || "Loading..."} 
-                ({productDetailsMap[productId]?.cat || "Loading..."})
-              </p>
-              <p className="product-brand">
-                <strong>Brand:</strong> {productDetailsMap[productId]?.brand || "Loading..."}
-              </p>
-              <p className="product-date">
-                <strong>Date Added:</strong> {new Date(productDetailsMap[productId]?.date).toLocaleDateString() || "Loading..."}
-              </p>
-              <p className="product-rating">
-                <strong>Rating:</strong> {productDetailsMap[productId]?.rating || "Loading..."} / 5
-              </p>
-            </div>
-          ))}
+          <div className="product-list">
+            {payment.products.map((productId) => (
+              <div key={productId} className="product-item">
+                <img
+                  src={productDetailsMap[productId]?.img || "placeholder.jpg"}
+                  alt={productDetailsMap[productId]?.title || "Loading..."}
+                  className="product-image"
+                />
+                <p className="product-title">
+                  <strong></strong> {productDetailsMap[productId]?.title || "Loading..."}
+                </p>
+                <p className="product-description">
+                  <strong></strong> {productDetailsMap[productId]?.description || "Loading..."}
+                </p>
+                <p className="product-price">
+                  <strong>Price:</strong> ${productDetailsMap[productId]?.price || "Loading..."}
+                </p>
+                <p className="product-category">
+                  <strong>Category:</strong> {productDetailsMap[productId]?.catagory || "Loading..."} 
+                  ({productDetailsMap[productId]?.cat || "Loading..."})
+                </p>
+                <p className="product-brand">
+                  <strong>Brand:</strong> {productDetailsMap[productId]?.brand || "Loading..."}
+                </p>
+                <p className="product-date">
+                  <strong>Date Added:</strong> {new Date(productDetailsMap[productId]?.date).toLocaleDateString() || "Loading..."}
+                </p>
+                <p className="product-rating">
+                  <strong>Rating:</strong> {productDetailsMap[productId]?.rating || "Loading..."} / 5
+                </p>
+              </div>
+            ))}
+          </div>
 
           <button
             onClick={() => handleDeletePayment(payment._id)}
@@ -396,6 +398,8 @@ export const Admin = () => {
     ))}
   </ul>
 </section>
+ 
+
 
       </main>
     </div>

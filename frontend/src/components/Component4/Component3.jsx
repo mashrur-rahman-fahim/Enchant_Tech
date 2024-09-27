@@ -82,15 +82,27 @@ export const Component3 = () => {
     setFilteredProducts(result);
   }, [searchValue, sortOption, brand, products]);
 
-  const handleAddToCart = product => {
-    fetch("http://localhost:4000/api/cart", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...product, date: new Date() }),
-    })
-      .then(response => response.json())
-      .then(() => fetchCartCount())
-      .catch(error => console.error("Error adding item to cart:", error));
+  const { updateCart } = useContext(CartContext);
+  const addToCart = (product) => {
+    // Fetch existing cart data from local storage
+    const existingCartData = JSON.parse(localStorage.getItem('cart')) || [];
+  
+    // Find if the product is already in the cart
+    const existingProductIndex = existingCartData.findIndex(item => item.id === product.id);
+  
+    if (existingProductIndex !== -1) {
+      // Product exists in the cart, update its count
+      existingCartData[existingProductIndex].count += 1;
+    } else {
+      // Product does not exist in the cart, add it
+      existingCartData.push({ ...product, count: 1, date: new Date() });
+    }
+  
+    // Save the updated cart data back to localStorage
+    localStorage.setItem('cart', JSON.stringify(existingCartData));
+  
+    // Update the cart data in the context
+    updateCart(existingCartData);
   };
 
   return (
@@ -132,7 +144,7 @@ export const Component3 = () => {
               <StarRating rating={product.rating} />
               <div className="product-actions">
               {isLoggedIn===false?
-                <button className="cart-button" onClick={() => handleAddToCart(product)}>
+                <button className="cart-button" onClick={() => addToCart(product)}>
                 Buy Now
                 </button>:
                 <button className="cart-button" onClick={() =>handleRemv(product.id)}>
