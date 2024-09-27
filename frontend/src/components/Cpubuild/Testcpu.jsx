@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Testcpu.css';
+import './Testcpu.css'; // Ensure this file includes the necessary styles
 import { processorsData } from '../../data';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,8 +25,6 @@ export const Testcpu = () => {
         return a.price - b.price;
       case 'price-desc':
         return b.price - a.price;
-      case 'performance':
-        return b.performance - a.performance;
       default:
         return 0;
     }
@@ -59,7 +57,6 @@ export const Testcpu = () => {
           <option value="">Sort By</option>
           <option value="price-asc">Price: Low to High</option>
           <option value="price-desc">Price: High to Low</option>
-          <option value="performance">High Performance</option>
         </select>
       </div>
 
