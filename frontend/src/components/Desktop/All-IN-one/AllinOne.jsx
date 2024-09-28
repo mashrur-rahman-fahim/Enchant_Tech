@@ -150,7 +150,7 @@ export const AllinOne = () => {
               <p className="product-description">{item.description}</p>
               <p className="product-category">{item.cat}</p>
               <div className="product-price">Price: {item.price}</div>
-              <StarRating rating={item.rating} />
+
               <div className="product-actions">
                 <button className="cart-button" onClick={() => addToCart(item)}>
                   Buy Now

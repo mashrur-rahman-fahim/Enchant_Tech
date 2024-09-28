@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './Testmotherboard.css';
-import { motherboardData } from '../../data';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Testmotherboard.css";
+import { motherboardData } from "../../data";
+import { useNavigate } from "react-router-dom";
 
 export const Motherboardbuild = () => {
-  const [minBudget, setMinBudget] = useState('');
-  const [maxBudget, setMaxBudget] = useState('');
-  const [sortOption, setSortOption] = useState('');
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const navigate = useNavigate();
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
@@ -21,11 +21,11 @@ export const Motherboardbuild = () => {
 
   const sortedMotherboards = filteredMotherboards.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
-      case 'performance':
+      case "performance":
         return b.performance - a.performance;
       default:
         return 0;
@@ -33,7 +33,14 @@ export const Motherboardbuild = () => {
   });
 
   const handleAdd = (motherboard) => {
-    navigate('/PCBuilder', { state: { selectedMotherboard: { name: motherboard.name, cost: motherboard.price } } });
+    navigate("/PCBuilder", {
+      state: {
+        selectedMotherboard: {
+          name: motherboard.name,
+          cost: motherboard.price,
+        },
+      },
+    });
   };
 
   return (
@@ -66,7 +73,11 @@ export const Motherboardbuild = () => {
       <div className="motherboard-list">
         {sortedMotherboards.map((motherboard) => (
           <div className="motherboard-card" key={motherboard.id}>
-            <img src={motherboard.img} alt={motherboard.name} className="motherboard-image" />
+            <img
+              src={motherboard.img}
+              alt={motherboard.name}
+              className="motherboard-image"
+            />
             <h4>{motherboard.name}</h4>
             <div className="motherboard-details">
               <p>Socket: {motherboard.socket}</p>

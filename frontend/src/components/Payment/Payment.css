@@ -1,30 +1,31 @@
-
 /* General Card Styles */
 
 .card {
-    border: none;
-    border-radius: 10px;
-    box-shadow: none; /* Removed the shadow to eliminate the border effect */
-    margin-bottom: 20px;
-    background-color: #ffffff; /* Soft white background */
-    overflow: hidden;
+  border: none;
+  border-radius: 10px;
+  box-shadow: none; /* Removed the shadow to eliminate the border effect */
+  margin-bottom: 20px;
+  background-color: #ffffff; /* Soft white background */
+  overflow: hidden;
 }
 
-
-
 .card-header {
-    background: linear-gradient(135deg, #1e3050, #04bade); /* Gradient background similar to contact page */
-    color: #fff;
-    padding: 20px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    border-bottom: none; /* Remove border */
+  background: linear-gradient(
+    135deg,
+    #1e3050,
+    #04bade
+  ); /* Gradient background similar to contact page */
+  color: #fff;
+  padding: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: none; /* Remove border */
 }
 
 .card-body {
-    padding: 30px;
-    background-color: #f9fafc; /* Light gray background for contrast */
+  padding: 30px;
+  background-color: #f9fafc; /* Light gray background for contrast */
 }
 
 /* Typography */
@@ -39,164 +40,185 @@
 
 /* Form Styles */
 .form-control {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(to right, #1e3050, #04bade); /* Gradient background */
-    color: white;
-    margin: 6px 0;
-    font-size: 1rem;
-    border-radius: 10px;
-    transition: background 0.3s ease;
-    border: none; /* Remove border for cleaner look */
-    box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(
+    to right,
+    #1e3050,
+    #04bade
+  ); /* Gradient background */
+  color: white;
+  margin: 6px 0;
+  font-size: 1rem;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+  border: none; /* Remove border for cleaner look */
+  box-sizing: border-box;
 }
 
 .form-control:focus {
-    background: linear-gradient(to right, #04bade, #1e3050);
-    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.3); /* Glow effect */
-    outline: none;
+  background: linear-gradient(to right, #04bade, #1e3050);
+  box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.3); /* Glow effect */
+  outline: none;
 }
 
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 textarea.form-control {
-    resize: vertical;
-    min-height: 100px;
+  resize: vertical;
+  min-height: 100px;
 }
 
 /* Delivery and Payment Options Styles */
-.delivery-options, .payment-options {
-    display: flex;
-    flex-direction: column;
+.delivery-options,
+.payment-options {
+  display: flex;
+  flex-direction: column;
 }
 
-.delivery-options div, .payment-options div {
-    margin-bottom: 10px;
+.delivery-options div,
+.payment-options div {
+  margin-bottom: 10px;
 }
 
-.delivery-options label, .payment-options label {
-    display: inline;
-    margin-left: 10px;
-    font-size: 1rem;
-    color: #666;
-    text-transform: none;
+.delivery-options label,
+.payment-options label {
+  display: inline;
+  margin-left: 10px;
+  font-size: 1rem;
+  color: #666;
+  text-transform: none;
 }
 
 /* Button Styles */
 .button-container {
-    display: flex;
-    justify-content: flex-start; /* Align items to the start (left) */
-    margin-top: 20px;
-    margin-right: 90px;
+  display: flex;
+  justify-content: flex-start; /* Align items to the start (left) */
+  margin-top: 20px;
+  margin-right: 90px;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #1e3050, #04bade); /* Gradient background */
-    border: none;
-    color: #fff;
-    padding: 10px 30px;
-    font-size: 1rem;
-    border-radius: 50px; /* Rounded button */
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease; /* Smooth transition */
-    font-weight: bold;
+  background: linear-gradient(
+    135deg,
+    #1e3050,
+    #04bade
+  ); /* Gradient background */
+  border: none;
+  color: #fff;
+  padding: 10px 30px;
+  font-size: 1rem;
+  border-radius: 50px; /* Rounded button */
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease; /* Smooth transition */
+  font-weight: bold;
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #04bade, #1e3050); /* Inverse gradient on hover */
-    transform: scale(1.05); /* Slight scale effect on hover */
+  background: linear-gradient(
+    135deg,
+    #04bade,
+    #1e3050
+  ); /* Inverse gradient on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 /* Layout and Spacing */
 .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Spacing between rows */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Spacing between rows */
 }
 
-.col-md-6, .col-md-12, .col-md-4, .col-md-7, .col-md-5 {
-    padding: 0 15px;
-    box-sizing: border-box;
+.col-md-6,
+.col-md-12,
+.col-md-4,
+.col-md-7,
+.col-md-5 {
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 .col-md-6 {
-    width: 50%;
+  width: 50%;
 }
 
 .col-md-12 {
-    width: 100%;
+  width: 100%;
 }
 
 .col-md-4 {
-    width: 33.33%;
+  width: 33.33%;
 }
 
 .col-md-7 {
-    width: 58.33%;
+  width: 58.33%;
 }
 
 .col-md-5 {
-    width: 41.67%;
+  width: 41.67%;
 }
 
 .text-end {
-    text-align: center; /* Center the button */
-    margin-top: 20px;
+  text-align: center; /* Center the button */
+  margin-top: 20px;
 }
 
 /* Miscellaneous */
 .mx-1 {
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .py-3 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .py-4 {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 /* Align the checkbox and label on the same line */
 .form-group.d-flex.align-items-center {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Space between checkbox text and button */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between checkbox text and button */
 }
 
 .terms-label {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #666;
-    text-transform: none; /* Normal case */
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: none; /* Normal case */
 }
 
 .terms-link {
-    color: #04bade; /* Matching color from contact page */
-    margin-left: 5px;
-    text-decoration: none; /* Remove underline */
+  color: #04bade; /* Matching color from contact page */
+  margin-left: 5px;
+  text-decoration: none; /* Remove underline */
 }
 
 .terms-link:hover {
-    text-decoration: underline; /* Underline on hover */
+  text-decoration: underline; /* Underline on hover */
 }
 
 /* Button should align with the checkbox line */
 .btn-primary {
-    margin-top: 0; /* Remove any top margin */
+  margin-top: 0; /* Remove any top margin */
 }
 
 /* Order Summary Styles */
 .order-summary .card-header {
-    background: #04bade; /* Order summary header color */
-    color: white;
-    padding: 15px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
+  background: #04bade; /* Order summary header color */
+  color: white;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
 }

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './Testkeyboard.css';
-import { keyboardsData } from '../../data'; // Ensure the path is correct
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Testkeyboard.css";
+import { keyboardsData } from "../../data"; // Ensure the path is correct
+import { useNavigate } from "react-router-dom";
 
 export const Testkeyboard = () => {
-  const [minBudget, setMinBudget] = useState('');
-  const [maxBudget, setMaxBudget] = useState('');
-  const [sortOption, setSortOption] = useState('');
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const navigate = useNavigate();
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
@@ -21,9 +21,9 @@ export const Testkeyboard = () => {
 
   const sortedKeyboards = filteredKeyboards.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -31,7 +31,11 @@ export const Testkeyboard = () => {
   });
 
   const handleAdd = (keyboard) => {
-    navigate('/PCBuilder', { state: { selectedKeyboard: { name: keyboard.name, cost: keyboard.price } } });
+    navigate("/PCBuilder", {
+      state: {
+        selectedKeyboard: { name: keyboard.name, cost: keyboard.price },
+      },
+    });
   };
 
   return (
@@ -63,11 +67,15 @@ export const Testkeyboard = () => {
       <div className="keyboard-list">
         {sortedKeyboards.map((keyboard) => (
           <div className="keyboard-card" key={keyboard.id}>
-            <img src={keyboard.img} alt={keyboard.name} className="keyboard-image" />
+            <img
+              src={keyboard.img}
+              alt={keyboard.name}
+              className="keyboard-image"
+            />
             <h4>{keyboard.name}</h4>
             <div className="keyboard-details">
               <p>Switch Type: {keyboard.switchType}</p>
-              <p>RGB Lighting: {keyboard.rgbLighting ? 'Yes' : 'No'}</p>
+              <p>RGB Lighting: {keyboard.rgbLighting ? "Yes" : "No"}</p>
               <p>Connection: {keyboard.connection}</p>
             </div>
             <p className="price">₹{keyboard.price}</p>

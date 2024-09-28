@@ -1,23 +1,28 @@
- * {
+* {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
 
- body{
+body {
   background: linear-gradient(to bottom, #f2f4f8, #e6e9ef, #d9dde6);
   margin-top: 100px;
-} 
-.pcBuild{
-  background: linear-gradient(45deg, #00237e, #3749bb, #0bc1e9, #3749bb, #00237e);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    border: none;
-    line-height: 42px;
-    padding: 15px 30px;
-    
-  
+}
+.pcBuild {
+  background: linear-gradient(
+    45deg,
+    #00237e,
+    #3749bb,
+    #0bc1e9,
+    #3749bb,
+    #00237e
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  border: none;
+  line-height: 42px;
+  padding: 15px 30px;
 }
 
 header {
@@ -102,7 +107,9 @@ header .component a:hover::after {
   top: 100%;
   left: 0;
   z-index: 101;
-  transition: 0.2s 0.2s border-top ease-out, 0.3s border-top-color;
+  transition:
+    0.2s 0.2s border-top ease-out,
+    0.3s border-top-color;
 }
 
 .menu-title:hover {
@@ -116,7 +123,9 @@ header .component a:hover::after {
 
 .menu:hover > .menu-title:before {
   border-top-width: 0;
-  transition: 0.2s border-top-width ease-in, 0.3s border-top-color;
+  transition:
+    0.2s border-top-width ease-in,
+    0.3s border-top-color;
 }
 
 .menu-title:after {
@@ -176,7 +185,9 @@ header .component a:hover::after {
   position: absolute;
   background: linear-gradient(to right, #081621, #0c1c27, #0d2330);
   z-index: 100;
-  transition: 0.5s padding, 0.5s background;
+  transition:
+    0.5s padding,
+    0.5s background;
   border-radius: 10px;
 }
 
@@ -200,7 +211,8 @@ header .component a:hover::after {
 }
 
 .menu:not(:hover) > .menu-dropdown:after {
-  border-top-color: white;}
+  border-top-color: white;
+}
 
 .menu:not(:hover) > .menu-title:after {
   border-bottom-color: #dddddd;
@@ -212,9 +224,11 @@ header .component a:hover::after {
   padding: 5px 10px;
   background: rgba(0, 0, 0, 0);
   white-space: nowrap;
-  transition: 0.5s height cubic-bezier(0.73, 0.32, 0.34, 1.5),
+  transition:
+    0.5s height cubic-bezier(0.73, 0.32, 0.34, 1.5),
     0.5s padding cubic-bezier(0.73, 0.32, 0.34, 1.5),
-    0.5s margin cubic-bezier(0.73, 0.32, 0.34, 1.5), 0.5s 0.2s color,
+    0.5s margin cubic-bezier(0.73, 0.32, 0.34, 1.5),
+    0.5s 0.2s color,
     0.2s background-color;
 }
 
@@ -234,7 +248,11 @@ header .component a:hover::after {
   padding-bottom: 0;
   margin: 0;
   color: rgba(25, 25, 25, 0);
-  transition: 0.5s 0.1s height, 0.5s 0.1s padding, 0.5s 0.1s margin, 0.3s color,
+  transition:
+    0.5s 0.1s height,
+    0.5s 0.1s padding,
+    0.5s 0.1s margin,
+    0.3s color,
     0.6s visibility;
   z-index: 99;
 }
@@ -271,7 +289,7 @@ header .component a:hover::after {
   width: 100%;
   background-color: #fff;
   padding: 2px;
- border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   z-index: 1000;
 }
 
@@ -366,11 +384,10 @@ header .component a:hover::after {
     align-items: center;
   }
 
-
   header.open .logo {
     display: none; /* Hide the logo when drawer is open */
   }
- 
+
   .hList {
     display: flex;
     flex-direction: column;
@@ -378,11 +395,11 @@ header .component a:hover::after {
     list-style-type: none;
     padding: 0;
   }
-  
+
   .hList li {
     margin: 10px; /* Adjust spacing between menu items */
   }
-  
+
   /* Adjust menu display and positioning when drawer is open */
   header.open .shop {
     position: relative;
@@ -390,14 +407,13 @@ header .component a:hover::after {
     left: 0;
     text-align: center; /* Center align text inside .menu-title */
   }
-  
+
   header.open .component {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 20px 0; /* Adjust margin for center alignment */
   }
-  
 
   .data-list-container {
     width: 90%;
@@ -408,34 +424,29 @@ header .component a:hover::after {
   .shop {
     bottom: 0;
     left: 17%;
-   
   }
   .component {
     margin: 30px;
     display: flex;
     flex-direction: column;
     align-items: center; /* Center the options */
-    
   }
 
   .component a {
-    margin: 18px 0; 
+    margin: 18px 0;
     text-decoration: none; /* Remove underline */
     color: #fff; /* Ensure color is white */
     font-weight: 600; /* Ensure consistent font weight */
-    font-size: 17px;/* Space the options */
+    font-size: 17px; /* Space the options */
   }
-  
+
   .component a::after {
     content: none; /* Remove the underline effect */
   }
   .search-form {
     display: flex;
     align-items: center;
-    margin-top: -13px; 
-    padding: 0 px;/* Adjust the margin-top to move the search bar higher */
+    margin-top: -13px;
+    padding: 0 px; /* Adjust the margin-top to move the search bar higher */
   }
-
-  
-
 }

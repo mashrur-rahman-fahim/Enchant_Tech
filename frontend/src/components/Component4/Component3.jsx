@@ -158,7 +158,7 @@ export const Component3 = () => {
               </Link>
               <p className="product-description">{product.description}</p>
               <div className="product-price">Price: {product.price}</div>
-              <StarRating rating={product.rating} />
+
               <div className="product-actions">
                 {isLoggedIn === false ? (
                   <button

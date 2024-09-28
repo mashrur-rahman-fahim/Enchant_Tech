@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './TestGpu.css'; // Create a CSS file for GPU-specific styles
-import { gpusData } from '../../data'; // Import your GPU data from the data file
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./TestGpu.css"; // Create a CSS file for GPU-specific styles
+import { gpusData } from "../../data"; // Import your GPU data from the data file
+import { useNavigate } from "react-router-dom";
 
 export const TestGpu = () => {
-  const [minBudget, setMinBudget] = useState('');
-  const [maxBudget, setMaxBudget] = useState('');
-  const [sortOption, setSortOption] = useState('');
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const navigate = useNavigate();
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
@@ -21,11 +21,11 @@ export const TestGpu = () => {
 
   const sortedGpus = filteredGpus.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
-      case 'performance':
+      case "performance":
         return b.performance - a.performance;
       default:
         return 0;
@@ -33,7 +33,9 @@ export const TestGpu = () => {
   });
 
   const handleAdd = (gpu) => {
-    navigate('/PCBuilder', { state: { selectedGpu: { name: gpu.name, cost: gpu.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedGpu: { name: gpu.name, cost: gpu.price } },
+    });
   };
 
   return (

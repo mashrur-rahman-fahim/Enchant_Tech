@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './Testspeaker.css'; // Ensure to create a corresponding CSS file for styling
-import { speakersData } from '../../data'; // Adjust this path according to your project structure
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Testspeaker.css"; // Ensure to create a corresponding CSS file for styling
+import { speakersData } from "../../data"; // Adjust this path according to your project structure
+import { useNavigate } from "react-router-dom";
 
 export const Testspeaker = () => {
-  const [minBudget, setMinBudget] = useState('');
-  const [maxBudget, setMaxBudget] = useState('');
-  const [sortOption, setSortOption] = useState('');
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const navigate = useNavigate();
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
@@ -21,9 +21,9 @@ export const Testspeaker = () => {
 
   const sortedSpeakers = filteredSpeakers.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -31,7 +31,9 @@ export const Testspeaker = () => {
   });
 
   const handleAdd = (speaker) => {
-    navigate('/PCBuilder', { state: { selectedSpeaker: { name: speaker.name, cost: speaker.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedSpeaker: { name: speaker.name, cost: speaker.price } },
+    });
   };
 
   return (
@@ -63,7 +65,11 @@ export const Testspeaker = () => {
       <div className="speaker-list">
         {sortedSpeakers.map((speaker) => (
           <div className="speaker-card" key={speaker.id}>
-            <img src={speaker.img} alt={speaker.name} className="speaker-image" />
+            <img
+              src={speaker.img}
+              alt={speaker.name}
+              className="speaker-image"
+            />
             <h4>{speaker.name}</h4>
             <div className="speaker-details">
               <p>Type: {speaker.type}</p>

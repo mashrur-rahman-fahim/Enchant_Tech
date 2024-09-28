@@ -31,9 +31,9 @@ export const Navbar = () => {
   };
 
   useEffect(() => {
-    fetch('http://localhost:4000/products')
-      .then(response => response.json())
-      .then(data => setProductData(data));
+    fetch("http://localhost:4000/products")
+      .then((response) => response.json())
+      .then((data) => setProductData(data));
   }, []);
 
   useEffect(() => {
@@ -287,7 +287,7 @@ export const Navbar = () => {
               LOGIN
             </Link>
           ) : (
-            <Link 
+            <Link
               className="nav-link"
               onClick={() => {
                 handleLogout();
@@ -298,7 +298,11 @@ export const Navbar = () => {
             </Link>
           )}
           {isLoggedIn1 && validLog ? (
-            <Link to="/profile" className="nav-link" onClick={handleMenuItemClick}>
+            <Link
+              to="/profile"
+              className="nav-link"
+              onClick={handleMenuItemClick}
+            >
               PROFILE
             </Link>
           ) : null}

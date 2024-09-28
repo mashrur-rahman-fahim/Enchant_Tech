@@ -69,7 +69,7 @@
 
 .product-card {
   background-color: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
   display: flex;
@@ -79,12 +79,12 @@
 
 @keyframes fadeIn {
   0% {
-      opacity: 0;
-      transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(20px);
   }
   100% {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -152,14 +152,15 @@
 .star {
   font-size: 18px;
   color: #ddd;
-} 
+}
 .product-actions {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
 
-.buy-button, .cart-button {
+.buy-button,
+.cart-button {
   padding: 10px 20px;
   border: none;
   background-color: #007bff;
@@ -171,7 +172,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.buy-button:hover, .cart-button:hover {
+.buy-button:hover,
+.cart-button:hover {
   background-color: #0056b3;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
