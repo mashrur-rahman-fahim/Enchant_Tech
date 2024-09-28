@@ -236,11 +236,11 @@ app.get("/productObject/:id", async (req, res) => {
   const products = await All_Product.findById(id);
   res.send(products);
 });
-app.get('/product/:id',async(req,res)=>{
-  const {id}=req.params;
+app.get("/product/:id", async (req, res) => {
+  const { id } = req.params;
   const products = await All_Product.findOne(Number(id));
-  req.send(products)
-})
+  req.send(products);
+});
 
 app.post("/products", async (req, res) => {
   const rating = 0;

@@ -18,6 +18,8 @@ export const Home1 = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [hasMore, setHasMore] = useState(true);
+  let desktopCount=0,laptopCount=0,cpuCount=0,gpuCount=0,motherboardCount=0,ramCount=0;
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -121,14 +123,69 @@ export const Home1 = () => {
             const productDate = new Date(item.date);
             if (productDate >= tenDaysAgo) {
             
-              if(item.catagory==='desktop' )
+              if(item.catagory==='desktop' && desktopCount<3 ){
+                desktopCount++;
+                
               return (
                 <div className="cl1" key={idx}>
                   <img src={item.img} alt={item.title} />
                   <div className="home_price">Price {item.price}</div>
                   <button onClick={()=>{addToCart(item)}}>Order Now</button>
                 </div>
-              );
+              );}
+              if(item.catagory==='laptop' && laptopCount<3 ){
+                laptopCount++;
+                
+              return (
+                <div className="cl1" key={idx}>
+                  <img src={item.img} alt={item.title} />
+                  <div className="home_price">Price {item.price}</div>
+                  <button onClick={()=>{addToCart(item)}}>Order Now</button>
+                </div>
+              );}
+              if(item.catagory==='gpu' && gpuCount<3 ){
+                gpuCount++;
+                
+              return (
+                <div className="cl1" key={idx}>
+                  <img src={item.img} alt={item.title} />
+                  <div className="home_price">Price {item.price}</div>
+                  <button onClick={()=>{addToCart(item)}}>Order Now</button>
+                </div>
+              );}
+              if(item.catagory==='cpu' && cpuCount<3 ){
+                cpuCount++;
+                
+              return (
+                <div className="cl1" key={idx}>
+                  <img src={item.img} alt={item.title} />
+                  <div className="home_price">Price {item.price}</div>
+                  <button onClick={()=>{addToCart(item)}}>Order Now</button>
+                </div>
+              );}
+              if(item.catagory==='motherboard' && motherboardCount<5 ){
+                motherboardCount++;
+                
+              return (
+                <div className="cl1" key={idx}>
+                  <img src={item.img} alt={item.title} />
+                  <div className="home_price">Price {item.price}</div>
+                  <button onClick={()=>{addToCart(item)}}>Order Now</button>
+                </div>
+              );}
+              if(item.catagory==='ram' && ramCount<3 ){
+                ramCount++;
+                
+              return (
+                <div className="cl1" key={idx}>
+                  <img src={item.img} alt={item.title} />
+                  <div className="home_price">Price {item.price}</div>
+                  <button onClick={()=>{addToCart(item)}}>Order Now</button>
+                </div>
+              );}
+
+
+
             }
             return null;
           })}
