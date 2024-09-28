@@ -89,6 +89,32 @@ export const Admin = () => {
       console.error("Error fetching payments:", error);
     }
   };
+  const [bannerImg, setBannerImg] = useState("");
+  const handleBannerSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/banner",
+        { img: bannerImg },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          }
+        }
+      );
+
+      if (response.status === 200) {
+        setBannerImg("");
+        toast.success("Banner uploaded successfully", {
+          autoClose: 2000,
+        });
+      } else {
+        toast.error("Failed to upload banner.");
+      }
+    } catch (error) {
+      toast.error("Error uploading banner.");
+    }
+  };
 
   const fetchProductDetails = async (payments) => {
     try {
@@ -348,6 +374,22 @@ export const Admin = () => {
               </select>
             </label>
             <button type="submit">Upload Product</button>
+          </form>
+        </section>
+        <section className="banner-section">
+          <h2>Upload Banner</h2>
+          <form onSubmit={handleBannerSubmit} className="admin-form">
+            <label>
+              Banner Image URL:
+              <input
+                type="url"
+                name="bannerImg"
+                value={bannerImg}
+                onChange={(e) => setBannerImg(e.target.value)}
+                required
+              />
+            </label>
+            <button type="submit">Upload Banner</button>
           </form>
         </section>
 
