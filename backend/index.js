@@ -358,6 +358,11 @@ app.get("/payment-option", async (req, res) => {
   const userProfile = await Payment.find({});
   res.send(userProfile);
 });
+app.get("/payment-option/:email", async (req, res) => {
+  const {email}=req.params
+  const userProfile = await Payment.find({email:email});
+  res.send(userProfile);
+});
 app.delete("/payment-option/:id", async (req, res) => {
   const { id } = req.params;
   const deletedProfile = await Payment.findByIdAndDelete(id);

@@ -141,9 +141,9 @@ export const Component3 = () => {
         </div>
         <div className="sort-options">
           <button onClick={() => setSortOption("price")}>Sort by Price</button>
-          <button onClick={() => setSortOption("popularity")}>
+          {/* <button onClick={() => setSortOption("popularity")}>
             Sort by Popularity
-          </button>
+          </button> */}
         </div>
       </div>
       <div className="all-product">

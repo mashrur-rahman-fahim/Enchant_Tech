@@ -132,9 +132,9 @@ export const Gaming_l = () => {
         </div>
         <div className="sort-options">
           <button onClick={() => handleSort("price")}>Sort by Price</button>
-          <button onClick={() => handleSort("popularity")}>
+          {/* <button onClick={() => handleSort("popularity")}>
             Sort by Popularity
-          </button>
+          </button> */}
         </div>
       </div>
       <div className="all-product">

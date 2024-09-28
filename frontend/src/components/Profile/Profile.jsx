@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuth1 } from "../Authentication/LoginContest";
 import axios from "axios";
 
+
 export const Profile = () => {
   const { email } = useParams();
 
