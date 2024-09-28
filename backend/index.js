@@ -231,6 +231,30 @@ app.get("/products", async (req, res) => {
   const products = await All_Product.find({});
   res.send(products);
 });
+
+//Infintie Scroll
+app.get("/pro", async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 5;
+
+    const skip = (page - 1) * limit;
+    const products = await All_Product.find({}).skip(skip).limit(limit);
+
+    const totalProducts = await All_Product.countDocuments();
+    const totalPages = Math.ceil(totalProducts / limit);
+
+    res.json({
+      success: true,
+      products,
+      page,
+      totalPages,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server Error" });
+  }
+});
+
 app.get("/productObject/:id", async (req, res) => {
   const { id } = req.params;
   const products = await All_Product.findById(id);
