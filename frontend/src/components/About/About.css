@@ -1,81 +1,95 @@
 .full {
-    background-color: #ffffff; /* White background for clean look */
-    padding: 40px 20px; /* Padding for spacing */
-    margin: 0 auto;
-    max-width: 1200px; /* Center the content and limit width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    border-radius: 8px; /* Rounded corners */
+  background-color: #ffffff; /* White background for clean look */
+  padding: 40px 20px; /* Padding for spacing */
+  margin: 0 auto;
+  max-width: 1200px; /* Center the content and limit width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 8px; /* Rounded corners */
+}
+
+/* Section Styles */
+.fullAbout {
+  margin-bottom: 40px; /* Increased bottom margin for better spacing */
+  padding: 20px;
+  background: #e0f7fa; /* Light cyan background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Headings */
+.firsthead,
+.secondhead,
+.thirdhead,
+.fourthhead {
+  color: #00796b; /* Teal color for headings */
+  font-size: 36px; /* Uniform heading size */
+  text-align: center;
+  margin: 20px 0; /* Margin for spacing */
+  font-weight: bold;
+  font-family: "Roboto", sans-serif; /* Modern font for headings */
+}
+
+/* Paragraphs */
+.p1,
+.p2,
+.p3,
+.p4,
+.p5 {
+  font-family: "Open Sans", sans-serif; /* Modern, clean font */
+  color: #555; /* Dark grey color for better readability */
+  font-size: 18px; /* Slightly smaller, standard font size */
+  max-width: 800px; /* Limit width of paragraphs */
+  margin: 20px auto; /* Center and space out paragraphs */
+  text-align: justify;
+  line-height: 1.8; /* Better line height for readability */
+}
+
+/* Images */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 20px auto; /* Center images */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Buttons */
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #00796b; /* Teal color */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 20px 0;
+}
+
+button:hover {
+  background-color: #004d40; /* Darker teal on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .firsthead,
+  .secondhead,
+  .thirdhead,
+  .fourthhead {
+    font-size: 28px;
   }
-  
-  /* Section Styles */
-  .fullAbout {
-    margin-bottom: 40px; /* Increased bottom margin for better spacing */
+
+  .p1,
+  .p2,
+  .p3,
+  .p4,
+  .p5 {
+    font-size: 16px;
+  }
+
+  .full {
     padding: 20px;
-    background: #e0f7fa; /* Light cyan background */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   }
-  
-  /* Headings */
-  .firsthead, .secondhead, .thirdhead, .fourthhead {
-    color: #00796b; /* Teal color for headings */
-    font-size: 36px; /* Uniform heading size */
-    text-align: center;
-    margin: 20px 0; /* Margin for spacing */
-    font-weight: bold;
-    font-family: 'Roboto', sans-serif; /* Modern font for headings */
-  }
-  
-  /* Paragraphs */
-  .p1, .p2, .p3, .p4, .p5 {
-    font-family: 'Open Sans', sans-serif; /* Modern, clean font */
-    color: #555; /* Dark grey color for better readability */
-    font-size: 18px; /* Slightly smaller, standard font size */
-    max-width: 800px; /* Limit width of paragraphs */
-    margin: 20px auto; /* Center and space out paragraphs */
-    text-align: justify;
-    line-height: 1.8; /* Better line height for readability */
-  }
-  
-  /* Images */
-  img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 20px auto; /* Center images */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  }
-  
-  /* Buttons */
-  button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: #ffffff;
-    background-color: #00796b; /* Teal color */
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 20px 0;
-  }
-  
-  button:hover {
-    background-color: #004d40; /* Darker teal on hover */
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    .firsthead, .secondhead, .thirdhead, .fourthhead {
-      font-size: 28px;
-    }
-  
-    .p1, .p2, .p3, .p4, .p5 {
-      font-size: 16px;
-    }
-  
-    .full {
-      padding: 20px;
-    }
-  }
+}

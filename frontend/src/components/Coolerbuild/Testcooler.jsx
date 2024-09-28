@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './Testcooler.css';  // Make sure to create a corresponding CSS file
-import { coolersData } from '../../data';  // Adjust the import path as needed
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Testcooler.css"; // Make sure to create a corresponding CSS file
+import { coolersData } from "../../data"; // Adjust the import path as needed
+import { useNavigate } from "react-router-dom";
 
 export const Testcooler = () => {
-  const [minBudget, setMinBudget] = useState('');
-  const [maxBudget, setMaxBudget] = useState('');
-  const [sortOption, setSortOption] = useState('');
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const navigate = useNavigate();
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
@@ -21,11 +21,11 @@ export const Testcooler = () => {
 
   const sortedCoolers = filteredCoolers.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
-      case 'performance':
+      case "performance":
         return b.performance - a.performance;
       default:
         return 0;
@@ -33,7 +33,9 @@ export const Testcooler = () => {
   });
 
   const handleAdd = (cooler) => {
-    navigate('/PCBuilder', { state: { selectedCooler: { name: cooler.name, cost: cooler.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedCooler: { name: cooler.name, cost: cooler.price } },
+    });
   };
 
   return (
