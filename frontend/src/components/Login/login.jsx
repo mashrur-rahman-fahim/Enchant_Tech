@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -14,11 +14,18 @@ export const Login1 = () => {
     password: "",
   });
   const navigate = useNavigate();
-  const { setIsLoggedIn } = useAuth();
+  const {isLoggedIn, setIsLoggedIn } = useAuth();
   axios.defaults.withCredentials = true;
   const email_admin = process.env.email_admin;
   const password_admin = process.env.password_admin;
-  const { setIsLoggedIn1 } = useAuth1();
+  const { isLoggedIn1,setIsLoggedIn1 } = useAuth1();
+
+  useEffect(() => {
+    // Assuming you have an API route or state check for the user's logged-in status
+    if(isLoggedIn || isLoggedIn1){
+      navigate('/');
+    }
+  }, [navigate,isLoggedIn,isLoggedIn1]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

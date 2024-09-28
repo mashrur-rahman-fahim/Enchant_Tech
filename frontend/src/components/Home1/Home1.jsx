@@ -159,7 +159,7 @@ export const Home1 = () => {
 
                 return (
                   <div className="cl1" key={idx}>
-                    <img src={item.img} alt={item.title} />
+                   <Link to={`/${item._id}`}> <img src={item.img} alt={item.title} /></Link>
                     {/* <div className="home_price">Price {item.price}</div> */}
                     <button
                       onClick={() => {
@@ -176,7 +176,7 @@ export const Home1 = () => {
 
                 return (
                   <div className="cl1" key={idx}>
-                    <img src={item.img} alt={item.title} />
+                   <Link to={`/${item._id}`}><img src={item.img} alt={item.title} /></Link> 
                     {/* <div className="home_price">Price {item.price}</div> */}
                     <button
                       onClick={() => {
@@ -193,7 +193,7 @@ export const Home1 = () => {
 
                 return (
                   <div className="cl1" key={idx}>
-                    <img src={item.img} alt={item.title} />
+                   <Link to={`/${item._id}`}> <img src={item.img} alt={item.title} /></Link>
                     {/* <div className="home_price">Price {item.price}</div> */}
                     <button
                       onClick={() => {
@@ -210,7 +210,7 @@ export const Home1 = () => {
 
                 return (
                   <div className="cl1" key={idx}>
-                    <img src={item.img} alt={item.title} />
+                    <Link to={`/${item._id}`}><img src={item.img} alt={item.title} /></Link> 
                     {/* <div className="home_price">Price {item.price}</div> */}
                     <button
                       onClick={() => {
@@ -227,7 +227,7 @@ export const Home1 = () => {
 
                 return (
                   <div className="cl1" key={idx}>
-                    <img src={item.img} alt={item.title} />
+                    <Link to={`/${item._id}`}><img src={item.img} alt={item.title} /></Link> 
                     {/* <div className="home_price">Price {item.price}</div> */}
                     <button
                       onClick={() => {
@@ -244,7 +244,7 @@ export const Home1 = () => {
 
                 return (
                   <div className="cl1" key={idx}>
-                    <img src={item.img} alt={item.title} />
+                    <Link to={`/${item._id}`}><img src={item.img} alt={item.title} /></Link> 
                     {/* <div className="home_price">Price {item.price}</div> */}
                     <button
                       onClick={() => {
