@@ -85,7 +85,7 @@ export const Navbar = () => {
       </div>
       <header className={menuOpen ? "open" : ""}>
         <a href="/">
-          <h1 className="logo">Logo</h1>
+          <h1 className="logo">ENCHANT TECH</h1>
         </a>
         <form className="search-form" onSubmit={handleSearchSubmit}>
           <input

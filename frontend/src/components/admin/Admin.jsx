@@ -40,7 +40,7 @@ export const Admin = () => {
     price: "",
     cat: "gaming",
     catagory: "laptop", // Backend uses "catagory" field
-    brand: "",
+    brand: "hp",
   });
 
   const [productCounts, setProductCounts] = useState({
