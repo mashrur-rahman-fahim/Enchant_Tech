@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './Testmouse.css';
-import { mouseData } from '../../data'; // Ensure the path is correct
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Testmouse.css";
+import { mouseData } from "../../data"; // Ensure the path is correct
+import { useNavigate } from "react-router-dom";
 
 export const Testmouse = () => {
-  const [minBudget, setMinBudget] = useState('');
-  const [maxBudget, setMaxBudget] = useState('');
-  const [sortOption, setSortOption] = useState('');
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const navigate = useNavigate();
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
@@ -21,9 +21,9 @@ export const Testmouse = () => {
 
   const sortedMice = filteredMice.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -31,7 +31,9 @@ export const Testmouse = () => {
   });
 
   const handleAdd = (mouse) => {
-    navigate('/PCBuilder', { state: { selectedMouse: { name: mouse.name, cost: mouse.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedMouse: { name: mouse.name, cost: mouse.price } },
+    });
   };
 
   return (

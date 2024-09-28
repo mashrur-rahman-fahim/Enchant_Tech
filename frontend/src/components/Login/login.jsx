@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
 import { useAuth } from "../Authentication/AuthContext";
 import { useAuth1 } from "../Authentication/LoginContest";
@@ -9,7 +9,7 @@ import { useAuth1 } from "../Authentication/LoginContest";
 export const Login1 = () => {
   const [formData, setFormdata] = useState({
     email: "",
-    password: ""
+    password: "",
   });
   const navigate = useNavigate();
   const { setIsLoggedIn } = useAuth();
@@ -25,25 +25,25 @@ export const Login1 = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:4000/login', formData)
+    axios
+      .post("http://localhost:4000/login", formData)
       .then((response) => {
         const data = response.data;
         if (data.Login) {
-          if (formData.email ==="admin@gmail.com" && formData.password === "admin") {
-          
+          if (
+            formData.email === "admin@gmail.com" &&
+            formData.password === "admin"
+          ) {
             setIsLoggedIn(true);
-            navigate(`/Auth/${formData.email}`)
-          }
-          else if(setIsLoggedIn1) {
+            navigate(`/Auth/${formData.email}`);
+          } else if (setIsLoggedIn1) {
             setIsLoggedIn1(true);
-          navigate(`/Auth/${formData.email}`);
-          alert("Login successful!");
-        } 
-        else
-          alert("Login failed!");
+            navigate(`/Auth/${formData.email}`);
+            alert("Login successful!");
+          } else alert("Login failed!");
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         alert("An error occurred during login.");
       });

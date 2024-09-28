@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './Testcpu.css'; // Ensure this file includes the necessary styles
-import { processorsData } from '../../data';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Testcpu.css"; // Ensure this file includes the necessary styles
+import { processorsData } from "../../data";
+import { useNavigate } from "react-router-dom";
 
 export const Testcpu = () => {
-  const [minBudget, setMinBudget] = useState('');
-  const [maxBudget, setMaxBudget] = useState('');
-  const [sortOption, setSortOption] = useState('');
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const navigate = useNavigate();
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
@@ -21,9 +21,9 @@ export const Testcpu = () => {
 
   const sortedProcessors = filteredProcessors.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -31,7 +31,11 @@ export const Testcpu = () => {
   });
 
   const handleAdd = (processor) => {
-    navigate('/PCBuilder', { state: { selectedProcessor: { name: processor.name, cost: processor.price } } });
+    navigate("/PCBuilder", {
+      state: {
+        selectedProcessor: { name: processor.name, cost: processor.price },
+      },
+    });
   };
 
   return (
@@ -63,7 +67,11 @@ export const Testcpu = () => {
       <div className="processor-list">
         {sortedProcessors.map((processor) => (
           <div className="processor-card" key={processor.id}>
-            <img src={processor.img} alt={processor.name} className="processor-image" />
+            <img
+              src={processor.img}
+              alt={processor.name}
+              className="processor-image"
+            />
             <h4>{processor.name}</h4>
             <div className="processor-details">
               <p>Speed: {processor.speed}</p>

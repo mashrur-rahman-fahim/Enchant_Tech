@@ -5,16 +5,27 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../cart/CartContext";
 import { useAuth } from "../../Authentication/AuthContext";
 
-
 const StarRating = ({ rating }) => {
   const stars = [];
   for (let i = 1; i <= 5; i++) {
     if (i <= rating) {
-      stars.push(<span key={i} className="star filled">★</span>);
+      stars.push(
+        <span key={i} className="star filled">
+          ★
+        </span>
+      );
     } else if (i - rating < 1) {
-      stars.push(<span key={i} className="star half-filled">★</span>);
+      stars.push(
+        <span key={i} className="star half-filled">
+          ★
+        </span>
+      );
     } else {
-      stars.push(<span key={i} className="star">★</span>);
+      stars.push(
+        <span key={i} className="star">
+          ★
+        </span>
+      );
     }
   }
   return <div className="rating">{stars}</div>;
@@ -29,34 +40,45 @@ export const ShowAll = () => {
   const [sortOption, setSortOption] = useState("");
   const [searchValue, setSearchValue] = useState("");
 
-  const brandOptions = ["All", "HP", "Asus", "Lenovo", "Dell", "Apple", "Acer", "MSI"];
-  const handleRemv=(id)=>{
-    fetch(`http://localhost:4000/products/${id}`,{
-      method: 'DELETE',
+  const brandOptions = [
+    "All",
+    "HP",
+    "Asus",
+    "Lenovo",
+    "Dell",
+    "Apple",
+    "Acer",
+    "MSI",
+  ];
+  const handleRemv = (id) => {
+    fetch(`http://localhost:4000/products/${id}`, {
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-      }
-
-      
+        "Content-Type": "application/json",
+      },
     })
-    .then(response => response.json())
-    .then(data =>{ window.location.reload()})
-}
+      .then((response) => response.json())
+      .then((data) => {
+        window.location.reload();
+      });
+  };
   useEffect(() => {
-    fetch('http://localhost:4000/products')
-      .then(res => res.json())
-      .then(data => {
-        let filterData = data.filter(product => product.catagory === "laptop");
+    fetch("http://localhost:4000/products")
+      .then((res) => res.json())
+      .then((data) => {
+        let filterData = data.filter(
+          (product) => product.catagory === "laptop"
+        );
         setItems(filterData);
         setFilteredItems(filterData);
       })
-      .catch(error => console.error('Error fetching products:', error));
+      .catch((error) => console.error("Error fetching products:", error));
   }, []);
 
   useEffect(() => {
     let result = [...items];
     if (searchValue) {
-      result = result.filter(product =>
+      result = result.filter((product) =>
         product.title.toLowerCase().includes(searchValue.toLowerCase())
       );
     }
@@ -78,7 +100,9 @@ export const ShowAll = () => {
     if (brand === "All") {
       setFilteredItems(items);
     } else {
-      const filtered = items.filter((item) => item.brand.toLowerCase() === brand.toLowerCase());
+      const filtered = items.filter(
+        (item) => item.brand.toLowerCase() === brand.toLowerCase()
+      );
       setFilteredItems(filtered);
     }
   };
@@ -122,7 +146,9 @@ export const ShowAll = () => {
         </div>
         <div className="sort-options">
           <button onClick={() => handleSort("price")}>Sort by Price</button>
-          <button onClick={() => handleSort("popularity")}>Sort by Popularity</button>
+          <button onClick={() => handleSort("popularity")}>
+            Sort by Popularity
+          </button>
         </div>
       </div>
       <div className="all-product">
@@ -138,15 +164,23 @@ export const ShowAll = () => {
               <p className="product-description">{item.description}</p>
               <p className="product-category">{item.cat}</p>
               <div className="product-price">Price: {item.price}</div>
-              <StarRating rating={item.rating} />
+
               <div className="product-actions">
-              {isLoggedIn===false?
-                <button className="cart-button" onClick={() => addToCart(item)}>
-                Buy Now
-                </button>:
-                <button className="cart-button" onClick={() =>handleRemv(item.id)}>
-                REMOVE
-                </button>}
+                {isLoggedIn === false ? (
+                  <button
+                    className="cart-button"
+                    onClick={() => addToCart(item)}
+                  >
+                    Buy Now
+                  </button>
+                ) : (
+                  <button
+                    className="cart-button"
+                    onClick={() => handleRemv(item.id)}
+                  >
+                    REMOVE
+                  </button>
+                )}
               </div>
             </div>
           </div>

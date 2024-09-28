@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './Testcasing.css'; // Ensure to create a corresponding CSS file for styling
-import { casingsData } from '../../data'; // Adjust this path according to your project structure
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Testcasing.css"; // Ensure to create a corresponding CSS file for styling
+import { casingsData } from "../../data"; // Adjust this path according to your project structure
+import { useNavigate } from "react-router-dom";
 
 export const Testcasing = () => {
-  const [minBudget, setMinBudget] = useState('');
-  const [maxBudget, setMaxBudget] = useState('');
-  const [sortOption, setSortOption] = useState('');
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const navigate = useNavigate();
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
@@ -21,9 +21,9 @@ export const Testcasing = () => {
 
   const sortedCasings = filteredCasings.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -31,7 +31,9 @@ export const Testcasing = () => {
   });
 
   const handleAdd = (casing) => {
-    navigate('/PCBuilder', { state: { selectedCasing: { name: casing.name, cost: casing.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedCasing: { name: casing.name, cost: casing.price } },
+    });
   };
 
   return (

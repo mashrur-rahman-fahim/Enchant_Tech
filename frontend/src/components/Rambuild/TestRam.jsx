@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './TestRam.css'; // Ensure to create a corresponding CSS file
-import { ramData } from '../../data'; // Replace this with the correct path to your RAM data
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./TestRam.css"; // Ensure to create a corresponding CSS file
+import { ramData } from "../../data"; // Replace this with the correct path to your RAM data
+import { useNavigate } from "react-router-dom";
 
 export const TestRam = () => {
-  const [minBudget, setMinBudget] = useState('');
-  const [maxBudget, setMaxBudget] = useState('');
-  const [sortOption, setSortOption] = useState('');
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const navigate = useNavigate();
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
@@ -21,11 +21,11 @@ export const TestRam = () => {
 
   const sortedRams = filteredRams.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
-      case 'performance':
+      case "performance":
         return b.performance - a.performance; // Assuming you have a performance metric
       default:
         return 0;
@@ -33,7 +33,9 @@ export const TestRam = () => {
   });
 
   const handleAdd = (ram) => {
-    navigate('/PCBuilder', { state: { selectedRam: { name: ram.name, cost: ram.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedRam: { name: ram.name, cost: ram.price } },
+    });
   };
 
   return (
@@ -72,7 +74,8 @@ export const TestRam = () => {
               <p>Capacity: {ram.capacity}</p>
               <p>Speed: {ram.speed}</p>
               <p>Type: {ram.type}</p>
-              <p>Memory Channels: {ram.channels}</p> {/* Update this if your data uses a different property name */}
+              <p>Memory Channels: {ram.channels}</p>{" "}
+              {/* Update this if your data uses a different property name */}
             </div>
             <p className="price">₹{ram.price}</p>
             <button className="add-btn" onClick={() => handleAdd(ram)}>

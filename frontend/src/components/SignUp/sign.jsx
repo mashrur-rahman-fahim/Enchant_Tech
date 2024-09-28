@@ -4,43 +4,37 @@ import { Link } from "react-router-dom";
 
 export const Sign = () => {
   const [formdata, setFormdata] = useState({
-    name: '',
-    email: '',
-    password: ''
+    name: "",
+    email: "",
+    password: "",
   });
 
   const handlechange = (e) => {
     const { name, value } = e.target;
     setFormdata({ ...formdata, [name]: value });
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    fetch('http://localhost:4000/signUp')
-    .then(response=>response.json())
-    .then((data)=>{
-       
-        const findEmail=data.find((usr)=>usr.email===formdata.email)
-        if(findEmail)
-          {
-            alert("User already exist, please login");
-            return;
 
-          }
-          fetch('http://localhost:4000/signUp',{
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body:JSON.stringify(formdata)
-          })
-          .then(response=>response.json())
-          .then(()=>alert("User created!"));
-
-
-    })
-   
+    fetch("http://localhost:4000/signUp")
+      .then((response) => response.json())
+      .then((data) => {
+        const findEmail = data.find((usr) => usr.email === formdata.email);
+        if (findEmail) {
+          alert("User already exist, please login");
+          return;
+        }
+        fetch("http://localhost:4000/signUp", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formdata),
+        })
+          .then((response) => response.json())
+          .then(() => alert("User created!"));
+      });
   };
 
   return (
@@ -88,7 +82,7 @@ export const Sign = () => {
                 type="password"
                 placeholder="Password"
                 className="pass"
-                name='password'
+                name="password"
                 onChange={handlechange}
                 value={formdata.password}
                 id="passwordInput"

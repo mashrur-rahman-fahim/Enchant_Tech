@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './TestStorage.css';  // Create a CSS file for storage-specific styles
-import { storageData } from '../../data';  // Assume you have storage data like processorsData
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./TestStorage.css"; // Create a CSS file for storage-specific styles
+import { storageData } from "../../data"; // Assume you have storage data like processorsData
+import { useNavigate } from "react-router-dom";
 
 export const TestStorage = () => {
-  const [minBudget, setMinBudget] = useState('');
-  const [maxBudget, setMaxBudget] = useState('');
-  const [sortOption, setSortOption] = useState('');
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const navigate = useNavigate();
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
@@ -21,11 +21,11 @@ export const TestStorage = () => {
 
   const sortedStorage = filteredStorage.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
-      case 'capacity':
+      case "capacity":
         return b.capacity.localeCompare(a.capacity); // Change to localeCompare for string comparison
       default:
         return 0;
@@ -33,7 +33,9 @@ export const TestStorage = () => {
   });
 
   const handleAdd = (storage) => {
-    navigate('/PCBuilder', { state: { selectedStorage: { name: storage.name, cost: storage.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedStorage: { name: storage.name, cost: storage.price } },
+    });
   };
 
   return (
@@ -66,7 +68,11 @@ export const TestStorage = () => {
       <div className="storage-list">
         {sortedStorage.map((storage) => (
           <div className="storage-card" key={storage.id}>
-            <img src={storage.img} alt={storage.name} className="storage-image" />
+            <img
+              src={storage.img}
+              alt={storage.name}
+              className="storage-image"
+            />
             <h4>{storage.name}</h4>
             <div className="storage-details">
               <p>Capacity: {storage.capacity}</p>

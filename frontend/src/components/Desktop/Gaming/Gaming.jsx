@@ -4,16 +4,27 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../cart/CartContext";
 
-
 const StarRating = ({ rating }) => {
   const stars = [];
   for (let i = 1; i <= 5; i++) {
     if (i <= rating) {
-      stars.push(<span key={i} className="star filled">★</span>);
+      stars.push(
+        <span key={i} className="star filled">
+          ★
+        </span>
+      );
     } else if (i - rating < 1) {
-      stars.push(<span key={i} className="star half-filled">★</span>);
+      stars.push(
+        <span key={i} className="star half-filled">
+          ★
+        </span>
+      );
     } else {
-      stars.push(<span key={i} className="star">★</span>);
+      stars.push(
+        <span key={i} className="star">
+          ★
+        </span>
+      );
     }
   }
   return <div className="rating">{stars}</div>;
@@ -29,20 +40,23 @@ export const Gaming = () => {
   const brandOptions = ["All", "HP", "Asus", "Lenovo", "Dell", "Acer", "MSI"];
 
   useEffect(() => {
-    fetch('http://localhost:4000/products')
-      .then(res => res.json())
-      .then(data => {
-        let filterData = data.filter(product => product.catagory === "desktop" && product.cat==="gaming");
+    fetch("http://localhost:4000/products")
+      .then((res) => res.json())
+      .then((data) => {
+        let filterData = data.filter(
+          (product) =>
+            product.catagory === "desktop" && product.cat === "gaming"
+        );
         setItems(filterData);
         setFilteredItems(filterData);
       })
-      .catch(error => console.error('Error fetching products:', error));
+      .catch((error) => console.error("Error fetching products:", error));
   }, []);
 
   useEffect(() => {
     let result = [...items];
     if (searchValue) {
-      result = result.filter(product =>
+      result = result.filter((product) =>
         product.title.toLowerCase().includes(searchValue.toLowerCase())
       );
     }
@@ -64,7 +78,9 @@ export const Gaming = () => {
     if (brand === "All") {
       setFilteredItems(items);
     } else {
-      const filtered = items.filter((item) => item.brand.toLowerCase() === brand.toLowerCase());
+      const filtered = items.filter(
+        (item) => item.brand.toLowerCase() === brand.toLowerCase()
+      );
       setFilteredItems(filtered);
     }
   };
@@ -76,11 +92,13 @@ export const Gaming = () => {
   const { updateCart } = useContext(CartContext);
   const addToCart = (product) => {
     // Fetch existing cart data from local storage
-    const existingCartData = JSON.parse(localStorage.getItem('cart')) || [];
-  
+    const existingCartData = JSON.parse(localStorage.getItem("cart")) || [];
+
     // Find if the product is already in the cart
-    const existingProductIndex = existingCartData.findIndex(item => item.id === product.id);
-  
+    const existingProductIndex = existingCartData.findIndex(
+      (item) => item.id === product.id
+    );
+
     if (existingProductIndex !== -1) {
       // Product exists in the cart, update its count
       existingCartData[existingProductIndex].count += 1;
@@ -88,10 +106,10 @@ export const Gaming = () => {
       // Product does not exist in the cart, add it
       existingCartData.push({ ...product, count: 1, date: new Date() });
     }
-  
+
     // Save the updated cart data back to localStorage
-    localStorage.setItem('cart', JSON.stringify(existingCartData));
-  
+    localStorage.setItem("cart", JSON.stringify(existingCartData));
+
     // Update the cart data in the context
     updateCart(existingCartData);
   };
@@ -115,7 +133,9 @@ export const Gaming = () => {
         </div>
         <div className="sort-options">
           <button onClick={() => handleSort("price")}>Sort by Price</button>
-          <button onClick={() => handleSort("popularity")}>Sort by Popularity</button>
+          <button onClick={() => handleSort("popularity")}>
+            Sort by Popularity
+          </button>
         </div>
       </div>
       <div className="all-product">
@@ -131,10 +151,10 @@ export const Gaming = () => {
               <p className="product-description">{item.description}</p>
               <p className="product-category">{item.cat}</p>
               <div className="product-price">Price: {item.price}</div>
-              <StarRating rating={item.rating} />
+
               <div className="product-actions">
                 <button className="cart-button" onClick={() => addToCart(item)}>
-                Buy Now
+                  Buy Now
                 </button>
               </div>
             </div>

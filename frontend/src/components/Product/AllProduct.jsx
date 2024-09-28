@@ -13,7 +13,9 @@ export const AllProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/products/${id}`);
+        const response = await axios.get(
+          `http://localhost:4000/products/${id}`
+        );
         setProduct(response.data);
         setLoading(false);
       } catch (error) {
@@ -52,7 +54,8 @@ export const AllProduct = () => {
             <strong>Brand:</strong> <span>{product.brand}</span>
           </div>
           <div className="meta-item">
-            <strong>Date Added:</strong> <span>{new Date(product.date).toLocaleDateString()}</span>
+            <strong>Date Added:</strong>{" "}
+            <span>{new Date(product.date).toLocaleDateString()}</span>
           </div>
           <div className="meta-item">
             <strong>Rating:</strong> <span>{product.rating} / 5</span>

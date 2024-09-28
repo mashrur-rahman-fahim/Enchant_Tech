@@ -3,7 +3,7 @@
   z-index: 1000;
   bottom: 20px; /* Moved to bottom for better visibility */
   right: 20px; /* Adjusted positioning */
-  background-color: #4CAF50; /* Green background */
+  background-color: #4caf50; /* Green background */
   border: none; /* Remove borders */
   color: white; /* White text */
   padding: 15px 20px; /* Some padding */
@@ -16,7 +16,9 @@
   display: flex; /* Flexbox for better alignment */
   align-items: center; /* Center items vertically */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow */
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
 }
 
 .cart_b i {
@@ -53,7 +55,9 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .cart_list:hover {
@@ -119,7 +123,9 @@
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .coupon:hover,
@@ -200,7 +206,8 @@
 
 /* Mobile responsive adjustments */
 @media (max-width: 600px) {
-  .Cart_headers, .data_list {
+  .Cart_headers,
+  .data_list {
     flex-direction: column;
   }
 

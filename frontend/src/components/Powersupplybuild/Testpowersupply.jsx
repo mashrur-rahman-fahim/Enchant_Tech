@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './Testpowersupply.css'; // Ensure to create a corresponding CSS file for styling
-import { powerSupplyData } from '../../data'; // Adjust this path according to your project structure
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Testpowersupply.css"; // Ensure to create a corresponding CSS file for styling
+import { powerSupplyData } from "../../data"; // Adjust this path according to your project structure
+import { useNavigate } from "react-router-dom";
 
 export const Testpowersupply = () => {
-  const [minBudget, setMinBudget] = useState('');
-  const [maxBudget, setMaxBudget] = useState('');
-  const [sortOption, setSortOption] = useState('');
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const navigate = useNavigate();
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
@@ -21,9 +21,9 @@ export const Testpowersupply = () => {
 
   const sortedPowerSupplies = filteredPowerSupplies.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -31,7 +31,14 @@ export const Testpowersupply = () => {
   });
 
   const handleAdd = (powerSupply) => {
-    navigate('/PCBuilder', { state: { selectedPowerSupply: { name: powerSupply.name, cost: powerSupply.price } } });
+    navigate("/PCBuilder", {
+      state: {
+        selectedPowerSupply: {
+          name: powerSupply.name,
+          cost: powerSupply.price,
+        },
+      },
+    });
   };
 
   return (
@@ -63,7 +70,11 @@ export const Testpowersupply = () => {
       <div className="powersupply-list">
         {sortedPowerSupplies.map((powerSupply) => (
           <div className="powersupply-card" key={powerSupply.id}>
-            <img src={powerSupply.img} alt={powerSupply.name} className="powersupply-image" />
+            <img
+              src={powerSupply.img}
+              alt={powerSupply.name}
+              className="powersupply-image"
+            />
             <h4>{powerSupply.name}</h4>
             <div className="powersupply-details">
               <p>Wattage: {powerSupply.wattage}</p>

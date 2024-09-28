@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './Testprinter.css';
-import { printersData } from '../../data'; // Ensure the path is correct
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Testprinter.css";
+import { printersData } from "../../data"; // Ensure the path is correct
+import { useNavigate } from "react-router-dom";
 
 export const Testprinter = () => {
-  const [minBudget, setMinBudget] = useState('');
-  const [maxBudget, setMaxBudget] = useState('');
-  const [sortOption, setSortOption] = useState('');
+  const [minBudget, setMinBudget] = useState("");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const navigate = useNavigate();
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
@@ -21,9 +21,9 @@ export const Testprinter = () => {
 
   const sortedPrinters = filteredPrinters.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -31,7 +31,9 @@ export const Testprinter = () => {
   });
 
   const handleAdd = (printer) => {
-    navigate('/PCBuilder', { state: { selectedPrinter: { name: printer.name, cost: printer.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedPrinter: { name: printer.name, cost: printer.price } },
+    });
   };
 
   return (
@@ -63,7 +65,11 @@ export const Testprinter = () => {
       <div className="printer-list">
         {sortedPrinters.map((printer) => (
           <div className="printer-card" key={printer.id}>
-            <img src={printer.img} alt={printer.name} className="printer-image" />
+            <img
+              src={printer.img}
+              alt={printer.name}
+              className="printer-image"
+            />
             <h4>{printer.name}</h4>
             <div className="printer-details">
               <p>Type: {printer.type}</p>
