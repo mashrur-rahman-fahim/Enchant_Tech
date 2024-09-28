@@ -426,7 +426,7 @@ app.get("/api/profile/:email", async (req, res) => {
   }
 });
 
-app.post('/banner', async (req, res) => {
+app.post("/banner", async (req, res) => {
   const { img } = req.body;
 
   try {
@@ -443,18 +443,21 @@ app.post('/banner', async (req, res) => {
 
     res.send(banner);
   } catch (error) {
-    res.status(500).send({ message: 'Error processing the request', error: error.message });
+    res
+      .status(500)
+      .send({ message: "Error processing the request", error: error.message });
   }
 });
-app.get('/banner',async(req,res)=>{
+app.get("/banner", async (req, res) => {
   try {
     const banner = await Banner.findOne({});
     if (!banner) {
-      return res.status(404).json({ message: 'No banner found' });
+      return res.status(404).json({ message: "No banner found" });
     }
     res.send(banner);
   } catch (error) {
-    res.status(500).send({ message: 'Error processing the request', error: error.message });
+    res
+      .status(500)
+      .send({ message: "Error processing the request", error: error.message });
   }
-})
-
+});
