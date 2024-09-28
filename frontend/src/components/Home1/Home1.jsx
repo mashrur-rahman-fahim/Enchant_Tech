@@ -1,12 +1,15 @@
 import "./Home.css";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import a from "../assets/PC/a.jpg";
 import b from "../assets/PC/b.avif";
 import c from "../assets/PC/c.webp";
 import d from "../assets/PC/d.jpg";
 import { Link } from "react-router-dom";
+import {CartContext} from "../cart/CartContext"
+
 
 export const Home1 = () => {
+  const { fetchCartCount } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [src, setSrc] = useState("");
   const [index, setIndex] = useState(0);
@@ -36,6 +39,28 @@ export const Home1 = () => {
     };
     fetchProducts();
   }, [page]);
+  const { updateCart } = useContext(CartContext);
+  const addToCart = (product) => {
+    // Fetch existing cart data from local storage
+    const existingCartData = JSON.parse(localStorage.getItem('cart')) || [];
+  
+    // Find if the product is already in the cart
+    const existingProductIndex = existingCartData.findIndex(item => item.id === product.id);
+  
+    if (existingProductIndex !== -1) {
+      // Product exists in the cart, update its count
+      existingCartData[existingProductIndex].count += 1;
+    } else {
+      // Product does not exist in the cart, add it
+      existingCartData.push({ ...product, count: 1, date: new Date() });
+    }
+  
+    // Save the updated cart data back to localStorage
+    localStorage.setItem('cart', JSON.stringify(existingCartData));
+  
+    // Update the cart data in the context
+    updateCart(existingCartData);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -77,6 +102,7 @@ export const Home1 = () => {
   if (error) {
     return <div className="error">Error: {error}</div>;
   }
+ 
 
   return (
     <div className="home-container">
@@ -97,7 +123,7 @@ export const Home1 = () => {
                 <div className="cl1" key={idx}>
                   <img src={item.img} alt={item.title} />
                   <div className="home_price">Price {item.price}</div>
-                  <button>Order Now</button>
+                  <button onClick={()=>{addToCart(item)}}>Order Now</button>
                 </div>
               );
             }
