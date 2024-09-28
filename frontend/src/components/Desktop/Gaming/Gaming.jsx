@@ -145,7 +145,7 @@ export const Gaming = () => {
               <img src={item.img} alt={item.title} />
             </div>
             <div className="product-info">
-              <Link to={`/${item.id}`} className="product-title">
+              <Link to={`/${item._id}`} className="product-title">
                 {item.title}
               </Link>
               <p className="product-description">{item.description}</p>

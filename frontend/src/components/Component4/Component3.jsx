@@ -153,7 +153,7 @@ export const Component3 = () => {
               <img src={product.img} alt={product.title} />
             </div>
             <div className="product-info">
-              <Link to={`/${product.id}`} className="product-title">
+              <Link to={`/${product._id}`} className="product-title">
                 {product.title}
               </Link>
               <p className="product-description">{product.description}</p>
