@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth1 } from "../Authentication/LoginContest";
 import "./MainProfile.css"; // Import the CSS file for styling
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const Main_profile = () => {
   const { isLoggedIn1, setIsLoggedIn1 } = useAuth1();
   const [email, setEmail] = useState(null);
@@ -86,7 +87,7 @@ export const Main_profile = () => {
         birthday: profile.birthday, // Make sure to send the date as is
       });
 
-      alert(response.data.message); // Show success message
+      toast.success(response.data.message); // Show success message
       setIsEditing(false); // Exit edit mode
     } catch (error) {
       console.error("Error saving profile:", error);
@@ -314,6 +315,7 @@ export const Main_profile = () => {
           </form>
         )}
       </div>
+      <ToastContainer/>
     </div>
   );
 };

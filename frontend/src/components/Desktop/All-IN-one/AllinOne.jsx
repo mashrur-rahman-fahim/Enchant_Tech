@@ -123,7 +123,7 @@ export const AllinOne = () => {
         </div>
         <div className="sort-options">
           <button onClick={() => handleSort("price")}>Sort by Price</button>
-          <button onClick={() => handleSort("popularity")}>Sort by Popularity</button>
+          {/* <button onClick={() => handleSort("popularity")}>Sort by Popularity</button> */}
         </div>
       </div>
 
