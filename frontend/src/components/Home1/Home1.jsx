@@ -16,6 +16,7 @@ export const Home1 = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [hasMore, setHasMore] = useState(true);
+  const[banner,setBanner]=useState(null);
   let desktopCount = 0,
     laptopCount = 0,
     cpuCount = 0,
@@ -45,6 +46,7 @@ export const Home1 = () => {
     };
     fetchProducts();
   }, [page]);
+  
   const { updateCart } = useContext(CartContext);
   const addToCart = (product) => {
     // Fetch existing cart data from local storage
@@ -113,14 +115,31 @@ export const Home1 = () => {
 
   return (
     <div className="home-container">
-      <div className="image-carousel">
-        <img className="image" src={src} alt="Product" />
+      {/* <div className="image-carousel"> */}
+      {/* <img className="image" src={src} alt="Product" /> */}
+      {/* </div> */}
+      <div className="hero-section">
+        <img
+          src="your-banner-image.jpg"
+          alt="Shop Promo"
+          className="banner-image"
+        />
+        <div className="banner-content">
+          <h1>Big Sale! Up to 50% Off</h1>
+          <p>Shop our latest collection of desktops and laptops</p>
+          <a href="#shopByCategory">
+            <button className="cta-button">Shop Now</button>
+          </a>
+        </div>
       </div>
+
       <div className="title-line">
         <div className="line"></div>
+
         <div className="title">FEATURE PRODUCT</div>
         <div className="line"></div>
       </div>
+
       <div className="featured-shop">
         <div className="row">
           {products.map((item, idx) => {
@@ -132,7 +151,7 @@ export const Home1 = () => {
                 return (
                   <div className="cl1" key={idx}>
                     <img src={item.img} alt={item.title} />
-                    <div className="home_price">Price {item.price}</div>
+                    {/* <div className="home_price">Price {item.price}</div> */}
                     <button
                       onClick={() => {
                         addToCart(item);
@@ -233,7 +252,7 @@ export const Home1 = () => {
           })}
         </div>
       </div>
-      <div className="shop-by-category">
+      <div  id="shopByCategory" className="shop-by-category" >
         <div className="title-line">
           <div className="line"></div>
           <div className="title">SHOP BY CATEGORY</div>

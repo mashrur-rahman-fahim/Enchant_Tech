@@ -14,6 +14,7 @@ import All_Product from "./models/All_product.js";
 import Review from "./models/review.js";
 import Payment from "./models/payment.js";
 import UserProfile from "./models/UserProfile.js";
+import Banner from "./models/Banner.js";
 
 const SECRET_KEY_REFRESH = process.env.SECRET_KEY_REFRESH;
 const SECRET_KEY_ACCESS = process.env.SECRET_KEY_ACCESS;
@@ -229,7 +230,7 @@ app.post("/logout", (req, res) => {
 // All Product Routes
 app.get("/products", async (req, res) => {
   const products = await All_Product.find({});
-  res.send(products);
+  res.status(200).send(products);
 });
 app.get("/productObject/:id", async (req, res) => {
   const { id } = req.params;
@@ -400,3 +401,36 @@ app.get("/api/profile/:email", async (req, res) => {
       .json({ message: "Internal server error", error: error.message });
   }
 });
+
+app.post('/banner', async (req, res) => {
+  const { img } = req.body;
+
+  try {
+    // Check if a banner exists
+    const existingBanner = await Banner.findOne({});
+
+    if (existingBanner) {
+      // If a banner exists, delete it
+      await Banner.deleteOne({});
+    }
+
+    // Create a new banner with the provided image
+    const banner = await Banner.create({ img }); // Ensure img is an object { img }
+
+    res.send(banner);
+  } catch (error) {
+    res.status(500).send({ message: 'Error processing the request', error: error.message });
+  }
+});
+app.get('/banner',async(req,res)=>{
+  try {
+    const banner = await Banner.findOne({});
+    if (!banner) {
+      return res.status(404).json({ message: 'No banner found' });
+    }
+    res.send(banner);
+  } catch (error) {
+    res.status(500).send({ message: 'Error processing the request', error: error.message });
+  }
+})
+

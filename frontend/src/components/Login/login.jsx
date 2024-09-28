@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useAuth } from "../Authentication/AuthContext";
 import { useAuth1 } from "../Authentication/LoginContest";
@@ -34,18 +36,36 @@ export const Login1 = () => {
             formData.email === "admin@gmail.com" &&
             formData.password === "admin"
           ) {
-            setIsLoggedIn(true);
-            navigate(`/Auth/${formData.email}`);
+            toast.success("Login as an Admin", {
+              autoClose: 2000, // Automatically close after 5 seconds
+            });
+            
+            setTimeout(()=>{
+              setIsLoggedIn(true);
+              navigate(`/Auth/${formData.email}`);
+            },2000)
+           
           } else if (setIsLoggedIn1) {
             setIsLoggedIn1(true);
-            navigate(`/Auth/${formData.email}`);
-            alert("Login successful!");
-          } else alert("Login failed!");
+            toast.success("Login successful!", {
+              autoClose: 2000, // Automatically close after 5 seconds
+            });
+            setTimeout(()=>{
+              navigate(`/Auth/${formData.email}`);
+            },2000)
+           
+           
+          } else
+            toast.error("Login failed!", {
+              autoClose: 2000,
+            });
         }
       })
       .catch((err) => {
         console.error(err);
-        alert("An error occurred during login.");
+        toast.error("An error occurred during login.", {
+          autoClose: 2000,
+        });
       });
   };
 
@@ -102,6 +122,7 @@ export const Login1 = () => {
           </div>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };
