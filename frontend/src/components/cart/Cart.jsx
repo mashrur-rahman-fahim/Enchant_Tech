@@ -86,7 +86,7 @@ export const Cart = () => {
         </div>
       ))}
       <section id="cartAdd" className="section-p1">
-        <div className="coupon">
+        {/* <div className="coupon">
           <h3>Apply Coupon</h3>
           <input
             type="text"
@@ -95,7 +95,7 @@ export const Cart = () => {
             onChange={(e) => setCouponCode(e.target.value)}
           />
           <button onClick={applyCoupon}>Apply</button>
-        </div>
+        </div> */}
         <div className="totals">
           <h3>Cart Total</h3>
           <table>
