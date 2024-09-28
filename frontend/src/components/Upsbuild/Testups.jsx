@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './Testups.css';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +12,7 @@ export const Testups = () => {
   const [popularOnly, setPopularOnly] = useState(false); // Optional filter
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,9 +59,9 @@ export const Testups = () => {
 
   const sortedUPSs = filteredUPSs.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -67,7 +69,9 @@ export const Testups = () => {
   });
 
   const handleAdd = (ups) => {
-    navigate('/PCBuilder', { state: { selectedUPS: { name: ups.name, cost: ups.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedUPS: { name: ups.name, cost: ups.price } },
+    });
   };
 
   return (

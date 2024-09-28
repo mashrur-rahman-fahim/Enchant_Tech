@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './TestStorage.css';  // Ensure this file includes the necessary styles
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +8,7 @@ export const TestStorage = () => {
   const [minBudget, setMinBudget] = useState('');
   const [maxBudget, setMaxBudget] = useState('');
   const [sortOption, setSortOption] = useState('');
+
   const navigate = useNavigate();
 
   // Fetch storage data from the backend
@@ -36,11 +38,11 @@ export const TestStorage = () => {
 
   const sortedStorage = filteredStorage.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
-      case 'capacity':
+      case "capacity":
         return b.capacity.localeCompare(a.capacity); // Change to localeCompare for string comparison
       default:
         return 0;
@@ -48,7 +50,9 @@ export const TestStorage = () => {
   });
 
   const handleAdd = (storage) => {
-    navigate('/PCBuilder', { state: { selectedStorage: { name: storage.name, cost: storage.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedStorage: { name: storage.name, cost: storage.price } },
+    });
   };
 
   return (
@@ -79,6 +83,7 @@ export const TestStorage = () => {
       </div>
 
       <div className="storage-list">
+
         {sortedStorage.length > 0 ? (
           sortedStorage.map((storage) => (
             <div className="storage-card" key={storage.id}>
@@ -95,6 +100,7 @@ export const TestStorage = () => {
               <button className="add-btn" onClick={() => handleAdd(storage)}>
                 Add
               </button>
+
             </div>
           ))
         ) : (

@@ -1,40 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import './Contact.css';
+import React, { useEffect, useState } from "react";
+import "./Contact.css";
 
 export const Contact = () => {
   const scriptURL =
-    'https://script.google.com/macros/s/AKfycbzirplFiz5vYDhsCPclLxIdR6oREX2CRjnTMoLYoF0fRQLie03yxuZ3SVrBb6ZQjj8puw/exec';
+    "https://script.google.com/macros/s/AKfycbzirplFiz5vYDhsCPclLxIdR6oREX2CRjnTMoLYoF0fRQLie03yxuZ3SVrBb6ZQjj8puw/exec";
   const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
-    const form = document.forms['submit-to-google-sheet'];
-    const msg = document.getElementById('msg');
+    const form = document.forms["submit-to-google-sheet"];
+    const msg = document.getElementById("msg");
     const submitButton = form.querySelector('button[type="submit"]');
 
     const handleSubmit = (e) => {
       e.preventDefault();
       setIsSending(true); // Set isSending to true
 
-      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+      fetch(scriptURL, { method: "POST", body: new FormData(form) })
         .then((response) => {
-          msg.innerHTML = 'Message sent successfully';
+          msg.innerHTML = "Message sent successfully";
           setTimeout(() => {
-            msg.innerHTML = '';
+            msg.innerHTML = "";
           }, 5000);
           form.reset();
           setIsSending(false); // Set isSending to false
         })
         .catch((error) => {
-          msg.innerHTML = 'Try again! Message not sent';
+          msg.innerHTML = "Try again! Message not sent";
           setIsSending(false); // Set isSending to false
         });
     };
 
-    form.addEventListener('submit', handleSubmit);
+    form.addEventListener("submit", handleSubmit);
 
     // Cleanup the event listener on component unmount
     return () => {
-      form.removeEventListener('submit', handleSubmit);
+      form.removeEventListener("submit", handleSubmit);
     };
   }, [scriptURL]);
 
@@ -65,12 +65,8 @@ export const Contact = () => {
           <input type="text" name="Name" placeholder="Your Name" required />
           <input type="email" name="Email" placeholder="Your Email" required />
           <textarea name="message" rows="6" placeholder="Message"></textarea>
-          <button type="submit" className={isSending ? 'sending' : ''}>
-            {isSending ? (
-              <div className="circle-indicator"></div>
-            ) : (
-              'SUBMIT'
-            )}
+          <button type="submit" className={isSending ? "sending" : ""}>
+            {isSending ? <div className="circle-indicator"></div> : "SUBMIT"}
           </button>
         </form>
         <span id="msg"></span>

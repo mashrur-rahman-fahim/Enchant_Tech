@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './Testcasing.css'; // Make sure to create a CSS file for styling
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +12,7 @@ export const Testcasing = () => {
   const [popularOnly, setPopularOnly] = useState(false); // Optional filter
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,9 +59,9 @@ export const Testcasing = () => {
 
   const sortedCasings = filteredCasings.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -67,7 +69,9 @@ export const Testcasing = () => {
   });
 
   const handleAdd = (casing) => {
-    navigate('/PCBuilder', { state: { selectedCasing: { name: casing.name, cost: casing.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedCasing: { name: casing.name, cost: casing.price } },
+    });
   };
 
   return (

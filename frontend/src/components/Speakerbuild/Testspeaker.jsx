@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './Testspeaker.css'; // Make sure to create a CSS file for styles
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +12,7 @@ export const Testspeaker = () => {
   const [popularOnly, setPopularOnly] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -55,9 +57,9 @@ export const Testspeaker = () => {
 
   const sortedSpeakers = filteredSpeakers.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -65,7 +67,9 @@ export const Testspeaker = () => {
   });
 
   const handleAdd = (speaker) => {
-    navigate('/PCBuilder', { state: { selectedSpeaker: { name: speaker.name, cost: speaker.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedSpeaker: { name: speaker.name, cost: speaker.price } },
+    });
   };
 
   return (
@@ -113,6 +117,7 @@ export const Testspeaker = () => {
       </div>
 
       <div className="speaker-list">
+
         {loading ? (
           <p>Loading speakers data...</p>
         ) : error ? (
@@ -122,6 +127,7 @@ export const Testspeaker = () => {
             <div className="speaker-card" key={speaker.id}>
               <img src={speaker.img} alt={speaker.name} className="speaker-image" />
               <h4>{speaker.name}</h4>
+
               <p>Type: {speaker.type}</p>
               <p>Power: {speaker.power}</p>
               <p className="price">₹{speaker.price}</p>

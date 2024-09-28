@@ -1,9 +1,10 @@
-import React from 'react'
-import { AllProduct } from '../components/Product/AllProduct'
-
+import React from "react";
+import { AllProduct } from "../components/Product/AllProduct";
 
 export const Product = () => {
   return (
-    <div><AllProduct/></div>
-  )
-}
+    <div>
+      <AllProduct />
+    </div>
+  );
+};

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './Testkeyboard.css';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +12,7 @@ export const Testkeyboard = () => {
   const [popular, setPopular] = useState(false); // Popular filter
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,9 +53,9 @@ export const Testkeyboard = () => {
 
   const sortedKeyboards = filteredKeyboards.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -61,7 +63,11 @@ export const Testkeyboard = () => {
   });
 
   const handleAdd = (keyboard) => {
-    navigate('/PCBuilder', { state: { selectedKeyboard: { name: keyboard.name, cost: keyboard.price } } });
+    navigate("/PCBuilder", {
+      state: {
+        selectedKeyboard: { name: keyboard.name, cost: keyboard.price },
+      },
+    });
   };
 
   return (
@@ -109,6 +115,7 @@ export const Testkeyboard = () => {
       </div>
 
       <div className="keyboard-list">
+
         {loading ? (
           <p>Loading keyboard data...</p>
         ) : error ? (
@@ -127,6 +134,7 @@ export const Testkeyboard = () => {
               <button className="add-btn" onClick={() => handleAdd(keyboard)}>
                 Add
               </button>
+
             </div>
           ))
         )}

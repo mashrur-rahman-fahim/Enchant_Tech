@@ -4,17 +4,27 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { CartContext } from "../cart/CartContext";
 
-
-
 const StarRating = ({ rating }) => {
   const stars = [];
   for (let i = 1; i <= 5; i++) {
     if (i <= rating) {
-      stars.push(<span key={i} className="star filled">★</span>);
+      stars.push(
+        <span key={i} className="star filled">
+          ★
+        </span>
+      );
     } else if (i - rating < 1) {
-      stars.push(<span key={i} className="star half-filled">★</span>);
+      stars.push(
+        <span key={i} className="star half-filled">
+          ★
+        </span>
+      );
     } else {
-      stars.push(<span key={i} className="star">★</span>);
+      stars.push(
+        <span key={i} className="star">
+          ★
+        </span>
+      );
     }
   }
   return <div className="rating">{stars}</div>;
@@ -26,45 +36,40 @@ export const Product_delete = () => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [sortOption, setSortOption] = useState("");
   const [searchValue, setSearchValue] = useState("");
-  const {catagory}=useParams();
-   const catagory1=catagory.toString();
-   const remove_product=(id)=>{
+  const { catagory } = useParams();
+  const catagory1 = catagory.toString();
+  const remove_product = (id) => {
     fetch(`http://localhost:4000/products/${id}`, {
       method: "DELETE",
-      headers:{
+      headers: {
         "Content-Type": "application/json",
-      }
+      },
     })
-    .then((res)=>res.json())
-    .then((data)=>{
-      window.location.reload();
-    })
-   }
+      .then((res) => res.json())
+      .then((data) => {
+        window.location.reload();
+      });
+  };
 
   useEffect(() => {
-    fetch('http://localhost:4000/products')
-      .then(res => res.json())
-      .then(data => {
-        let filterData=[]
-        for(let i=0;i<data.length;i++)
-        {
-          if(data[i].catagory===catagory1)
-            filterData.push(data[i]);
+    fetch("http://localhost:4000/products")
+      .then((res) => res.json())
+      .then((data) => {
+        let filterData = [];
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].catagory === catagory1) filterData.push(data[i]);
         }
-        
-       
+
         setItems(filterData);
         setFilteredItems(filterData);
-        
-
       })
-      .catch(error => console.error('Error fetching products:', error));
+      .catch((error) => console.error("Error fetching products:", error));
   }, []);
 
   useEffect(() => {
     let result = [...items];
     if (searchValue) {
-      result = result.filter(product =>
+      result = result.filter((product) =>
         product.title.toLowerCase().includes(searchValue.toLowerCase())
       );
     }
@@ -129,7 +134,9 @@ export const Product_delete = () => {
         </div>
         <div className="sort-options">
           <button onClick={() => handleSort("price")}>Sort by Price</button>
-          <button onClick={() => handleSort("popularity")}>Sort by Popularity</button>
+          <button onClick={() => handleSort("popularity")}>
+            Sort by Popularity
+          </button>
         </div>
       </div>
       <div className="all-product">
@@ -147,7 +154,12 @@ export const Product_delete = () => {
               <div className="product-price">Price: {item.price}</div>
               <StarRating rating={item.rating} />
               <div className="product-actions">
-              <button className="remove_product" onClick={()=>remove_product(item.id)}>Delete</button>
+                <button
+                  className="remove_product"
+                  onClick={() => remove_product(item.id)}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>

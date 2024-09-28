@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './Testmouse.css'; // Ensure this file includes the necessary styles
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +8,7 @@ export const Testmouse = () => {
   const [minBudget, setMinBudget] = useState('');
   const [maxBudget, setMaxBudget] = useState('');
   const [sortOption, setSortOption] = useState('');
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,9 +38,9 @@ export const Testmouse = () => {
 
   const sortedMice = filteredMice.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -46,7 +48,9 @@ export const Testmouse = () => {
   });
 
   const handleAdd = (mouse) => {
-    navigate('/PCBuilder', { state: { selectedMouse: { name: mouse.name, cost: mouse.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedMouse: { name: mouse.name, cost: mouse.price } },
+    });
   };
 
   return (

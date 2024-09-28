@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './Testcpu.css'; // Ensure this file includes the necessary styles
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +10,7 @@ export const Testcpu = () => {
   const [sortOption, setSortOption] = useState('');
   const [highPerformance, setHighPerformance] = useState(false);
   const [popularOnly, setPopularOnly] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,9 +45,9 @@ export const Testcpu = () => {
 
   const sortedProcessors = filteredProcessors.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       case 'high-performance':
         return (b.performance === 'High' ? 1 : 0) - (a.performance === 'High' ? 1 : 0);
@@ -57,8 +59,10 @@ export const Testcpu = () => {
   });
 
   const handleAdd = (processor) => {
+
     navigate('/PCBuilder', {
       state: { selectedProcessor: { name: processor.name, cost: processor.price } },
+
     });
   };
 
@@ -111,7 +115,11 @@ export const Testcpu = () => {
       <div className="processor-list">
         {sortedProcessors.map((processor) => (
           <div className="processor-card" key={processor.id}>
-            <img src={processor.img} alt={processor.name} className="processor-image" />
+            <img
+              src={processor.img}
+              alt={processor.name}
+              className="processor-image"
+            />
             <h4>{processor.name}</h4>
             <div className="processor-details">
               <p>Speed: {processor.speed}</p>

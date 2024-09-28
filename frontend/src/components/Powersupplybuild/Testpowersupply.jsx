@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './Testpowersupply.css'; // Ensure you have the correct CSS file
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +12,7 @@ export const Testpowersupply = () => {
   const [popularOnly, setPopularOnly] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -54,9 +56,9 @@ export const Testpowersupply = () => {
 
   const sortedPowerSupplies = filteredPowerSupplies.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -65,6 +67,7 @@ export const Testpowersupply = () => {
 
   const handleAdd = (ps) => {
     navigate('/PCBuilder', { state: { selectedPowerSupply: { name: ps.name, cost: ps.price } } });
+
   };
 
   return (
@@ -113,6 +116,7 @@ export const Testpowersupply = () => {
         </label>
       </div>
 
+
       <div className="power-supply-list">
         {loading ? (
           <p>Loading power supply data...</p>
@@ -131,6 +135,7 @@ export const Testpowersupply = () => {
               <button className="add-btn" onClick={() => handleAdd(ps)}>
                 Add
               </button>
+
             </div>
           ))
         )}

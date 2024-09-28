@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './TestGpu.css'; // Ensure this file includes the necessary styles
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +10,7 @@ export const TestGpu = () => {
   const [sortOption, setSortOption] = useState('');
   const [highPerformance, setHighPerformance] = useState(false);
   const [popularOnly, setPopularOnly] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,21 +45,25 @@ export const TestGpu = () => {
 
   const sortedGpus = filteredGpus.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
+
       case 'high-performance':
         return (b.performance - a.performance);
       case 'popularity':
         return 0; // Assuming all GPUs are equally popular for now
+
       default:
         return 0;
     }
   });
 
   const handleAdd = (gpu) => {
+
     navigate('/PCBuilder', {
+
       state: { selectedGpu: { name: gpu.name, cost: gpu.price } },
     });
   };

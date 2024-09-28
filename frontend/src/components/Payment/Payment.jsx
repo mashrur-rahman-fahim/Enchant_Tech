@@ -1,58 +1,58 @@
-import React, { useEffect, useState, useContext } from 'react';
-import './Payment.css';
-import { useAuth1 } from '../Authentication/LoginContest';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { CartContext } from '../cart/CartContext';
-
+import React, { useEffect, useState, useContext } from "react";
+import "./Payment.css";
+import { useAuth1 } from "../Authentication/LoginContest";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { CartContext } from "../cart/CartContext";
 
 export const Payment = () => {
   const { isLoggedIn1, setIsLoggedIn1 } = useAuth1();
   const { cartData } = useContext(CartContext); // Access cartData from context
-  console.log(cartData)
+  console.log(cartData);
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    phone: '',
-    email: '',
-    address: '',
-    city: '',
-    state: '',
-    zipCode: '',
-    deliveryMethod: 'regular', // Default option
-    paymentMethod: 'bkash', // Default option
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    address: "",
+    city: "",
+    state: "",
+    zipCode: "",
+    deliveryMethod: "regular", // Default option
+    paymentMethod: "bkash", // Default option
     agreedToTerms: false,
   });
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!isLoggedIn1) {
-      navigate('/Login');
+      navigate("/Login");
       return;
     }
 
-    axios.get('http://localhost:4000/auth', { withCredentials: true })
+    axios
+      .get("http://localhost:4000/auth", { withCredentials: true })
       .then((response) => {
         const data = response.data;
         if (data.valid) {
-          setFormData(prev => ({ ...prev, email: data.email })); // Set email from response
+          setFormData((prev) => ({ ...prev, email: data.email })); // Set email from response
         } else {
           setIsLoggedIn1(false);
-          navigate('/Login');
+          navigate("/Login");
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
-        navigate('/Login');
+        navigate("/Login");
       });
   }, [isLoggedIn1, navigate, setIsLoggedIn1]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prevData => ({
+    setFormData((prevData) => ({
       ...prevData,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
@@ -62,14 +62,17 @@ export const Payment = () => {
       // Combine cartData with formData
       const paymentData = {
         ...formData,
-        products: cartData // Adding cartData to the payload
+        products: cartData, // Adding cartData to the payload
       };
-      const response = await axios.post('http://localhost:4000/payment-option', paymentData);
-      console.log('Payment profile created:', response.data);
-      alert('Order placed successfully!');
+      const response = await axios.post(
+        "http://localhost:4000/payment-option",
+        paymentData
+      );
+      console.log("Payment profile created:", response.data);
+      alert("Order placed successfully!");
     } catch (error) {
-      console.error('Error submitting payment:', error);
-      alert('Failed to place order. Please try again.');
+      console.error("Error submitting payment:", error);
+      alert("Failed to place order. Please try again.");
     }
   };
 
@@ -201,10 +204,12 @@ export const Payment = () => {
                                 id="regularDelivery"
                                 name="deliveryMethod"
                                 value="regular"
-                                checked={formData.deliveryMethod === 'regular'}
+                                checked={formData.deliveryMethod === "regular"}
                                 onChange={handleChange}
                               />
-                              <label htmlFor="regularDelivery">Regular Delivery (City)</label>
+                              <label htmlFor="regularDelivery">
+                                Regular Delivery (City)
+                              </label>
                             </div>
                             <div>
                               <input
@@ -212,10 +217,12 @@ export const Payment = () => {
                                 id="outsideDelivery"
                                 name="deliveryMethod"
                                 value="outside"
-                                checked={formData.deliveryMethod === 'outside'}
+                                checked={formData.deliveryMethod === "outside"}
                                 onChange={handleChange}
                               />
-                              <label htmlFor="outsideDelivery">Outside City Delivery</label>
+                              <label htmlFor="outsideDelivery">
+                                Outside City Delivery
+                              </label>
                             </div>
                           </div>
                         </div>
@@ -232,7 +239,7 @@ export const Payment = () => {
                                 id="bkash"
                                 name="paymentMethod"
                                 value="bkash"
-                                checked={formData.paymentMethod === 'bkash'}
+                                checked={formData.paymentMethod === "bkash"}
                                 onChange={handleChange}
                               />
                               <label htmlFor="bkash">bKash</label>
@@ -243,7 +250,7 @@ export const Payment = () => {
                                 id="nagad"
                                 name="paymentMethod"
                                 value="nagad"
-                                checked={formData.paymentMethod === 'nagad'}
+                                checked={formData.paymentMethod === "nagad"}
                                 onChange={handleChange}
                               />
                               <label htmlFor="nagad">Nagad</label>
@@ -254,7 +261,7 @@ export const Payment = () => {
                                 id="emipay"
                                 name="paymentMethod"
                                 value="emipay"
-                                checked={formData.paymentMethod === 'emipay'}
+                                checked={formData.paymentMethod === "emipay"}
                                 onChange={handleChange}
                               />
                               <label htmlFor="emipay">EMI/Card Payment</label>
@@ -265,7 +272,7 @@ export const Payment = () => {
                                 id="cod"
                                 name="paymentMethod"
                                 value="cod"
-                                checked={formData.paymentMethod === 'cod'}
+                                checked={formData.paymentMethod === "cod"}
                                 onChange={handleChange}
                               />
                               <label htmlFor="cod">Cash on Delivery</label>

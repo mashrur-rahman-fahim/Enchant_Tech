@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './Testprinter.css';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +12,7 @@ export const Testprinter = () => {
   const [popular, setPopular] = useState(false); // Popular filter
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,9 +53,9 @@ export const Testprinter = () => {
 
   const sortedPrinters = filteredPrinters.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
       default:
         return 0;
@@ -61,7 +63,9 @@ export const Testprinter = () => {
   });
 
   const handleAdd = (printer) => {
-    navigate('/PCBuilder', { state: { selectedPrinter: { name: printer.name, cost: printer.price } } });
+    navigate("/PCBuilder", {
+      state: { selectedPrinter: { name: printer.name, cost: printer.price } },
+    });
   };
 
   return (
@@ -109,6 +113,7 @@ export const Testprinter = () => {
       </div>
 
       <div className="printer-list">
+
         {loading ? (
           <p>Loading printer data...</p>
         ) : error ? (
@@ -128,6 +133,7 @@ export const Testprinter = () => {
               <button className="add-btn" onClick={() => handleAdd(printer)}>
                 Add
               </button>
+
             </div>
           ))
         )}

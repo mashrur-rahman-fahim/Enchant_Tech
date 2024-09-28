@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './Testmotherboard.css'; // Ensure this file includes the necessary styles
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +10,7 @@ export const Motherboardbuild = () => {
   const [sortOption, setSortOption] = useState('');
   const [highPerformance, setHighPerformance] = useState(false);
   const [popularOnly, setPopularOnly] = useState(false);
+
   const navigate = useNavigate();
 
   // Fetch data from JSON file
@@ -45,22 +47,26 @@ export const Motherboardbuild = () => {
   // Sorting logic
   const sortedMotherboards = filteredMotherboards.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
+
       case 'high-performance':
         return b.performance - a.performance; // Sort by performance
       case 'popularity':
         return (b.popularity === 'Popular' ? 1 : 0) - (a.popularity === 'Popular' ? 1 : 0);
+
       default:
         return 0;
     }
   });
 
   const handleAdd = (motherboard) => {
+
     navigate('/PCBuilder', {
       state: { selectedMotherboard: { name: motherboard.name, cost: motherboard.price } },
+
     });
   };
 
@@ -111,6 +117,7 @@ export const Motherboardbuild = () => {
       </div>
 
       <div className="motherboard-list">
+
         {sortedMotherboards.length > 0 ? (
           sortedMotherboards.map((motherboard) => (
             <div className="motherboard-card" key={motherboard.id}>
@@ -126,6 +133,7 @@ export const Motherboardbuild = () => {
               <button className="add-btn" onClick={() => handleAdd(motherboard)}>
                 Add
               </button>
+
             </div>
           ))
         ) : (

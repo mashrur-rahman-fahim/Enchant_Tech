@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './Testcooler.css'; // Ensure this file includes the necessary styles
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +9,7 @@ export const Testcooler = () => {
   const [maxBudget, setMaxBudget] = useState('');
   const [sortOption, setSortOption] = useState('');
   const [highPerformance, setHighPerformance] = useState(false);
+
   const navigate = useNavigate();
 
   // Fetch coolers data from the backend
@@ -41,11 +43,11 @@ export const Testcooler = () => {
 
   const sortedCoolers = filteredCoolers.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
-      case 'performance':
+      case "performance":
         return b.performance - a.performance;
       default:
         return 0;
@@ -53,7 +55,9 @@ export const Testcooler = () => {
   });
 
   const handleAdd = (cooler) => {
+
     navigate('/PCBuilder', {
+
       state: { selectedCooler: { name: cooler.name, cost: cooler.price } },
     });
   };

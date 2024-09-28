@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './TestRam.css'; // Ensure this file includes the necessary styles
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +10,7 @@ export const TestRam = () => {
   const [sortOption, setSortOption] = useState('');
   const [highPerformance, setHighPerformance] = useState(false);
   const [popularOnly, setPopularOnly] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,21 +45,25 @@ export const TestRam = () => {
 
   const sortedRams = filteredRams.sort((a, b) => {
     switch (sortOption) {
-      case 'price-asc':
+      case "price-asc":
         return a.price - b.price;
-      case 'price-desc':
+      case "price-desc":
         return b.price - a.price;
+
       case 'high-performance':
         return (b.performance ? 1 : 0) - (a.performance ? 1 : 0);
       case 'popularity':
         return (b.popularity === 'Popular' ? 1 : 0) - (a.popularity === 'Popular' ? 1 : 0);
+
       default:
         return 0;
     }
   });
 
   const handleAdd = (ram) => {
+
     navigate('/PCBuilder', {
+
       state: { selectedRam: { name: ram.name, cost: ram.price } },
     });
   };
@@ -117,8 +123,10 @@ export const TestRam = () => {
               <p>Capacity: {ram.capacity}</p>
               <p>Speed: {ram.speed}</p>
               <p>Type: {ram.type}</p>
+
               <p>Voltage: {ram.voltage}</p>
               <p>Channels: {ram.channels}</p>
+
             </div>
             <p className="price">₹{ram.price}</p>
             <button className="add-btn" onClick={() => handleAdd(ram)}>
