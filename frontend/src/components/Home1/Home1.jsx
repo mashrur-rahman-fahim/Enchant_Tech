@@ -9,6 +9,7 @@ import {CartContext} from "../cart/CartContext"
 
 
 export const Home1 = () => {
+  
   const { fetchCartCount } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [src, setSrc] = useState("");
@@ -119,6 +120,8 @@ export const Home1 = () => {
           {products.map((item, idx) => {
             const productDate = new Date(item.date);
             if (productDate >= tenDaysAgo) {
+            
+              if(item.catagory==='desktop' )
               return (
                 <div className="cl1" key={idx}>
                   <img src={item.img} alt={item.title} />
