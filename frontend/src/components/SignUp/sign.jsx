@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./sign.css";
 import { Link } from "react-router-dom";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const Sign = () => {
   const [formdata, setFormdata] = useState({
     name: "",
@@ -22,7 +23,9 @@ export const Sign = () => {
       .then((data) => {
         const findEmail = data.find((usr) => usr.email === formdata.email);
         if (findEmail) {
-          alert("User already exist, please login");
+          toast.error("User already exist, please login", {
+            autoClose: 2000,
+          });
           return;
         }
         fetch("http://localhost:4000/signUp", {
@@ -33,7 +36,11 @@ export const Sign = () => {
           body: JSON.stringify(formdata),
         })
           .then((response) => response.json())
-          .then(() => alert("User created!"));
+          .then(() =>
+            toast.success("User created!", {
+              autoClose: 2000,
+            })
+          );
       });
   };
 
@@ -100,6 +107,7 @@ export const Sign = () => {
           </div>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };
