@@ -1,23 +1,38 @@
-import React, { useState } from 'react';
-import './Testmouse.css';
-import { mouseData } from '../../data'; // Ensure the path is correct
+import React, { useEffect, useState } from 'react';
+import './Testmouse.css'; // Ensure this file includes the necessary styles
 import { useNavigate } from 'react-router-dom';
 
 export const Testmouse = () => {
+  const [miceData, setMiceData] = useState([]);
   const [minBudget, setMinBudget] = useState('');
   const [maxBudget, setMaxBudget] = useState('');
   const [sortOption, setSortOption] = useState('');
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchMice = async () => {
+      try {
+        const response = await fetch('/data/mice.json'); // Adjust the path if necessary
+        const data = await response.json();
+        setMiceData(data.mice); // Ensure the JSON structure matches
+      } catch (error) {
+        console.error('Error fetching mice data:', error);
+      }
+    };
+
+    fetchMice();
+  }, []);
+
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
   const handleMaxBudgetChange = (e) => setMaxBudget(e.target.value);
   const handleSortChange = (e) => setSortOption(e.target.value);
 
-  const filteredMice = mouseData.filter(
-    (mouse) =>
-      (!minBudget || mouse.price >= minBudget) &&
-      (!maxBudget || mouse.price <= maxBudget)
-  );
+  const filteredMice = miceData.filter((mouse) => {
+    const meetsBudget =
+      (!minBudget || mouse.price >= Number(minBudget)) &&
+      (!maxBudget || mouse.price <= Number(maxBudget));
+    return meetsBudget;
+  });
 
   const sortedMice = filteredMice.sort((a, b) => {
     switch (sortOption) {

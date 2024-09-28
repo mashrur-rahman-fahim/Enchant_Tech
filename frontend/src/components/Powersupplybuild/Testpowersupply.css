@@ -1,6 +1,6 @@
 /* Testpowersupply.css */
 
-.powersupply-container {
+.power-supply-container {
     padding: 20px;
     font-family: Arial, sans-serif;
 }
@@ -43,13 +43,13 @@
     border-radius: 4px;
 }
 
-.powersupply-list {
+.power-supply-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.powersupply-card {
+.power-supply-card {
     width: calc(33.333% - 20px); /* Three cards per row with spacing */
     padding: 15px;
     border: 1px solid #ddd;
@@ -59,24 +59,24 @@
     background-color: #fff;
 }
 
-.powersupply-card:hover {
+.power-supply-card:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     transform: translateY(-4px);
 }
 
-.powersupply-image {
+.power-supply-image {
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;
 }
 
-.powersupply-card h4 {
+.power-supply-card h4 {
     margin: 10px 0;
     font-size: 18px;
     color: #333;
 }
 
-.powersupply-details p {
+.power-supply-details p {
     margin: 5px 0;
     font-size: 14px;
     color: #666;

@@ -1,0 +1,85 @@
+{
+    "speakers": [
+      {
+        "id": 1,
+        "name": "Logitech Z313 2:1 Speaker #980-000413",
+        "img": "https://www.ryans.com/storage/products/small/logitech-z313-21-speaker-11724648315.webp",
+        "type": "Portable Bluetooth Speaker",
+        "power": "20W",
+        "price": 4000
+      },
+      {
+        "id": 2,
+        "name": "CMX HSK-15T 15W White Horn Speaker",
+        "img": "https://www.ryans.com/storage/products/small/cmx-hsk-15t-15w-white-horn-11706070934.webp",
+        "type": "Portable Bluetooth Speaker",
+        "power": "16W",
+        "price": 4800
+      },
+      {
+        "id": 3,
+        "name": "Microlab M-300U 2:1 Speaker",
+        "img": "https://ryans.com/storage/products/main/microlab-tmn9-bt-21-bluetooth-black-multimedia-11708775247.webp",
+        "type": "Portable Bluetooth Speaker",
+        "power": "20W",
+        "price": 5000
+      },
+      {
+        "id": 4,
+        "name": "Microlab TMN1 2:1 Multimedia Speaker",
+        "img": "https://www.ryans.com/storage/products/small/microlab-tmn1-21-11568176184.webp",
+        "type": "Portable Bluetooth Speaker",
+        "power": "8W",
+        "price": 5600
+      },
+      {
+        "id": 5,
+        "name": "JBL Wind 3 Black Portable Bluetooth Speaker",
+        "img": "https://www.ryans.com/storage/products/small/jbl-wind-3-black-portable-bluetooth-11707140617.webp",
+        "type": "Portable Bluetooth Speaker",
+        "power": "12W",
+        "price": 5600
+      },
+      {
+        "id": 6,
+        "name": "Anker Soundcore Flare 2 Black Portable Bluetooth Speaker",
+        "img": "https://ryans.com/storage/products/main/anker-soundcore-a3165g11-flare-2-black-portable-11679485116.webp",
+        "type": "Portable Bluetooth Speaker",
+        "power": "20W",
+        "price": 7000
+      },
+      {
+        "id": 7,
+        "name": "F&D A521X 2:1 Bluetooth Speaker",
+        "img": "https://www.ryans.com/storage/products/small/fd-a521x-21-bluetooth-11724218007.webp",
+        "type": "Portable Bluetooth Speaker",
+        "power": "20W",
+        "price": 7000
+      },
+      {
+        "id": 8,
+        "name": "Microlab FC330BT 2:1 Bluetooth Wooden Multimedia Speaker",
+        "img": "https://ryans.com/storage/products/main/microlab-fc330bt-21-bluetooth-wooden-multimedia-11708765971.webp",
+        "type": "Portable Bluetooth Speaker",
+        "power": "30W",
+        "price": 19000
+      },
+      {
+        "id": 9,
+        "name": "Microlab T10 2:1 Gaming Bluetooth Speaker",
+        "img": "https://ryans.com/storage/products/main/microlab-t10-21-gaming-bluetooth-11543645965.webp",
+        "type": "Portable Bluetooth Speaker",
+        "power": "50W",
+        "price": 22000
+      },
+      {
+        "id": 10,
+        "name": "Microlab TMN1 BT 4:1 Bluetooth Multimedia Speaker",
+        "img": "https://ryans.com/storage/products/main/microlab-tmn1-bt-41-bluetooth-multimedia-11708693365.webp",
+        "type": "Portable Bluetooth Speaker",
+        "power": "100W",
+        "price": 25000
+      }
+    ]
+  }
+  

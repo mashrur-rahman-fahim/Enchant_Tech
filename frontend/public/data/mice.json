@@ -1,0 +1,85 @@
+{
+    "mice": [
+      {
+        "id": 1,
+        "name": "Havit MS959 RGB Backlit Programmable Gaming Mouse",
+        "img": "https://www.startech.com.bd/image/cache/catalog/mouse/havit/ms959/ms959-01-228x228.webp",
+        "dpi": "16000",
+        "connection": "Wired",
+        "price": 4500
+      },
+      {
+        "id": 2,
+        "name": "Rapoo 8000M Multi-mode Wireless Keyboard and Mouse Combo",
+        "img": "https://www.startech.com.bd/image/cache/catalog/keyboard/rapoo/8000m/8000m-01-228x228.webp",
+        "dpi": "20000",
+        "connection": "Wired",
+        "price": 5000
+      },
+      {
+        "id": 3,
+        "name": "Ajazz Aj380R RGB Gaming Mouse",
+        "img": "https://www.startech.com.bd/image/cache/catalog/mouse/ajazz/aj380r/aj380r-02-228x228.webp",
+        "dpi": "12000",
+        "connection": "Wired",
+        "price": 6000
+      },
+      {
+        "id": 4,
+        "name": "Logitech G402 Hyperion Fury ULTRA-FAST FPS GAMING MOUSE",
+        "img": "https://www.startech.com.bd/image/cache/catalog/mouse/logitech/g402/logitech-g402-1-228x228.jpg",
+        "dpi": "18000",
+        "connection": "Wireless",
+        "price": 7000
+      },
+      {
+        "id": 5,
+        "name": "Meetion MT-M985 10 buttons Programmable Wired Metal Mechanical Gaming Mouse",
+        "img": "https://www.startech.com.bd/image/cache/catalog/mouse/meetion/mt-m985/mt-m985-228x228.jpeg",
+        "dpi": "16000",
+        "connection": "Wired",
+        "price": 6000
+      },
+      {
+        "id": 6,
+        "name": "Keychron M1 Ultra-Light Optical Mouse",
+        "img": "https://www.startech.com.bd/image/cache/catalog/mouse/keychron/keychron-m1/m1-white-01-228x228.jpg",
+        "dpi": "16000",
+        "connection": "Wireless",
+        "price": 9000
+      },
+      {
+        "id": 7,
+        "name": "Vertux Phoenix Extreme Performance Professional Gaming LumiFlux Mouse",
+        "img": "https://www.startech.com.bd/image/cache/catalog/mouse/vertux/phoenix/vertux-phoenix-gaming-lumiflux-mouse-01-228x228.png",
+        "dpi": "12000",
+        "connection": "Wired",
+        "price": 5500
+      },
+      {
+        "id": 8,
+        "name": "Fantech HELIOS XD3 Pro Sakura Edition Wireless Gaming Mouse",
+        "img": "https://www.startech.com.bd/image/cache/catalog/mouse/fantech/helios-xd3/helios-xd3-0001-228x228.jpg",
+        "dpi": "16000",
+        "connection": "Wired",
+        "price": 5000
+      },
+      {
+        "id": 9,
+        "name": "Razer Basilisk V3 Pro RGB Ergonomic Wireless Gaming Mouse (Global)",
+        "img": "https://www.startech.com.bd/image/cache/catalog/mouse/razer/basilisk-v3-pro/basilisk-v3-pro-01-228x228.webp",
+        "dpi": "18000",
+        "connection": "Wired",
+        "price": 6500
+      },
+      {
+        "id": 10,
+        "name": "Logitech G502 X PLUS LIGHTSPEED Wireless Hero RGB Gaming Mouse White",
+        "img": "https://www.startech.com.bd/image/cache/catalog/mouse/logitech/g502x/g502x-white-228x228.webp",
+        "dpi": "18000",
+        "connection": "Wired",
+        "price": 7000
+      }
+    ]
+  }
+  

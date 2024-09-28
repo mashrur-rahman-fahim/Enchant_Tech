@@ -1,0 +1,115 @@
+{
+    "keyboards": [
+      {
+        "id": 1,
+        "name": "T-WOLF T15 104 Keys USB Wired Keyboard",
+        "img": "https://www.startech.com.bd/image/cache/catalog/keyboard/t-wolf/t15/t15-01-228x228.webp",
+        "switchType": "GX Blue Clicky",
+        "rgbLighting": true,
+        "connection": "Wired",
+        "price": 15000,
+        "isHighPerformance": true,
+        "isPopular": true
+      },
+      {
+        "id": 2,
+        "name": "Meetion MT-K9320 Waterproof Backlit Gaming Keyboard",
+        "img": "https://www.startech.com.bd/image/cache/catalog/keyboard/meetion/mt-k9320/mt-k9320-01-228x228.jpg",
+        "switchType": "Cherry MX Speed",
+        "rgbLighting": true,
+        "connection": "Wired",
+        "price": 18000,
+        "isHighPerformance": true,
+        "isPopular": true
+      },
+      {
+        "id": 3,
+        "name": "Meetion MT-K800 Colored Big Keys Kids Keyboard",
+        "img": "https://www.startech.com.bd/image/cache/catalog/keyboard/meetion/mt-k800/mt-k800-01-228x228.jpg",
+        "switchType": "Razer Green",
+        "rgbLighting": true,
+        "connection": "Wireless",
+        "price": 20000,
+        "isHighPerformance": false,
+        "isPopular": false
+      },
+      {
+        "id": 4,
+        "name": "Havit KB878L Gamenote USB Multi-Function Backlit Keyboard",
+        "img": "https://www.startech.com.bd/image/cache/catalog/keyboard/havit/kb878l/kb878l-01-228x228.webp",
+        "switchType": "OmniPoint",
+        "rgbLighting": true,
+        "connection": "Wired",
+        "price": 19000,
+        "isHighPerformance": true,
+        "isPopular": false
+      },
+      {
+        "id": 5,
+        "name": "Redragon A130 Pudding 104 Keys Standard Doubleshot PBT Keycap Set White",
+        "img": "https://www.startech.com.bd/image/cache/catalog/keyboard/redragon/a130-pudding/a130-pudding-white-228x228.jpg",
+        "switchType": "HyperX Red",
+        "rgbLighting": true,
+        "connection": "Wired",
+        "price": 12000,
+        "isHighPerformance": false,
+        "isPopular": true
+      },
+      {
+        "id": 6,
+        "name": "Havit KB876L USB Multi-Function Backlit Gaming Keyboard",
+        "img": "https://www.startech.com.bd/image/cache/catalog/keyboard/havit/kb876l/kb876l-01-228x228.webp",
+        "switchType": "GL Tactile",
+        "rgbLighting": true,
+        "connection": "Wireless",
+        "price": 19000,
+        "isHighPerformance": true,
+        "isPopular": true
+      },
+      {
+        "id": 7,
+        "name": "Havit KB389L Mechanical Gaming Keyboard & Mouse Combo",
+        "img": "https://www.startech.com.bd/image/cache/catalog/keyboard/havit/kb389l/kb389l-01-228x228.webp",
+        "switchType": "Cherry MX Red",
+        "rgbLighting": true,
+        "connection": "Wired",
+        "price": 7000,
+        "isHighPerformance": false,
+        "isPopular": false
+      },
+      {
+        "id": 8,
+        "name": "Rapoo V500PRO Backlit Wired Yellow-Blue Mechanical Gaming Keyboard",
+        "img": "https://www.startech.com.bd/image/cache/catalog/keyboard/Rapoo/v500pro/v500pro-01-228x228.webp",
+        "switchType": "Opto-Mechanical",
+        "rgbLighting": true,
+        "connection": "Wired",
+        "price": 22000,
+        "isHighPerformance": true,
+        "isPopular": true
+      },
+      {
+        "id": 9,
+        "name": "Rapoo V500 PRO Backlit USB Mechanical Gaming Keyboard Purple",
+        "img": "https://www.startech.com.bd/image/cache/catalog/keyboard/rapoo/v500pro/purple/v500-pro-purple-01-228x228.jpg",
+        "switchType": "Cherry MX Brown",
+        "rgbLighting": true,
+        "connection": "Wired",
+        "price": 13000,
+        "isHighPerformance": false,
+        "isPopular": true
+      },
+      {
+        "id": 10,
+        "name": "Fantech Max Core MK852 Sakura Edition Mechanical USB Gaming Keyboard",
+        "img": "https://www.startech.com.bd/image/cache/catalog/keyboard/fantech/mk852/sakura-edition/max-core-mk852-sakura-1-228x228.jpg",
+        "switchType": "ROG RX Red",
+        "rgbLighting": true,
+        "connection": "Wired",
+        "price": 16000,
+        "isHighPerformance": true,
+        "isPopular": false
+      }
+    ]
+  }
+  

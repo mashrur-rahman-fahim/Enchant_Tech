@@ -1,23 +1,45 @@
-import React, { useState } from 'react';
-import './TestRam.css'; // Ensure to create a corresponding CSS file
-import { ramData } from '../../data'; // Replace this with the correct path to your RAM data
+import React, { useEffect, useState } from 'react';
+import './TestRam.css'; // Ensure this file includes the necessary styles
 import { useNavigate } from 'react-router-dom';
 
 export const TestRam = () => {
+  const [ramsData, setRamsData] = useState([]);
   const [minBudget, setMinBudget] = useState('');
   const [maxBudget, setMaxBudget] = useState('');
   const [sortOption, setSortOption] = useState('');
+  const [highPerformance, setHighPerformance] = useState(false);
+  const [popularOnly, setPopularOnly] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchRams = async () => {
+      try {
+        const response = await fetch('/data/rams.json'); // Adjust the path if necessary
+        const data = await response.json();
+        setRamsData(data.rams);
+      } catch (error) {
+        console.error('Error fetching RAMs:', error);
+      }
+    };
+
+    fetchRams();
+  }, []);
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
   const handleMaxBudgetChange = (e) => setMaxBudget(e.target.value);
   const handleSortChange = (e) => setSortOption(e.target.value);
+  const handleHighPerformanceChange = () => setHighPerformance(!highPerformance);
+  const handlePopularOnlyChange = () => setPopularOnly(!popularOnly);
 
-  const filteredRams = ramData.filter(
-    (ram) =>
+  const filteredRams = ramsData.filter((ram) => {
+    const meetsBudget =
       (!minBudget || ram.price >= minBudget) &&
-      (!maxBudget || ram.price <= maxBudget)
-  );
+      (!maxBudget || ram.price <= maxBudget);
+    const meetsPerformance = !highPerformance || ram.performance; // Check if performance is true
+    const isPopular = !popularOnly || ram.popularity === 'Popular'; // Check for popularity
+
+    return meetsBudget && meetsPerformance && isPopular;
+  });
 
   const sortedRams = filteredRams.sort((a, b) => {
     switch (sortOption) {
@@ -25,15 +47,19 @@ export const TestRam = () => {
         return a.price - b.price;
       case 'price-desc':
         return b.price - a.price;
-      case 'performance':
-        return b.performance - a.performance; // Assuming you have a performance metric
+      case 'high-performance':
+        return (b.performance ? 1 : 0) - (a.performance ? 1 : 0);
+      case 'popularity':
+        return (b.popularity === 'Popular' ? 1 : 0) - (a.popularity === 'Popular' ? 1 : 0);
       default:
         return 0;
     }
   });
 
   const handleAdd = (ram) => {
-    navigate('/PCBuilder', { state: { selectedRam: { name: ram.name, cost: ram.price } } });
+    navigate('/PCBuilder', {
+      state: { selectedRam: { name: ram.name, cost: ram.price } },
+    });
   };
 
   return (
@@ -59,8 +85,27 @@ export const TestRam = () => {
           <option value="">Sort By</option>
           <option value="price-asc">Price: Low to High</option>
           <option value="price-desc">Price: High to Low</option>
-          <option value="performance">High Performance</option>
+          <option value="high-performance">High Performance</option>
+          <option value="popularity">Popularity</option>
         </select>
+
+        <h3>Filters</h3>
+        <label>
+          <input
+            type="checkbox"
+            checked={highPerformance}
+            onChange={handleHighPerformanceChange}
+          />
+          High Performance
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={popularOnly}
+            onChange={handlePopularOnlyChange}
+          />
+          Popular
+        </label>
       </div>
 
       <div className="ram-list">
@@ -72,7 +117,8 @@ export const TestRam = () => {
               <p>Capacity: {ram.capacity}</p>
               <p>Speed: {ram.speed}</p>
               <p>Type: {ram.type}</p>
-              <p>Memory Channels: {ram.channels}</p> {/* Update this if your data uses a different property name */}
+              <p>Voltage: {ram.voltage}</p>
+              <p>Channels: {ram.channels}</p>
             </div>
             <p className="price">₹{ram.price}</p>
             <button className="add-btn" onClick={() => handleAdd(ram)}>

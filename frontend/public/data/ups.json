@@ -1,0 +1,85 @@
+{
+    "ups": [
+      {
+        "id": 1,
+        "name": "KSTAR 3000VA Line Interactive Offline UPS",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ups/kstar/3000va/3000va-228x228.webp",
+        "capacity": "1500VA",
+        "outlets": 10,
+        "price": 20000
+      },
+      {
+        "id": 2,
+        "name": "KSTAR HP Series 1000VA Online UPS",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ups/kstar/hp-series-1000va/hp-series-1000va-01-228x228.webp",
+        "capacity": "1500VA",
+        "outlets": 10,
+        "price": 18000
+      },
+      {
+        "id": 3,
+        "name": "Power Pac 2000VA Offline UPS",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ups/power-pac/powerpac-228x228.webp",
+        "capacity": "1500VA",
+        "outlets": 8,
+        "price": 16000
+      },
+      {
+        "id": 4,
+        "name": "Apollo 2000VA Offline UPS",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ups/apollo/apollo-2000va/apollo-2000va-228x228.webp",
+        "capacity": "1000VA",
+        "outlets": 6,
+        "price": 12000
+      },
+      {
+        "id": 5,
+        "name": "KSTAR 1500VA Offline UPS",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ups/kstar/1500va/1500va-228x228.webp",
+        "capacity": "1000VA",
+        "outlets": 8,
+        "price": 8000
+      },
+      {
+        "id": 6,
+        "name": "Digital X 650VA Offline UPS",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ups/digital-x/650va/650va-228x228.jpg",
+        "capacity": "500VA",
+        "outlets": 6,
+        "price": 3000
+      },
+      {
+        "id": 7,
+        "name": "Apollo 2100HS 1000VA Online UPS",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ups/apollo/2100hs/2100hs-01-228x228.webp",
+        "capacity": "1500VA",
+        "outlets": 8,
+        "price": 28000
+      },
+      {
+        "id": 8,
+        "name": "MaxGreen MGOE-W3KS 3KVA Standard Backup Online UPS",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ups/maxgreen/1kva/1kva-228x228.webp",
+        "capacity": "1500VA",
+        "outlets": 10,
+        "price": 22000
+      },
+      {
+        "id": 9,
+        "name": "Zigor Volga NG+3 3KVA Online UPS",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ups/zigor/volga-ng+2/volga-ng+2-228x228.jpg",
+        "capacity": "600VA",
+        "outlets": 4,
+        "price": 36000
+      },
+      {
+        "id": 10,
+        "name": "SANTAK Castle 3KS 3000VA Standard Backup Online UPS",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ups/santak/c2k/c2k-01-228x228.jpg",
+        "capacity": "1500VA",
+        "outlets": 8,
+        "price": 40000
+      }
+    ]
+  }
+  

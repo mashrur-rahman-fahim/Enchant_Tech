@@ -1,0 +1,125 @@
+{
+    "rams": [
+      {
+        "id": 1,
+        "name": "Corsair Vengeance LPX 16GB",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ram/cosair/vengeance-16gb-ddr4/16gb-ddr4-500x500.jpg",
+        "capacity": "16GB",
+        "speed": "3200MHz",
+        "type": "DDR4",
+        "voltage": "1.35V",
+        "channels": "Dual Channel",
+        "price": 6000,
+        "performance": 85
+      },
+      {
+        "id": 2,
+        "name": "G.Skill Ripjaws V 16GB",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ram/gskill/ripjaws-v-16gb/ripjaws-v-16gb-500x500.jpg",
+        "capacity": "16GB",
+        "speed": "3200MHz",
+        "type": "DDR4",
+        "voltage": "1.35V",
+        "channels": "Dual Channel",
+        "price": 5800,
+        "performance": 80
+      },
+      {
+        "id": 3,
+        "name": "Gigabyte AORUS 8GB 3200MHz RGB RAM",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ram/gigabyte/gigabyte-aorus-rgb-8gb/gigabyte-aorus-rgb-8gb-3-500x500.jpg",
+        "capacity": "8GB",
+        "speed": "3200MHz",
+        "type": "DDR4",
+        "voltage": "1.35V",
+        "channels": "Dual Channel",
+        "price": 5900,
+        "performance": 82
+      },
+      {
+        "id": 4,
+        "name": "TEAM NIGHT HAWK UD 8GB 3200MHz RGB DDR4 Desktop RAM",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ram/team/night-hawk-ud/night-hawk-ud-500x500.jpg",
+        "capacity": "16GB",
+        "speed": "3200MHz",
+        "type": "DDR4",
+        "voltage": "1.35V",
+        "channels": "Dual Channel",
+        "price": 5700,
+        "performance": 78
+      },
+      {
+        "id": 5,
+        "name": "Kingston FURY Beast RGB 16GB 6000Mhz DDR5 EXPO Desktop RAM",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ram/kingston/fury-beast-rgb/fury-beast-rgb-04-500x500.webp",
+        "capacity": "16GB",
+        "speed": "3200MHz",
+        "type": "DDR4",
+        "voltage": "1.35V",
+        "channels": "Dual Channel",
+        "price": 5600,
+        "performance": 76
+      },
+      {
+        "id": 6,
+        "name": "Apacer NOX RGB 16GB DDR4 3600MHz RAM",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ram/apacer/nox-16gb-3600mhz/Nox-16gb-3200mhz.jpg-1000x1000-500x500.jpg",
+        "capacity": "16GB",
+        "speed": "3200MHz",
+        "type": "DDR4",
+        "voltage": "1.35V",
+        "channels": "Dual Channel",
+        "price": 5900,
+        "performance": 79
+      },
+      {
+        "id": 7,
+        "name": "TEAM T-FORCE DELTA RGB 32GB (16GBx2) 7200MHz DDR5 Gaming RAM",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ram/team/delta-rgb/delta-rgb-01-500x500.webp",
+        "capacity": "16GB",
+        "speed": "3600MHz",
+        "type": "DDR4",
+        "voltage": "1.35V",
+        "channels": "Dual Channel",
+        "price": 6500,
+        "performance": 90
+      },
+      {
+        "id": 8,
+        "name": "G.Skill Trident Z5 RGB 16GB DDR5 7200MHz Desktop RAM",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ram/gskill/trident-z5-rgb/trident-z5-rgb-01-500x500.webp",
+        "capacity": "32GB",
+        "speed": "3200MHz",
+        "type": "DDR4",
+        "voltage": "1.35V",
+        "channels": "Dual Channel",
+        "price": 12000,
+        "performance": 95
+      },
+      {
+        "id": 9,
+        "name": "Kimtigo WOLFRINE 8GB 3200MHz DDR4 UDIMM Desktop RAM",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ram/kimtigo/wolfrine-8gb/wolfrine-8gb-03-500x500.webp",
+        "capacity": "16GB",
+        "speed": "3600MHz",
+        "type": "DDR4",
+        "voltage": "1.35V",
+        "channels": "Dual Channel",
+        "price": 7000,
+        "performance": 88
+      },
+      {
+        "id": 10,
+        "name": "Corsair DOMINATOR PLATINUM RGB 16GB DDR5 7200MHz Desktop RAM",
+        "img": "https://www.startech.com.bd/image/cache/catalog/ram/cosair/dominator-platinum-rgb-ddr5/dominator-platinum-rgb-ddr5-04-500x500.webp",
+        "capacity": "16GB",
+        "speed": "3200MHz",
+        "type": "DDR4",
+        "voltage": "1.35V",
+        "channels": "Dual Channel",
+        "price": 5500,
+        "performance": 75
+      }
+    ]
+  }
+  
