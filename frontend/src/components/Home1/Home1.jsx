@@ -16,13 +16,28 @@ export const Home1 = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [hasMore, setHasMore] = useState(true);
-  const[banner,setBanner]=useState(null);
+  const [banner, setBanner] = useState(null);
   let desktopCount = 0,
     laptopCount = 0,
     cpuCount = 0,
     gpuCount = 0,
     motherboardCount = 0,
     ramCount = 0;
+  useEffect(() => {
+    const fetchBanner = async () => {
+      try {
+        const response = await fetch("http://localhost:4000/banner");
+        if (!response.ok) {
+          throw new Error("Failed to fetch banner");
+        }
+        const data = await response.json();
+        setBanner(data.img); // Assuming the banner image URL is stored in the 'img' field
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+    fetchBanner();
+  }, []);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -46,7 +61,7 @@ export const Home1 = () => {
     };
     fetchProducts();
   }, [page]);
-  
+
   const { updateCart } = useContext(CartContext);
   const addToCart = (product) => {
     // Fetch existing cart data from local storage
@@ -119,14 +134,8 @@ export const Home1 = () => {
       {/* <img className="image" src={src} alt="Product" /> */}
       {/* </div> */}
       <div className="hero-section">
-        <img
-          src="your-banner-image.jpg"
-          alt="Shop Promo"
-          className="banner-image"
-        />
+        <img src={banner} alt="Shop Promo" className="banner-image" />
         <div className="banner-content">
-          <h1>Big Sale! Up to 50% Off</h1>
-          <p>Shop our latest collection of desktops and laptops</p>
           <a href="#shopByCategory">
             <button className="cta-button">Shop Now</button>
           </a>
@@ -168,7 +177,7 @@ export const Home1 = () => {
                 return (
                   <div className="cl1" key={idx}>
                     <img src={item.img} alt={item.title} />
-                    <div className="home_price">Price {item.price}</div>
+                    {/* <div className="home_price">Price {item.price}</div> */}
                     <button
                       onClick={() => {
                         addToCart(item);
@@ -185,7 +194,7 @@ export const Home1 = () => {
                 return (
                   <div className="cl1" key={idx}>
                     <img src={item.img} alt={item.title} />
-                    <div className="home_price">Price {item.price}</div>
+                    {/* <div className="home_price">Price {item.price}</div> */}
                     <button
                       onClick={() => {
                         addToCart(item);
@@ -202,7 +211,7 @@ export const Home1 = () => {
                 return (
                   <div className="cl1" key={idx}>
                     <img src={item.img} alt={item.title} />
-                    <div className="home_price">Price {item.price}</div>
+                    {/* <div className="home_price">Price {item.price}</div> */}
                     <button
                       onClick={() => {
                         addToCart(item);
@@ -219,7 +228,7 @@ export const Home1 = () => {
                 return (
                   <div className="cl1" key={idx}>
                     <img src={item.img} alt={item.title} />
-                    <div className="home_price">Price {item.price}</div>
+                    {/* <div className="home_price">Price {item.price}</div> */}
                     <button
                       onClick={() => {
                         addToCart(item);
@@ -236,7 +245,7 @@ export const Home1 = () => {
                 return (
                   <div className="cl1" key={idx}>
                     <img src={item.img} alt={item.title} />
-                    <div className="home_price">Price {item.price}</div>
+                    {/* <div className="home_price">Price {item.price}</div> */}
                     <button
                       onClick={() => {
                         addToCart(item);
@@ -252,7 +261,7 @@ export const Home1 = () => {
           })}
         </div>
       </div>
-      <div  id="shopByCategory" className="shop-by-category" >
+      <div id="shopByCategory" className="shop-by-category">
         <div className="title-line">
           <div className="line"></div>
           <div className="title">SHOP BY CATEGORY</div>
