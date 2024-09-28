@@ -1,13 +1,30 @@
-import React, { useState } from "react";
-import "./TestStorage.css"; // Create a CSS file for storage-specific styles
-import { storageData } from "../../data"; // Assume you have storage data like processorsData
-import { useNavigate } from "react-router-dom";
+
+import React, { useEffect, useState } from 'react';
+import './TestStorage.css';  // Ensure this file includes the necessary styles
+import { useNavigate } from 'react-router-dom';
 
 export const TestStorage = () => {
-  const [minBudget, setMinBudget] = useState("");
-  const [maxBudget, setMaxBudget] = useState("");
-  const [sortOption, setSortOption] = useState("");
+  const [storageData, setStorageData] = useState([]);
+  const [minBudget, setMinBudget] = useState('');
+  const [maxBudget, setMaxBudget] = useState('');
+  const [sortOption, setSortOption] = useState('');
+
   const navigate = useNavigate();
+
+  // Fetch storage data from the backend
+  useEffect(() => {
+    const fetchStorageData = async () => {
+      try {
+        const response = await fetch('/data/storage.json'); // Adjust the path if necessary
+        const data = await response.json();
+        setStorageData(data.storage); // Assuming the data structure includes a 'storage' array
+      } catch (error) {
+        console.error('Error fetching storage data:', error);
+      }
+    };
+
+    fetchStorageData();
+  }, []);
 
   const handleMinBudgetChange = (e) => setMinBudget(e.target.value);
   const handleMaxBudgetChange = (e) => setMaxBudget(e.target.value);
@@ -66,27 +83,29 @@ export const TestStorage = () => {
       </div>
 
       <div className="storage-list">
-        {sortedStorage.map((storage) => (
-          <div className="storage-card" key={storage.id}>
-            <img
-              src={storage.img}
-              alt={storage.name}
-              className="storage-image"
-            />
-            <h4>{storage.name}</h4>
-            <div className="storage-details">
-              <p>Capacity: {storage.capacity}</p>
-              <p>Type: {storage.type}</p>
-              <p>Read Speed: {storage.readSpeed}</p>
-              <p>Write Speed: {storage.writeSpeed}</p>
-              <p>Interface: {storage.interface}</p>
+
+        {sortedStorage.length > 0 ? (
+          sortedStorage.map((storage) => (
+            <div className="storage-card" key={storage.id}>
+              <img src={storage.img} alt={storage.name} className="storage-image" />
+              <h4>{storage.name}</h4>
+              <div className="storage-details">
+                <p>Capacity: {storage.capacity}</p>
+                <p>Type: {storage.type}</p>
+                <p>Read Speed: {storage.readSpeed}</p>
+                <p>Write Speed: {storage.writeSpeed}</p>
+                <p>Interface: {storage.interface}</p>
+              </div>
+              <p className="price">₹{storage.price}</p>
+              <button className="add-btn" onClick={() => handleAdd(storage)}>
+                Add
+              </button>
+
             </div>
-            <p className="price">₹{storage.price}</p>
-            <button className="add-btn" onClick={() => handleAdd(storage)}>
-              Add
-            </button>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>No storage devices available</p>
+        )}
       </div>
     </div>
   );

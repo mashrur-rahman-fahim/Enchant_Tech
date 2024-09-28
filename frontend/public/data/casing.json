@@ -1,0 +1,84 @@
+{
+  "casings": [
+    {
+      "id": 1,
+      "name": "Fantech TYPHOON FB302 Addressable RGB Case Fan",
+      "img": "https://www.startech.com.bd/image/cache/catalog/casing-cooler/fantech/typhoon-fb302/typhoon-fb302-01-228x228.webp",
+      "formFactor": "ATX Mid Tower",
+      "material": "Steel",
+      "price": 7000
+    },
+    {
+      "id": 2,
+      "name": "Aigo DarkFlash DR12 Pro 3-in-1 RGB Case Fan",
+      "img": "https://www.startech.com.bd/image/cache/catalog/casing-cooler/aigo/darkflash-dr12-pro/darkflash-dr12-pro-01-228x228.webp",
+      "formFactor": "Micro ATX",
+      "material": "Steel, Plastic",
+      "price": 5000
+    },
+    {
+      "id": 3,
+      "name": "NZXT F120 RGB 120mm Casing Fan",
+      "img": "https://www.startech.com.bd/image/cache/catalog/casing-cooler/nzxt/f120rgb/f120rgb-01-228x228.webp",
+      "formFactor": "ATX Mid Tower",
+      "material": "Tempered Glass",
+      "price": 9000
+    },
+    {
+      "id": 4,
+      "name": "Antec Neon 120 ARGB 3 in 1 Pack Casing Fan with Controller",
+      "img": "https://www.startech.com.bd/image/cache/catalog/casing-cooler/antec/neon-120-argb-3-in-1-pack/neon-120-pwm-argb-3-in-1-pack-01-228x228.webp",
+      "formFactor": "ATX Mid Tower",
+      "material": "Steel",
+      "price": 8500
+    },
+    {
+      "id": 5,
+      "name": "DeepCool FC120 WHITE 3-in-1 Performance 120mm ARGB PWM Case Fan",
+      "img": "https://www.startech.com.bd/image/cache/catalog/casing-cooler/deepcool/fc120-3-in-1/fc120-white-3-in-1-01-228x228.webp",
+      "formFactor": "ATX Mid Tower",
+      "material": "Mesh, Steel",
+      "price": 9500
+    },
+    {
+      "id": 6,
+      "name": "Deepcool MF120 GT 3 IN 1 Casing Fan",
+      "img": "https://www.startech.com.bd/image/cache/catalog/casing-cooler/deepcool/mf120-gt/mf120-gt-01-228x228.jpg",
+      "formFactor": "ATX Mid Tower",
+      "material": "Steel, Acrylic",
+      "price": 10000
+    },
+    {
+      "id": 7,
+      "name": "ASUS TUF Gaming TF120 ARGB White Triple Casing Fan Kit with ARGB Controller",
+      "img": "https://www.startech.com.bd/image/cache/catalog/casing-cooler/asus/tuf-gaming-tf120-argb-white/tuf-gaming-tf120-argb-white-01-228x228.webp",
+      "formFactor": "ATX Mid Tower",
+      "material": "Steel, Tempered Glass",
+      "price": 9000
+    },
+    {
+      "id": 8,
+      "name": "Gamdias AEOLUS M3-1204R ARGB Casing Fan",
+      "img": "https://www.startech.com.bd/image/cache/catalog/casing-cooler/gamdias/aeolus-m3-1204r/aeolus-m3-1204r-01-228x228.webp",
+      "formFactor": "ATX Mid Tower",
+      "material": "Steel, Plastic",
+      "price": 9500
+    },
+    {
+      "id": 9,
+      "name": "Lian Li UNI FAN SL-INFINITY 120mm ARGB Case Fan Triple Pack White",
+      "img": "https://www.startech.com.bd/image/cache/catalog/casing-cooler/lian-li/uni-fan-sl-infinity/uni-fan-sl-infinity-triple-pack-02-228x228.webp",
+      "formFactor": "ATX Mid Tower",
+      "material": "Steel, Tempered Glass",
+      "price": 6500
+    },
+    {
+      "id": 10,
+      "name": "Lian Li UNI FAN SL V2 120 ARGB Case Fan Triple Pack White",
+      "img": "https://www.startech.com.bd/image/cache/catalog/casing-cooler/lian-li/uni-fan-sl-v2-120/uni-fan-sl-v2-120-02-228x228.webp",
+      "formFactor": "ATX Mid Tower",
+      "material": "Steel, Tempered Glass",
+      "price": 9000
+    }
+  ]
+}

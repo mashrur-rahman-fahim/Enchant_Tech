@@ -1,0 +1,115 @@
+{
+    "printers": [
+      {
+        "id": 1,
+        "name": "Rongta RPP300BU Portable Mini 80mm Pocket Mobile POS Thermal Receipt Printer with Bluetooth+USB interfaces (Orange-Black Color)",
+        "img": "https://ryans.com/storage/products/main/rongta-rpp300bu-portable-mini-80mm-pocket-mobile-11722152111.webp",
+        "type": "Laser",
+        "color": "Black & White",
+        "connectivity": "Ethernet, USB",
+        "price": 25000,
+        "highPerformance": true,
+        "popular": true
+      },
+      {
+        "id": 2,
+        "name": "Xprinter XP-E260M 80mm Black Thermal POS Receipt Printer",
+        "img": "https://www.ryans.com/storage/products/small/xprinter-xp-e260m-80mm-black-thermal-pos-receipt-11705823831.webp",
+        "type": "Inkjet",
+        "color": "Color",
+        "connectivity": "Wi-Fi, USB",
+        "price": 16000,
+        "highPerformance": false,
+        "popular": true
+      },
+      {
+        "id": 3,
+        "name": "Rongta RP80 IV-USE-G / RP804-USE POS Printer (USB+ Serial+Ethernet)",
+        "img": "https://ryans.com/storage/products/main/zkteco-zkp5808-black-portable-thermal-pos-11706936928.webp",
+        "type": "Laser",
+        "color": "Black & White",
+        "connectivity": "Wi-Fi, USB",
+        "price": 22000,
+        "highPerformance": true,
+        "popular": false
+      },
+      {
+        "id": 4,
+        "name": "Rongta RP850-USE 80mm Thermal Receipt Printer (USB, Serial, Ethernet)",
+        "img": "https://ryans.com/storage/products/main/rongta-rp850-use-80mm-thermal-receipt-printer-11720344486.webp",
+        "type": "Inkjet",
+        "color": "Color",
+        "connectivity": "USB",
+        "price": 14000,
+        "highPerformance": false,
+        "popular": false
+      },
+      {
+        "id": 5,
+        "name": "Rongta RP327-UP Thermal POS Receipt Printer (USB, Parallel)",
+        "img": "https://ryans.com/storage/products/main/rongta-rp327-up-thermal-receipt-printer-usb-11562747025.webp",
+        "type": "Laser",
+        "color": "Black & White",
+        "connectivity": "Wi-Fi, USB",
+        "price": 19000,
+        "highPerformance": true,
+        "popular": true
+      },
+      {
+        "id": 6,
+        "name": "Rongta RP330-USE Auto Cutter Low Noise Thermal POS Printer (Usb+Serial+ Ethernet)",
+        "img": "https://ryans.com/storage/products/main/rongta-rp330-use-auto-cutter-low-noise-thermal-11591526520.webp",
+        "type": "Laser",
+        "color": "Black & White",
+        "connectivity": "USB",
+        "price": 12000,
+        "highPerformance": false,
+        "popular": false
+      },
+      {
+        "id": 7,
+        "name": "Rongta RP76III Impact Dot Matrix Receipt Printer",
+        "img": "https://ryans.com/storage/products/main/rongta-rp76iii-impact-dot-11638100679.webp",
+        "type": "Laser",
+        "color": "Black & White",
+        "connectivity": "USB",
+        "price": 18000,
+        "highPerformance": true,
+        "popular": false
+      },
+      {
+        "id": 8,
+        "name": "Rongta RPP300BU Portable Mini 80mm Pocket Mobile POS Thermal Receipt Printer with Bluetooth+USB interfaces (Orange-Black Color)",
+        "img": "https://www.ryans.com/storage/products/small/rongta-rpp300bu-portable-mini-80mm-pocket-mobile-11722152111.webp",
+        "type": "Inkjet",
+        "color": "Color",
+        "connectivity": "USB",
+        "price": 8000,
+        "highPerformance": false,
+        "popular": true
+      },
+      {
+        "id": 9,
+        "name": "Zebra ZC300 Dual-Sided Card Printer",
+        "img": "https://ryans.com/storage/products/main/zebra-zc300-dual-sided-card-printer-without-11582192079.webp",
+        "type": "Inkjet",
+        "color": "Color",
+        "connectivity": "Wi-Fi, USB",
+        "price": 95000,
+        "highPerformance": true,
+        "popular": true
+      },
+      {
+        "id": 10,
+        "name": "HP DesignJet T830 24-in Multifunction Printer (F9A28B)",
+        "img": "https://ryans.com/storage/products/main/hp-designjet-t830-24-in-multifunction-printer-11550572286.webp",
+        "type": "Laser",
+        "color": "Color",
+        "connectivity": "Wi-Fi, Ethernet, USB",
+        "price": 235000,
+        "highPerformance": true,
+        "popular": false
+      }
+    ]
+  }
+  

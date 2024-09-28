@@ -1,0 +1,104 @@
+{
+  "powerSupplies": [
+    {
+      "id": 1,
+      "name": "Gamdias HELIOS M1-650B 650W 80 Plus Bronze Power Supply",
+      "img": "https://www.startech.com.bd/image/cache/catalog/power-supply/gamdias/helios-m1-650b/helios-m1-650b-01-228x228.webp",
+      "wattage": "850W",
+      "efficiency": "80 Plus Bronze",
+      "price": 12000,
+      "popular": true,
+      "highPerformance": false
+    },
+    {
+      "id": 2,
+      "name": "Huntkey GS800 Prime 700W 80+ Bronze Power Supply",
+      "img": "https://www.startech.com.bd/image/cache/catalog/power-supply/huntkey/gs800-prime/gs800-prime-01-228x228.webp",
+      "wattage": "750W",
+      "efficiency": "80 Plus Bronze",
+      "price": 10000,
+      "popular": true,
+      "highPerformance": false
+    },
+    {
+      "id": 3,
+      "name": "Antec ATOM B750 750W 80 Plus Bronze Power Supply",
+      "img": "https://www.startech.com.bd/image/cache/catalog/power-supply/Antec/atom-b750/atom-b750-01-228x228.webp",
+      "wattage": "750W",
+      "efficiency": "80 Plus Bronze",
+      "price": 11000,
+      "popular": true,
+      "highPerformance": false
+    },
+    {
+      "id": 4,
+      "name": "1STPLAYER STEAMPUNK 750W 80+ Gold Power Supply",
+      "img": "https://www.startech.com.bd/image/cache/catalog/power-supply/1stplayer/steampunk-750w/steampunk-750w-01-228x228.webp",
+      "wattage": "750W",
+      "efficiency": "80 Plus Gold",
+      "price": 9500,
+      "popular": false,
+      "highPerformance": true
+    },
+    {
+      "id": 5,
+      "name": "DeepCool PN650M 650W 80 Plus Gold Fully Modular Power Supply",
+      "img": "https://www.startech.com.bd/image/cache/catalog/power-supply/deepcool/pn850m/pn850m-01-228x228.webp",
+      "wattage": "750W",
+      "efficiency": "80 Plus Gold",
+      "price": 10500,
+      "popular": true,
+      "highPerformance": true
+    },
+    {
+      "id": 6,
+      "name": "Thermaltake Toughpower GF 750W 80 Plus Gold Fully Modular Power Supply",
+      "img": "https://www.startech.com.bd/image/cache/catalog/power-supply/thermaltake/toughpower-gf1-750w/toughpower-gf1-750w-228x228.jpg",
+      "wattage": "750W",
+      "efficiency": "80 Plus Gold",
+      "price": 11500,
+      "popular": false,
+      "highPerformance": true
+    },
+    {
+      "id": 7,
+      "name": "FSP Hydro K PRO 750W 80 Plus Bronze Power Supply",
+      "img": "https://www.startech.com.bd/image/cache/catalog/power-supply/fsp/hydro-k-pro-500w/hydro-k-pro-500w-228x228.webp",
+      "wattage": "850W",
+      "efficiency": "80 Plus Bronze",
+      "price": 12500,
+      "popular": false,
+      "highPerformance": true
+    },
+    {
+      "id": 8,
+      "name": "DeepCool PN750M 750W 80 Plus Gold Fully Modular Power Supply",
+      "img": "https://www.startech.com.bd/image/cache/catalog/power-supply/deepcool/dq850m-v3l/dq850m-v3l-01-228x228.webp",
+      "wattage": "750W",
+      "efficiency": "80 Plus Gold",
+      "price": 9700,
+      "popular": true,
+      "highPerformance": false
+    },
+    {
+      "id": 9,
+      "name": "Gigabyte GP-P650G 650W 80 Plus Gold ATX Power Supply",
+      "img": "https://www.startech.com.bd/image/cache/catalog/power-supply/gigabyte/gp-p650g/gp-p650g-01-228x228.webp",
+      "wattage": "750W",
+      "efficiency": "80 Plus Gold",
+      "price": 10200,
+      "popular": false,
+      "highPerformance": true
+    },
+    {
+      "id": 10,
+      "name": "Corsair CX750 750W 80 PLUS Bronze ATX Power Supply",
+      "img": "https://www.startech.com.bd/image/cache/catalog/power-supply/corsair/cx750/cx750-01-228x228.webp",
+      "wattage": "850W",
+      "efficiency": "80 Plus Bronze",
+      "price": 9800,
+      "popular": true,
+      "highPerformance": false
+    }
+  ]
+}

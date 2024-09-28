@@ -1,8 +1,10 @@
 /* Testpowersupply.css */
 
-.powersupply-container {
-  padding: 20px;
-  font-family: Arial, sans-serif;
+
+.power-supply-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+
 }
 
 .filter-section {
@@ -43,45 +45,45 @@
   border-radius: 4px;
 }
 
-.powersupply-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+
+.power-supply-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.powersupply-card {
-  width: calc(33.333% - 20px); /* Three cards per row with spacing */
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition:
-    box-shadow 0.3s,
-    transform 0.3s;
-  background-color: #fff;
+.power-supply-card {
+    width: calc(33.333% - 20px); /* Three cards per row with spacing */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
+    background-color: #fff;
 }
 
-.powersupply-card:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-4px);
+.power-supply-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
 }
 
-.powersupply-image {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
+.power-supply-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
 }
 
-.powersupply-card h4 {
-  margin: 10px 0;
-  font-size: 18px;
-  color: #333;
+.power-supply-card h4 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
 }
 
-.powersupply-details p {
-  margin: 5px 0;
-  font-size: 14px;
-  color: #666;
+.power-supply-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+
 }
 
 .price {

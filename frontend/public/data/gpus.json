@@ -1,0 +1,125 @@
+{
+    "gpus": [
+      {
+        "id": 1,
+        "name": "NVIDIA GeForce RTX 3060",
+        "img": "https://www.startech.com.bd/image/cache/catalog/graphics-card/msi/rtx-3060-ventus-2x/rtx-3060-ventus-2x-01-500x500.jpg",
+        "memory": "12GB",
+        "coreClock": "1320 MHz",
+        "boostClock": "1777 MHz",
+        "cudaCores": "3584",
+        "interface": "PCIe 4.0",
+        "price": 30000,
+        "performance": 90
+      },
+      {
+        "id": 2,
+        "name": "AMD Radeon RX 6700 XT",
+        "img": "https://www.startech.com.bd/image/cache/catalog/graphics-card/sapphire/rx-6700-xt-gaming-oc/rx-6700-xt-gaming%20oc-01-500x500.jpg",
+        "memory": "12GB",
+        "coreClock": "2321 MHz",
+        "boostClock": "2581 MHz",
+        "cudaCores": "2560",
+        "interface": "PCIe 4.0",
+        "price": 35000,
+        "performance": 92
+      },
+      {
+        "id": 3,
+        "name": "MSI GeForce GT 1030 4GD4 LP OC 4GB Graphics Card",
+        "img": "https://www.startech.com.bd/image/cache/catalog/graphics-card/msi/geforce-gt-1030-4gd4-lp-oc-4gb/geforce-gt-1030-4gd4-lp-oc-4gb-01-500x500.webp",
+        "memory": "4GB",
+        "coreClock": "1500 MHz",
+        "boostClock": "1725 MHz",
+        "cudaCores": "5888",
+        "interface": "PCIe 4.0",
+        "price": 40000,
+        "performance": 95
+      },
+      {
+        "id": 4,
+        "name": "Zotac Gaming GeForce GTX 1650 AMP Core 4GB GDDR6 Graphics Card",
+        "img": "https://www.startech.com.bd/image/cache/catalog/graphics-card/zotac/gaming-gtx-1650-amp/gaming-gtx-1650-amp-500x500.jpg",
+        "memory": "4GB",
+        "coreClock": "1815 MHz",
+        "boostClock": "2105 MHz",
+        "cudaCores": "3840",
+        "interface": "PCIe 4.0",
+        "price": 50000,
+        "performance": 93
+      },
+      {
+        "id": 5,
+        "name": "OCPC GeForce RTX 3060 12GB GDDR6 Graphics Card",
+        "img": "https://www.startech.com.bd/image/cache/catalog/graphics-card/ocpc/rtx-3060-12gb/rtx-3060-12gb-01-500x500.webp",
+        "memory": "12GB",
+        "coreClock": "1440 MHz",
+        "boostClock": "1710 MHz",
+        "cudaCores": "8704",
+        "interface": "PCIe 4.0",
+        "price": 70000,
+        "performance": 98
+      },
+      {
+        "id": 6,
+        "name": "GIGABYTE GeForce RTX 4060 EAGLE OC 8G GDDR6 Graphics Card",
+        "img": "https://www.startech.com.bd/image/cache/catalog/graphics-card/gigabyte/geforce-rtx-4060-eagle-oc-8g/geforce-rtx-4060-eagle-oc-8g-01-500x500.webp",
+        "memory": "8GB",
+        "coreClock": "1825 MHz",
+        "boostClock": "2250 MHz",
+        "cudaCores": "5120",
+        "interface": "PCIe 4.0",
+        "price": 80000,
+        "performance": 96
+      },
+      {
+        "id": 7,
+        "name": "Sapphire PURE AMD Radeon RX 7700 XT 12GB Frostpunk 2 Edition GDDR6 Gaming Graphics Card",
+        "img": "https://www.startech.com.bd/image/cache/catalog/graphics-card/sapphire/pure-amd-radeon-rx-7700-xt-12gb-frostpunk-2-edition/pure-amd-radeon-rx-7700-xt-12gb-frostpunk-2-edition-01-500x500.webp",
+        "memory": "12GB",
+        "coreClock": "1550 MHz",
+        "boostClock": "1777 MHz",
+        "cudaCores": "2048",
+        "interface": "PCIe 4.0",
+        "price": 25000,
+        "performance": 85
+      },
+      {
+        "id": 8,
+        "name": "PNY GeForce RTX 4060 Ti 8GB XLR8 Gaming VERTO EPIC-X RGB Triple Fan GDDR6 Graphics Card",
+        "img": "https://www.startech.com.bd/image/cache/catalog/graphics-card/pny/rtx-4060-ti-8gb-xlr8-gaming-verto-epic-x-rgb-triple-fan/rtx-4060-ti-8gb-xlr8-gaming-verto-epic-x-rgb-triple-fan-01-500x500.webp",
+        "memory": "8GB",
+        "coreClock": "1375 MHz",
+        "boostClock": "1560 MHz",
+        "cudaCores": "2304",
+        "interface": "PCIe 4.0",
+        "price": 20000,
+        "performance": 80
+      },
+      {
+        "id": 9,
+        "name": "GIGABYTE GeForce RTX 4090 AERO OC 24G GDDR6X Graphics Card",
+        "img": "https://www.startech.com.bd/image/cache/catalog/graphics-card/gigabyte/geforce-rtx-4090-aero-oc-24g/geforce-rtx-4090-aero-oc-24g-01-500x500.webp",
+        "memory": "24GB",
+        "coreClock": "1530 MHz",
+        "boostClock": "1785 MHz",
+        "cudaCores": "1408",
+        "interface": "PCIe 3.0",
+        "price": 18000,
+        "performance": 75
+      },
+      {
+        "id": 10,
+        "name": "Colorful GeForce RTX 4080 16GB NB EX-V GDDR6X Graphics Card",
+        "img": "https://www.startech.com.bd/image/cache/catalog/graphics-card/colorful/geforce-rtx-4080-16gb-nb-ex-v/geforce-rtx-4080-16gb-nb-ex-v-01-500x500.webp",
+        "memory": "16GB",
+        "coreClock": "1607 MHz",
+        "boostClock": "1845 MHz",
+        "cudaCores": "1408",
+        "interface": "PCIe 4.0",
+        "price": 15000,
+        "performance": 70
+      }
+    ]
+  }
+  

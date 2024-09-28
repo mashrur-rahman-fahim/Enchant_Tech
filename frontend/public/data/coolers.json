@@ -1,0 +1,115 @@
+{
+    "coolers": [
+      {
+        "id": 1,
+        "name": "NZXT T120 RGB 120mm Air CPU Cooler White",
+        "type": "Air Cooler",
+        "compatibility": "Intel & AMD",
+        "fanSpeed": "2000 RPM",
+        "noiseLevel": "19 dBA",
+        "price": 3500,
+        "img": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/nzxt/t120-rgb-white/t120-rgb-white-01-500x500.webp",
+        "performance": 85
+      },
+      {
+        "id": 2,
+        "name": "Arctic Freezer 4U-M Air CPU Cooler",
+        "type": "Air Cooler",
+        "compatibility": "Intel & AMD",
+        "fanSpeed": "1500 RPM",
+        "noiseLevel": "24.6 dBA",
+        "price": 8000,
+        "img": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/arctic/freezer-4u-m/freezer-4u-m-01-500x500.webp",
+        "performance": 95
+      },
+      {
+        "id": 3,
+        "name": "Deepcool GAMMA ARCHER CPU Air Cooler",
+        "type": "Air Cooler",
+        "compatibility": "Intel & AMD",
+        "fanSpeed": "2400 RPM",
+        "noiseLevel": "30 dBA",
+        "price": 7000,
+        "img": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/deepcool/gamma-archer/gamma-archer-01-500x500.jpg",
+        "performance": 90
+      },
+      {
+        "id": 4,
+        "name": "DeepCool ICE EDGE MINI FS V2.0 CPU Air Cooler",
+        "type": "Air Cooler",
+        "compatibility": "Intel & AMD",
+        "fanSpeed": "1500 RPM",
+        "noiseLevel": "24.3 dBA",
+        "price": 6500,
+        "img": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/deepcool/ice-edge-mini-fs-v2-0/ice-edge-mini-fs-v2-0-500x500.jpg",
+        "performance": 88
+      },
+      {
+        "id": 5,
+        "name": "DeepCool AK620 High Performance Dual Tower CPU Cooler",
+        "type": "Liquid Cooler",
+        "compatibility": "Intel & AMD",
+        "fanSpeed": "2000 RPM",
+        "noiseLevel": "23.5 dBA",
+        "price": 6000,
+        "img": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/deepcool/ak620/ak620-01-500x500.jpg",
+        "performance": 92
+      },
+      {
+        "id": 6,
+        "name": "Deepcool UD551 ARGB CPU Air Cooler",
+        "type": "Liquid Cooler",
+        "compatibility": "Intel & AMD",
+        "fanSpeed": "2800 RPM",
+        "noiseLevel": "29 dBA",
+        "price": 7500,
+        "img": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/deepcool/ud551/ud551-01-500x500.jpg",
+        "performance": 89
+      },
+      {
+        "id": 7,
+        "name": "Corsair H100 RGB 240mm Liquid CPU Cooler",
+        "type": "Air Cooler",
+        "compatibility": "Intel & AMD",
+        "fanSpeed": "1400 RPM",
+        "noiseLevel": "26 dBA",
+        "price": 7000,
+        "img": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/corsair/h100/h100-rgb-01-500x500.jpg",
+        "performance": 87
+      },
+      {
+        "id": 8,
+        "name": "1stplayer MT 240 Mothra ARGB Liquid CPU Cooler",
+        "type": "Liquid Cooler",
+        "compatibility": "Intel & AMD",
+        "fanSpeed": "2000 RPM",
+        "noiseLevel": "27 dBA",
+        "price": 6500,
+        "img": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/1stplayer/mt-240-mothra/mt-240-mothra-01-500x500.jpg",
+        "performance": 86
+      },
+      {
+        "id": 9,
+        "name": "Thermaltake UX200 ARGB Lighting Air CPU Cooler",
+        "type": "Liquid Cooler",
+        "compatibility": "Intel & AMD",
+        "fanSpeed": "2000 RPM",
+        "noiseLevel": "24 dBA",
+        "price": 5500,
+        "img": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/thermaltake/ux200/ux200-500x500.jpg",
+        "performance": 85
+      },
+      {
+        "id": 10,
+        "name": "Arctic Freezer 4U-M Air CPU Cooler",
+        "type": "Air Cooler",
+        "compatibility": "Intel & AMD",
+        "fanSpeed": "1200 RPM",
+        "noiseLevel": "19.5 dBA",
+        "price": 4000,
+        "img": "https://www.startech.com.bd/image/cache/catalog/cpu-cooler/arctic/freezer-4u-m/freezer-4u-m-01-500x500.webp",
+        "performance": 83
+      }
+    ]
+  }
+  
