@@ -35,7 +35,7 @@ export const Login1 = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/login", formData)
+      .post("https://enchant-tech-backend.onrender.com/login", formData)
       .then((response) => {
         const data = response.data;
         if (data.Login) {

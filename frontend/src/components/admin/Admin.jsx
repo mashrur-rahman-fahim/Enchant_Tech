@@ -16,7 +16,7 @@ export const Admin = () => {
   useEffect(() => {
     // Authenticate the user on page load
     axios
-      .get("http://localhost:4000/auth", { withCredentials: true })
+      .get("https://enchant-tech-backend.onrender.com/auth", { withCredentials: true })
       .then((response) => {
         if (response.data.valid) {
           if (!isLoggedIn) {
@@ -76,7 +76,7 @@ export const Admin = () => {
 
   const fetchPayments = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/payment-option");
+      const response = await axios.get("https://enchant-tech-backend.onrender.com/payment-option");
       console.log(response.data);
       if (Array.isArray(response.data)) {
         setPayments(response.data);
@@ -94,7 +94,7 @@ export const Admin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/banner",
+        "https://enchant-tech-backend.onrender.com/banner",
         { img: bannerImg },
         {
           headers: {
@@ -121,7 +121,7 @@ export const Admin = () => {
       const productIds = payments.flatMap((payment) => payment.products); // Get all product IDs
       const uniqueProductIds = [...new Set(productIds)]; // Remove duplicates
       const productDetailsPromises = uniqueProductIds.map((id) =>
-        axios.get(`http://localhost:4000/productObject/${id}`)
+        axios.get(`https://enchant-tech-backend.onrender.com/productObject/${id}`)
       );
       const responses = await Promise.all(productDetailsPromises);
 
@@ -141,7 +141,7 @@ export const Admin = () => {
   const handleDeletePayment = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/payment-option/${id}`
+        `https://enchant-tech-backend.onrender.com/payment-option/${id}`
       );
       if (response.status === 200) {
         console.log("Payment profile deleted successfully");
@@ -176,7 +176,7 @@ export const Admin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/products",
+        "https://enchant-tech-backend.onrender.com/products",
         product,
         {
           headers: {
@@ -209,7 +209,7 @@ export const Admin = () => {
 
   const fetchProductCounts = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/products");
+      const response = await axios.get("https://enchant-tech-backend.onrender.com/products");
       const data = response.data;
 
       const initialCounts = {
@@ -269,7 +269,7 @@ export const Admin = () => {
         <button
           onClick={async () => {
             try {
-              const response = await fetch("http://localhost:4000/logout", {
+              const response = await fetch("https://enchant-tech-backend.onrender.com/logout", {
                 method: "POST",
                 credentials: "include", // This is necessary to send cookies with the request
               });

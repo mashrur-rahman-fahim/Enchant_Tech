@@ -40,7 +40,7 @@ export const Gaming = () => {
   const brandOptions = ["All", "HP", "Asus", "Lenovo", "Dell", "Acer", "MSI"];
 
   useEffect(() => {
-    fetch("http://localhost:4000/products")
+    fetch("https://enchant-tech-backend.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         let filterData = data.filter(

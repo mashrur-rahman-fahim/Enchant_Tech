@@ -16,7 +16,7 @@ export const Authen = () => {
   const { isLoggedIn1, setIsLoggedIn1 } = useAuth1();
 
   useEffect(() => {
-    fetch("http://localhost:4000/auth", {
+    fetch("https://enchant-tech-backend.onrender.com/auth", {
       credentials: "include",
     })
       .then((res) => res.json())

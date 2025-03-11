@@ -28,7 +28,7 @@ export const Main_profile = () => {
 
     // Fetching the logged-in user's email
     axios
-      .get("http://localhost:4000/auth", { withCredentials: true })
+      .get("https://enchant-tech-backend.onrender.com/auth", { withCredentials: true })
       .then((response) => {
         const data = response.data;
         if (data.valid) {
@@ -50,7 +50,7 @@ export const Main_profile = () => {
   const checkUserProfile = async (email) => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/profile/${email}`
+        `https://enchant-tech-backend.onrender.com/api/profile/${email}`
       );
       if (response.data) {
         setProfile(response.data);
@@ -81,7 +81,7 @@ export const Main_profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/api/profile", {
+      const response = await axios.post("https://enchant-tech-backend.onrender.com/api/profile", {
         email,
         ...profile,
         birthday: profile.birthday, // Make sure to send the date as is

@@ -34,7 +34,7 @@ export const AllinOne = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/pro`, {
+      const response = await axios.get(`https://enchant-tech-backend.onrender.com/pro`, {
         params: {
           page,
           limit: 5,

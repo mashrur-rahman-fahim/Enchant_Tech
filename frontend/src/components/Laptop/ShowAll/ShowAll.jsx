@@ -51,7 +51,7 @@ export const ShowAll = () => {
     "MSI",
   ];
   const handleRemv = (id) => {
-    fetch(`http://localhost:4000/products/${id}`, {
+    fetch(`https://enchant-tech-backend.onrender.com/products/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export const ShowAll = () => {
       });
   };
   useEffect(() => {
-    fetch("http://localhost:4000/products")
+    fetch("https://enchant-tech-backend.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         let filterData = data.filter(
@@ -114,7 +114,7 @@ export const ShowAll = () => {
   const addToCart = (product) => {
     const productToAdd = { ...product, date: new Date() };
 
-    fetch("http://localhost:4000/api/cart", {
+    fetch("https://enchant-tech-backend.onrender.com/api/cart", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(productToAdd),

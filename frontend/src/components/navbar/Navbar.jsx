@@ -16,7 +16,7 @@ export const Navbar = () => {
   };
 
   const checkAuthStatus = () => {
-    fetch("http://localhost:4000/auth", { credentials: "include" })
+    fetch("https://enchant-tech-backend.onrender.com/auth", { credentials: "include" })
       .then((response) => response.json())
       .then((data) => {
         if (data.valid) {
@@ -31,7 +31,7 @@ export const Navbar = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:4000/products")
+    fetch("https://enchant-tech-backend.onrender.com/products")
       .then((response) => response.json())
       .then((data) => setProductData(data));
   }, []);
@@ -54,7 +54,7 @@ export const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("http://localhost:4000/logout", {
+      const response = await fetch("https://enchant-tech-backend.onrender.com/logout", {
         method: "POST",
         credentials: "include",
       });

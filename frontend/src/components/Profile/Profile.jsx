@@ -12,7 +12,7 @@ export const Profile = () => {
   const navigate = useNavigate();
   console.log(isLoggedIn1);
   useEffect(() => {
-    fetch("http://localhost:4000/auth", { credentials: "include" })
+    fetch("https://enchant-tech-backend.onrender.com/auth", { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         if (!data.valid) {

@@ -14,7 +14,7 @@ export const AllProduct = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/productObject/${id}`
+          `https://enchant-tech-backend.onrender.com/productObject/${id}`
         );
         setProduct(response.data);
         setLoading(false);

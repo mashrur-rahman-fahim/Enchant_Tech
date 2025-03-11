@@ -32,7 +32,7 @@ export const Payment = () => {
     }
 
     axios
-      .get("http://localhost:4000/auth", { withCredentials: true })
+      .get("https://enchant-tech-backend.onrender.com/auth", { withCredentials: true })
       .then((response) => {
         const data = response.data;
         if (data.valid) {
@@ -65,7 +65,7 @@ export const Payment = () => {
         products: cartData, // Adding cartData to the payload
       };
       const response = await axios.post(
-        "http://localhost:4000/payment-option",
+        "https://enchant-tech-backend.onrender.com/payment-option",
         paymentData
       );
       console.log("Payment profile created:", response.data);

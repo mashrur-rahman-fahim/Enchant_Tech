@@ -18,7 +18,7 @@ export const Sign = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:4000/signUp")
+    fetch("https://enchant-tech-backend.onrender.com/signUp")
       .then((response) => response.json())
       .then((data) => {
         const findEmail = data.find((usr) => usr.email === formdata.email);
@@ -28,7 +28,7 @@ export const Sign = () => {
           });
           return;
         }
-        fetch("http://localhost:4000/signUp", {
+        fetch("https://enchant-tech-backend.onrender.com/signUp", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

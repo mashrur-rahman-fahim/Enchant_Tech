@@ -39,7 +39,7 @@ export const Product_delete = () => {
   const { catagory } = useParams();
   const catagory1 = catagory.toString();
   const remove_product = (id) => {
-    fetch(`http://localhost:4000/products/${id}`, {
+    fetch(`https://enchant-tech-backend.onrender.com/products/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ export const Product_delete = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:4000/products")
+    fetch("https://enchant-tech-backend.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         let filterData = [];
@@ -103,7 +103,7 @@ export const Product_delete = () => {
   const addToCart = (product) => {
     const productToAdd = { ...product, date: new Date() };
 
-    fetch("http://localhost:4000/api/cart", {
+    fetch("https://enchant-tech-backend.onrender.com/api/cart", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(productToAdd),

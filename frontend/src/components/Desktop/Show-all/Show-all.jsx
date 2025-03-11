@@ -44,7 +44,7 @@ export const Show = () => {
   const brandOptions = ["All", "HP", "Asus", "Lenovo", "Dell", "Acer", "MSI"];
 
   useEffect(() => {
-    fetch("http://localhost:4000/products")
+    fetch("https://enchant-tech-backend.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         let filterData = data.filter(
@@ -92,7 +92,7 @@ export const Show = () => {
     setSortOption(option);
   };
   const handleRemv = (id) => {
-    fetch(`http://localhost:4000/products/${id}`, {
+    fetch(`https://enchant-tech-backend.onrender.com/products/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

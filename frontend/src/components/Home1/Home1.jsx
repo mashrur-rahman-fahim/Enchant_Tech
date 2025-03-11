@@ -26,13 +26,14 @@ export const Home1 = () => {
   useEffect(() => {
     const fetchBanner = async () => {
       try {
-        const response = await fetch("http://localhost:4000/banner");
+        const response = await fetch("https://enchant-tech-backend.onrender.com/banner");
         if (!response.ok) {
           throw new Error("Failed to fetch banner");
         }
         const data = await response.json();
         setBanner(data.img); // Assuming the banner image URL is stored in the 'img' field
       } catch (error) {
+        console.error(error);
         setError(error.message);
       }
     };
@@ -43,7 +44,7 @@ export const Home1 = () => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4000/products?_limit=3&_page=${page}`
+          `https://enchant-tech-backend.onrender.com/products?_limit=3&_page=${page}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
