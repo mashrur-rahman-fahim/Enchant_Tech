@@ -29,13 +29,17 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Could not connect to MongoDB", err));
 
-app.use(express.json());
-app.use(cors({ 
-  origin: "https://enchant-tech.onrender.com", // Allow only your frontend
-  credentials: true 
-}));
+
+  app.use(cors({
+    origin: "https://enchant-tech.onrender.com",  // Allow frontend
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow all necessary methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow required headers
+    credentials: true // Allow cookies and auth headers
+  }));
+  
 app.use(cookieParser());
 app.use(log);
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "API is working" });
