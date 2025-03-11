@@ -32,7 +32,6 @@ mongoose
 app.use(express.json());
 app.use(cors({ 
   origin: "https://enchant-tech.onrender.com", // Allow only your frontend
-  methods: "GET,POST,PUT,DELETE",
   credentials: true 
 }));
 app.use(cookieParser());
