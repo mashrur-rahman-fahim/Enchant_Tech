@@ -30,12 +30,11 @@ mongoose
   .catch((err) => console.error("Could not connect to MongoDB", err));
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["http://localhost:3000"],
-    credentials: true,
-  })
-);
+app.use(cors({ 
+  origin: "https://enchant-tech.onrender.com", // Allow only your frontend
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true 
+}));
 app.use(cookieParser());
 app.use(log);
 
